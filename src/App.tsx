@@ -119,7 +119,7 @@ function App() {
             <div className="flex justify-between items-center h-20">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
-                  <img src={logo2} alt="One Medical Centre Logo" className="w-full h-full object-contain" />
+                  <img src={logo} alt="One Medical Centre Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h1 className="text-2xl font-bold text-white tracking-tight">One Medical Centre</h1>
