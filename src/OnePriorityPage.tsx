@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Heart, MapPin, ArrowRight, Phone, Mail, Car, Shield, Award } from 'lucide-react';
+import { Heart, MapPin, ArrowRight, Phone, Mail, Car, Shield, Award, Stethoscope, Pill, Smile, Eye, Activity, Leaf, Sparkles, Ear, Footprints, Users } from 'lucide-react';
 import logo2 from './assets/logo2.png';
 
 const services = [
-  { icon: Heart, name: "Medical Doctors", description: "Comprehensive primary care and specialized medical services with experienced physicians" },
-  { icon: Heart, name: "Pharmacy", description: "Full-service pharmacy with prescription medications and health consultations" },
-  { icon: Heart, name: "Dental Care", description: "Complete dental services from routine cleanings to advanced procedures" },
-  { icon: Heart, name: "Optometry", description: "Eye exams, vision correction, and comprehensive eye health services" },
-  { icon: Heart, name: "Physiotherapy", description: "Rehabilitation and wellness programs for optimal physical health recovery" },
-  { icon: Heart, name: "Natural Health", description: "Holistic and alternative healthcare approaches for wellness" },
-  { icon: Heart, name: "Medical Aesthetics", description: "Professional cosmetic treatments and skin rejuvenation services" },
-  { icon: Heart, name: "Hearing Clinics", description: "Comprehensive hearing assessments and hearing aid services" },
-  { icon: Heart, name: "Podiatry", description: "Specialized foot and ankle care from certified foot doctors" },
-  { icon: Heart, name: "Specialists", description: "Access to various medical specialists for specialized care needs" }
+  { icon: Stethoscope, name: "Medical Doctors", description: "Comprehensive primary care and specialized medical services with experienced physicians", color: "from-blue-400 to-blue-600" },
+  { icon: Pill, name: "Pharmacy", description: "Full-service pharmacy with prescription medications and health consultations", color: "from-green-400 to-green-600" },
+  { icon: Smile, name: "Dental Care", description: "Complete dental services from routine cleanings to advanced procedures", color: "from-teal-400 to-teal-600" },
+  { icon: Eye, name: "Optometry", description: "Eye exams, vision correction, and comprehensive eye health services", color: "from-purple-400 to-purple-600" },
+  { icon: Activity, name: "Physiotherapy", description: "Rehabilitation and wellness programs for optimal physical health recovery", color: "from-orange-400 to-orange-600" },
+  { icon: Leaf, name: "Natural Health", description: "Holistic and alternative healthcare approaches for wellness", color: "from-emerald-400 to-emerald-600" },
+  { icon: Sparkles, name: "Medical Aesthetics", description: "Professional cosmetic treatments and skin rejuvenation services", color: "from-pink-400 to-pink-600" },
+  { icon: Ear, name: "Hearing Clinics", description: "Comprehensive hearing assessments and hearing aid services", color: "from-indigo-400 to-indigo-600" },
+  { icon: Footprints, name: "Podiatry", description: "Specialized foot and ankle care from certified foot doctors", color: "from-amber-400 to-amber-600" },
+  { icon: Users, name: "Specialists", description: "Access to various medical specialists for specialized care needs", color: "from-red-400 to-red-600" }
 ];
 
 export default function OnePriorityPage() {
@@ -98,7 +98,7 @@ export default function OnePriorityPage() {
       {/* Services Section */}
       <section className="py-16 sm:py-20 bg-gray-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-900/10 via-transparent to-transparent"></div>
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Healthcare Services</span>
@@ -109,43 +109,59 @@ export default function OnePriorityPage() {
           </div>
           
           {/* Services Carousel */}
-          <div className="relative h-80 sm:h-96 flex items-center justify-center overflow-hidden">
+          <div className="relative h-72 sm:h-80 md:h-96 lg:h-[28rem] flex items-center justify-center overflow-visible px-2 sm:px-4">
             <div className="relative flex items-center justify-center w-full">
               {services.map((service, index) => {
                 const Icon = service.icon;
                 const offset = index - currentServiceIndex;
+                const absOffset = Math.abs(offset);
                 
-                // Calculate position and scale based on offset
+                // Responsive card spacing and sizing
                 const getCardStyles = () => {
-                  const baseTranslateX = offset * 300; // 300px spacing between cards
-                  const absOffset = Math.abs(offset);
+                  // Better responsive spacing
+                  const baseSpacing = window.innerWidth < 480 ? 160 : 
+                                     window.innerWidth < 768 ? 200 : 
+                                     window.innerWidth < 1024 ? 240 : 290;
+                  const baseTranslateX = offset * baseSpacing;
                   
                   if (offset === 0) {
-                    // Center card
+                    // Active card - better proportions
                     return {
-                      transform: `translateX(${baseTranslateX}px) scale(1.1) translateY(-10px)`,
+                      transform: `translateX(${baseTranslateX}px) scale(1)`,
                       opacity: 1,
                       zIndex: 10,
-                      width: '280px',
-                      height: '320px'
+                      width: window.innerWidth < 480 ? '280px' : 
+                             window.innerWidth < 768 ? '300px' : 
+                             window.innerWidth < 1024 ? '320px' : '340px',
+                      height: window.innerWidth < 480 ? '300px' : 
+                              window.innerWidth < 768 ? '320px' : 
+                              window.innerWidth < 1024 ? '340px' : '360px',
                     };
                   } else if (absOffset === 1) {
-                    // Adjacent cards
+                    // Adjacent cards - better scaling
                     return {
-                      transform: `translateX(${baseTranslateX}px) scale(0.9)`,
-                      opacity: 0.7,
+                      transform: `translateX(${baseTranslateX}px) scale(0.88)`,
+                      opacity: 0.75,
                       zIndex: 5,
-                      width: '240px',
-                      height: '280px'
+                      width: window.innerWidth < 480 ? '240px' : 
+                             window.innerWidth < 768 ? '260px' : 
+                             window.innerWidth < 1024 ? '280px' : '300px',
+                      height: window.innerWidth < 480 ? '260px' : 
+                              window.innerWidth < 768 ? '280px' : 
+                              window.innerWidth < 1024 ? '300px' : '320px',
                     };
                   } else if (absOffset === 2) {
-                    // Second level cards
+                    // Second adjacent cards - smaller but visible
                     return {
                       transform: `translateX(${baseTranslateX}px) scale(0.75)`,
                       opacity: 0.4,
                       zIndex: 2,
-                      width: '200px',
-                      height: '240px'
+                      width: window.innerWidth < 480 ? '200px' : 
+                             window.innerWidth < 768 ? '220px' : 
+                             window.innerWidth < 1024 ? '240px' : '260px',
+                      height: window.innerWidth < 480 ? '220px' : 
+                              window.innerWidth < 768 ? '240px' : 
+                              window.innerWidth < 1024 ? '260px' : '280px',
                     };
                   } else {
                     // Hidden cards
@@ -153,8 +169,8 @@ export default function OnePriorityPage() {
                       transform: `translateX(${baseTranslateX}px) scale(0.6)`,
                       opacity: 0,
                       zIndex: 0,
-                      width: '160px',
-                      height: '200px'
+                      width: '180px',
+                      height: '200px',
                     };
                   }
                 };
@@ -163,41 +179,74 @@ export default function OnePriorityPage() {
                 const isActive = offset === 0;
                 
                 return (
-                  <div
-                    key={index}
-                    className={`absolute bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-2xl border transition-all duration-700 ease-out cursor-pointer flex flex-col items-center justify-center
-                      ${isActive ? 'border-yellow-400/50 shadow-2xl shadow-yellow-400/20' :
-                        Math.abs(offset) === 1 ? 'border-gray-700/50 shadow-lg' : 'border-gray-800/50'}`}
-                    style={{
-                      transform: cardStyles.transform,
-                      opacity: cardStyles.opacity,
-                      zIndex: cardStyles.zIndex,
-                      width: cardStyles.width,
-                      height: cardStyles.height,
-                      pointerEvents: cardStyles.opacity < 0.3 ? 'none' : 'auto',
-                    }}
-                    onClick={() => {
-                      setCurrentServiceIndex(index);
-                      setIsAutoScrolling(false);
-                      setTimeout(() => setIsAutoScrolling(true), 8000);
-                    }}
-                  >
-                    <div className="flex flex-col items-center text-center h-full justify-center space-y-4">
-                      <div className={`${isActive ? 'bg-yellow-400/20 p-4' : 'bg-gray-700/50 p-3'} rounded-2xl transition-all duration-500`}>
-                        <Icon className={`${isActive ? 'h-8 w-8' : 'h-6 w-6'} text-yellow-400 transition-all duration-500`} />
-                      </div>
-                      <div className="space-y-2">
-                        <h4 className={`${isActive ? 'text-lg' : 'text-base'} font-semibold text-white transition-all duration-500`}>
-                          {service.name}
-                        </h4>
-                        {isActive && (
-                          <p className="text-gray-300 text-sm leading-relaxed max-w-xs px-2 transition-all duration-500">
-                            {service.description}
-                          </p>
-                        )}
+                    <div
+                      key={index}
+                      className={`absolute rounded-3xl border-2 transition-all duration-700 ease-out cursor-pointer backdrop-blur-sm
+                        ${isActive ? 
+                          'bg-gradient-to-br from-gray-800/90 to-gray-700/90 border-yellow-400/60 shadow-2xl shadow-yellow-400/30' :
+                          absOffset === 1 ? 
+                            'bg-gradient-to-br from-gray-800/80 to-gray-700/80 border-gray-600/50 shadow-xl shadow-gray-900/50' : 
+                            absOffset === 2 ? 
+                              'bg-gradient-to-br from-gray-800/70 to-gray-700/70 border-gray-700/40 shadow-lg shadow-gray-900/30' : 
+                              'bg-gradient-to-br from-gray-800/60 to-gray-700/60 border-gray-800/30'
+                        }`}
+                      style={{
+                        transform: cardStyles.transform,
+                        opacity: cardStyles.opacity,
+                        zIndex: cardStyles.zIndex,
+                        width: cardStyles.width,
+                        height: cardStyles.height,
+                        pointerEvents: cardStyles.opacity < 0.3 ? 'none' : 'auto',
+                      }}
+                      onClick={() => {
+                        setCurrentServiceIndex(index);
+                        setIsAutoScrolling(false);
+                        setTimeout(() => setIsAutoScrolling(true), 8000);
+                      }}
+                    >
+                      <div className={`flex flex-col items-center text-center h-full justify-center transition-all duration-500 ${
+                        isActive ? 'p-6' : absOffset === 1 ? 'p-4' : 'p-3'
+                      }`}>
+                        <div className={`relative rounded-2xl transition-all duration-500 flex-shrink-0 mb-4 ${
+                          isActive ? 'p-4' : 'p-3'
+                        }`}>
+                          {/* Animated background for icon */}
+                          <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
+                            isActive ? 
+                              `bg-gradient-to-br ${service.color} opacity-20` : 
+                              'bg-gray-700/50'
+                          }`}></div>
+                          {/* Glow effect for active card */}
+                          {isActive && (
+                            <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.color} opacity-40 blur-sm animate-pulse`}></div>
+                          )}
+                          <Icon className={`relative z-10 transition-all duration-500 ${
+                            isActive ? 'h-10 w-10' : absOffset === 1 ? 'h-8 w-8' : 'h-6 w-6'
+                          } ${isActive ? 'text-white' : 'text-yellow-400'}`} />
+                        </div>
+                        <div className="space-y-3 flex-1 flex flex-col justify-center min-h-0">
+                          <h4 className={`font-bold text-white transition-all duration-500 leading-tight ${
+                            isActive ? 'text-xl' : absOffset === 1 ? 'text-lg' : 'text-base'
+                          }`}>
+                            {service.name}
+                          </h4>
+                          {isActive && (
+                            <div className="relative">
+                              <p className="text-gray-300 leading-relaxed transition-all duration-500 text-sm px-2 line-clamp-4">
+                                {service.description}
+                              </p>
+                              {/* Subtle accent line */}
+                              <div className={`w-12 h-0.5 bg-gradient-to-r ${service.color} mx-auto mt-3 rounded-full`}></div>
+                            </div>
+                          )}
+                          {absOffset === 1 && (
+                            <p className="text-gray-400 leading-relaxed transition-all duration-500 text-xs px-1 opacity-75 line-clamp-3">
+                              {service.description}
+                            </p>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
                 );
               })}
             </div>

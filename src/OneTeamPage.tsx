@@ -30,7 +30,7 @@ export default function OneTeamPage() {
 
   // Dummy handler for Book Appointment (no scroll on this page)
   const handleBookAppointment = () => {
-    window.open('https://onemedicalcentre.com', '_blank');
+    window.open('#', '_blank'); // https://onemedicalcentre.com
   };
 
   return (
