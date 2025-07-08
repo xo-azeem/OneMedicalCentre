@@ -39,60 +39,60 @@ function Header() {
   ];
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   return (
-        <header className="bg-gray-900/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-20">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[98vw] sm:w-[95vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw] flex justify-center">
+      <div className="w-full flex flex-col">
+        <div className="mx-auto w-full flex items-center justify-between px-4 sm:px-8 py-2 sm:py-3 bg-white/20 dark:bg-gray-900/40 backdrop-blur-xl border border-white/20 dark:border-gray-800/40 shadow-lg rounded-[2rem]" style={{ borderRadius: '2rem' }}>
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg overflow-hidden bg-white/30 dark:bg-gray-800/40">
               <img src={logo2} alt="One Medical Centre Logo" className="w-full h-full object-contain" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-white tracking-tight">One Medical Centre</h1>
-                  <p className="text-sm font-medium text-yellow-400">Complete Healthcare Destination</p>
-                </div>
-              </div>
-              {/* Desktop Nav */}
-              <nav className="hidden md:flex items-center space-x-8" aria-label="Main Navigation">
+            </div>
+            <div className="hidden sm:block">
+              <h1 className="text-2xl font-bold text-white tracking-tight">One Medical Centre</h1>
+              <p className="text-sm font-medium text-yellow-400">Complete Healthcare Destination</p>
+            </div>
+          </div>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center space-x-8" aria-label="Main Navigation">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 to={item.key}
-                className="flex items-center space-x-2 px-4 py-2 font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-300 hover:text-yellow-400"
+                className="flex items-center space-x-2 px-4 py-2 font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-white hover:text-yellow-400 bg-white/0 hover:bg-white/10"
                 onClick={() => setMobileNavOpen(false)}
               >
                 <span>{item.label}</span>
               </Link>
             ))}
-              </nav>
-              {/* Mobile Hamburger */}
-              <button
-                className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                aria-label="Open navigation menu"
-                onClick={() => setMobileNavOpen(v => !v)}
-              >
-                <span className="sr-only">Open navigation menu</span>
-                <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-yellow-400">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-            {/* Mobile Nav Drawer */}
-            {mobileNavOpen && (
-              <nav className="md:hidden absolute top-20 left-0 w-full bg-gray-900 border-b border-gray-800/50 z-50 flex flex-col items-center py-6 space-y-4 animate-fade-in" aria-label="Mobile Navigation">
+          </nav>
+          {/* Mobile Hamburger */}
+          <button
+            className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white/10 hover:bg-white/20"
+            aria-label="Open navigation menu"
+            onClick={() => setMobileNavOpen(v => !v)}
+          >
+            <span className="sr-only">Open navigation menu</span>
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-yellow-400">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+        {/* Mobile Nav Drawer */}
+        {mobileNavOpen && (
+          <nav className="md:hidden mt-2 mx-auto w-full bg-white/20 dark:bg-gray-900/40 backdrop-blur-xl border border-white/20 dark:border-gray-800/40 shadow-lg rounded-[2rem] flex flex-col items-center py-6 space-y-4 animate-fade-in" aria-label="Mobile Navigation">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 to={item.key}
-                className="text-gray-300 hover:text-yellow-400 font-medium text-lg"
+                className="text-white hover:text-yellow-400 font-medium text-lg px-4 py-2 rounded-lg bg-white/0 hover:bg-white/10 w-4/5 text-center"
                 onClick={() => setMobileNavOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-              </nav>
-            )}
-          </div>
-        </header>
+          </nav>
+        )}
+      </div>
+    </header>
   );
 }
 
