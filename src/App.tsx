@@ -433,9 +433,9 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
               <div className="md:col-span-2">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center overflow-hidden">
-                    <img src={logo} alt="One Medical Centre Logo" className="w-full h-full object-contain" />
-                  </div>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+                  <img src={logo} alt="One Medical Centre Logo" className="w-full h-full object-contain" />
+                </div>
                   <div>
                     <h5 className="text-xl font-bold">One Medical Centre</h5>
                     <p className="text-gray-400 text-sm">Complete Healthcare Destination</p>
