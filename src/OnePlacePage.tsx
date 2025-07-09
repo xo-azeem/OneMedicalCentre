@@ -8,11 +8,13 @@ export default function OnePlacePage() {
   const [featuresVisible, setFeaturesVisible] = useState(false);
   const [locationAnimationTriggered, setLocationAnimationTriggered] = useState(false);
   const [featuresAnimationTriggered, setFeaturesAnimationTriggered] = useState(false);
+  const [mapVisible, setMapVisible] = useState(false);
   
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const locationSectionRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
+  const mapSectionRef = useRef<HTMLDivElement>(null);
 
   // Enhanced hero animation with smoother timing (from test.tsx)
   useEffect(() => {
@@ -77,6 +79,24 @@ export default function OnePlacePage() {
     }
     return () => observer.disconnect();
   }, [featuresAnimationTriggered]);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setMapVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    if (mapSectionRef.current) {
+      observer.observe(mapSectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   const handleBookAppointment = () => {
     window.open('https://onemedicalcentre.com', '_blank');
@@ -319,6 +339,70 @@ export default function OnePlacePage() {
                     </div>
                   </a>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Google Maps + QR Code Section */}
+      <section
+        ref={mapSectionRef}
+        className="relative py-12 sm:py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex justify-center items-center overflow-hidden"
+      >
+        {/* Floating background elements */}
+        <div className="absolute top-10 left-10 w-3 h-3 bg-yellow-400 rounded-full animate-pulse animate-float-slow opacity-60"></div>
+        <div className="absolute top-1/3 right-20 w-2 h-2 bg-yellow-500 rounded-full animate-pulse delay-700 opacity-50 animate-float-medium"></div>
+        <div className="absolute bottom-20 left-20 w-4 h-4 bg-yellow-400/40 rounded-full animate-pulse delay-1000 animate-float-fast"></div>
+                
+        <div className={`w-full max-w-4xl px-4 transition-all duration-1000 ease-out transform ${mapVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <div className="relative flex flex-col items-center">
+                
+            {/* Floating Pin Icon */}
+            <div className="relative mb-4 z-20">
+              <div className="bg-yellow-400 p-4 rounded-full shadow-2xl animate-bounce">
+                <MapPin className="w-8 h-8 text-gray-900" />
+              </div>
+            </div>
+                
+            {/* Heading */}
+            <h2 className="text-2xl sm:text-3xl font-bold text-yellow-400 mb-4 text-center drop-shadow-lg">
+              Our Location on Google Maps
+            </h2>
+                
+            {/* Google Map Iframe */}
+            <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl border border-yellow-400/40 mb-4 bg-gray-800">
+              <iframe
+                src="https://www.google.com/maps?q=50+Burnhamthorpe+Rd+W,+Mississauga,+ON+L5B+3C2,+Canada&output=embed"
+                title="One Medical Centre Location"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+                
+            {/* Google Maps Button */}
+            <a
+              href="https://maps.app.goo.gl/NfnrniFAtQGAVzx49"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-semibold rounded-xl shadow-lg hover:from-yellow-300 hover:to-yellow-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-base tracking-wide mb-4"
+            >
+              Open in Google Maps
+            </a>
+                
+            {/* QR Code */}
+            <div className="text-center">
+              <p className="text-gray-300 mb-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>
+              <div className="p-3 bg-gray-800/50 backdrop-blur-sm border border-yellow-400/30 rounded-2xl shadow-md inline-block">
+                <img
+                  src="/src/assets/qr.png" // Replace this with actual path to your QR code
+                  alt="Google Maps QR Code"
+                  className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-48 lg:h-48 object-contain rounded-xl"
+                />
               </div>
             </div>
           </div>
