@@ -151,7 +151,7 @@ export default function OneTeamPage() {
           }`}
           style={{ 
             backgroundImage: `url(${doctorsImg})`, 
-            filter: 'brightness(0.3) blur(0px)',
+            filter: 'brightness(1) contrast(1.1)',
             backgroundAttachment: 'fixed'
           }}
           aria-hidden="true"
