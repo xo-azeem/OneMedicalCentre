@@ -19,8 +19,15 @@ export default function OnePriorityPage() {
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [heroAnimated, setHeroAnimated] = useState(false);
+  const [servicesVisible, setServicesVisible] = useState(false);
+  const [priorityValuesVisible, setPriorityValuesVisible] = useState(false);
+  const [servicesAnimationTriggered, setServicesAnimationTriggered] = useState(false);
+  const [priorityAnimationTriggered, setPriorityAnimationTriggered] = useState(false);
+  
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
+  const servicesSectionRef = useRef<HTMLDivElement>(null);
+  const priorityValuesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isAutoScrolling) return;
@@ -51,14 +58,61 @@ export default function OnePriorityPage() {
     }
   }, [heroAnimated]);
 
+  // Services section animation
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !servicesAnimationTriggered) {
+            setServicesVisible(true);
+            setServicesAnimationTriggered(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    if (servicesSectionRef.current) {
+      observer.observe(servicesSectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, [servicesAnimationTriggered]);
+
+  // Priority values animation
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !priorityAnimationTriggered) {
+            setPriorityValuesVisible(true);
+            setPriorityAnimationTriggered(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (priorityValuesRef.current) {
+      observer.observe(priorityValuesRef.current);
+    }
+    return () => observer.disconnect();
+  }, [priorityAnimationTriggered]);
+
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Hero Section with Tagline */}
       <section ref={heroRef} className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 sm:py-28 min-h-[80vh] flex items-center mb-8">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-900/20 via-transparent to-transparent"></div>
+        
+        {/* Floating decorative elements */}
+        <div className="absolute top-20 left-10 w-3 h-3 bg-yellow-400 rounded-full animate-pulse opacity-60"></div>
+        <div className="absolute top-40 right-20 w-2 h-2 bg-yellow-500 rounded-full animate-pulse delay-1000 opacity-40"></div>
+        <div className="absolute bottom-32 left-20 w-4 h-4 bg-yellow-400/60 rounded-full animate-pulse delay-500"></div>
+        <div className="absolute bottom-20 right-10 w-2 h-2 bg-yellow-500/80 rounded-full animate-pulse delay-1500"></div>
+        
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={heroContentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Right Content - Logo (show first on mobile) */}
+            {/* Right Content - Logo */}
             <div className="flex justify-center lg:justify-end mt-8 lg:mt-0 order-1 lg:order-2">
               <div className="relative">
                 <div className="w-56 sm:w-72 h-56 sm:h-72 bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-yellow-400/30 mx-auto">
@@ -70,7 +124,7 @@ export default function OnePriorityPage() {
                 <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-yellow-500 rounded-full animate-pulse delay-1000"></div>
               </div>
             </div>
-            {/* Left Content (show second on mobile) */}
+            {/* Left Content */}
             <div className="space-y-8 order-2 lg:order-1 w-full">
               <div className="space-y-6 max-w-2xl mx-auto lg:mx-0 lg:text-left text-center">
                 <div className="inline-flex items-center space-x-2 bg-yellow-400/10 text-yellow-400 px-4 py-2 rounded-full text-sm font-medium border border-yellow-400/20">
@@ -78,7 +132,7 @@ export default function OnePriorityPage() {
                   <span>One Priority</span>
                 </div>
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-                  Our Priority:
+                  Our Priority
                 </h2>
                 <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                   <h3 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold leading-tight">
@@ -95,11 +149,23 @@ export default function OnePriorityPage() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 sm:py-20 bg-gray-900 relative overflow-hidden">
+      {/* Enhanced Services Section */}
+      <section ref={servicesSectionRef} className="py-16 sm:py-20 bg-gray-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-900/10 via-transparent to-transparent"></div>
+        
+        {/* Animated floating elements */}
+        <div className={`absolute top-10 left-10 w-2 h-2 bg-yellow-400 rounded-full transition-all duration-[1500ms] delay-300 ${servicesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-20 right-20 w-3 h-3 bg-yellow-500/60 rounded-full transition-all duration-[1500ms] delay-500 ${servicesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute bottom-20 left-20 w-4 h-4 bg-yellow-400/40 rounded-full transition-all duration-[1500ms] delay-700 ${servicesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ease-out transform ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`}>
+            <div className="inline-flex items-center space-x-2 bg-yellow-400/10 text-yellow-400 px-6 py-3 rounded-full text-sm font-medium border border-yellow-400/20 mb-6">
+              <Stethoscope className="h-4 w-4" />
+              <span>Our Services</span>
+            </div>
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Healthcare Services</span>
             </h3>
@@ -108,8 +174,10 @@ export default function OnePriorityPage() {
             </p>
           </div>
           
-          {/* Services Carousel */}
-          <div className="relative h-72 sm:h-80 md:h-96 lg:h-[28rem] flex items-center justify-center overflow-visible px-2 sm:px-4">
+          {/* Services Carousel with Enhanced Animation */}
+          <div className={`relative h-72 sm:h-80 md:h-96 lg:h-[28rem] flex items-center justify-center overflow-visible px-2 sm:px-4 transition-all duration-1000 ease-out transform ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+          }`} style={{ transitionDelay: '200ms' }}>
             <div className="relative flex items-center justify-center w-full">
               {services.map((service, index) => {
                 const Icon = service.icon;
@@ -118,14 +186,12 @@ export default function OnePriorityPage() {
                 
                 // Responsive card spacing and sizing
                 const getCardStyles = () => {
-                  // Better responsive spacing
                   const baseSpacing = window.innerWidth < 480 ? 160 : 
                                      window.innerWidth < 768 ? 200 : 
                                      window.innerWidth < 1024 ? 240 : 290;
                   const baseTranslateX = offset * baseSpacing;
                   
                   if (offset === 0) {
-                    // Active card - better proportions
                     return {
                       transform: `translateX(${baseTranslateX}px) scale(1)`,
                       opacity: 1,
@@ -138,7 +204,6 @@ export default function OnePriorityPage() {
                               window.innerWidth < 1024 ? '340px' : '360px',
                     };
                   } else if (absOffset === 1) {
-                    // Adjacent cards - better scaling
                     return {
                       transform: `translateX(${baseTranslateX}px) scale(0.88)`,
                       opacity: 0.75,
@@ -151,7 +216,6 @@ export default function OnePriorityPage() {
                               window.innerWidth < 1024 ? '300px' : '320px',
                     };
                   } else if (absOffset === 2) {
-                    // Second adjacent cards - smaller but visible
                     return {
                       transform: `translateX(${baseTranslateX}px) scale(0.75)`,
                       opacity: 0.4,
@@ -164,7 +228,6 @@ export default function OnePriorityPage() {
                               window.innerWidth < 1024 ? '260px' : '280px',
                     };
                   } else {
-                    // Hidden cards
                     return {
                       transform: `translateX(${baseTranslateX}px) scale(0.6)`,
                       opacity: 0,
@@ -181,13 +244,13 @@ export default function OnePriorityPage() {
                 return (
                     <div
                       key={index}
-                      className={`absolute rounded-3xl border-2 transition-all duration-700 ease-out cursor-pointer backdrop-blur-sm
+                      className={`absolute rounded-3xl border-2 transition-all duration-700 ease-out cursor-pointer backdrop-blur-sm hover:shadow-2xl
                         ${isActive ? 
                           'bg-gradient-to-br from-gray-800/90 to-gray-700/90 border-yellow-400/60 shadow-2xl shadow-yellow-400/30' :
                           absOffset === 1 ? 
-                            'bg-gradient-to-br from-gray-800/80 to-gray-700/80 border-gray-600/50 shadow-xl shadow-gray-900/50' : 
+                            'bg-gradient-to-br from-gray-800/80 to-gray-700/80 border-gray-600/50 shadow-xl shadow-gray-900/50 hover:border-yellow-400/40' : 
                             absOffset === 2 ? 
-                              'bg-gradient-to-br from-gray-800/70 to-gray-700/70 border-gray-700/40 shadow-lg shadow-gray-900/30' : 
+                              'bg-gradient-to-br from-gray-800/70 to-gray-700/70 border-gray-700/40 shadow-lg shadow-gray-900/30 hover:border-yellow-400/30' : 
                               'bg-gradient-to-br from-gray-800/60 to-gray-700/60 border-gray-800/30'
                         }`}
                       style={{
@@ -210,13 +273,11 @@ export default function OnePriorityPage() {
                         <div className={`relative rounded-2xl transition-all duration-500 flex-shrink-0 mb-4 ${
                           isActive ? 'p-4' : 'p-3'
                         }`}>
-                          {/* Animated background for icon */}
                           <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
                             isActive ? 
                               `bg-gradient-to-br ${service.color} opacity-20` : 
                               'bg-gray-700/50'
                           }`}></div>
-                          {/* Glow effect for active card */}
                           {isActive && (
                             <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.color} opacity-40 blur-sm animate-pulse`}></div>
                           )}
@@ -235,7 +296,6 @@ export default function OnePriorityPage() {
                               <p className="text-gray-300 leading-relaxed transition-all duration-500 text-sm px-2 line-clamp-4">
                                 {service.description}
                               </p>
-                              {/* Subtle accent line */}
                               <div className={`w-12 h-0.5 bg-gradient-to-r ${service.color} mx-auto mt-3 rounded-full`}></div>
                             </div>
                           )}
@@ -252,14 +312,16 @@ export default function OnePriorityPage() {
             </div>
           </div>
           
-          {/* Navigation dots */}
-          <div className="flex justify-center mt-8 space-x-2">
+          {/* Navigation dots with animation */}
+          <div className={`flex justify-center mt-8 space-x-2 transition-all duration-1000 ease-out transform ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} style={{ transitionDelay: '400ms' }}>
             {services.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
                   index === currentServiceIndex 
-                    ? 'bg-yellow-400 scale-125' 
+                    ? 'bg-yellow-400 scale-125 shadow-lg shadow-yellow-400/50' 
                     : 'bg-gray-600 hover:bg-gray-500'
                 }`}
                 onClick={() => {
@@ -273,25 +335,68 @@ export default function OnePriorityPage() {
         </div>
       </section>
 
-      {/* Priority Values */}
-      <section className="py-16 sm:py-20 bg-gray-800">
-        <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Enhanced Priority Values Section */}
+      <section ref={priorityValuesRef} className="py-16 sm:py-20 bg-gray-800 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-900/10 via-transparent to-transparent"></div>
+        <div className={`absolute top-20 left-10 w-3 h-3 bg-yellow-400/40 rounded-full transition-all duration-[1500ms] delay-300 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-40 right-20 w-2 h-2 bg-yellow-500/60 rounded-full transition-all duration-[1500ms] delay-500 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute bottom-20 left-20 w-4 h-4 bg-yellow-400/30 rounded-full transition-all duration-[1500ms] delay-700 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          {/* Section Header */}
+          <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
+            priorityValuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`}>
+            <div className="inline-flex items-center space-x-2 bg-yellow-400/10 text-yellow-400 px-6 py-3 rounded-full text-sm font-medium border border-yellow-400/20 mb-6">
+              <Heart className="h-4 w-4" />
+              <span>Our Values</span>
+            </div>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
+              What Makes Us <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Different</span>
+            </h3>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              Our commitment to excellence drives everything we do, ensuring you receive the highest quality healthcare experience.
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
             {[
-              { icon: Shield, title: "Comprehensive Care", description: "We address all aspects of your health, from preventive care to complex medical conditions, ensuring nothing is overlooked." },
-              { icon: Heart, title: "Patient-Centered", description: "Your health goals and concerns drive every decision we make, ensuring personalized care that fits your unique needs." },
-              { icon: Award, title: "Excellence in Service", description: "We maintain the highest standards of medical care, continuously improving our services to exceed your expectations." }
+              { 
+                icon: Shield, 
+                title: "Comprehensive Care", 
+                description: "We address all aspects of your health, from preventive care to complex medical conditions, ensuring nothing is overlooked.",
+                delay: 200
+              },
+              { 
+                icon: Heart, 
+                title: "Patient-Centered", 
+                description: "Your health goals and concerns drive every decision we make, ensuring personalized care that fits your unique needs.",
+                delay: 400
+              },
+              { 
+                icon: Award, 
+                title: "Excellence in Service", 
+                description: "We maintain the highest standards of medical care, continuously improving our services to exceed your expectations.",
+                delay: 600
+              }
             ].map((value, index) => {
               const Icon = value.icon;
               return (
-                <div key={index} className="text-center group">
-                  <div className="bg-gradient-to-br from-gray-900 to-gray-700 group-hover:from-yellow-400/20 group-hover:to-yellow-600/20 transition-all duration-300 p-6 rounded-2xl w-fit mx-auto mb-6 shadow-xl border border-gray-700/50 group-hover:border-yellow-400/30">
-                    <Icon className="h-10 w-10 text-yellow-400 group-hover:scale-110 transition-transform duration-300" />
+                <div 
+                  key={index} 
+                  className={`text-center group transition-all duration-1000 ease-out transform ${
+                    priorityValuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  }`}
+                  style={{ transitionDelay: `${value.delay}ms` }}
+                >
+                  <div className="bg-gradient-to-br from-gray-900 to-gray-700 group-hover:from-yellow-400/20 group-hover:to-yellow-600/20 transition-all duration-500 p-6 rounded-2xl w-fit mx-auto mb-6 shadow-xl border border-gray-700/50 group-hover:border-yellow-400/30 group-hover:shadow-2xl group-hover:shadow-yellow-400/10 group-hover:-translate-y-2">
+                    <Icon className="h-10 w-10 text-yellow-400 group-hover:scale-110 group-hover:text-yellow-300 transition-all duration-300" />
                   </div>
                   <h4 className="text-xl font-semibold text-white mb-3 group-hover:text-yellow-400 transition-colors duration-300">
                     {value.title}
                   </h4>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
                     {value.description}
                   </p>
                 </div>
