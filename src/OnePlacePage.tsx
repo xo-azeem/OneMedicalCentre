@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MapPin, Car, Calendar, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';
 import logo2 from './assets/logo2.png';
+import qrcode from './assets/qr.png';
 
 export default function OnePlacePage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -399,7 +400,7 @@ export default function OnePlacePage() {
               <p className="text-gray-300 mb-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>
               <div className="p-3 bg-gray-800/50 backdrop-blur-sm border border-yellow-400/30 rounded-2xl shadow-md inline-block">
                 <img
-                  src="/src/assets/qr.png" // Replace this with actual path to your QR code
+                  src={qrcode} // Replace this with actual path to your QR code
                   alt="Google Maps QR Code"
                   className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-48 lg:h-48 object-contain rounded-xl"
                 />
