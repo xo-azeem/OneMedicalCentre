@@ -4,6 +4,7 @@ import logo from './assets/logo.png';
 import logo2 from './assets/logo2.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 // Simple Error Boundary
 class ErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean; error: any }> {
@@ -32,6 +33,7 @@ import OnePlacePage from './OnePlacePage';
 
 // Header Component
 function Header() {
+  const location = useLocation();
   const navItems = [
     { key: '/', label: 'One Team' },
     { key: '/priority', label: 'One Priority' },
@@ -47,8 +49,8 @@ function Header() {
           
           <div className="relative z-10 flex items-center space-x-4">
             {/* Enhanced Logo */}
-            <a 
-              href="/" 
+            <Link 
+              to="/" 
               className="group w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden bg-gradient-to-br from-yellow-100/80 to-yellow-200/60 border border-yellow-300/40 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:from-yellow-200/90 hover:to-yellow-300/70 hover:border-yellow-400/60 cursor-pointer z-20"
               style={{ pointerEvents: 'auto' }}
             >
@@ -57,35 +59,44 @@ function Header() {
                 alt="One Medical Centre Logo" 
                 className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 pointer-events-none" 
               />
-            </a>
+            </Link>
             
             {/* Enhanced Brand Text */}
-            <div className="hidden sm:block pointer-events-none">
-              <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-800 tracking-tight drop-shadow-sm">
+            <Link to="/" className="hidden sm:block cursor-pointer group">
+              <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-800 tracking-tight drop-shadow-sm group-hover:from-yellow-600 group-hover:via-yellow-500 group-hover:to-yellow-700 transition-all duration-300">
                 One Medical Centre
               </h1>
-              <p className="text-sm font-semibold text-yellow-700/80 tracking-wide">
+              <p className="text-sm font-semibold text-yellow-700/80 tracking-wide group-hover:text-yellow-600 transition-colors duration-300">
                 Complete Healthcare Destination
               </p>
-            </div>
+            </Link>
           </div>
           
           {/* Enhanced Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-2" aria-label="Main Navigation">
-            {navItems.map((item) => (
-              <Link
-                key={item.key}
-                to={item.key}
-                className="group relative px-5 py-2.5 text-yellow-800 hover:text-yellow-700 font-semibold text-base transition-all duration-300 rounded-xl hover:bg-yellow-50/60 hover:shadow-md hover:scale-105 active:scale-95 cursor-pointer z-20"
-                style={{ pointerEvents: 'auto' }}
-              >
-                <span className="relative z-30 pointer-events-none">{item.label}</span>
-                {/* Hover background effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-100/0 via-yellow-100/80 to-yellow-100/0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                {/* Active indicator */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-yellow-500 to-yellow-600 group-hover:w-full transition-all duration-300 rounded-full pointer-events-none"></div>
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.key;
+              return (
+                <Link
+                  key={item.key}
+                  to={item.key}
+                  className={`group relative px-5 py-2.5 font-semibold text-base transition-all duration-300 rounded-xl hover:shadow-md hover:scale-105 active:scale-95 cursor-pointer z-20 ${
+                    isActive 
+                      ? 'text-yellow-700 bg-yellow-100/80 shadow-md' 
+                      : 'text-yellow-800 hover:text-yellow-700 hover:bg-yellow-50/60'
+                  }`}
+                  style={{ pointerEvents: 'auto' }}
+                >
+                  <span className="relative z-30 pointer-events-none">{item.label}</span>
+                  {/* Hover background effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-100/0 via-yellow-100/80 to-yellow-100/0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  {/* Active indicator */}
+                  <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-yellow-500 to-yellow-600 transition-all duration-300 rounded-full pointer-events-none ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></div>
+                </Link>
+              );
+            })}
           </nav>
           
           {/* Enhanced Mobile Hamburger */}
@@ -115,23 +126,30 @@ function Header() {
             {/* Background overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-50/60 via-white/80 to-yellow-100/60 rounded-3xl pointer-events-none"></div>
             
-            {navItems.map((item, index) => (
-              <Link
-                key={item.key}
-                to={item.key}
-                className="group relative text-yellow-800 hover:text-yellow-700 font-semibold text-lg px-8 py-4 rounded-2xl transition-all duration-300 w-5/6 text-center hover:bg-gradient-to-r hover:from-yellow-50/60 hover:to-yellow-100/60 hover:shadow-lg hover:scale-105 active:scale-95 cursor-pointer z-50"
-                onClick={() => setMobileNavOpen(false)}
-                style={{ 
-                  animationDelay: `${index * 100}ms`,
-                  animation: 'slideInUp 0.6s ease-out forwards',
-                  pointerEvents: 'auto'
-                }}
-              >
-                <span className="relative z-60 pointer-events-none">{item.label}</span>
-                {/* Hover background effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-200/0 via-yellow-200/60 to-yellow-200/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </Link>
-            ))}
+            {navItems.map((item, index) => {
+              const isActive = location.pathname === item.key;
+              return (
+                <Link
+                  key={item.key}
+                  to={item.key}
+                  className={`group relative font-semibold text-lg px-8 py-4 rounded-2xl transition-all duration-300 w-5/6 text-center hover:shadow-lg hover:scale-105 active:scale-95 cursor-pointer z-50 ${
+                    isActive 
+                      ? 'text-yellow-700 bg-gradient-to-r from-yellow-100/80 to-yellow-200/60 shadow-lg' 
+                      : 'text-yellow-800 hover:text-yellow-700 hover:bg-gradient-to-r hover:from-yellow-50/60 hover:to-yellow-100/60'
+                  }`}
+                  onClick={() => setMobileNavOpen(false)}
+                  style={{ 
+                    animationDelay: `${index * 100}ms`,
+                    animation: 'slideInUp 0.6s ease-out forwards',
+                    pointerEvents: 'auto'
+                  }}
+                >
+                  <span className="relative z-60 pointer-events-none">{item.label}</span>
+                  {/* Hover background effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-200/0 via-yellow-200/60 to-yellow-200/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                </Link>
+              );
+            })}
           </nav>
         )}
       </div>
@@ -250,6 +268,7 @@ function Footer() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       {/* Header with navigation links */}
       <Header />
       <main>
