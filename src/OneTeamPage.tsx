@@ -79,7 +79,7 @@ export default function OneTeamPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative bg-white pt-28 xs:pt-32 xs:mt-5 sm:pt-32 sm:mt-5 lg:pt-36 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative bg-white pt-28 mt-5 sm:pt-32 sm:mt-5 lg:pt-36 lg:mt-0 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 bg-white"></div>
         <div className="absolute top-0 left-0 w-full h-full">
