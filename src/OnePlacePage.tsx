@@ -104,7 +104,7 @@ export default function OnePlacePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-200 overflow-x-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <style>{`
         @keyframes shimmer {
           0% { background-position: -200% 0; }
@@ -146,8 +146,8 @@ export default function OnePlacePage() {
         }
       `}</style>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-200 py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden mt-[44px] lg:mt-5">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-100/30 via-transparent to-transparent"></div>
+      <section ref={heroRef} className="relative bg-white py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden mt-[44px] lg:mt-5">
+        <div className="absolute inset-0 bg-white"></div>
         {/* Floating decorative elements */}
         <div className="absolute top-20 left-10 w-4 h-4 bg-amber-300/70 rounded-full transition-all duration-[2000ms] delay-300 animate-ping opacity-60"></div>
         <div className="absolute top-40 right-20 w-3 h-3 bg-yellow-400/60 rounded-full transition-all duration-[2200ms] delay-500 animate-pulse opacity-40"></div>
@@ -238,8 +238,8 @@ export default function OnePlacePage() {
       </section>
 
       {/* Location Details Section */}
-      <section ref={locationSectionRef} className="py-20 sm:py-24 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-200 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-100/20 via-transparent to-transparent"></div>
+      <section ref={locationSectionRef} className="py-20 sm:py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-white"></div>
         
         {/* Animated floating elements */}
         <div className={`absolute top-10 left-10 w-2 h-2 bg-yellow-400 rounded-full transition-all duration-[1500ms] delay-300 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
@@ -356,7 +356,7 @@ export default function OnePlacePage() {
       {/* Google Maps + QR Code Section */}
       <section
         ref={mapSectionRef}
-        className="relative py-12 sm:py-16 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-200 flex justify-center items-center overflow-hidden"
+        className="relative py-12 sm:py-16 bg-white flex justify-center items-center overflow-hidden"
       >
         {/* Floating background elements */}
         <div className="absolute top-10 left-10 w-3 h-3 bg-yellow-400 rounded-full animate-pulse animate-float-slow opacity-60"></div>
@@ -418,8 +418,8 @@ export default function OnePlacePage() {
       </section>
 
       {/* Features Section */}
-      <section ref={featuresSectionRef} className="py-20 sm:py-24 bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-200 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-100/20 via-transparent to-transparent"></div>
+      <section ref={featuresSectionRef} className="py-20 sm:py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-white"></div>
         
         {/* Animated floating elements */}
         <div className={`absolute top-20 left-10 w-3 h-3 bg-yellow-400/40 rounded-full transition-all duration-[1500ms] delay-300 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>

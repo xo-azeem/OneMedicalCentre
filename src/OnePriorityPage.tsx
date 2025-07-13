@@ -99,10 +99,10 @@ export default function OnePriorityPage() {
   }, [priorityAnimationTriggered]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-200 relative">
+    <div className="min-h-screen bg-white relative">
       {/* Hero Section with Tagline */}
-      <section ref={heroRef} className="relative bg-gradient-to-br from-gray-100 via-yellow-50 to-gray-200 py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden mt-[44px] lg:mt-5">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-100/30 via-transparent to-transparent"></div>
+      <section ref={heroRef} className="relative bg-white py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden mt-[44px] lg:mt-5">
+        <div className="absolute inset-0 bg-white"></div>
         {/* Floating decorative elements */}
         <div className="absolute top-20 left-10 w-4 h-4 bg-amber-300/70 rounded-full transition-all duration-[2000ms] delay-300 animate-ping opacity-60"></div>
         <div className="absolute top-40 right-20 w-3 h-3 bg-yellow-400/60 rounded-full transition-all duration-[2200ms] delay-500 animate-pulse opacity-40"></div>
@@ -198,7 +198,7 @@ export default function OnePriorityPage() {
       {/* Enhanced Services Section */}
       <section ref={servicesSectionRef} id="services" className="py-24 sm:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden relative">
         {/* Animated Background with Parallax Effect */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-100/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-white"></div>
         {/* Animated floating elements */}
         <div className={`absolute top-10 left-10 w-3 h-3 bg-amber-400/60 rounded-full transition-all duration-[1500ms] delay-300 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
         <div className={`absolute top-20 right-20 w-4 h-4 bg-yellow-500/60 rounded-full transition-all duration-[1700ms] delay-500 ${servicesVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
@@ -362,9 +362,9 @@ export default function OnePriorityPage() {
       </section>
 
       {/* Enhanced Priority Values Section */}
-      <section ref={priorityValuesRef} className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 via-gray-50 to-amber-50/30 relative overflow-hidden">
+              <section ref={priorityValuesRef} className="py-24 sm:py-32 bg-white relative overflow-hidden">
         {/* Animated background elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-100/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-white"></div>
         <div className={`absolute top-20 left-10 w-4 h-4 bg-amber-400/40 rounded-full transition-all duration-[1500ms] delay-300 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         <div className={`absolute top-40 right-20 w-3 h-3 bg-yellow-500/60 rounded-full transition-all duration-[1500ms] delay-500 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         <div className={`absolute bottom-20 left-20 w-5 h-5 bg-amber-200/30 rounded-full transition-all duration-[1500ms] delay-700 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
