@@ -1,14 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Heart, MapPin, Phone, Clock, Car, Stethoscope, Pill, Smile, Eye, Activity, Leaf, Sparkles, Ear, Footprints, UserCheck, ArrowRight, Shield, Users, Award, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Moon, Sun, Phone } from 'lucide-react';
 import logo from './assets/logo.png';
 import logo2 from './assets/logo2.png';
-import pdfFile from './assets/OneMedicalCentre.pdf';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
-
 import OneTeamPage from './OneTeamPage';
 import OnePriorityPage from './OnePriorityPage';
 import OnePlacePage from './OnePlacePage';
+import { useTheme, ThemeProvider } from './useTheme';
 
 function Header() {
   const location = useLocation();
@@ -18,12 +17,13 @@ function Header() {
     { key: '/place', label: 'One Place' }
   ];
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   return (
     <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[98vw] sm:w-[95vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw] flex justify-center">
       <div className="w-full flex flex-col">
-        <div className="mx-auto w-full flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 bg-white border border-gray-200 shadow-xl rounded-3xl relative overflow-hidden">
+        <div className="mx-auto w-full flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 bg-theme-primary border border-[#daa520] shadow-xl shadow-[#ffd700]/20 rounded-3xl relative overflow-hidden">
           <div className="relative z-10 flex items-center space-x-4">
-            <Link to="/" className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white border border-gray-300 transition-all duration-300 hover:scale-110">
+            <Link to="/" className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-theme-primary border border-theme-primary transition-all duration-300 hover:scale-110">
               <img src={logo2} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
             </Link>
             <Link to="/" className="hidden sm:block cursor-pointer group">
@@ -35,7 +35,7 @@ function Header() {
               </p>
             </Link>
           </div>
-          <nav className="hidden md:flex items-center space-x-2" aria-label="Main Navigation">
+          <nav className="hidden md:flex items-center space-x-2">
             {navItems.map((item) => {
               const isActive = location.pathname === item.key;
               return (
@@ -44,8 +44,8 @@ function Header() {
                   to={item.key}
                   className={`group relative px-5 py-2.5 font-semibold text-base transition-all duration-300 rounded-xl hover:shadow-md hover:scale-105 active:scale-95 z-20 ${
                     isActive
-                      ? 'text-[#b8860b] bg-white shadow-md border border-[#fffacd]'
-                      : 'text-[#b8860b] hover:text-[#daa520] hover:bg-gray-50'
+                      ? 'text-[#b8860b] bg-theme-primary dark:bg-black shadow-md border border-[#fffacd] dark:border-[#daa520]'
+                      : 'text-[#b8860b] hover:text-[#daa520] hover:bg-[#fff8dc] dark:hover:bg-black'
                   }`}
                 >
                   <span className="relative z-30 pointer-events-none">{item.label}</span>
@@ -56,26 +56,27 @@ function Header() {
               );
             })}
           </nav>
-          <button
-            className="md:hidden p-3 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#daa520]/30 bg-white hover:bg-gray-50 border border-gray-200 transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer z-20"
-            aria-label="Open navigation menu"
-            onClick={() => setMobileNavOpen(v => !v)}
-          >
-            <span className="sr-only">Open navigation menu</span>
-            <svg
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="text-[#b8860b] transition-transform duration-300 hover:rotate-90"
+          <div className="flex items-center space-x-2">
+            <button
+              className="md:hidden p-3 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#daa520]/30 bg-theme-primary dark:bg-black hover:bg-theme-secondary border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 hover:scale-105 cursor-pointer z-20"
+              onClick={() => setMobileNavOpen(v => !v)}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+              <span className="sr-only">Open navigation menu</span>
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-[#b8860b] transition-transform duration-300 hover:rotate-90">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="ml-2 p-3 rounded-full border-2 border-[#daa520] bg-theme-primary dark:bg-black text-[#b8860b] dark:text-[#ffd700] hover:scale-110 transition-all duration-300 shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700]"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <Moon className="h-5 w-5 text-[#b8860b]" /> : <Sun className="h-5 w-5 text-[#ffd700]" />}
+            </button>
+          </div>
         </div>
         {mobileNavOpen && (
-          <nav className="md:hidden mt-3 mx-auto w-full bg-white border border-gray-200 shadow-xl rounded-3xl flex flex-col items-center py-6 space-y-1 animate-fade-in relative overflow-hidden z-40" aria-label="Mobile Navigation">
+          <nav className="md:hidden mt-3 mx-auto w-full bg-theme-primary dark:bg-black border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 rounded-3xl flex flex-col items-center py-6 space-y-1 animate-fade-in relative overflow-hidden z-40">
             {navItems.map((item, index) => {
               const isActive = location.pathname === item.key;
               return (
@@ -84,15 +85,11 @@ function Header() {
                   to={item.key}
                   className={`group relative font-semibold text-lg px-8 py-4 rounded-2xl transition-all duration-300 w-5/6 text-center hover:shadow-lg hover:scale-105 active:scale-95 z-50 ${
                     isActive
-                      ? 'text-[#b8860b] bg-white shadow-lg border border-[#fffacd]'
-                      : 'text-[#b8860b] hover:text-[#daa520] hover:bg-gray-50'
+                      ? 'text-[#b8860b] bg-theme-primary dark:bg-black shadow-lg border border-[#fffacd] dark:border-[#daa520]'
+                      : 'text-[#b8860b] hover:text-[#daa520] hover:bg-[#fff8dc] dark:hover:bg-black'
                   }`}
                   onClick={() => setMobileNavOpen(false)}
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                    animation: 'slideInUp 0.6s ease-out forwards',
-                    pointerEvents: 'auto'
-                  }}
+                  style={{ animationDelay: `${index * 100}ms`, animation: 'slideInUp 0.6s ease-out forwards' }}
                 >
                   <span className="relative z-60 pointer-events-none">{item.label}</span>
                 </Link>
@@ -101,43 +98,19 @@ function Header() {
           </nav>
         )}
       </div>
-      <style>{`
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.4s ease-out;
-        }
-      `}</style>
     </header>
   );
 }
 
 function Footer() {
+  const { theme, toggleTheme } = useTheme();
   return (
-    <footer className="bg-white border-t border-gray-200 text-gray-700 py-16 sm:py-20">
+    <footer className="bg-theme-primary border-t-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 text-theme-secondary py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-4 mb-6">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white border border-gray-300">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-theme-primary border border-theme-primary">
                 <img src={logo} alt="One Medical Centre Logo" className="w-full h-full object-contain" />
               </div>
               <div>
@@ -145,21 +118,21 @@ function Footer() {
                 <p className="text-[#daa520] text-sm">Complete Healthcare Destination</p>
               </div>
             </div>
-            <p className="text-gray-600 leading-relaxed text-lg max-w-md">
+            <p className="leading-relaxed text-lg max-w-md text-theme-secondary">
               Your trusted healthcare partner in Mississauga, offering comprehensive medical services under one roof with a focus on quality care and patient satisfaction.
             </p>
           </div>
           <div>
             <h6 className="font-semibold mb-6 text-[#b8860b] text-lg">Services</h6>
-            <ul className="space-y-3 text-gray-600">
+            <ul className="space-y-3">
               {['Medical Care', 'Dental Services', 'Eye Care', 'Physiotherapy', 'Pharmacy'].map((service, index) => (
-                <li key={index} className="hover:text-[#daa520] transition-colors cursor-pointer">{service}</li>
+                <li key={index} className="hover:text-[#daa520] cursor-pointer transition-colors">{service}</li>
               ))}
             </ul>
           </div>
           <div>
             <h6 className="font-semibold mb-6 text-[#b8860b] text-lg">Contact</h6>
-            <ul className="space-y-3 text-gray-600">
+            <ul className="space-y-3">
               <li>50 Burnhamthorpe Rd W,</li>
               <li>Unit 102, Mississauga,</li>
               <li>Free Parking Available</li>
@@ -169,7 +142,18 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-200 mt-16 sm:mt-20 pt-8 sm:pt-10 text-center text-gray-500">
+
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={toggleTheme}
+            className="p-3 rounded-full border-2 border-[#daa520] bg-theme-primary dark:bg-black text-[#b8860b] dark:text-[#ffd700] hover:scale-110 transition-all duration-300 shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700]"
+            aria-label="Toggle theme"
+          >
+            {theme === 'light' ? <Moon className="h-5 w-5 text-[#b8860b]" /> : <Sun className="h-5 w-5 text-[#ffd700]" />}
+          </button>
+        </div>
+
+        <div className="border-t-2 border-[#daa520] mt-16 sm:mt-20 pt-8 sm:pt-10 text-center text-theme-secondary">
           <p>&copy; 2024 One Medical Centre. All rights reserved. Your health is our priority.</p>
         </div>
       </div>
@@ -179,18 +163,20 @@ function Footer() {
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<OneTeamPage />} />
-          <Route path="/priority" element={<OnePriorityPage />} />
-          <Route path="/place" element={<OnePlacePage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <ScrollToTop />
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<OneTeamPage />} />
+            <Route path="/priority" element={<OnePriorityPage />} />
+            <Route path="/place" element={<OnePlacePage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
+    </ThemeProvider>
   );
 }
 

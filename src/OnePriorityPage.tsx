@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Heart, Stethoscope, Shield, Award, MapPin, ArrowRight, Phone, Mail, Car, Pill, Smile, Eye, Activity, Leaf, Sparkles, Ear, Footprints, Users } from 'lucide-react';
 import logo2 from './assets/logo2.png';
+import pdfFile from './assets/OneMedicalCentre.pdf';
 
 const services = [
   { icon: Stethoscope, name: "Medical Doctors", description: "Comprehensive primary care and specialized medical services with experienced physicians", color: "from-amber-400 to-yellow-500" },
@@ -98,16 +99,22 @@ export default function OnePriorityPage() {
     return () => observer.disconnect();
   }, [priorityAnimationTriggered]);
 
+  const handleBookAppointment = () => {
+    window.open('#', '_blank');
+  };
+
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-theme-primary dark:bg-black relative">
+      {/* Theme-aware margin area above hero for all screens */}
+      <div className="w-full" style={{height: '44px', background: 'var(--bg-primary)'}}></div>
       {/* Hero Section with Tagline */}
-      <section ref={heroRef} className="relative bg-white py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden mt-[44px] lg:mt-5">
-        <div className="absolute inset-0 bg-white"></div>
+      <section ref={heroRef} className="relative bg-theme-primary dark:bg-black py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden">
+        <div className="absolute inset-0 bg-theme-primary dark:bg-black"></div>
         {/* Floating decorative elements */}
-        <div className="absolute top-20 left-10 w-4 h-4 bg-amber-300/70 rounded-full transition-all duration-[2000ms] delay-300 animate-ping opacity-60"></div>
-        <div className="absolute top-40 right-20 w-3 h-3 bg-yellow-400/60 rounded-full transition-all duration-[2200ms] delay-500 animate-pulse opacity-40"></div>
-        <div className="absolute bottom-32 left-20 w-5 h-5 bg-amber-200/50 rounded-full transition-all duration-[2400ms] delay-700 animate-bounce"></div>
-        <div className="absolute bottom-20 right-10 w-3 h-3 bg-amber-400/40 rounded-full transition-all duration-[2600ms] delay-1100 animate-ping"></div>
+        <div className="absolute top-20 left-10 w-4 h-4 bg-[#d4af37]/30 rounded-full transition-all duration-[2000ms] delay-300 animate-ping opacity-60"></div>
+        <div className="absolute top-40 right-20 w-3 h-3 bg-[#d4af37]/20 rounded-full transition-all duration-[2200ms] delay-500 animate-pulse opacity-40"></div>
+        <div className="absolute bottom-32 left-20 w-5 h-5 bg-[#d4af37]/10 rounded-full transition-all duration-[2400ms] delay-700 animate-bounce"></div>
+        <div className="absolute bottom-20 right-10 w-3 h-3 bg-[#d4af37]/10 rounded-full transition-all duration-[2600ms] delay-1100 animate-ping"></div>
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={heroContentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -155,37 +162,46 @@ export default function OnePriorityPage() {
             {/* Left Content */}
             <div className="space-y-8 order-2 lg:order-1 w-full text-center lg:text-left">
               <div className="space-y-6 max-w-2xl mx-auto lg:mx-0">
-                <div className="inline-flex items-center space-x-2 bg-yellow-50 text-yellow-600 px-4 py-2 rounded-full text-sm font-medium border border-yellow-200">
+                <div className="inline-flex items-center space-x-2 bg-theme-primary text-[#b8860b] px-4 py-2 rounded-full text-sm font-medium border border-[#f5deb3]/50">
                   <Heart className="h-4 w-4" />
                   <span>One Priority</span>
                 </div>
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
-                  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Priority</span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-theme-primary leading-tight">
+                  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Priority</span>
                 </h2>
-                <div className="bg-gradient-to-r from-yellow-600 to-yellow-700 bg-clip-text text-transparent">
-                  <h3 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold leading-tight">
-                    Placing your <span className="underline decoration-yellow-600/50">TOTAL</span> health care needs above all.
+                <div className="flex justify-center lg:justify-start text-center lg:text-left">
+                  <div className="w-88 h-1 bg-gradient-to-r from-[#ffd700] via-[#daa520] to-[#b8860b] rounded-full opacity-70 animate-pulse"></div>
+                </div>
+                <div className="bg-gradient-to-r from-[#daa520] to-[#ffd700] bg-clip-text text-transparent">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
+                    Placing your <span className="underline decoration-[#ffd700]/50">TOTAL</span> health care needs above all.
                   </h3>
                 </div>
-                <p className="text-lg sm:text-xl text-gray-800 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                <p className="text-lg sm:text-xl text-theme-secondary leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   We believe in comprehensive, patient-centered care that addresses not just your immediate health concerns, 
                   but your overall well-being. Our integrated approach ensures every aspect of your health is our priority.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center lg:justify-start pt-4">
                 <button
-                  className="group px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-semibold rounded-xl transition-all duration-300 hover:from-yellow-500 hover:to-yellow-600 hover:shadow-xl hover:shadow-yellow-400/25 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                  className="group px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
+                  onClick={handleBookAppointment}
                   aria-label="Book Appointment"
                 >
-                  <span className="flex items-center space-x-2">
+                  <span className="flex items-center space-x-3">
                     <span>Book Appointment</span>
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </button>
                 <a
-                  href="#services"
-                  className="px-8 py-4 border-2 border-yellow-600 text-yellow-600 font-semibold rounded-xl transition-all duration-300 hover:bg-yellow-50 hover:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-center"
+                  href={pdfFile}
+                  className="px-8 py-4 border-2 border-[#daa520] bg-theme-primary text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] dark:hover:bg-black hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   tabIndex={0}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="OneMedicalCentre.pdf"
                 >
                   Learn More
                 </a>
@@ -195,28 +211,28 @@ export default function OnePriorityPage() {
         </div>
       </section>
 
-      {/* Enhanced Services Section */}
-      <section ref={servicesSectionRef} id="services" className="py-24 sm:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden relative">
+      {/* Services Section */}
+      <section ref={servicesSectionRef} id="services" className="py-24 sm:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden relative bg-theme-primary dark:bg-black">
         {/* Animated Background with Parallax Effect */}
-        <div className="absolute inset-0 bg-white"></div>
+        <div className="absolute inset-0 bg-theme-primary dark:bg-black"></div>
         {/* Animated floating elements */}
-        <div className={`absolute top-10 left-10 w-3 h-3 bg-amber-400/60 rounded-full transition-all duration-[1500ms] delay-300 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute top-20 right-20 w-4 h-4 bg-yellow-500/60 rounded-full transition-all duration-[1700ms] delay-500 ${servicesVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-20 left-20 w-5 h-5 bg-amber-200/50 rounded-full transition-all duration-[1900ms] delay-700 ${servicesVisible ? 'opacity-100 animate-bounce' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-10 right-10 w-3 h-3 bg-amber-400/40 rounded-full transition-all duration-[2100ms] delay-900 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute top-10 left-10 w-3 h-3 bg-[#d4af37]/30 rounded-full transition-all duration-[1500ms] delay-300 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute top-20 right-20 w-4 h-4 bg-[#d4af37]/20 rounded-full transition-all duration-[1700ms] delay-500 ${servicesVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute bottom-20 left-20 w-5 h-5 bg-[#d4af37]/10 rounded-full transition-all duration-[1900ms] delay-700 ${servicesVisible ? 'opacity-100 animate-bounce' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute bottom-10 right-10 w-3 h-3 bg-[#d4af37]/10 rounded-full transition-all duration-[2100ms] delay-900 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
         {/* Main Content Container */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-yellow-50 text-yellow-600 px-6 py-3 rounded-full text-sm font-medium border border-yellow-200 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-theme-primary text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
               <Stethoscope className="h-4 w-4" />
               <span>Our Services</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-yellow-700">Healthcare Services</span>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-theme-primary mb-4">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Healthcare Services</span>
             </h3>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-theme-secondary max-w-2xl mx-auto leading-relaxed">
               Comprehensive medical services designed to meet all your healthcare needs under one roof.
             </p>
           </div>
@@ -286,9 +302,9 @@ export default function OnePriorityPage() {
                 return (
                   <div
                     key={index}
-                    className={`absolute group rounded-3xl border transition-all duration-700 ease-out cursor-pointer backdrop-blur-sm shadow-xl
-                      bg-gradient-to-br from-white/95 to-amber-50/80 border-gray-200/60
-                      hover:border-amber-300/60 hover:shadow-2xl hover:shadow-amber-500/20 hover:-translate-y-4 hover:scale-[1.02]
+                    className={`absolute group rounded-3xl border-2 transition-all duration-700 ease-out cursor-pointer backdrop-blur-sm shadow-xl
+                      bg-theme-primary dark:bg-black border-[#daa520] shadow-[#ffd700]/30
+                      hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/40 hover:-translate-y-4 hover:scale-[1.02]
                       ${isActive ? '' : absOffset === 1 ? '' : absOffset === 2 ? '' : ''}
                     `}
                     style={{
@@ -308,26 +324,26 @@ export default function OnePriorityPage() {
                     <div className={`flex flex-col items-center text-center h-full justify-center transition-all duration-500 ${
                       isActive ? 'p-6' : absOffset === 1 ? 'p-4' : 'p-3'
                     }`}>
-                      <div className={`relative rounded-2xl transition-all duration-500 flex-shrink-0 mb-4 p-4 bg-gradient-to-br from-yellow-100 to-yellow-200 shadow-lg`}>
-                        <Icon className={`h-10 w-10 text-yellow-600`} />
+                      <div className={`relative rounded-2xl transition-all duration-500 flex-shrink-0 mb-4 p-4 bg-gradient-to-br from-[#fffacd] to-[#fff8dc] dark:from-[#b8860b]/30 dark:to-[#daa520]/20 shadow-lg`}>
+                        <Icon className={`h-10 w-10 text-[#daa520] dark:text-[#ffd700]`} />
                       </div>
                       <div className="space-y-3 flex-1 flex flex-col justify-center min-h-0">
-                        <h4 className={`font-bold text-gray-900 transition-all duration-500 leading-tight ${
-                          isActive ? 'text-xl' : absOffset === 1 ? 'text-lg' : 'text-base'
+                        <h4 className={`font-bold transition-all duration-500 leading-tight ${
+                          isActive ? 'text-xl text-theme-primary' : absOffset === 1 ? 'text-lg text-theme-primary' : 'text-base text-theme-secondary'
                         }`}>
                           {service.name}
                         </h4>
                         {isActive && (
                           <div className="relative">
-                            <p className="text-gray-700 leading-relaxed transition-all duration-500 text-sm px-2 line-clamp-4">
+                            <p className="text-theme-secondary leading-relaxed transition-all duration-500 text-sm px-2 line-clamp-4">
                               {service.description}
                             </p>
-                            {/* Divider: subtle neutral */}
-                            <div className="w-12 h-0.5 bg-gradient-to-r from-amber-100 to-yellow-100 mx-auto mt-3 rounded-full"></div>
+                            {/* Divider: subtle gold */}
+                            <div className="w-12 h-0.5 bg-gradient-to-r from-[#fffacd] to-[#ffd700] mx-auto mt-3 rounded-full"></div>
                           </div>
                         )}
                         {absOffset === 1 && (
-                          <p className="text-gray-500 leading-relaxed transition-all duration-500 text-xs px-1 opacity-75 line-clamp-3">
+                          <p className="text-theme-secondary opacity-75 leading-relaxed transition-all duration-500 text-xs px-1 line-clamp-3">
                             {service.description}
                           </p>
                         )}
@@ -362,9 +378,9 @@ export default function OnePriorityPage() {
       </section>
 
       {/* Enhanced Priority Values Section */}
-              <section ref={priorityValuesRef} className="py-24 sm:py-32 bg-white relative overflow-hidden">
+      <section ref={priorityValuesRef} className="py-24 sm:py-32 bg-theme-primary dark:bg-black relative overflow-hidden">
         {/* Animated background elements */}
-        <div className="absolute inset-0 bg-white"></div>
+        <div className="absolute inset-0 bg-theme-primary dark:bg-black"></div>
         <div className={`absolute top-20 left-10 w-4 h-4 bg-amber-400/40 rounded-full transition-all duration-[1500ms] delay-300 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         <div className={`absolute top-40 right-20 w-3 h-3 bg-yellow-500/60 rounded-full transition-all duration-[1500ms] delay-500 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         <div className={`absolute bottom-20 left-20 w-5 h-5 bg-amber-200/30 rounded-full transition-all duration-[1500ms] delay-700 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
@@ -373,14 +389,14 @@ export default function OnePriorityPage() {
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             priorityValuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-yellow-50 text-yellow-600 px-6 py-3 rounded-full text-sm font-medium border border-yellow-200 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-theme-primary text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
               <Heart className="h-4 w-4" />
               <span>Our Values</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6">
-              What Makes Us <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-yellow-700">Different</span>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-theme-primary mb-6">
+              What Makes Us <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Different</span>
             </h3>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-theme-secondary max-w-2xl mx-auto leading-relaxed">
               Our commitment to excellence drives everything we do, ensuring you receive the highest quality healthcare experience.
             </p>
           </div>
@@ -414,13 +430,13 @@ export default function OnePriorityPage() {
                   }`}
                   style={{ transitionDelay: `${value.delay}ms` }}
                 >
-                  <div className="bg-gradient-to-br from-white to-amber-50 group-hover:from-yellow-500/10 group-hover:to-yellow-700/10 transition-all duration-500 p-6 rounded-2xl w-fit mx-auto mb-6 shadow-xl border border-stone-200 group-hover:border-yellow-500/30 group-hover:shadow-2xl group-hover:shadow-yellow-500/10 group-hover:-translate-y-2">
-                    <Icon className="h-10 w-10 text-yellow-400 group-hover:scale-110 group-hover:text-yellow-300 transition-all duration-300" />
+                  <div className="bg-gradient-to-br from-theme-primary to-[#fff8dc] group-hover:from-[#daa520]/10 group-hover:to-[#ffd700]/10 transition-all duration-500 p-6 rounded-2xl w-fit mx-auto mb-6 shadow-xl border border-[#daa520] group-hover:border-[#ffd700]/30 group-hover:shadow-2xl group-hover:shadow-[#ffd700]/10 group-hover:-translate-y-2">
+                    <Icon className="h-10 w-10 text-[#daa520] group-hover:scale-110 group-hover:text-[#ffd700] transition-all duration-300" />
                   </div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-yellow-600 transition-colors duration-300">
+                  <h4 className="text-xl font-semibold text-theme-primary mb-3 group-hover:text-[#b8860b] transition-colors duration-300">
                     {value.title}
                   </h4>
-                  <p className="text-gray-700 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
+                  <p className="text-theme-secondary leading-relaxed group-hover:text-theme-primary transition-colors duration-300">
                     {value.description}
                   </p>
                 </div>

@@ -77,11 +77,13 @@ export default function OneTeamPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-theme-primary">
+      {/* Theme-aware margin area above hero for all screens */}
+      <div className="w-full" style={{height: '44px', background: 'var(--bg-primary)'}}></div>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative bg-white pt-28 mt-5 sm:pt-32 sm:mt-5 lg:pt-36 lg:mt-0 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative bg-theme-primary pt-28 sm:pt-32 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden">
         {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-white"></div>
+        <div className="absolute inset-0 bg-theme-primary"></div>
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffd700]/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#daa520]/15 rounded-full blur-3xl"></div>
@@ -97,13 +99,13 @@ export default function OneTeamPage() {
                 {/* Main logo container with enhanced styling */}
                 <div className="w-48 sm:w-60 lg:w-72 h-48 sm:h-60 lg:h-72 relative flex items-center justify-center mx-auto">
                   {/* Subtler, thinner outer golden ring */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#ffd700] via-[#fff8dc] to-[#f0e68c] shadow-lg border border-[#daa520]/60 overflow-hidden">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-[#fff8dc]/30 to-transparent opacity-40 animate-shimmer-light"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d4af37] via-[#d4af37] to-[#b8860b] shadow-2xl shadow-[#ffd700]/60 border-2 border-[#ffd700] shadow-[#ffd700]/50 overflow-hidden">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-[#ffd700]/50 to-transparent opacity-60 animate-shimmer-light"></div>
                   </div>
 
-                  {/* Inner white circle with logo */}
-                  <div className="relative w-40 sm:w-52 lg:w-60 h-40 sm:h-52 lg:h-60 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 overflow-hidden backdrop-blur-sm">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-50 to-white"></div>
+                  {/* Inner circle with logo */}
+                  <div className="relative w-40 sm:w-52 lg:w-60 h-40 sm:h-52 lg:h-60 bg-white dark:bg-black rounded-full flex items-center justify-center shadow-lg border border-[#daa520] overflow-hidden backdrop-blur-sm">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black"></div>
                     <img src={logo2} alt="One Medical Centre Hero Logo" className="relative z-10 w-28 sm:w-36 lg:w-44 h-28 sm:h-36 lg:h-44 object-contain transition-transform duration-300 group-hover:scale-105" />
                   </div>
                 </div>
@@ -131,20 +133,20 @@ export default function OneTeamPage() {
             <div className="space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1">
                 
               {/* Location Badge */}
-              <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-5 py-3 rounded-full text-sm font-medium border border-[#f5deb3]/50 shadow-lg lg:mt-7">
+              <div className="inline-flex items-center space-x-2 bg-theme-primary text-[#b8860b] px-5 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 lg:mt-7">
                 <MapPin className="h-4 w-4" />
                 <span>Located in Mississauga</span>
               </div>
                 
               {/* Main Headlines */}
               <div className="space-y-3 sm:space-y-4">
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] drop-shadow-2xl leading-tight whitespace-nowrap">
+                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] drop-shadow-2xl leading-tight whitespace-nowrap">
                   ONE Medical Centre
                 </h1>
-                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-snug">
-                  Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f0e68c] to-[#daa520]">Complete Healthcare</span> Destination
+                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-theme-primary leading-snug">
+                  Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#daa520]">Complete Healthcare</span> Destination
                 </h2>
-                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-theme-secondary leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
                   Located across from Square One Shopping Centre, our integrated medical facility brings together specialists, 
                   pharmacy, dental care, and wellness services under one roof for your convenience.
                 </p>
@@ -153,7 +155,7 @@ export default function OneTeamPage() {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center lg:justify-start pt-4">
                 <button
-                  className="group px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-white font-semibold rounded-2xl transition-all duration-300 hover:from-[#f0e68c] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
+                  className="group px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
                   onClick={handleBookAppointment}
                   aria-label="Book Appointment"
                 >
@@ -164,7 +166,7 @@ export default function OneTeamPage() {
                 </button>
                 <a
                   href={pdfFile}
-                  className="px-8 py-4 border-2 border-[#daa520] bg-white text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] hover:border-[#f0e68c] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1"
+                  className="px-8 py-4 border-2 border-[#daa520] bg-theme-primary text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] dark:hover:bg-black hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   tabIndex={0}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -178,29 +180,29 @@ export default function OneTeamPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-6">
                 <a
                   href="tel:+16476602591"
-                  className="flex items-center space-x-3 bg-white px-4 py-4 rounded-xl border border-[#f0e68c] text-gray-700 text-sm hover:text-[#b8860b] hover:bg-[#fffaf0] hover:border-[#ffd700] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1"
+                  className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-theme-secondary text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   aria-label="Call +647 660 2591"
                 >
-                  <div className="p-2 bg-[#fffacd] rounded-lg">
-                    <Phone className="h-4 w-4 text-[#daa520]" />
+                  <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
+                    <Phone className="h-4 w-4 text-[#daa520] dark:text-white" />
                   </div>
                   <span className="font-medium">+647 660 2591</span>
                 </a>
                 <a
                   href="mailto:onemedicalmississauga@gmail.com"
-                  className="flex items-center space-x-3 bg-white px-4 py-4 rounded-xl border border-[#f0e68c] text-gray-700 text-sm hover:text-[#b8860b] hover:bg-[#fffaf0] hover:border-[#ffd700] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1"
+                  className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-theme-secondary text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   aria-label="Email Us"
                 >
-                  <div className="p-2 bg-[#fffacd] rounded-lg">
-                    <Mail className="h-4 w-4 text-[#daa520]" />
+                  <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
+                    <Mail className="h-4 w-4 text-[#daa520] dark:text-white" />
                   </div>
                   <span className="font-medium">Email Us</span>
                 </a>
-                <div className="flex items-center space-x-3 bg-white px-4 py-4 rounded-xl border border-[#f0e68c] text-gray-700">
-                  <div className="p-2 bg-[#fffacd] rounded-lg">
-                    <Car className="h-5 w-5 text-[#daa520]" />
+                <div className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-theme-secondary text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20">
+                  <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
+                    <Car className="h-5 w-5 text-[#daa520] dark:text-white" />
                   </div>
-                  <span className="text-gray-700 text-sm font-medium">Free Parking</span>
+                  <span className="text-theme-secondary text-sm font-medium">Free Parking</span>
                 </div>
               </div>
             </div>
@@ -211,7 +213,7 @@ export default function OneTeamPage() {
       {/* Enhanced Doctors Section */}
       <section
         ref={doctorsSectionRef}
-        className="relative py-16 xs:py-20 sm:py-28 md:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden bg-white"
+        className="relative py-16 xs:py-20 sm:py-28 md:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden bg-theme-primary"
       >
         {/* Animated Background with Parallax Effect */}
         <div
@@ -246,7 +248,7 @@ export default function OneTeamPage() {
           <div className={`transition-all duration-300 ease-out transform ${
             doctorsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'
           }`}>
-            <div className="bg-white/15 dark:bg-slate-800/20 backdrop-blur-xl border border-white/20 shadow-2xl shadow-slate-900/30 rounded-3xl p-10 sm:p-8 flex flex-col items-center text-center gap-8 relative overflow-hidden">
+            <div className="bg-theme-primary/15 dark:bg-slate-800/20 backdrop-blur-xl border border-[#daa520] shadow-2xl shadow-slate-900/30 rounded-3xl p-10 sm:p-8 flex flex-col items-center text-center gap-8 relative overflow-hidden">
               
               {/* Subtle Inner Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#daa520]/5 via-transparent to-[#ffd700]/5 rounded-3xl"></div>
@@ -254,7 +256,7 @@ export default function OneTeamPage() {
               {/* Badge with Enhanced Animation */}
               <div className={`inline-flex items-center space-x-3 bg-gradient-to-r from-[#fffacd]/80 to-[#fff8dc]/80 text-[#b8860b] px-6 py-3 rounded-full text-sm font-semibold border border-[#daa520]/60 shadow-lg backdrop-blur-sm transition-all duration-[800ms] delay-200 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
                 <Stethoscope className="h-5 w-5 text-[#b8860b]" />
-                <span className="tracking-wide">Our Medical Team</span>
+                <span className="tracking-wide ">Our Medical Team</span>
               </div>
               
               {/* Main Heading with Enhanced Typography */}
@@ -269,7 +271,7 @@ export default function OneTeamPage() {
               </h3>
               
               {/* Description with Better Readability */}
-              <p className={`text-xl sm:text-2xl text-slate-100 max-w-3xl mx-auto leading-relaxed mb-4 font-light transition-all duration-[1000ms] delay-600 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <p className={`text-xl sm:text-2xl text-white max-w-3xl mx-auto leading-relaxed mb-4 font-light transition-all duration-[1000ms] delay-600 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 Our team of experienced and compassionate healthcare professionals is committed to providing 
                 <span className="text-[#f0e68c] font-medium"> personalized, world-class medical care</span> for you and your family.
               </p>
@@ -284,9 +286,9 @@ export default function OneTeamPage() {
               </h4>
               
               {/* Secondary Description */}
-              <p className={`text-lg sm:text-xl text-slate-200 mb-6 max-w-2xl mx-auto leading-relaxed transition-all duration-[1000ms] delay-1200 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <p className={`text-lg sm:text-xl text-white mb-6 max-w-2xl mx-auto leading-relaxed transition-all duration-[1000ms] delay-1200 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our 
-                <span className="text-[#f0e68c] font-medium"> state-of-the-art facility.</span>
+                <span className="text-[#d4af37] font-medium"> state-of-the-art facility.</span>
               </p>
               
               {/* Enhanced Action Buttons */}
@@ -321,9 +323,9 @@ export default function OneTeamPage() {
       </section>
 
       {/* Enhanced Doctors Cards Section */}
-      <section ref={doctorsCardsRef} className="py-16 xs:py-20 sm:py-28 md:py-32 bg-white relative overflow-hidden">
+      <section ref={doctorsCardsRef} className="py-16 xs:py-20 sm:py-28 md:py-32 bg-theme-primary relative overflow-hidden">
         {/* Dynamic Background Layers */}
-        <div className="absolute inset-0 bg-white"></div>
+        <div className="absolute inset-0 bg-theme-primary"></div>
         
         {/* Enhanced Floating Elements with Dynamic Animations */}
         <div className={`absolute top-16 left-12 w-4 h-4 bg-[#daa520]/60 rounded-full transition-all duration-[2500ms] delay-200 ${doctorsCardsVisible ? 'opacity-100 animate-ping scale-110' : 'opacity-0 scale-0'}`}></div>
@@ -349,11 +351,11 @@ export default function OneTeamPage() {
           <div className={`text-center mb-20 transition-all duration-400 ease-out transform ${
             doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'
           }`}>
-            <div className={`inline-flex items-center space-x-3 bg-gradient-to-r from-[#fffacd]/90 to-[#fff8dc]/90 text-[#b8860b] px-8 py-4 rounded-full text-sm font-bold border border-[#daa520]/60 mb-8 backdrop-blur-sm shadow-lg transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-4 rotate-3'}`}>
-              <Stethoscope className="h-5 w-5 text-[#b8860b]" />
+            <div className={`inline-flex items-center space-x-3 bg-theme-primary text-[#d4af37] px-8 py-4 rounded-full text-sm font-bold border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-8 ${doctorsCardsVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-4 rotate-3'}`}>
+              <Stethoscope className="h-5 w-5 text-[#d4af37]" />
               <span className="tracking-wide">Our Medical Experts</span>
             </div>
-            <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-8 leading-tight transition-all duration-300 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-black text-theme-primary mb-8 leading-tight transition-all duration-300 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Meet Our{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] bg-clip-text text-transparent">
@@ -362,7 +364,7 @@ export default function OneTeamPage() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#daa520]/20 via-[#ffd700]/20 to-[#daa520]/20 blur-xl opacity-60 animate-pulse"></div>
               </span>
             </h3>
-            <p className={`text-xl sm:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className={`text-xl sm:text-2xl text-theme-secondary max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Our team of <span className="text-[#b8860b] font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
               combining expertise with <span className="text-[#b8860b] font-semibold">compassionate patient-centered approach.</span>
             </p>
@@ -437,7 +439,7 @@ export default function OneTeamPage() {
                   }`}
                   style={{ transitionDelay: `${doctor.delay}ms` }}
                 >
-                  <div className="relative bg-gradient-to-br from-white/95 to-[#fff8dc]/80 group-hover:from-white group-hover:to-[#fffacd] transition-all duration-700 p-8 rounded-3xl shadow-xl border border-gray-200/60 group-hover:border-[#daa520]/60 group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden backdrop-blur-sm">
+                  <div className="relative bg-gradient-to-br from-theme-primary/95 to-[#fff8dc]/80 group-hover:from-theme-primary group-hover:to-[#fffacd] transition-all duration-700 p-8 rounded-3xl shadow-xl border border-[#daa520] group-hover:border-[#ffd700] group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden backdrop-blur-sm">
                     {/* Premium Card Glow Effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#daa520]/0 via-[#ffd700]/0 to-[#daa520]/0 group-hover:from-[#daa520]/10 group-hover:via-[#ffd700]/15 group-hover:to-[#daa520]/10 transition-all duration-700 rounded-3xl"></div>
                     {/* Animated Corner Accents */}
@@ -450,13 +452,13 @@ export default function OneTeamPage() {
                       >
                         <Icon className="h-10 w-10 text-white group-hover:scale-110 transition-all duration-500" />
                       </div>
-                      <h4 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#b8860b] transition-all duration-500 group-hover:scale-105">
+                      <h4 className="text-2xl font-bold text-theme-primary mb-3 group-hover:text-[#b8860b] transition-all duration-500 group-hover:scale-105">
                         {doctor.name}
                       </h4>
-                      <div className="bg-gradient-to-r from-[#fffacd] to-[#fff8dc] text-[#b8860b] px-4 py-2 rounded-full text-sm font-semibold mb-4 group-hover:from-[#fff8dc] group-hover:to-[#fffacd] transition-all duration-300">
+                      <div className="bg-theme-primary dark:bg-black text-[#d4af37] dark:text-[#ffd700] px-4 py-2 rounded-full text-sm font-semibold mb-4 border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
                         {doctor.specialty}
                       </div>
-                      <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-all duration-500 text-base flex-grow">
+                      <p className="text-theme-secondary leading-relaxed group-hover:text-theme-primary transition-all duration-500 text-base flex-grow">
                         {doctor.description}
                       </p>
                       {/* Floating Indicators */}
@@ -472,50 +474,6 @@ export default function OneTeamPage() {
                 </div>
               );
             })}
-          </div>
-          {/* Enhanced Call to Action with Premium Design */}
-          <div className={`text-center transition-all duration-[1400ms] ease-out transform ${
-            doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-16 scale-95'
-          }`} style={{ transitionDelay: '1000ms' }}>
-            <div className="relative bg-gradient-to-br from-white/90 to-[#fff8dc]/90 backdrop-blur-xl border border-[#daa520]/60 rounded-3xl p-12 sm:p-16 max-w-4xl mx-auto shadow-2xl shadow-[#ffd700]/20 hover:shadow-3xl hover:shadow-[#ffd700]/30 transition-all duration-700 hover:scale-[1.02] overflow-hidden">
-              {/* Premium Background Effects */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#daa520]/5 via-transparent to-[#ffd700]/5 rounded-3xl"></div>
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#daa520]/10 to-transparent rounded-3xl"></div>
-              <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-[#ffd700]/8 to-transparent rounded-3xl"></div>
-              <div className="relative z-10">
-                <h4 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4 sm:mb-6 leading-tight">
-                  Ready to Experience{' '}
-                  <span className="bg-gradient-to-r from-[#b8860b] to-[#daa520] bg-clip-text text-transparent">
-                    Excellence?
-                  </span>
-                </h4>
-                <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
-                  Schedule your appointment today and discover <span className="text-[#b8860b] font-semibold">personalized healthcare</span> at its finest.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center">
-                  <button
-                    className="group relative px-10 py-5 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-gray-900 font-bold rounded-xl transition-all duration-300 hover:from-[#ffd700] hover:to-[#f0e68c] hover:shadow-2xl hover:shadow-[#daa520]/40 hover:-translate-y-2 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 active:scale-95 overflow-hidden"
-                    onClick={handleBookAppointment}
-                    aria-label="Book Your Appointment Now"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="relative flex items-center space-x-3">
-                      <span className="text-lg">Book Your Appointment</span>
-                      <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
-                    </span>
-                  </button>
-                  <a
-                    href={pdfFile}
-                    download="OneMedicalCentre.pdf"
-                    className="group px-10 py-5 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 font-bold rounded-xl transition-all duration-300 hover:from-gray-200 hover:to-gray-300 hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-gray-300/50 active:scale-95 flex items-center space-x-2 justify-center"
-                    aria-label="Learn More About Our Services"
-                  >
-                    <span className="text-lg">Learn More</span>
-                    <Sparkles className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
