@@ -2,17 +2,18 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Heart, Stethoscope, Shield, Award, MapPin, ArrowRight, Phone, Mail, Car, Pill, Smile, Eye, Activity, Leaf, Sparkles, Ear, Footprints, Users } from 'lucide-react';
 import logo2 from './assets/logo2.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
+import DigitalPulse from "./DigitalPulse";
 
 const services = [
   { icon: Stethoscope, name: "Medical Doctors", description: "Comprehensive primary care and specialized medical services with experienced physicians", color: "from-amber-400 to-yellow-500" },
   { icon: Pill, name: "Pharmacy", description: "Full-service pharmacy with prescription medications and health consultations", color: "from-green-400 to-green-600" },
-  { icon: Smile, name: "Dental Care", description: "Complete dental services from routine cleanings to advanced procedures", color: "from-teal-400 to-teal-600" },
+  { icon: Smile, name: "Medical Products", description: "Including CPAP masks and sleep products", color: "from-teal-400 to-teal-600" },
   { icon: Eye, name: "Optometry", description: "Eye exams, vision correction, and comprehensive eye health services", color: "from-purple-400 to-purple-600" },
   { icon: Activity, name: "Physiotherapy", description: "Rehabilitation and wellness programs for optimal physical health recovery", color: "from-orange-400 to-orange-600" },
   { icon: Leaf, name: "Natural Health", description: "Holistic and alternative healthcare approaches for wellness", color: "from-emerald-400 to-emerald-600" },
   { icon: Sparkles, name: "Medical Aesthetics", description: "Professional cosmetic treatments and skin rejuvenation services", color: "from-pink-400 to-pink-600" },
   { icon: Ear, name: "Hearing Clinics", description: "Comprehensive hearing assessments and hearing aid services", color: "from-indigo-400 to-indigo-600" },
-  { icon: Footprints, name: "Podiatry", description: "Specialized foot and ankle care from certified foot doctors", color: "from-amber-400 to-amber-600" },
+  { icon: Footprints, name: "Chiropody", description: "Expert foot and ankle care, including assessment, treatment, and prevention of foot disorders", color: "from-amber-400 to-amber-600" },
   { icon: Users, name: "Specialists", description: "Access to various medical specialists for specialized care needs", color: "from-red-400 to-red-600" }
 ];
 
@@ -100,7 +101,7 @@ export default function OnePriorityPage() {
   }, [priorityAnimationTriggered]);
 
   const handleBookAppointment = () => {
-    window.open('#', '_blank');
+    window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
   };
 
   return (
@@ -210,6 +211,8 @@ export default function OnePriorityPage() {
           </div>
         </div>
       </section>
+
+      <DigitalPulse />
 
       {/* Services Section */}
       <section ref={servicesSectionRef} id="services" className="py-24 sm:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden relative bg-theme-primary dark:bg-black">

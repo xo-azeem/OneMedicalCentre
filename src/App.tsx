@@ -125,7 +125,7 @@ function Footer() {
           <div>
             <h6 className="font-semibold mb-6 text-[#b8860b] text-lg">Services</h6>
             <ul className="space-y-3">
-              {['Medical Care', 'Dental Services', 'Eye Care', 'Physiotherapy', 'Pharmacy'].map((service, index) => (
+              {['Medical Care', 'Wellness Services', 'Eye Care', 'Physiotherapy', 'Pharmacy'].map((service, index) => (
                 <li key={index} className="hover:text-[#daa520] cursor-pointer transition-colors">{service}</li>
               ))}
             </ul>

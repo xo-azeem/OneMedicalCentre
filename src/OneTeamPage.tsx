@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MapPin, ArrowRight, Phone, Mail, Car, Stethoscope, Heart, Eye, Pill, Activity, Leaf, Sparkles, Ear, Footprints, Users } from 'lucide-react';
+import { MapPin, ArrowRight, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill, Activity, Leaf, Sparkles, Ear, Footprints, Users } from 'lucide-react';
 import logo2 from './assets/logo2.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
@@ -73,7 +73,7 @@ export default function OneTeamPage() {
   }, []);
 
   const handleBookAppointment = () => {
-    window.open('#', '_blank');
+    window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
   };
 
   return (
@@ -90,6 +90,22 @@ export default function OneTeamPage() {
           <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-[#f5deb3]/10 rounded-full blur-2xl"></div>
         </div>
 
+        {/* Hero Section Glitter Effect */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="glitter-star absolute top-[15%] left-[10%] w-1 h-1 bg-[#ffd700] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[25%] right-[15%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-70"></div>
+          <div className="glitter-star absolute top-[40%] left-[20%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-90"></div>
+          <div className="glitter-star absolute top-[60%] right-[25%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-85"></div>
+          <div className="glitter-star absolute bottom-[20%] left-[15%] w-1 h-1 bg-[#daa520] rounded-full opacity-75"></div>
+          <div className="glitter-star absolute bottom-[35%] right-[10%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[30%] left-[45%] w-1 h-1 bg-[#ffd700] rounded-full opacity-70"></div>
+          <div className="glitter-star absolute top-[70%] right-[40%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-90"></div>
+          <div className="glitter-star absolute top-[50%] left-[8%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-85"></div>
+          <div className="glitter-star absolute bottom-[45%] right-[8%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-75"></div>
+          <div className="glitter-star absolute top-[80%] left-[30%] w-1 h-1 bg-[#daa520] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[10%] right-[30%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-85"></div>
+        </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div ref={heroContentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
@@ -98,25 +114,134 @@ export default function OneTeamPage() {
               <div className="relative group">
                 {/* Main logo container with enhanced styling */}
                 <div className="w-48 sm:w-60 lg:w-72 h-48 sm:h-60 lg:h-72 relative flex items-center justify-center mx-auto">
-                  {/* Subtler, thinner outer golden ring */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d4af37] via-[#d4af37] to-[#b8860b] shadow-2xl shadow-[#ffd700]/60 border-2 border-[#ffd700] shadow-[#ffd700]/50 overflow-hidden">
+                  {/* Subtler, thinner outer golden ring with glitter */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d4af37] via-[#d4af37] to-[#b8860b] shadow-2xl shadow-[#ffd700]/60 border-2 border-[#ffd700] shadow-[#ffd700]/50 overflow-visible">
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-[#ffd700]/50 to-transparent opacity-60 animate-shimmer-light"></div>
+                    
+                    {/* 4-Ray Star Shine Effects */}
+                    <div className="pointer-events-none absolute z-30 top-2 right-4 xs:top-0 xs:right-0 sm:top-1 sm:right-2 md:top-1 md:right-2 lg:top-0 lg:right-8">
+                      <div className="star-shine">
+                        <div className="star-ray ray-1"></div>
+                        <div className="star-ray ray-2"></div>
+                        <div className="star-ray ray-3"></div>
+                        <div className="star-ray ray-4"></div>
+                        <div className="star-center"></div>
+                      </div>
+                    </div>
+
+                    <div className="pointer-events-none absolute z-30 top-[68%] left-[11%] sm:top-[70%] sm:left-[11%] md:top-[72%] md:left-[14%] lg:top-[74%] lg:left-[14%]">
+                      <div className="star-shine" style={{ animationDelay: '1s' }}>
+                        <div className="star-ray ray-1"></div>
+                        <div className="star-ray ray-2"></div>
+                        <div className="star-ray ray-3"></div>
+                        <div className="star-ray ray-4"></div>
+                        <div className="star-center"></div>
+                      </div>
+                    </div>
+
+                    <div className="pointer-events-none absolute z-30 top-2 right-4 xs:top-0 xs:right-0 sm:top-1 sm:right-2 md:top-1 md:right-2 lg:top-0 lg:right-8">
+                      <div className="star-shine" style={{ animationDelay: '2s' }}>
+                        <div className="star-ray ray-1"></div>
+                        <div className="star-ray ray-2"></div>
+                        <div className="star-ray ray-3"></div>
+                        <div className="star-ray ray-4"></div>
+                        <div className="star-center"></div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Inner circle with logo */}
-                  <div className="relative w-40 sm:w-52 lg:w-60 h-40 sm:h-52 lg:h-60 bg-white dark:bg-black rounded-full flex items-center justify-center shadow-lg border border-[#daa520] overflow-hidden backdrop-blur-sm">
+                  <div className="relative w-40 sm:w-52 lg:w-60 h-40 sm:h-52 lg:h-60 bg-white dark:bg-black rounded-full flex items-center justify-center shadow-lg border border-[#daa520] backdrop-blur-sm">
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black"></div>
                     <img src={logo2} alt="One Medical Centre Hero Logo" className="relative z-10 w-28 sm:w-36 lg:w-44 h-28 sm:h-36 lg:h-44 object-contain transition-transform duration-300 group-hover:scale-105" />
                   </div>
                 </div>
 
-                {/* Floating accent elements */}
-                <div className="absolute -top-6 -right-6 w-8 h-8 bg-[#ffd700]/60 border-2 border-[#daa520]/40 rounded-full opacity-70 blur-sm shadow-lg animate-pulse"></div>
-                <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-[#daa520]/50 border-2 border-[#ffd700]/40 rounded-full opacity-60 blur-sm shadow-md animate-pulse" style={{animationDelay: '1s'}}></div>
-                <div className="absolute top-8 -left-8 w-4 h-4 bg-[#f5deb3]/70 border border-[#daa520]/50 rounded-full opacity-50 blur-sm shadow-sm animate-pulse" style={{animationDelay: '2s'}}></div>
-
-                {/* Enhanced shimmer animation styles */}
+                {/* Enhanced animations styles */}
                 <style>{`
+                  @keyframes star-shine {
+                    0%, 100% {
+                      opacity: 0;
+                    }
+                    50% {
+                      opacity: 1;
+                    }
+                  }
+
+                  .star-shine {
+                    position: relative;
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    animation: star-shine 3s infinite ease-in-out;
+                  }
+
+                  .star-ray {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    width: 12px;
+                    height: 38px;
+                    background: linear-gradient(180deg, #fffbe6 0%, #fffbe6 15%, #d4af37 35%, #d4af37 60%, rgba(255, 215, 0, 0.35) 90%, transparent 100%);
+                    clip-path: polygon(50% 0%, 92% 100%, 8% 100%);
+                    opacity: 0.99;
+                    transform-origin: center bottom;
+                    box-shadow:
+                      0 0 48px 16px #fffbe6,
+                      0 0 96px 32px #d4af37,
+                      0 0 64px 16px #fffbe6,
+                      0 0 128px 48px #d4af37,
+                      0 0 32px 8px #fffbe6;
+                  }
+                  .star-ray.ray-1::before,
+                  .star-ray.ray-2::before,
+                  .star-ray.ray-3::before,
+                  .star-ray.ray-4::before {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: 0;
+                    width: 18px;
+                    height: 18px;
+                    background: radial-gradient(circle, #fffbe6 0%, #ffd700 60%, transparent 100%);
+                    transform: translate(-50%, -40%);
+                    z-index: 1;
+                    filter: blur(2px);
+                    opacity: 0.7;
+                    pointer-events: none;
+                  }
+
+                  .star-ray.ray-1 { 
+                    transform: translate(-50%, -50%) rotate(0deg); 
+                  }
+                  .star-ray.ray-2 { 
+                    transform: translate(-50%, -50%) rotate(90deg); 
+                  }
+                  .star-ray.ray-3 { 
+                    transform: translate(-50%, -50%) rotate(180deg); 
+                  }
+                  .star-ray.ray-4 { 
+                    transform: translate(-50%, -50%) rotate(270deg); 
+                  }
+
+                  .star-center {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    width: 16px;
+                    height: 16px;
+                    background: radial-gradient(circle, #fffbe6 0%, #ffd700 70%, #daa520 100%);
+                    border-radius: 50%;
+                    box-shadow: 
+                      0 0 16px 4px #fffbe6,
+                      0 0 32px 8px #ffd700,
+                      0 0 48px 12px rgba(255, 215, 0, 0.2);
+                    opacity: 1;
+                    transform: translate(-50%, 50%);
+                  }
+
                   @keyframes shimmer-light {
                     0% { opacity: 0.3; transform: rotate(0deg); }
                     50% { opacity: 0.7; transform: rotate(180deg); }
@@ -125,6 +250,36 @@ export default function OneTeamPage() {
                   .animate-shimmer-light {
                     animation: shimmer-light 4s infinite linear;
                   }
+                  
+                  @keyframes glitter-twinkle {
+                    0%, 100% { 
+                      opacity: 0; 
+                      transform: scale(0.5) rotate(0deg);
+                      box-shadow: 0 0 0 transparent;
+                    }
+                    50% { 
+                      opacity: 1; 
+                      transform: scale(1) rotate(180deg);
+                      box-shadow: 0 0 8px currentColor;
+                    }
+                  }
+                  
+                  .glitter-star {
+                    animation: glitter-twinkle 3s infinite;
+                  }
+                  
+                  .glitter-star:nth-child(1) { animation-delay: 0s; }
+                  .glitter-star:nth-child(2) { animation-delay: 0.3s; }
+                  .glitter-star:nth-child(3) { animation-delay: 0.6s; }
+                  .glitter-star:nth-child(4) { animation-delay: 0.9s; }
+                  .glitter-star:nth-child(5) { animation-delay: 1.2s; }
+                  .glitter-star:nth-child(6) { animation-delay: 1.5s; }
+                  .glitter-star:nth-child(7) { animation-delay: 1.8s; }
+                  .glitter-star:nth-child(8) { animation-delay: 2.1s; }
+                  .glitter-star:nth-child(9) { animation-delay: 2.4s; }
+                  .glitter-star:nth-child(10) { animation-delay: 2.7s; }
+                  .glitter-star:nth-child(11) { animation-delay: 3s; }
+                  .glitter-star:nth-child(12) { animation-delay: 0.15s; }
                 `}</style>
               </div>
             </div>
@@ -140,15 +295,14 @@ export default function OneTeamPage() {
                 
               {/* Main Headlines */}
               <div className="space-y-3 sm:space-y-4">
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] drop-shadow-2xl leading-tight whitespace-nowrap">
-                  ONE Medical Centre
+                <h1 className="text-2xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] drop-shadow-2xl leading-tight whitespace-nowrap">
+                  ONE MEDICAL CENTRE
                 </h1>
                 <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-theme-primary leading-snug">
                   Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#daa520]">Complete Healthcare</span> Destination
                 </h2>
                 <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-theme-secondary leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
-                  Located across from Square One Shopping Centre, our integrated medical facility brings together specialists, 
-                  pharmacy, dental care, and wellness services under one roof for your convenience.
+                  Just steps from Square One, our modern facility brings you family doctors, specialists, pharmacy, dental, physio, vision, skin, foot, hearing, and wellness care — all under one roof.
                 </p>
               </div>
                 
@@ -374,59 +528,59 @@ export default function OneTeamPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 mb-10 sm:mb-16 md:mb-20 transition-all duration-300">
             {[
               {
-                name: "Dr. Sarah Johnson",
+                name: "Dr. Kashif Surahio",
                 specialty: "Family Medicine",
-                description: "Comprehensive primary care with over 15 years of experience in family medicine and preventive healthcare.",
+                description: "Experienced in primary care and long-term patient relationships, focusing on overall health and wellness.",
                 icon: Stethoscope,
                 delay: 200,
               },
               {
-                name: "Dr. Michael Chen",
-                specialty: "Cardiology",
-                description: "Specialized in cardiovascular health with expertise in heart disease prevention and treatment.",
-                icon: Heart,
+                name: "Dr. Alexander Shayan",
+                specialty: "Walk-In Doctor",
+                description: "Available for urgent consultations, offering accessible care with efficiency and professionalism.",
+                icon: UserCheck,
                 delay: 300,
               },
               {
-                name: "Dr. Emily Rodriguez",
-                specialty: "Dental Care",
-                description: "Comprehensive dental services including cosmetic dentistry and oral health maintenance.",
-                icon: Sparkles,
+                name: "Dr. Faheem Naeem",
+                specialty: "Walk-In Doctor",
+                description: "Provides patient-centered, timely care for acute medical needs and minor health concerns.",
+                icon: UserCheck,
                 delay: 400,
               },
               {
-                name: "Dr. David Thompson",
-                specialty: "Optometry",
-                description: "Eye care specialist providing vision correction and comprehensive eye health services.",
-                icon: Eye,
+                name: "Dr. Morcos Fahmy",
+                specialty: "Internal Medicine & Infectious Disease",
+                description: "Specializes in complex internal conditions and the prevention and treatment of infectious diseases.",
+                icon: Shield,
                 delay: 500,
               },
               {
-                name: "Dr. Lisa Park",
-                specialty: "Pharmacy",
-                description: "Clinical pharmacist with expertise in medication management and health consultations.",
-                icon: Pill,
+                name: "Dr. Christina Gearges",
+                specialty: "Internal Medicine & Infectious Disease",
+                description: "Expert in managing chronic conditions and diagnosing infectious diseases with a holistic approach.",
+                icon: Shield,
                 delay: 600,
               },
               {
-                name: "Dr. James Wilson",
-                specialty: "Physiotherapy",
-                description: "Rehabilitation specialist helping patients recover mobility and physical function.",
-                icon: Activity,
+                name: "Dr. Wahdat Hamidi",
+                specialty: "Optometrist",
+                description: "Focused on vision care, eye exams, and tailored solutions for long-term eye health.",
+                icon: Eye,
                 delay: 700,
               },
               {
-                name: "Dr. Maria Santos",
-                specialty: "Natural Health",
-                description: "Holistic healthcare practitioner focusing on natural remedies and wellness approaches.",
-                icon: Leaf,
+                name: "Dr. Osama Garani",
+                specialty: "Cardiologist",
+                description: "Dedicated to heart health, specializing in diagnostics, prevention, and cardiovascular care.",
+                icon: Heart,
                 delay: 800,
               },
               {
-                name: "Dr. Robert Kim",
-                specialty: "Hearing Specialist",
-                description: "Audiologist providing comprehensive hearing assessments and hearing aid services.",
-                icon: Ear,
+                name: "Dr. Michael Sobhy",
+                specialty: "Pharmacy",
+                description: "Trusted pharmacist offering expert medication guidance and health consultations.",
+                icon: Pill,
                 delay: 900,
               }
             ].map((doctor, index) => {
@@ -440,32 +594,32 @@ export default function OneTeamPage() {
                   style={{ transitionDelay: `${doctor.delay}ms` }}
                 >
                   <div className="relative bg-gradient-to-br from-theme-primary/95 to-[#fff8dc]/80 group-hover:from-theme-primary group-hover:to-[#fffacd] transition-all duration-700 p-8 rounded-3xl shadow-xl border border-[#daa520] group-hover:border-[#ffd700] group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden backdrop-blur-sm">
-                    {/* Premium Card Glow Effect */}
+                    {/* Glow Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#daa520]/0 via-[#ffd700]/0 to-[#daa520]/0 group-hover:from-[#daa520]/10 group-hover:via-[#ffd700]/15 group-hover:to-[#daa520]/10 transition-all duration-700 rounded-3xl"></div>
-                    {/* Animated Corner Accents */}
+                    {/* Corners */}
                     <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-[#daa520]/0 to-transparent group-hover:from-[#daa520]/20 transition-all duration-500 rounded-3xl"></div>
                     <div className="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-tl from-[#ffd700]/0 to-transparent group-hover:from-[#ffd700]/15 transition-all duration-500 rounded-3xl"></div>
-                    {/* Card Content */}
+
                     <div className="relative z-10 flex flex-col items-center text-center h-full">
-                      <div
-                        className="bg-gradient-to-br from-[#daa520] to-[#ffd700] group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl"
-                      >
+                      <div className="bg-gradient-to-br from-[#daa520] to-[#ffd700] group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl">
                         <Icon className="h-10 w-10 text-white group-hover:scale-110 transition-all duration-500" />
                       </div>
-                      <h4 className="text-2xl font-bold text-theme-primary mb-3 group-hover:text-[#b8860b] transition-all duration-500 group-hover:scale-105">
+                      <h4 className="text-1xl font-bold text-theme-primary mb-3 group-hover:text-[#b8860b] transition-all duration-500 group-hover:scale-105">
                         {doctor.name}
                       </h4>
                       <div className="bg-theme-primary dark:bg-black text-[#d4af37] dark:text-[#ffd700] px-4 py-2 rounded-full text-sm font-semibold mb-4 border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
                         {doctor.specialty}
                       </div>
-                      <p className="text-theme-secondary leading-relaxed group-hover:text-theme-primary transition-all duration-500 text-base flex-grow">
+                      <p className="text-theme-secondary leading-relaxed min-h-[100px] group-hover:text-theme-primary transition-all duration-500 text-base flex-grow">
                         {doctor.description}
                       </p>
-                      {/* Floating Indicators */}
+                
+                      {/* Floating Dots */}
                       <div className="absolute -top-3 -right-3 w-4 h-4 bg-[#daa520]/0 group-hover:bg-[#daa520]/90 rounded-full transition-all duration-500 group-hover:animate-pulse"></div>
                       <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-[#ffd700]/0 group-hover:bg-[#ffd700]/70 rounded-full transition-all duration-700 group-hover:animate-bounce"></div>
                     </div>
-                    {/* Premium Animation Lines */}
+                
+                    {/* Animated Border Lines */}
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#daa520]/0 to-transparent group-hover:via-[#daa520]/70 transition-all duration-700 rounded-t-3xl"></div>
                     <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-transparent via-[#ffd700]/0 to-transparent group-hover:via-[#ffd700]/70 transition-all duration-700 rounded-b-3xl"></div>
                     <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#daa520]/0 to-transparent group-hover:via-[#daa520]/50 transition-all duration-700 rounded-l-3xl"></div>

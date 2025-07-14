@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MapPin, Car, Calendar, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';
 import logo2 from './assets/logo2.png';
 import qrCode from './assets/qr.png';
+import DigitalPulse from "./DigitalPulse";
 
 export default function OnePlacePage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -100,7 +101,7 @@ export default function OnePlacePage() {
   }, []);
 
   const handleBookAppointment = () => {
-    window.open('https://onemedicalcentre.com', '_blank');
+    window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
   };
 
   return (
@@ -237,6 +238,8 @@ export default function OnePlacePage() {
           </div>
         </div>
       </section>
+
+      <DigitalPulse/>
 
       {/* Location Details Section */}
       <section ref={locationSectionRef} className="py-20 sm:py-24 bg-theme-primary dark:bg-black relative overflow-hidden">
