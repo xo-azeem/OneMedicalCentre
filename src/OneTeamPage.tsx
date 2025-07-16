@@ -119,7 +119,7 @@ export default function OneTeamPage() {
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-[#ffd700]/50 to-transparent opacity-60 animate-shimmer-light"></div>
                     
                     {/* 4-Ray Star Shine Effects */}
-                    <div className="pointer-events-none absolute z-30 top-2 right-4 xs:top-0 xs:right-0 sm:top-1 sm:right-2 md:top-1 md:right-2 lg:top-0 lg:right-8">
+                    <div className="pointer-events-none absolute z-30 top-0 right-0 xs:top-0 xs:right-0 sm:top-1 sm:right-2 md:top-1 md:right-2 lg:top-0 lg:right-8">
                       <div className="star-shine">
                         <div className="star-ray ray-1"></div>
                         <div className="star-ray ray-2"></div>
@@ -139,7 +139,7 @@ export default function OneTeamPage() {
                       </div>
                     </div>
 
-                    <div className="pointer-events-none absolute z-30 top-2 right-4 xs:top-0 xs:right-0 sm:top-1 sm:right-2 md:top-1 md:right-2 lg:top-0 lg:right-8">
+                    <div className="pointer-events-none absolute z-30 top-0 right-0 xs:top-0 xs:right-0 sm:top-1 sm:right-2 md:top-1 md:right-2 lg:top-0 lg:right-8">
                       <div className="star-shine" style={{ animationDelay: '2s' }}>
                         <div className="star-ray ray-1"></div>
                         <div className="star-ray ray-2"></div>
