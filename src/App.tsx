@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import {useState } from 'react';
 import { Moon, Sun, Phone } from 'lucide-react';
 import logo from './assets/logo.png';
 import logo2 from './assets/logo2.png';
@@ -7,9 +7,6 @@ import ScrollToTop from './ScrollToTop';
 import OneTeamPage from './OneTeamPage';
 import OnePriorityPage from './OnePriorityPage';
 import OnePlacePage from './OnePlacePage';
-import One from './one';
-import Two from './two';
-import Three from './three';
 import { useTheme, ThemeProvider } from './useTheme';
 
 function Header() {
@@ -175,11 +172,6 @@ function App() {
             <Route path="/" element={<OneTeamPage />} />
             <Route path="/priority" element={<OnePriorityPage />} />
             <Route path="/place" element={<OnePlacePage />} />
-            {/* TO DELETE */}
-            <Route path="/one" element={<One />} />
-            <Route path="/two" element={<Two />} />
-            <Route path="/three" element={<Three />} />
-            {/* TO DELETE */}
           </Routes>
         </main>
         <Footer />
