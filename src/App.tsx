@@ -7,6 +7,9 @@ import ScrollToTop from './ScrollToTop';
 import OneTeamPage from './OneTeamPage';
 import OnePriorityPage from './OnePriorityPage';
 import OnePlacePage from './OnePlacePage';
+import One from './one';
+import Two from './two';
+import Three from './three';
 import { useTheme, ThemeProvider } from './useTheme';
 
 function Header() {
@@ -58,6 +61,13 @@ function Header() {
           </nav>
           <div className="flex items-center space-x-2">
             <button
+              onClick={toggleTheme}
+              className="ml-2 p-3 rounded-full border-2 border-[#daa520] bg-theme-primary dark:bg-black text-[#b8860b] dark:text-[#ffd700] hover:scale-110 transition-all duration-300 shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700]"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <Moon className="h-5 w-5 text-[#b8860b]" /> : <Sun className="h-5 w-5 text-[#ffd700]" />}
+            </button>
+            <button
               className="md:hidden p-3 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#daa520]/30 bg-theme-primary dark:bg-black hover:bg-theme-secondary border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 hover:scale-105 cursor-pointer z-20"
               onClick={() => setMobileNavOpen(v => !v)}
             >
@@ -65,13 +75,6 @@ function Header() {
               <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-[#b8860b] transition-transform duration-300 hover:rotate-90">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
-            </button>
-            <button
-              onClick={toggleTheme}
-              className="ml-2 p-3 rounded-full border-2 border-[#daa520] bg-theme-primary dark:bg-black text-[#b8860b] dark:text-[#ffd700] hover:scale-110 transition-all duration-300 shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700]"
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? <Moon className="h-5 w-5 text-[#b8860b]" /> : <Sun className="h-5 w-5 text-[#ffd700]" />}
             </button>
           </div>
         </div>
@@ -172,6 +175,11 @@ function App() {
             <Route path="/" element={<OneTeamPage />} />
             <Route path="/priority" element={<OnePriorityPage />} />
             <Route path="/place" element={<OnePlacePage />} />
+            {/* TO DELETE */}
+            <Route path="/one" element={<One />} />
+            <Route path="/two" element={<Two />} />
+            <Route path="/three" element={<Three />} />
+            {/* TO DELETE */}
           </Routes>
         </main>
         <Footer />

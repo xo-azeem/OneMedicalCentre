@@ -4,7 +4,7 @@ import logo2 from './assets/logo2.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
 
-export default function OneTeamPage() {
+export default function Two() {
   const [heroAnimated, setHeroAnimated] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -108,57 +108,223 @@ export default function OneTeamPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div ref={heroContentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-
             {/* Logo Section - Right Side */}
             <div className="flex justify-center lg:justify-end order-1 lg:order-2">
               <div className="relative group">
-                {/* Main logo container with enhanced styling */}
-                <div className="w-48 sm:w-60 lg:w-72 h-48 sm:h-60 lg:h-72 relative flex items-center justify-center mx-auto">
-                  {/* Subtler, thinner outer golden ring with glitter */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d4af37] via-[#d4af37] to-[#b8860b] shadow-2xl shadow-[#ffd700]/60 border-2 border-[#ffd700] shadow-[#ffd700]/50 overflow-visible">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-[#ffd700]/50 to-transparent opacity-60 animate-shimmer-light"></div>
-                    
-                    {/* 4-Ray Star Shine Effects */}
-                    <div className="pointer-events-none absolute z-30 top-0 right-0 xs:top-0 xs:right-0 sm:top-1 sm:right-2 md:top-1 md:right-2 lg:top-0 lg:right-8">
-                      <div className="star-shine">
-                        <div className="star-ray ray-1"></div>
-                        <div className="star-ray ray-2"></div>
-                        <div className="star-ray ray-3"></div>
-                        <div className="star-ray ray-4"></div>
-                        <div className="star-center"></div>
-                      </div>
+                {/* Main logo container with enhanced styling - no outer rings or stars */}
+                <div className="w-64 sm:w-80 lg:w-[28rem] h-64 sm:h-80 lg:h-[28rem] relative flex items-center justify-center mx-auto rounded-full bg-transparent overflow-hidden">
+                  {/* 4-Ray Star Shine Effects (animated stars with random positions) */}
+                  <div className="pointer-events-none absolute z-20 random-star-1">
+                    <div className="star-shine" style={{ animationDelay: '0s' }}>
+                      <div className="star-ray ray-1"></div>
+                      <div className="star-ray ray-2"></div>
+                      <div className="star-ray ray-3"></div>
+                      <div className="star-ray ray-4"></div>
+                      <div className="star-center"></div>
                     </div>
-
-                    <div className="pointer-events-none absolute z-30 top-[68%] left-[11%] sm:top-[70%] sm:left-[11%] md:top-[72%] md:left-[14%] lg:top-[74%] lg:left-[14%]">
-                      <div className="star-shine" style={{ animationDelay: '1s' }}>
-                        <div className="star-ray ray-1"></div>
-                        <div className="star-ray ray-2"></div>
-                        <div className="star-ray ray-3"></div>
-                        <div className="star-ray ray-4"></div>
-                        <div className="star-center"></div>
-                      </div>
+                  </div>
+                  <div className="pointer-events-none absolute z-20 random-star-2">
+                    <div className="star-shine" style={{ animationDelay: '1.2s' }}>
+                      <div className="star-ray ray-1"></div>
+                      <div className="star-ray ray-2"></div>
+                      <div className="star-ray ray-3"></div>
+                      <div className="star-ray ray-4"></div>
+                      <div className="star-center"></div>
                     </div>
-
-                    <div className="pointer-events-none absolute z-30 top-0 right-0 xs:top-0 xs:right-0 sm:top-1 sm:right-2 md:top-1 md:right-2 lg:top-0 lg:right-8">
-                      <div className="star-shine" style={{ animationDelay: '2s' }}>
-                        <div className="star-ray ray-1"></div>
-                        <div className="star-ray ray-2"></div>
-                        <div className="star-ray ray-3"></div>
-                        <div className="star-ray ray-4"></div>
-                        <div className="star-center"></div>
-                      </div>
+                  </div>
+                  <div className="pointer-events-none absolute z-20 random-star-3">
+                    <div className="star-shine" style={{ animationDelay: '2.1s' }}>
+                      <div className="star-ray ray-1"></div>
+                      <div className="star-ray ray-2"></div>
+                      <div className="star-ray ray-3"></div>
+                      <div className="star-ray ray-4"></div>
+                      <div className="star-center"></div>
+                    </div>
+                  </div>
+                  <div className="pointer-events-none absolute z-20 random-star-4">
+                    <div className="star-shine" style={{ animationDelay: '0.7s' }}>
+                      <div className="star-ray ray-1"></div>
+                      <div className="star-ray ray-2"></div>
+                      <div className="star-ray ray-3"></div>
+                      <div className="star-ray ray-4"></div>
+                      <div className="star-center"></div>
+                    </div>
+                  </div>
+                  <div className="pointer-events-none absolute z-20 random-star-5">
+                    <div className="star-shine" style={{ animationDelay: '1.8s' }}>
+                      <div className="star-ray ray-1"></div>
+                      <div className="star-ray ray-2"></div>
+                      <div className="star-ray ray-3"></div>
+                      <div className="star-ray ray-4"></div>
+                      <div className="star-center"></div>
+                    </div>
+                  </div>
+                  <div className="pointer-events-none absolute z-20 random-star-6">
+                    <div className="star-shine" style={{ animationDelay: '3.2s' }}>
+                      <div className="star-ray ray-1"></div>
+                      <div className="star-ray ray-2"></div>
+                      <div className="star-ray ray-3"></div>
+                      <div className="star-ray ray-4"></div>
+                      <div className="star-center"></div>
                     </div>
                   </div>
 
-                  {/* Inner circle with logo */}
-                  <div className="relative w-40 sm:w-52 lg:w-60 h-40 sm:h-52 lg:h-60 bg-white dark:bg-black rounded-full flex items-center justify-center shadow-lg border border-[#daa520] backdrop-blur-sm">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black"></div>
-                    <img src={logo2} alt="One Medical Centre Hero Logo" className="relative z-10 w-28 sm:w-36 lg:w-44 h-28 sm:h-36 lg:h-44 object-contain transition-transform duration-300 group-hover:scale-105" />
+                  {/* Animated blurred radial gradient background */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-1/2 h-1/2 rounded-full bg-gradient-to-br from-[#fffbe6]/20 via-[#daa520]/30 to-[#daa520]/20 blur-2xl animate-bg-pulse"></div>
                   </div>
+
+                  {/* Glistening circular spot overlays (multiple sun flares) */}
+                  <div className="absolute inset-0 pointer-events-none overflow-visible rounded-full">
+                    {/* Second, smaller and subtler glisten spot */}
+                    <div className="glisten-spot2 absolute w-20 h-20 left-[-10%] top-[80%] bg-gradient-radial from-[#d4af37]/70 via-white/30 to-white/0 rounded-full blur-xl opacity-50 animate-glisten-spot2"></div>
+                    {/* Third, medium, golden glisten spot */}
+                    <div className="glisten-spot3 absolute w-24 h-24 left-0 top-[50%] bg-gradient-radial from-[#d4af37]/60 via-[#d4af37]/30 to-white/0 rounded-full blur-xl opacity-60 animate-glisten-spot3"></div>
+                  </div>
+
+                  {/* Logo image, larger */}
+                  <img src={logo2} alt="One Medical Centre Hero Logo" className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" />
                 </div>
 
-                {/* Enhanced animations styles */}
+                {/* Glisten and background animation keyframes */}
                 <style>{`
+                @keyframes glitter-twinkle {
+                  0%, 100% { 
+                    opacity: 0; 
+                    transform: scale(0.5) rotate(0deg);
+                    box-shadow: 0 0 0 transparent;
+                  }
+                  50% { 
+                    opacity: 1; 
+                    transform: scale(1) rotate(180deg);
+                    box-shadow: 0 0 8px currentColor;
+                  }
+                }
+                .glitter-star {
+                  animation: glitter-twinkle 3s infinite;
+                }
+                .glitter-star:nth-child(1) { animation-delay: 0s; }
+                .glitter-star:nth-child(2) { animation-delay: 0.3s; }
+                .glitter-star:nth-child(3) { animation-delay: 0.6s; }
+                .glitter-star:nth-child(4) { animation-delay: 0.9s; }
+                .glitter-star:nth-child(5) { animation-delay: 1.2s; }
+                .glitter-star:nth-child(6) { animation-delay: 1.5s; }
+                .glitter-star:nth-child(7) { animation-delay: 1.8s; }
+                .glitter-star:nth-child(8) { animation-delay: 2.1s; }
+                .glitter-star:nth-child(9) { animation-delay: 2.4s; }
+                .glitter-star:nth-child(10) { animation-delay: 2.7s; }
+                .glitter-star:nth-child(11) { animation-delay: 3s; }
+                .glitter-star:nth-child(12) { animation-delay: 0.15s; }
+
+                  /* Random star positioning - fixed positions with 4px blur */
+                  .random-star-1 {
+                    top: 15%;
+                    left: 25%;
+                    filter: blur(4px);
+                  }
+                  .random-star-2 {
+                    top: 70%;
+                    left: 16%;
+                    filter: blur(4px);
+                  }
+                  .random-star-3 {
+                    top: 45%;
+                    left: 77%;
+                    filter: blur(4px);
+                  }
+                  .random-star-4 {
+                    top: 20%;
+                    left: 65%;
+                    filter: blur(4px);
+                  }
+                  .random-star-5 {
+                    top: 76%;
+                    left: 45%;
+                    filter: blur(4px);
+                  }
+                  .random-star-6 {
+                    top: 35%;
+                    left: 10%;
+                    filter: blur(4px);
+                  }
+                
+                  @keyframes bg-pulse {
+                    0%, 100% { filter: blur(32px) brightness(1); opacity: 0.7; }
+                    50% { filter: blur(48px) brightness(1.15); opacity: 1; }
+                  }
+                  .animate-bg-pulse {
+                    animation: bg-pulse 6s infinite ease-in-out;
+                  }
+
+                  @keyframes glisten-spot2 {
+                    0% {
+                      left: -10%;
+                      top: 80%;
+                      opacity: 0.05;
+                      transform: scale(0.5);
+                    }
+                    40% {
+                      opacity: 0.4;
+                      transform: scale(0.7);
+                    }
+                    60% {
+                      left: 60%;
+                      top: 40%;
+                      opacity: 0.7;
+                      transform: scale(1);
+                    }
+                    80% {
+                      opacity: 0.3;
+                      transform: scale(0.7);
+                    }
+                    100% {
+                      left: 120%;
+                      top: 10%;
+                      opacity: 0.01;
+                      transform: scale(0.4);
+                    }
+                  }
+                  .animate-glisten-spot2 {
+                    animation: glisten-spot2 4.5s infinite cubic-bezier(0.4,0,0.2,1) 1.2s;
+                  }
+
+                  @keyframes glisten-spot3 {
+                    0% {
+                      left: 0%;
+                      top: 50%;
+                      opacity: 0.08;
+                      transform: scale(0.7);
+                    }
+                    25% {
+                      opacity: 0.3;
+                      transform: scale(0.9);
+                    }
+                    55% {
+                      left: 50%;
+                      top: 10%;
+                      opacity: 0.6;
+                      transform: scale(1.2);
+                    }
+                    80% {
+                      opacity: 0.2;
+                      transform: scale(0.8);
+                    }
+                    100% {
+                      left: 100%;
+                      top: -10%;
+                      opacity: 0.01;
+                      transform: scale(0.5);
+                    }
+                  }
+                  .animate-glisten-spot3 {
+                    animation: glisten-spot3 5.2s infinite cubic-bezier(0.4,0,0.2,1) 2.1s;
+                  }
+
+                  /* Radial gradient utility for Tailwind (if not present) */
+                  .bg-gradient-radial {
+                    background: radial-gradient(circle, var(--tw-gradient-stops));
+                  }
+
                   @keyframes star-shine {
                     0%, 100% {
                       opacity: 0;
@@ -167,34 +333,77 @@ export default function OneTeamPage() {
                       opacity: 1;
                     }
                   }
-
+                
                   .star-shine {
                     position: relative;
-                    width: 50px;
-                    height: 50px;
+                    width: 30px;
+                    height: 30px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     animation: star-shine 3s infinite ease-in-out;
                   }
-
+                
+                  /* Responsive star sizes */
+                  @media (min-width: 640px) {
+                    .star-shine {
+                      width: 40px;
+                      height: 40px;
+                    }
+                  }
+                
+                  @media (min-width: 1024px) {
+                    .star-shine {
+                      width: 50px;
+                      height: 50px;
+                    }
+                  }
+                
                   .star-ray {
                     position: absolute;
                     left: 50%;
                     top: 50%;
-                    width: 12px;
-                    height: 38px;
+                    width: 8px;
+                    height: 24px;
                     background: linear-gradient(180deg, #fffbe6 0%, #fffbe6 15%, #d4af37 35%, #d4af37 60%, rgba(255, 215, 0, 0.35) 90%, transparent 100%);
                     clip-path: polygon(50% 0%, 92% 100%, 8% 100%);
                     opacity: 0.99;
-                    transform-origin: center bottom;
+                    transform-origin: 50% 100%;
                     box-shadow:
-                      0 0 48px 16px #fffbe6,
+                      0 0 32px 12px #fffbe6,
+                      0 0 64px 24px #d4af37,
+                      0 0 48px 12px #fffbe6,
                       0 0 96px 32px #d4af37,
-                      0 0 64px 16px #fffbe6,
-                      0 0 128px 48px #d4af37,
-                      0 0 32px 8px #fffbe6;
+                      0 0 24px 6px #fffbe6;
                   }
+                
+                  /* Responsive star ray sizes */
+                  @media (min-width: 640px) {
+                    .star-ray {
+                      width: 10px;
+                      height: 30px;
+                      box-shadow:
+                        0 0 40px 14px #fffbe6,
+                        0 0 80px 28px #d4af37,
+                        0 0 56px 14px #fffbe6,
+                        0 0 112px 40px #d4af37,
+                        0 0 28px 7px #fffbe6;
+                    }
+                  }
+                
+                  @media (min-width: 1024px) {
+                    .star-ray {
+                      width: 12px;
+                      height: 38px;
+                      box-shadow:
+                        0 0 48px 16px #fffbe6,
+                        0 0 96px 32px #d4af37,
+                        0 0 64px 16px #fffbe6,
+                        0 0 128px 48px #d4af37,
+                        0 0 32px 8px #fffbe6;
+                    }
+                  }
+
                   .star-ray.ray-1::before,
                   .star-ray.ray-2::before,
                   .star-ray.ray-3::before,
@@ -203,101 +412,112 @@ export default function OneTeamPage() {
                     position: absolute;
                     left: 50%;
                     top: 0;
-                    width: 18px;
-                    height: 18px;
+                    width: 12px;
+                    height: 12px;
                     background: radial-gradient(circle, #fffbe6 0%, #ffd700 60%, transparent 100%);
                     transform: translate(-50%, -40%);
                     z-index: 1;
-                    filter: blur(2px);
+                    filter: blur(1.5px);
                     opacity: 0.7;
                     pointer-events: none;
                   }
-
+                
+                  /* Responsive star ray before elements */
+                  @media (min-width: 640px) {
+                    .star-ray.ray-1::before,
+                    .star-ray.ray-2::before,
+                    .star-ray.ray-3::before,
+                    .star-ray.ray-4::before {
+                      width: 15px;
+                      height: 15px;
+                      filter: blur(1.8px);
+                    }
+                  }
+                
+                  @media (min-width: 1024px) {
+                    .star-ray.ray-1::before,
+                    .star-ray.ray-2::before,
+                    .star-ray.ray-3::before,
+                    .star-ray.ray-4::before {
+                      width: 18px;
+                      height: 18px;
+                      filter: blur(2px);
+                    }
+                  }
+                
                   .star-ray.ray-1 { 
-                    transform: translate(-50%, -50%) rotate(0deg); 
+                    transform: translate(-50%, -100%) rotate(45deg); 
                   }
                   .star-ray.ray-2 { 
-                    transform: translate(-50%, -50%) rotate(90deg); 
+                    transform: translate(-50%, -100%) rotate(135deg); 
                   }
                   .star-ray.ray-3 { 
-                    transform: translate(-50%, -50%) rotate(180deg); 
+                    transform: translate(-50%, -100%) rotate(225deg); 
                   }
                   .star-ray.ray-4 { 
-                    transform: translate(-50%, -50%) rotate(270deg); 
+                    transform: translate(-50%, -100%) rotate(315deg); 
                   }
-
+                
                   .star-center {
                     position: absolute;
                     left: 50%;
                     top: 50%;
-                    width: 16px;
-                    height: 16px;
+                    width: 10px;
+                    height: 10px;
                     background: radial-gradient(circle, #fffbe6 0%, #ffd700 70%, #daa520 100%);
                     border-radius: 50%;
                     box-shadow: 
-                      0 0 16px 4px #fffbe6,
-                      0 0 32px 8px #ffd700,
-                      0 0 48px 12px rgba(255, 215, 0, 0.2);
+                      0 0 12px 3px #fffbe6,
+                      0 0 24px 6px #daa520,
+                      0 0 36px 9px rgba(255, 215, 0, 0.2);
                     opacity: 1;
-                    transform: translate(-50%, 50%);
+                    transform: translate(-50%, -50%);
+                    z-index: 2;
                   }
-
-                  @keyframes shimmer-light {
-                    0% { opacity: 0.3; transform: rotate(0deg); }
-                    50% { opacity: 0.7; transform: rotate(180deg); }
-                    100% { opacity: 0.3; transform: rotate(360deg); }
-                  }
-                  .animate-shimmer-light {
-                    animation: shimmer-light 4s infinite linear;
-                  }
-                  
-                  @keyframes glitter-twinkle {
-                    0%, 100% { 
-                      opacity: 0; 
-                      transform: scale(0.5) rotate(0deg);
-                      box-shadow: 0 0 0 transparent;
-                    }
-                    50% { 
-                      opacity: 1; 
-                      transform: scale(1) rotate(180deg);
-                      box-shadow: 0 0 8px currentColor;
+                
+                  /* Responsive star center sizes */
+                  @media (min-width: 640px) {
+                    .star-center {
+                      width: 13px;
+                      height: 13px;
+                      box-shadow: 
+                        0 0 14px 3.5px #fffbe6,
+                        0 0 28px 7px #daa520,
+                        0 0 42px 10.5px rgba(255, 215, 0, 0.2);
                     }
                   }
-                  
-                  .glitter-star {
-                    animation: glitter-twinkle 3s infinite;
+                
+                  @media (min-width: 1024px) {
+                    .star-center {
+                      width: 16px;
+                      height: 16px;
+                      box-shadow: 
+                        0 0 16px 4px #fffbe6,
+                        0 0 32px 8px #daa520,
+                        0 0 48px 12px rgba(255, 215, 0, 0.2);
+                    }
                   }
-                  
-                  .glitter-star:nth-child(1) { animation-delay: 0s; }
-                  .glitter-star:nth-child(2) { animation-delay: 0.3s; }
-                  .glitter-star:nth-child(3) { animation-delay: 0.6s; }
-                  .glitter-star:nth-child(4) { animation-delay: 0.9s; }
-                  .glitter-star:nth-child(5) { animation-delay: 1.2s; }
-                  .glitter-star:nth-child(6) { animation-delay: 1.5s; }
-                  .glitter-star:nth-child(7) { animation-delay: 1.8s; }
-                  .glitter-star:nth-child(8) { animation-delay: 2.1s; }
-                  .glitter-star:nth-child(9) { animation-delay: 2.4s; }
-                  .glitter-star:nth-child(10) { animation-delay: 2.7s; }
-                  .glitter-star:nth-child(11) { animation-delay: 3s; }
-                  .glitter-star:nth-child(12) { animation-delay: 0.15s; }
                 `}</style>
               </div>
             </div>
                 
             {/* Content Section - Left Side */}
-            <div className="space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1">
-                
+            <div className="space-y-12 lg:space-y-8 text-center lg:text-left order-2 lg:order-1">
+
               {/* Location Badge */}
-              <div className="inline-flex items-center space-x-2 bg-theme-primary text-[#b8860b] px-5 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 lg:mt-7">
+              <div className="lg:mt-24 inline-flex items-center space-x-2 bg-theme-primary text-[#b8860b] px-5 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 lg:mt-7">
                 <MapPin className="h-4 w-4" />
                 <span>Located in Mississauga</span>
               </div>
                 
               {/* Main Headlines */}
               <div className="space-y-3 sm:space-y-4">
-                <h1 className="text-2xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] drop-shadow-2xl leading-tight whitespace-nowrap">
+                <h1 className="text-3xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] drop-shadow-2xl leading-tight whitespace-nowrap">
                   ONE MEDICAL CENTRE
                 </h1>
+                <div className="flex justify-center lg:justify-start text-center lg:text-left">
+                  <div className="w-[20rem] sm:w-[25rem] md:w-[32rem] lg:w-[32rem] xl:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse"></div>
+                </div>
                 <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-theme-primary leading-snug">
                   Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#daa520]">Complete Healthcare</span> Destination
                 </h2>
