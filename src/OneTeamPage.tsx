@@ -233,7 +233,7 @@ export default function Two() {
                     filter: blur(4px);
                   }
                   .random-star-4 {
-                    top: 20%;
+                    top: 19%;
                     left: 65%;
                     filter: blur(4px);
                   }
