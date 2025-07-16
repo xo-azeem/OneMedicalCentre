@@ -224,7 +224,7 @@ export default function Two() {
                   }
                   .random-star-2 {
                     top: 70%;
-                    left: 16%;
+                    left: 18%;
                     filter: blur(4px);
                   }
                   .random-star-3 {
@@ -446,16 +446,16 @@ export default function Two() {
                   }
                 
                   .star-ray.ray-1 { 
-                    transform: translate(-50%, -100%) rotate(45deg); 
+                    transform: translate(-50%, -100%) rotate(0deg); 
                   }
                   .star-ray.ray-2 { 
-                    transform: translate(-50%, -100%) rotate(135deg); 
+                    transform: translate(-50%, -100%) rotate(90deg); 
                   }
                   .star-ray.ray-3 { 
-                    transform: translate(-50%, -100%) rotate(225deg); 
+                    transform: translate(-50%, -100%) rotate(180deg); 
                   }
                   .star-ray.ray-4 { 
-                    transform: translate(-50%, -100%) rotate(315deg); 
+                    transform: translate(-50%, -100%) rotate(270deg); 
                   }
                 
                   .star-center {
