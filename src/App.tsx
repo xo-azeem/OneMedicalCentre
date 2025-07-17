@@ -7,7 +7,7 @@ import ScrollToTop from './ScrollToTop';
 import OneTeamPage from './OneTeamPage';
 import OnePriorityPage from './OnePriorityPage';
 import OnePlacePage from './OnePlacePage';
-import { useTheme, ThemeProvider } from './useTheme';
+// Removed theme context and provider
 
 function Header() {
   const location = useLocation();
@@ -17,7 +17,6 @@ function Header() {
     { key: '/place', label: 'One Place' }
   ];
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
   return (
     <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[98vw] sm:w-[95vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw] flex justify-center">
       <div className="w-full flex flex-col">
@@ -58,14 +57,7 @@ function Header() {
           </nav>
           <div className="flex items-center space-x-2">
             <button
-              onClick={toggleTheme}
-              className="ml-2 p-3 rounded-full border-2 border-[#daa520] bg-theme-primary dark:bg-black text-[#b8860b] dark:text-[#ffd700] hover:scale-110 transition-all duration-300 shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700]"
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? <Moon className="h-5 w-5 text-[#b8860b]" /> : <Sun className="h-5 w-5 text-[#ffd700]" />}
-            </button>
-            <button
-              className="md:hidden p-3 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#daa520]/30 bg-theme-primary dark:bg-black hover:bg-theme-secondary border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 hover:scale-105 cursor-pointer z-20"
+              className="md:hidden p-3 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#daa520]/30 bg-black hover:bg-theme-secondary border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 hover:scale-105 cursor-pointer z-20"
               onClick={() => setMobileNavOpen(v => !v)}
             >
               <span className="sr-only">Open navigation menu</span>
@@ -103,9 +95,8 @@ function Header() {
 }
 
 function Footer() {
-  const { theme, toggleTheme } = useTheme();
   return (
-    <footer className="bg-theme-primary border-t-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 text-theme-secondary py-16 sm:py-20">
+    <footer className="bg-black border-t-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 text-theme-secondary py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           <div className="md:col-span-2">
@@ -143,15 +134,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex justify-center">
-          <button
-            onClick={toggleTheme}
-            className="p-3 rounded-full border-2 border-[#daa520] bg-theme-primary dark:bg-black text-[#b8860b] dark:text-[#ffd700] hover:scale-110 transition-all duration-300 shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700]"
-            aria-label="Toggle theme"
-          >
-            {theme === 'light' ? <Moon className="h-5 w-5 text-[#b8860b]" /> : <Sun className="h-5 w-5 text-[#ffd700]" />}
-          </button>
-        </div>
+        {/* Theme toggle removed */}
 
         <div className="border-t-2 border-[#daa520] mt-16 sm:mt-20 pt-8 sm:pt-10 text-center text-theme-secondary">
           <p>&copy; 2024 One Medical Centre. All rights reserved. Your health is our priority.</p>
@@ -162,21 +145,23 @@ function Footer() {
 }
 
 function App() {
+  // Always apply dark mode
+  if (typeof document !== 'undefined') {
+    document.documentElement.classList.add('dark');
+  }
   return (
-    <ThemeProvider>
-      <Router>
-        <ScrollToTop />
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<OneTeamPage />} />
-            <Route path="/priority" element={<OnePriorityPage />} />
-            <Route path="/place" element={<OnePlacePage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <ScrollToTop />
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<OneTeamPage />} />
+          <Route path="/priority" element={<OnePriorityPage />} />
+          <Route path="/place" element={<OnePlacePage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </Router>
   );
 }
 

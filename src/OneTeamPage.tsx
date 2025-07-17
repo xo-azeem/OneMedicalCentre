@@ -78,8 +78,8 @@ export default function Two() {
 
   return (
     <div className="min-h-screen bg-theme-primary">
-      {/* Theme-aware margin area above hero for all screens */}
-      <div className="w-full" style={{height: '44px', background: 'var(--bg-primary)'}}></div>
+      {/* Margin area above hero for all screens */}
+      <div className="w-full" style={{height: '44px', background: '#000'}}></div>
       {/* Hero Section */}
       <section ref={heroRef} className="relative bg-theme-primary pt-28 sm:pt-32 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden">
         {/* Background decorative elements */}
@@ -88,22 +88,6 @@ export default function Two() {
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffd700]/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#daa520]/15 rounded-full blur-3xl"></div>
           <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-[#f5deb3]/10 rounded-full blur-2xl"></div>
-        </div>
-
-        {/* Hero Section Glitter Effect */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="glitter-star absolute top-[15%] left-[10%] w-1 h-1 bg-[#ffd700] rounded-full opacity-80"></div>
-          <div className="glitter-star absolute top-[25%] right-[15%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-70"></div>
-          <div className="glitter-star absolute top-[40%] left-[20%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-90"></div>
-          <div className="glitter-star absolute top-[60%] right-[25%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-85"></div>
-          <div className="glitter-star absolute bottom-[20%] left-[15%] w-1 h-1 bg-[#daa520] rounded-full opacity-75"></div>
-          <div className="glitter-star absolute bottom-[35%] right-[10%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-80"></div>
-          <div className="glitter-star absolute top-[30%] left-[45%] w-1 h-1 bg-[#ffd700] rounded-full opacity-70"></div>
-          <div className="glitter-star absolute top-[70%] right-[40%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-90"></div>
-          <div className="glitter-star absolute top-[50%] left-[8%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-85"></div>
-          <div className="glitter-star absolute bottom-[45%] right-[8%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-75"></div>
-          <div className="glitter-star absolute top-[80%] left-[30%] w-1 h-1 bg-[#daa520] rounded-full opacity-80"></div>
-          <div className="glitter-star absolute top-[10%] right-[30%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-85"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -188,34 +172,6 @@ export default function Two() {
 
                 {/* Glisten and background animation keyframes */}
                 <style>{`
-                @keyframes glitter-twinkle {
-                  0%, 100% { 
-                    opacity: 0; 
-                    transform: scale(0.5) rotate(0deg);
-                    box-shadow: 0 0 0 transparent;
-                  }
-                  50% { 
-                    opacity: 1; 
-                    transform: scale(1) rotate(180deg);
-                    box-shadow: 0 0 8px currentColor;
-                  }
-                }
-                .glitter-star {
-                  animation: glitter-twinkle 3s infinite;
-                }
-                .glitter-star:nth-child(1) { animation-delay: 0s; }
-                .glitter-star:nth-child(2) { animation-delay: 0.3s; }
-                .glitter-star:nth-child(3) { animation-delay: 0.6s; }
-                .glitter-star:nth-child(4) { animation-delay: 0.9s; }
-                .glitter-star:nth-child(5) { animation-delay: 1.2s; }
-                .glitter-star:nth-child(6) { animation-delay: 1.5s; }
-                .glitter-star:nth-child(7) { animation-delay: 1.8s; }
-                .glitter-star:nth-child(8) { animation-delay: 2.1s; }
-                .glitter-star:nth-child(9) { animation-delay: 2.4s; }
-                .glitter-star:nth-child(10) { animation-delay: 2.7s; }
-                .glitter-star:nth-child(11) { animation-delay: 3s; }
-                .glitter-star:nth-child(12) { animation-delay: 0.15s; }
-
                   /* Random star positioning - fixed positions with 4px blur */
                   .random-star-1 {
                     top: 15%;
@@ -512,16 +468,16 @@ export default function Two() {
                 
               {/* Main Headlines */}
               <div className="space-y-3 sm:space-y-4">
-                <h1 className="text-3xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] drop-shadow-2xl leading-tight whitespace-nowrap">
+                <h1 className="text-3xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-white leading-tight whitespace-nowrap drop-shadow" style={{ textShadow: '0 1px 2px #daa520' }}>
                   ONE MEDICAL CENTRE
                 </h1>
                 <div className="flex justify-center lg:justify-start text-center lg:text-left">
                   <div className="w-[20rem] sm:w-[25rem] md:w-[32rem] lg:w-[32rem] xl:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse"></div>
                 </div>
-                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-theme-primary leading-snug">
+                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-white leading-snug">
                   Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#daa520]">Complete Healthcare</span> Destination
                 </h2>
-                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-theme-secondary leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
                   Just steps from Square One, our modern facility brings you family doctors, specialists, pharmacy, dental, physio, vision, skin, foot, hearing, and wellness care — all under one roof.
                 </p>
               </div>
@@ -554,7 +510,7 @@ export default function Two() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-6">
                 <a
                   href="tel:+16476602591"
-                  className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-theme-secondary text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-gray-300 text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   aria-label="Call +647 660 2591"
                 >
                   <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
@@ -564,7 +520,7 @@ export default function Two() {
                 </a>
                 <a
                   href="mailto:onemedicalmississauga@gmail.com"
-                  className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-theme-secondary text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-gray-300 text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   aria-label="Email Us"
                 >
                   <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
@@ -572,11 +528,11 @@ export default function Two() {
                   </div>
                   <span className="font-medium">Email Us</span>
                 </a>
-                <div className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-theme-secondary text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20">
+                <div className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-gray-300 text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20">
                   <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
                     <Car className="h-5 w-5 text-[#daa520] dark:text-white" />
                   </div>
-                  <span className="text-theme-secondary text-sm font-medium">Free Parking</span>
+                  <span className="text-gray-300 text-sm font-medium">Free Parking</span>
                 </div>
               </div>
             </div>
@@ -698,6 +654,7 @@ export default function Two() {
 
       {/* Enhanced Doctors Cards Section */}
       <section ref={doctorsCardsRef} className="py-16 xs:py-20 sm:py-28 md:py-32 bg-theme-primary relative overflow-hidden">
+
         {/* Dynamic Background Layers */}
         <div className="absolute inset-0 bg-theme-primary"></div>
         
@@ -729,7 +686,7 @@ export default function Two() {
               <Stethoscope className="h-5 w-5 text-[#d4af37]" />
               <span className="tracking-wide">Our Medical Experts</span>
             </div>
-            <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-black text-theme-primary mb-8 leading-tight transition-all duration-300 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight transition-all duration-300 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Meet Our{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] bg-clip-text text-transparent">
@@ -738,7 +695,7 @@ export default function Two() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#daa520]/20 via-[#ffd700]/20 to-[#daa520]/20 blur-xl opacity-60 animate-pulse"></div>
               </span>
             </h3>
-            <p className={`text-xl sm:text-2xl text-theme-secondary max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className={`text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Our team of <span className="text-[#b8860b] font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
               combining expertise with <span className="text-[#b8860b] font-semibold">compassionate patient-centered approach.</span>
             </p>
@@ -824,13 +781,13 @@ export default function Two() {
                       <div className="bg-gradient-to-br from-[#daa520] to-[#ffd700] group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl">
                         <Icon className="h-10 w-10 text-white group-hover:scale-110 transition-all duration-500" />
                       </div>
-                      <h4 className="text-1xl font-bold text-theme-primary mb-3 group-hover:text-[#b8860b] transition-all duration-500 group-hover:scale-105">
+                      <h4 className="text-1xl font-bold text-white mb-3 group-hover:text-[#b8860b] transition-all duration-500 group-hover:scale-105">
                         {doctor.name}
                       </h4>
                       <div className="bg-theme-primary dark:bg-black text-[#d4af37] dark:text-[#ffd700] px-4 py-2 rounded-full text-sm font-semibold mb-4 border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
                         {doctor.specialty}
                       </div>
-                      <p className="text-theme-secondary leading-relaxed min-h-[100px] group-hover:text-theme-primary transition-all duration-500 text-base flex-grow">
+                      <p className="text-gray-300 leading-relaxed min-h-[100px] group-hover:text-theme-primary transition-all duration-500 text-base flex-grow">
                         {doctor.description}
                       </p>
                 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MapPin, Car, Calendar, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';
 import logo2 from './assets/logo2.png';
 import qrCode from './assets/qr.png';
@@ -105,9 +105,9 @@ export default function OnePlacePage() {
   };
 
   return (
-    <div className="min-h-screen bg-theme-primary dark:bg-black overflow-x-hidden">
-      {/* Theme-aware margin area above hero for all screens */}
-      <div className="w-full" style={{height: '44px', background: 'var(--bg-primary)'}}></div>
+    <div className="min-h-screen bg-black overflow-x-hidden">
+      {/* Margin area above hero for all screens */}
+      <div className="w-full" style={{height: '44px', background: '#000'}}></div>
       <style>{`
         @keyframes shimmer {
           0% { background-position: -200% 0; }
@@ -149,29 +149,13 @@ export default function OnePlacePage() {
         }
       `}</style>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative bg-theme-primary dark:bg-black py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden">
-        <div className="absolute inset-0 bg-theme-primary dark:bg-black"></div>
+      <section ref={heroRef} className="relative bg-black py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden">
+        <div className="absolute inset-0 bg-black"></div>
         {/* Floating decorative elements */}
         <div className="absolute top-20 left-10 w-4 h-4 bg-[#ffd700]/30 rounded-full transition-all duration-[2000ms] delay-300 animate-ping opacity-60"></div>
         <div className="absolute top-40 right-20 w-3 h-3 bg-[#ffd700]/20 rounded-full transition-all duration-[2200ms] delay-500 animate-pulse opacity-40"></div>
         <div className="absolute bottom-32 left-20 w-5 h-5 bg-[#ffd700]/10 rounded-full transition-all duration-[2400ms] delay-700 animate-bounce"></div>
         <div className="absolute bottom-20 right-10 w-3 h-3 bg-[#ffd700]/10 rounded-full transition-all duration-[2600ms] delay-1100 animate-ping"></div>
-        
-        {/* Hero Section Glitter Effect */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="glitter-star absolute top-[15%] left-[10%] w-1 h-1 bg-[#ffd700] rounded-full opacity-80"></div>
-          <div className="glitter-star absolute top-[25%] right-[15%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-70"></div>
-          <div className="glitter-star absolute top-[40%] left-[20%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-90"></div>
-          <div className="glitter-star absolute top-[60%] right-[25%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-85"></div>
-          <div className="glitter-star absolute bottom-[20%] left-[15%] w-1 h-1 bg-[#daa520] rounded-full opacity-75"></div>
-          <div className="glitter-star absolute bottom-[35%] right-[10%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-80"></div>
-          <div className="glitter-star absolute top-[30%] left-[45%] w-1 h-1 bg-[#ffd700] rounded-full opacity-70"></div>
-          <div className="glitter-star absolute top-[70%] right-[40%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-90"></div>
-          <div className="glitter-star absolute top-[50%] left-[8%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-85"></div>
-          <div className="glitter-star absolute bottom-[45%] right-[8%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-75"></div>
-          <div className="glitter-star absolute top-[80%] left-[30%] w-1 h-1 bg-[#daa520] rounded-full opacity-80"></div>
-          <div className="glitter-star absolute top-[10%] right-[30%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-85"></div>
-        </div>
         
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -179,14 +163,16 @@ export default function OnePlacePage() {
             {/* Right Content - Logo with Main Page Hero Style */}
             <div className="flex justify-center lg:justify-end mt-8 lg:mt-0 order-1 lg:order-2">
               <div className="relative flex items-center justify-center mb-4">
-                {/* Multi-layered glowing circles */}
-                <div className="w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 rounded-full flex items-center justify-center shadow-2xl border border-yellow-400/30 animate-glow backdrop-blur-sm">
-                  <div className="w-52 h-52 sm:w-72 sm:h-72 bg-gradient-to-br from-yellow-400/10 to-yellow-600/10 rounded-full flex items-center justify-center">
-                    <div className="w-36 h-36 sm:w-56 sm:h-56 bg-yellow-100/10 rounded-full flex items-center justify-center">
-                      <img src={logo2} alt="One Medical Centre Logo" className="w-28 h-28 sm:w-40 sm:h-40 object-contain" />
-                    </div>
-                  </div>
+
+                {/* Logo Container */}
+                <div className="w-64 sm:w-80 lg:w-[28rem] h-64 sm:h-80 lg:h-[28rem] relative flex items-center justify-center mx-auto rounded-full bg-transparent overflow-hidden">
+                  <img
+                    src={logo2}
+                    alt="One Medical Centre Logo"
+                    className="w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain relative z-10 transition-transform duration-300"
+                  />
                 </div>
+
                 {/* Floating Lucide icons around the logo */}
                 <MapPin className="absolute -top-8 left-1/2 -translate-x-1/2 w-8 h-8 text-yellow-400 drop-shadow-lg animate-float-slow" />
                 <Car className="absolute top-1/2 -right-10 -translate-y-1/2 w-8 h-8 text-yellow-400 drop-shadow-lg animate-float-medium" />
@@ -196,35 +182,6 @@ export default function OnePlacePage() {
 
                 {/* Shimmer and glow keyframes */}
                 <style>{`
-
-                @keyframes glitter-twinkle {
-                  0%, 100% { 
-                    opacity: 0; 
-                    transform: scale(0.5) rotate(0deg);
-                    box-shadow: 0 0 0 transparent;
-                  }
-                  50% { 
-                    opacity: 1; 
-                    transform: scale(1) rotate(180deg);
-                    box-shadow: 0 0 8px currentColor;
-                  }
-                }
-                .glitter-star {
-                  animation: glitter-twinkle 3s infinite;
-                }
-                .glitter-star:nth-child(1) { animation-delay: 0s; }
-                .glitter-star:nth-child(2) { animation-delay: 0.3s; }
-                .glitter-star:nth-child(3) { animation-delay: 0.6s; }
-                .glitter-star:nth-child(4) { animation-delay: 0.9s; }
-                .glitter-star:nth-child(5) { animation-delay: 1.2s; }
-                .glitter-star:nth-child(6) { animation-delay: 1.5s; }
-                .glitter-star:nth-child(7) { animation-delay: 1.8s; }
-                .glitter-star:nth-child(8) { animation-delay: 2.1s; }
-                .glitter-star:nth-child(9) { animation-delay: 2.4s; }
-                .glitter-star:nth-child(10) { animation-delay: 2.7s; }
-                .glitter-star:nth-child(11) { animation-delay: 3s; }
-                .glitter-star:nth-child(12) { animation-delay: 0.15s; }
-
                   @keyframes float-slow { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(2deg); } }
                   @keyframes float-medium { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(-2deg); } }
                   @keyframes float-fast { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(1deg); } }
@@ -239,11 +196,11 @@ export default function OnePlacePage() {
             {/* Left Content */}
             <div className="space-y-8 order-2 lg:order-1 w-full text-center lg:text-left">
               <div className="space-y-6 max-w-2xl mx-auto lg:mx-0">
-                <div className="inline-flex items-center space-x-2 bg-theme-primary text-[#d4af37] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
+                <div className="inline-flex items-center space-x-2 bg-black text-[#d4af37] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
                   <Sparkles className="h-4 w-4" />
                   <span>One Place</span>
                 </div>
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-theme-primary leading-tight">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
                   All in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#daa520]">One Place</span>
                 </h2>
                 <div className="flex justify-center lg:justify-start text-center lg:text-left">
@@ -254,7 +211,7 @@ export default function OnePlacePage() {
                     Everything you need for your health, <span className="underline decoration-[#d4af37]/70 font-black">all together</span> in one location.
                   </h3>
                 </div>
-                <p className="text-lg sm:text-xl text-theme-secondary leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium mt-2 mb-2">
+                <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium mt-2 mb-2">
                   Medical, Dental, Pharmacy, Wellness & More — All Under One Roof for Your Convenience.
                 </p>
               </div>
@@ -272,7 +229,7 @@ export default function OnePlacePage() {
                 </button>
                                   <a
                    href="tel:+16476602591"
-                   className="px-8 py-4 border-2 border-[#daa520] bg-theme-primary text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] dark:hover:bg-black hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                   className="px-8 py-4 border-2 border-[#daa520] bg-black text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] dark:hover:bg-black hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                    tabIndex={0}
                   >
                    Call Now
@@ -282,13 +239,59 @@ export default function OnePlacePage() {
           </div>
         </div>
       </section>
-
+      
       <DigitalPulse/>
 
       {/* Location Details Section */}
-      <section ref={locationSectionRef} className="py-20 sm:py-24 bg-theme-primary dark:bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-theme-primary dark:bg-black"></div>
+      <section ref={locationSectionRef} className="py-20 sm:py-24 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-black"></div>
         
+        {/* Hero Section Glitter Effect */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="glitter-star absolute top-[15%] left-[10%] w-1 h-1 bg-[#ffd700] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[25%] right-[15%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-70"></div>
+          <div className="glitter-star absolute top-[40%] left-[20%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-90"></div>
+          <div className="glitter-star absolute top-[60%] right-[25%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-85"></div>
+          <div className="glitter-star absolute bottom-[20%] left-[15%] w-1 h-1 bg-[#daa520] rounded-full opacity-75"></div>
+          <div className="glitter-star absolute bottom-[35%] right-[10%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[30%] left-[45%] w-1 h-1 bg-[#ffd700] rounded-full opacity-70"></div>
+          <div className="glitter-star absolute top-[70%] right-[40%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-90"></div>
+          <div className="glitter-star absolute top-[50%] left-[8%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-85"></div>
+          <div className="glitter-star absolute bottom-[45%] right-[8%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-75"></div>
+          <div className="glitter-star absolute top-[80%] left-[30%] w-1 h-1 bg-[#daa520] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[10%] right-[30%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-85"></div>
+        </div>
+
+        <style>{`
+        @keyframes glitter-twinkle {
+          0%, 100% { 
+            opacity: 0; 
+            transform: scale(0.5) rotate(0deg);
+            box-shadow: 0 0 0 transparent;
+          }
+          50% { 
+            opacity: 1; 
+            transform: scale(1) rotate(180deg);
+            box-shadow: 0 0 8px currentColor;
+          }
+        }
+        .glitter-star {
+          animation: glitter-twinkle 3s infinite;
+        }
+        .glitter-star:nth-child(1) { animation-delay: 0s; }
+        .glitter-star:nth-child(2) { animation-delay: 0.3s; }
+        .glitter-star:nth-child(3) { animation-delay: 0.6s; }
+        .glitter-star:nth-child(4) { animation-delay: 0.9s; }
+        .glitter-star:nth-child(5) { animation-delay: 1.2s; }
+        .glitter-star:nth-child(6) { animation-delay: 1.5s; }
+        .glitter-star:nth-child(7) { animation-delay: 1.8s; }
+        .glitter-star:nth-child(8) { animation-delay: 2.1s; }
+        .glitter-star:nth-child(9) { animation-delay: 2.4s; }
+        .glitter-star:nth-child(10) { animation-delay: 2.7s; }
+        .glitter-star:nth-child(11) { animation-delay: 3s; }
+        .glitter-star:nth-child(12) { animation-delay: 0.15s; }
+        `}</style>
+
         {/* Animated floating elements */}
         <div className={`absolute top-10 left-10 w-2 h-2 bg-[#d4af37] rounded-full transition-all duration-[1500ms] delay-300 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         <div className={`absolute top-20 right-20 w-3 h-3 bg-[#d4af37]/20 rounded-full transition-all duration-[1500ms] delay-500 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
@@ -298,14 +301,14 @@ export default function OnePlacePage() {
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             locationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-theme-primary/10 text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-black/10 text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
               <Building className="h-4 w-4" />
               <span>Our Location</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-theme-primary mb-6">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
               Easy to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Find & Access</span>
             </h3>
-            <p className="text-lg text-theme-secondary max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-300 leading-relaxed">
               Our modern medical facility is conveniently located for patients throughout the GTA, 
               with excellent transit connections and ample parking options.
             </p>
@@ -316,14 +319,14 @@ export default function OnePlacePage() {
             <div className={`transition-all duration-1000 ease-out transform ${
               locationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`} style={{ transitionDelay: '200ms' }}>
-              <div className="bg-gradient-to-br from-theme-primary/95 to-[#d4af37]/80 rounded-3xl p-8 shadow-xl border border-[#daa520]/60 hover:border-[#ffd700]/60 hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300">
+              <div className="bg-gradient-to-br from-black/95 to-[#d4af37]/80 rounded-3xl p-8 shadow-xl border border-[#daa520]/60 hover:border-[#ffd700]/60 hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300">
                 <div className="flex items-start space-x-4 mb-6">
                   <div className="bg-[#fffacd] dark:bg-[#b8860b] rounded-xl p-3 transition-all duration-300">
                     <MapPin className="h-8 w-8 text-[#daa520] dark:text-white" />
                   </div>
                   <div>
-                    <h4 className="text-2xl font-bold text-theme-primary mb-2">Our Address</h4>
-                    <p className="text-theme-secondary text-lg leading-relaxed">
+                    <h4 className="text-2xl font-bold text-white mb-2">Our Address</h4>
+                    <p className="text-gray-300 leading-relaxed">
                       50 Burnhamthorpe Rd West<br />
                       Unit 102<br />
                       Mississauga, ON
@@ -331,15 +334,15 @@ export default function OnePlacePage() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-3 text-theme-secondary">
+                  <div className="flex items-center space-x-3 text-gray-300">
                     <Navigation className="h-5 w-5 text-[#d4af37]" />
                     <span>Directly across from Square One Shopping Centre</span>
                   </div>
-                  <div className="flex items-center space-x-3 text-theme-secondary">
+                  <div className="flex items-center space-x-3 text-gray-300">
                     <Car className="h-5 w-5 text-[#d4af37]" />
                     <span>Unlimited underground & above-ground parking</span>
                   </div>
-                  <div className="flex items-center space-x-3 text-theme-secondary">
+                  <div className="flex items-center space-x-3 text-gray-300">
                     <Clock className="h-5 w-5 text-[#d4af37]" />
                     <span>Easy access via major highways and public transit</span>
                   </div>
@@ -352,31 +355,31 @@ export default function OnePlacePage() {
               locationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`} style={{ transitionDelay: '400ms' }}>
               <div className="space-y-6">
-                <h4 className="text-2xl font-bold text-theme-primary mb-8">Get In Touch</h4>
+                <h4 className="text-2xl font-bold text-white mb-8">Get In Touch</h4>
                 <div className="space-y-4">
                   <a
                     href="tel:+16476602591"
-                    className="flex items-center space-x-4 bg-theme-primary dark:bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-theme-secondary hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
+                    className="flex items-center space-x-4 bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-gray-300 hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
                   >
                     <div className="bg-[#fffacd] dark:bg-[#b8860b] rounded-xl p-3 transition-all duration-300">
                       <Phone className="h-6 w-6 text-[#d4af37] dark:text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-theme-secondary">Call us at</p>
-                      <p className="text-lg font-semibold text-theme-primary">+647 660 2591</p>
+                      <p className="text-sm text-gray-300">Call us at</p>
+                      <p className="text-lg font-semibold text-white">+647 660 2591</p>
                     </div>
                   </a>
                   
                   <a
                     href="mailto:onemedicalmississauga@gmail.com"
-                    className="flex items-center space-x-4 bg-theme-primary dark:bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-theme-secondary hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
+                    className="flex items-center space-x-4 bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-gray-300 hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
                   >
                     <div className="bg-[#fffacd] dark:bg-[#b8860b] rounded-xl p-3 transition-all duration-300">
                       <Mail className="h-6 w-6 text-[#d4af37] dark:text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-theme-secondary">Email us at</p>
-                      <p className="text-lg font-semibold text-theme-primary">onemedicalmississauga@gmail.com</p>
+                      <p className="text-sm text-gray-300">Email us at</p>
+                      <p className="text-lg font-semibold text-white">onemedicalmississauga@gmail.com</p>
                     </div>
                   </a>
                   
@@ -384,14 +387,14 @@ export default function OnePlacePage() {
                     href="https://onemedicalcentre.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-4 bg-theme-primary dark:bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-theme-secondary hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
+                    className="flex items-center space-x-4 bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-gray-300 hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
                   >
                     <div className="bg-[#fffacd] dark:bg-[#b8860b] rounded-xl p-3 transition-all duration-300">
                       <Calendar className="h-6 w-6 text-[#d4af37] dark:text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-theme-secondary">Book online at</p>
-                      <p className="text-lg font-semibold text-theme-primary">onemedicalcentre.com</p>
+                      <p className="text-sm text-gray-300">Book online at</p>
+                      <p className="text-lg font-semibold text-white">onemedicalcentre.com</p>
                     </div>
                   </a>
                 </div>
@@ -404,8 +407,26 @@ export default function OnePlacePage() {
       {/* Google Maps + QR Code Section */}
       <section
         ref={mapSectionRef}
-        className="relative py-12 sm:py-16 bg-theme-primary dark:bg-black flex justify-center items-center overflow-hidden"
+        className="relative py-12 sm:py-16 bg-black flex justify-center items-center overflow-hidden"
       >
+
+        {/* Hero Section Glitter Effect */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="glitter-star absolute top-[15%] left-[10%] w-1 h-1 bg-[#ffd700] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[25%] right-[15%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-70"></div>
+          <div className="glitter-star absolute top-[40%] left-[20%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-90"></div>
+          <div className="glitter-star absolute top-[60%] right-[25%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-85"></div>
+          <div className="glitter-star absolute bottom-[20%] left-[15%] w-1 h-1 bg-[#daa520] rounded-full opacity-75"></div>
+          <div className="glitter-star absolute bottom-[35%] right-[10%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[30%] left-[45%] w-1 h-1 bg-[#ffd700] rounded-full opacity-70"></div>
+          <div className="glitter-star absolute top-[70%] right-[40%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-90"></div>
+          <div className="glitter-star absolute top-[50%] left-[8%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-85"></div>
+          <div className="glitter-star absolute bottom-[45%] right-[8%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-75"></div>
+          <div className="glitter-star absolute top-[80%] left-[30%] w-1 h-1 bg-[#daa520] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[10%] right-[30%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-85"></div>
+        </div>
+
+      
         {/* Floating background elements */}
         <div className="absolute top-10 left-10 w-3 h-3 bg-[#ffd700] rounded-full animate-pulse animate-float-slow opacity-60"></div>
         <div className="absolute top-1/3 right-20 w-2 h-2 bg-[#ffd700]/20 rounded-full animate-pulse delay-700 opacity-50 animate-float-medium"></div>
@@ -416,18 +437,18 @@ export default function OnePlacePage() {
                 
                           {/* Floating Pin Icon */}
               <div className="relative mb-4 z-20">
-                <div className="bg-theme-primary dark:bg-black p-4 rounded-full shadow-2xl animate-bounce border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
+                <div className="bg-black p-4 rounded-full shadow-2xl animate-bounce border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
                   <MapPin className="w-8 h-8 text-[#daa520] dark:text-[#ffd700]" />
                 </div>
               </div>
                 
             {/* Heading */}
-            <h2 className="text-2xl sm:text-3xl font-bold text-theme-primary dark:text-theme-secondary mb-4 text-center drop-shadow-lg">
+            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 text-center drop-shadow-lg">
               Our Location on Google Maps
             </h2>
                 
             {/* Google Map Iframe */}
-            <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl border border-theme-primary/40 mb-4 bg-theme-primary dark:bg-theme-secondary">
+            <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl border border-black/40 mb-4 bg-black dark:bg-white">
               <iframe
                 src="https://www.google.com/maps?q=50+Burnhamthorpe+Rd+W,+Mississauga,+ON+L5B+3C2,+Canada&output=embed"
                 title="One Medical Centre Location"
@@ -445,15 +466,15 @@ export default function OnePlacePage() {
               href="https://maps.app.goo.gl/NfnrniFAtQGAVzx49"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-theme-primary dark:bg-black text-[#b8860b] dark:text-[#ffd700] font-semibold rounded-xl border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] hover:text-[#daa520] dark:hover:text-[#ffd700] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-base tracking-wide mb-4"
+              className="inline-block px-8 py-3 bg-black text-[#b8860b] dark:text-[#ffd700] font-semibold rounded-xl border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] hover:text-[#daa520] dark:hover:text-[#ffd700] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-base tracking-wide mb-4"
             >
               Open in Google Maps
             </a>
                 
             {/* QR Code */}
             <div className="text-center">
-              <p className="text-theme-secondary dark:text-theme-primary mb-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>
-              <div className="p-3 bg-theme-primary dark:bg-black backdrop-blur-sm border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 rounded-2xl inline-block">
+              <p className="text-gray-300 mb-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>
+              <div className="p-3 bg-black backdrop-blur-sm border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 rounded-2xl inline-block">
                 <img
                   src={qrCode}
                   alt="Google Maps QR Code"
@@ -466,9 +487,25 @@ export default function OnePlacePage() {
       </section>
 
       {/* Features Section */}
-      <section ref={featuresSectionRef} className="py-20 sm:py-24 bg-theme-primary dark:bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-theme-primary dark:bg-black"></div>
+      <section ref={featuresSectionRef} className="py-20 sm:py-24 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-black"></div>
         
+        {/* Hero Section Glitter Effect */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="glitter-star absolute top-[15%] left-[10%] w-1 h-1 bg-[#ffd700] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[25%] right-[15%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-70"></div>
+          <div className="glitter-star absolute top-[40%] left-[20%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-90"></div>
+          <div className="glitter-star absolute top-[60%] right-[25%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-85"></div>
+          <div className="glitter-star absolute bottom-[20%] left-[15%] w-1 h-1 bg-[#daa520] rounded-full opacity-75"></div>
+          <div className="glitter-star absolute bottom-[35%] right-[10%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[30%] left-[45%] w-1 h-1 bg-[#ffd700] rounded-full opacity-70"></div>
+          <div className="glitter-star absolute top-[70%] right-[40%] w-1.5 h-1.5 bg-[#daa520] rounded-full opacity-90"></div>
+          <div className="glitter-star absolute top-[50%] left-[8%] w-1 h-1 bg-[#f0e68c] rounded-full opacity-85"></div>
+          <div className="glitter-star absolute bottom-[45%] right-[8%] w-1.5 h-1.5 bg-[#ffd700] rounded-full opacity-75"></div>
+          <div className="glitter-star absolute top-[80%] left-[30%] w-1 h-1 bg-[#daa520] rounded-full opacity-80"></div>
+          <div className="glitter-star absolute top-[10%] right-[30%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-85"></div>
+        </div>
+
         {/* Animated floating elements */}
         <div className={`absolute top-20 left-10 w-3 h-3 bg-[#ffd700]/20 rounded-full transition-all duration-[1500ms] delay-300 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         <div className={`absolute top-40 right-20 w-2 h-2 bg-[#ffd700]/30 rounded-full transition-all duration-[1500ms] delay-500 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
@@ -478,14 +515,14 @@ export default function OnePlacePage() {
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-theme-primary/10 text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-black/10 text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
               <Sparkles className="h-4 w-4" />
               <span>Why Choose Our Location</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-theme-primary dark:text-theme-secondary mb-6">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
               Designed for Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Convenience</span>
             </h3>
-            <p className="text-lg text-theme-secondary max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-300 leading-relaxed">
               Every aspect of our location has been carefully chosen to provide you with the most convenient and comfortable healthcare experience.
             </p>
           </div>
@@ -520,14 +557,14 @@ export default function OnePlacePage() {
                   }`}
                   style={{ transitionDelay: `${feature.delay}ms` }}
                 >
-                  <div className="bg-gradient-to-br from-theme-primary/95 to-[#fff8dc]/80 group-hover:from-theme-primary group-hover:to-[#fffacd] transition-all duration-500 p-8 rounded-3xl shadow-xl border border-[#daa520]/60 group-hover:border-[#ffd700]/60 group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] flex flex-col items-center min-h-[320px] min-w-0 w-full max-w-full">
+                  <div className="bg-gradient-to-br group-hover:from-[#daa520]/10 group-hover:to-[#ffd700]/10 transition-all duration-500 p-8 rounded-3xl shadow-xl border border-[#daa520]/60 group-hover:border-[#ffd700]/60 group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] flex flex-col items-center min-h-[320px] min-w-0 w-full max-w-full">
                     <div className="bg-[#fffacd] dark:bg-[#b8860b] p-4 rounded-2xl w-fit mx-auto mb-6">
                       <Icon className="h-8 w-8 text-[#daa520] dark:text-white group-hover:scale-110 transition-all duration-300" />
                     </div>
-                    <h4 className="text-xl font-semibold text-theme-primary mb-3 group-hover:text-[#b8860b] transition-colors duration-300">
+                    <h4 className="text-xl font-semibold text-white mb-3 group-hover:text-[#b8860b] transition-colors duration-300">
                       {feature.title}
                     </h4>
-                    <p className="text-theme-secondary leading-relaxed group-hover:text-theme-primary transition-colors duration-300">
+                    <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
                       {feature.description}
                     </p>
                   </div>
