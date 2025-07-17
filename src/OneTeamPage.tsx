@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo2 from './assets/logo2.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
@@ -14,66 +14,6 @@ export default function OptimizedMedicalPage() {
   const heroContentRef = useRef<HTMLDivElement>(null);
   const doctorsSectionRef = useRef(null);
   const doctorsCardsRef = useRef(null);
-
-  // Memoized doctor data
-  const doctorsData = useMemo(() => [
-    {
-      name: "Dr. Kashif Surahio",
-      specialty: "Family Medicine",
-      description: "Experienced in primary care and long-term patient relationships, focusing on overall health and wellness.",
-      icon: Stethoscope,
-      delay: 200,
-    },
-    {
-      name: "Dr. Alexander Shayan",
-      specialty: "Walk-In Doctor",
-      description: "Available for urgent consultations, offering accessible care with efficiency and professionalism.",
-      icon: UserCheck,
-      delay: 300,
-    },
-    {
-      name: "Dr. Faheem Naeem",
-      specialty: "Walk-In Doctor",
-      description: "Provides patient-centered, timely care for acute medical needs and minor health concerns.",
-      icon: UserCheck,
-      delay: 400,
-    },
-    {
-      name: "Dr. Morcos Fahmy",
-      specialty: "Internal Medicine & Infectious Disease",
-      description: "Specializes in complex internal conditions and the prevention and treatment of infectious diseases.",
-      icon: Shield,
-      delay: 500,
-    },
-    {
-      name: "Dr. Christina Gearges",
-      specialty: "Internal Medicine & Infectious Disease",
-      description: "Expert in managing chronic conditions and diagnosing infectious diseases with a holistic approach.",
-      icon: Shield,
-      delay: 600,
-    },
-    {
-      name: "Dr. Wahdat Hamidi",
-      specialty: "Optometrist",
-      description: "Focused on vision care, eye exams, and tailored solutions for long-term eye health.",
-      icon: Eye,
-      delay: 700,
-    },
-    {
-      name: "Dr. Osama Garani",
-      specialty: "Cardiologist",
-      description: "Dedicated to heart health, specializing in diagnostics, prevention, and cardiovascular care.",
-      icon: Heart,
-      delay: 800,
-    },
-    {
-      name: "Dr. Michael Sobhy",
-      specialty: "Pharmacy",
-      description: "Trusted pharmacist offering expert medication guidance and health consultations.",
-      icon: Pill,
-      delay: 900,
-    }
-  ], []);
 
   // Optimized hero animation
   const animateHeroContent = useCallback(() => {
@@ -165,43 +105,6 @@ export default function OptimizedMedicalPage() {
       </div>
     </div>
   );
-
-  // Floating elements component
-  const FloatingElements = ({ visible, section = 'doctors' }: { visible: boolean; section?: string }) => {
-    const elements = section === 'doctors' ? [
-      { top: '20%', left: '10%', size: 'w-4 h-4', color: 'bg-[#daa520]/70', animation: 'animate-ping', delay: 300 },
-      { top: '40%', right: '20%', size: 'w-3 h-3', color: 'bg-[#ffd700]/60', animation: 'animate-pulse', delay: 500 },
-      { bottom: '32%', left: '20%', size: 'w-5 h-5', color: 'bg-[#f5deb3]/50', animation: 'animate-bounce', delay: 700 },
-      { top: '60%', right: '40%', size: 'w-2 h-2', color: 'bg-[#daa520]/80', animation: 'animate-pulse', delay: 900 },
-      { bottom: '20%', right: '16%', size: 'w-3 h-3', color: 'bg-[#ffd700]/40', animation: 'animate-ping', delay: 1100 },
-    ] : [
-      { top: '16%', left: '12%', size: 'w-4 h-4', color: 'bg-[#daa520]/60', animation: 'animate-ping', delay: 200 },
-      { top: '32%', right: '24%', size: 'w-3 h-3', color: 'bg-[#ffd700]/70', animation: 'animate-bounce', delay: 400 },
-      { bottom: '24%', left: '16%', size: 'w-5 h-5', color: 'bg-[#f5deb3]/50', animation: 'animate-pulse', delay: 600 },
-      { top: '50%', left: '25%', size: 'w-2 h-2', color: 'bg-[#daa520]/80', animation: 'animate-spin', delay: 800 },
-      { top: '33%', right: '33%', size: 'w-3 h-3', color: 'bg-[#ffd700]/40', animation: 'animate-pulse', delay: 1000 },
-    ];
-
-    return (
-      <>
-        {elements.map((element, index) => (
-          <div
-            key={index}
-            className={`absolute ${element.size} ${element.color} rounded-full transition-all duration-[2000ms] ${
-              visible ? `opacity-100 ${element.animation}` : 'opacity-0 scale-0'
-            }`}
-            style={{
-              top: element.top,
-              left: element.left,
-              right: element.right,
-              bottom: element.bottom,
-              transitionDelay: `${element.delay}ms`
-            }}
-          />
-        ))}
-      </>
-    );
-  };
 
   return (
     <div className="min-h-screen bg-theme-primary">
@@ -543,12 +446,13 @@ export default function OptimizedMedicalPage() {
                 
             {/* Content Section */}
             <div className="space-y-8 lg:space-y-6 text-center lg:text-left order-2 lg:order-1">
+
               {/* Location Badge */}
-              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-black text-[#b8860b] px-5 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20">
-                <MapPin className="h-4 w-4" />
-                <span>Located in Mississauga</span>
+              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-black text-[#d4af37] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
+                  <MapPin className="h-4 w-4" />
+                  <span>Located in Mississauga</span>
               </div>
-                
+              
               {/* Main Headlines */}
               <div className="space-y-3 sm:space-y-4">
                 <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow" style={{ textShadow: '0 1px 2px #daa520' }}>
@@ -579,7 +483,7 @@ export default function OptimizedMedicalPage() {
                 </button>
                 <a
                   href={pdfFile}
-                  className="px-8 py-4 border-2 border-[#daa520] bg-black text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="px-8 py-4 border-2 border-[#daa520] bg-black text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   target="_blank"
                   rel="noopener noreferrer"
                   download="OneMedicalCentre.pdf"

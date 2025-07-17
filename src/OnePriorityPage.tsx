@@ -163,8 +163,9 @@ export default function OnePriorityPage() {
             {/* Left Content */}
             <div className="space-y-8 order-2 lg:order-1 w-full text-center lg:text-left">
               <div className="space-y-6 max-w-2xl mx-auto lg:mx-0">
-                <div className="inline-flex items-center space-x-2 bg-black text-[#b8860b] px-4 py-2 rounded-full text-sm font-medium border border-[#f5deb3]/50">
-                  <Heart className="h-4 w-4" />
+                {/* Heart Badge */}
+                <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-black text-[#d4af37] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
+                    <Heart className="h-4 w-4" />
                   <span>One Priority</span>
                 </div>
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
