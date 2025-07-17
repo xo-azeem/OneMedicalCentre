@@ -1,5 +1,5 @@
 import {useState } from 'react';
-import { Moon, Sun, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import logo from './assets/logo.png';
 import logo2 from './assets/logo2.png';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
@@ -14,7 +14,7 @@ function Header() {
   const navItems = [
     { key: '/', label: 'One Team' },
     { key: '/priority', label: 'One Priority' },
-    { key: '/place', label: 'One Place' }
+    { key: '/place', label: 'One Place' },
   ];
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   return (

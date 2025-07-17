@@ -1,33 +1,95 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo2 from './assets/logo2.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
 
-export default function Two() {
+export default function OptimizedMedicalPage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const heroContentRef = useRef<HTMLDivElement>(null);
-  const doctorsSectionRef = useRef<HTMLDivElement>(null);
   const [doctorsVisible, setDoctorsVisible] = useState(false);
   const [doctorsAnimationTriggered, setDoctorsAnimationTriggered] = useState(false);
   const [doctorsCardsVisible, setDoctorsCardsVisible] = useState(false);
-  const doctorsCardsRef = useRef<HTMLDivElement>(null);
+  
+  const heroRef = useRef(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const doctorsSectionRef = useRef(null);
+  const doctorsCardsRef = useRef(null);
 
+  // Memoized doctor data
+  const doctorsData = useMemo(() => [
+    {
+      name: "Dr. Kashif Surahio",
+      specialty: "Family Medicine",
+      description: "Experienced in primary care and long-term patient relationships, focusing on overall health and wellness.",
+      icon: Stethoscope,
+      delay: 200,
+    },
+    {
+      name: "Dr. Alexander Shayan",
+      specialty: "Walk-In Doctor",
+      description: "Available for urgent consultations, offering accessible care with efficiency and professionalism.",
+      icon: UserCheck,
+      delay: 300,
+    },
+    {
+      name: "Dr. Faheem Naeem",
+      specialty: "Walk-In Doctor",
+      description: "Provides patient-centered, timely care for acute medical needs and minor health concerns.",
+      icon: UserCheck,
+      delay: 400,
+    },
+    {
+      name: "Dr. Morcos Fahmy",
+      specialty: "Internal Medicine & Infectious Disease",
+      description: "Specializes in complex internal conditions and the prevention and treatment of infectious diseases.",
+      icon: Shield,
+      delay: 500,
+    },
+    {
+      name: "Dr. Christina Gearges",
+      specialty: "Internal Medicine & Infectious Disease",
+      description: "Expert in managing chronic conditions and diagnosing infectious diseases with a holistic approach.",
+      icon: Shield,
+      delay: 600,
+    },
+    {
+      name: "Dr. Wahdat Hamidi",
+      specialty: "Optometrist",
+      description: "Focused on vision care, eye exams, and tailored solutions for long-term eye health.",
+      icon: Eye,
+      delay: 700,
+    },
+    {
+      name: "Dr. Osama Garani",
+      specialty: "Cardiologist",
+      description: "Dedicated to heart health, specializing in diagnostics, prevention, and cardiovascular care.",
+      icon: Heart,
+      delay: 800,
+    },
+    {
+      name: "Dr. Michael Sobhy",
+      specialty: "Pharmacy",
+      description: "Trusted pharmacist offering expert medication guidance and health consultations.",
+      icon: Pill,
+      delay: 900,
+    }
+  ], []);
 
-  useEffect(() => {
-    if (heroContentRef.current && heroContentRef.current.children && !heroAnimated) {
-      const heroChildren = Array.from(heroContentRef.current.children) as HTMLElement[];
+  // Optimized hero animation
+  const animateHeroContent = useCallback(() => {
+    if ((heroContentRef.current as HTMLDivElement)?.children && !heroAnimated) {
+      const heroChildren = Array.from((heroContentRef.current as HTMLDivElement).children);
       if (heroChildren.length > 0) {
         heroChildren.forEach(child => {
-          child.style.opacity = '0';
-          child.style.transform = 'translateY(60px) scale(0.95)';
+          (child as HTMLElement).style.opacity = '0';
+          (child as HTMLElement).style.transform = 'translateY(60px) scale(0.95)';
         });
+        
         heroChildren.forEach((child, index) => {
           setTimeout(() => {
-            child.style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            child.style.opacity = '1';
-            child.style.transform = 'translateY(0px) scale(1)';
+            (child as HTMLElement).style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            (child as HTMLElement).style.opacity = '1';
+            (child as HTMLElement).style.transform = 'translateY(0px) scale(1)';
           }, 300 + (index * 200));
         });
         setHeroAnimated(true);
@@ -35,9 +97,19 @@ export default function Two() {
     }
   }, [heroAnimated]);
 
+  // Optimized intersection observer
+  const createIntersectionObserver = useCallback((callback: IntersectionObserverCallback, threshold = 0.3) => {
+    return new IntersectionObserver(callback, { threshold });
+  }, []);
+
   useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      (entries) => {
+    animateHeroContent();
+  }, [animateHeroContent]);
+
+  // Doctors section observer
+  useEffect(() => {
+    const observer = createIntersectionObserver(
+      (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !doctorsAnimationTriggered) {
             setDoctorsVisible(true);
@@ -46,17 +118,20 @@ export default function Two() {
           }
         });
       },
-      { threshold: 0.3 }
+      0.3
     );
+
     if (doctorsSectionRef.current) {
       observer.observe(doctorsSectionRef.current);
     }
-    return () => observer.disconnect();
-  }, [doctorsAnimationTriggered]);
 
+    return () => observer.disconnect();
+  }, [doctorsAnimationTriggered, createIntersectionObserver]);
+
+  // Doctors cards observer
   useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      (entries) => {
+    const observer = createIntersectionObserver(
+      (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setDoctorsCardsVisible(true);
@@ -64,16 +139,68 @@ export default function Two() {
           }
         });
       },
-      { threshold: 0.2 }
+      0.2
     );
+
     if (doctorsCardsRef.current) {
       observer.observe(doctorsCardsRef.current);
     }
+
     return () => observer.disconnect();
+  }, [createIntersectionObserver]);
+
+  const handleBookAppointment = useCallback(() => {
+    window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
   }, []);
 
-  const handleBookAppointment = () => {
-    window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
+  // Star shine component for reusability
+  const StarShine = ({ className, delay }: { className: string; delay: number }) => (
+    <div className={`pointer-events-none absolute z-20 ${className}`}>
+      <div className="star-shine" style={{ animationDelay: `${delay}s` }}>
+        <div className="star-ray ray-1"></div>
+        <div className="star-ray ray-2"></div>
+        <div className="star-ray ray-3"></div>
+        <div className="star-ray ray-4"></div>
+        <div className="star-center"></div>
+      </div>
+    </div>
+  );
+
+  // Floating elements component
+  const FloatingElements = ({ visible, section = 'doctors' }: { visible: boolean; section?: string }) => {
+    const elements = section === 'doctors' ? [
+      { top: '20%', left: '10%', size: 'w-4 h-4', color: 'bg-[#daa520]/70', animation: 'animate-ping', delay: 300 },
+      { top: '40%', right: '20%', size: 'w-3 h-3', color: 'bg-[#ffd700]/60', animation: 'animate-pulse', delay: 500 },
+      { bottom: '32%', left: '20%', size: 'w-5 h-5', color: 'bg-[#f5deb3]/50', animation: 'animate-bounce', delay: 700 },
+      { top: '60%', right: '40%', size: 'w-2 h-2', color: 'bg-[#daa520]/80', animation: 'animate-pulse', delay: 900 },
+      { bottom: '20%', right: '16%', size: 'w-3 h-3', color: 'bg-[#ffd700]/40', animation: 'animate-ping', delay: 1100 },
+    ] : [
+      { top: '16%', left: '12%', size: 'w-4 h-4', color: 'bg-[#daa520]/60', animation: 'animate-ping', delay: 200 },
+      { top: '32%', right: '24%', size: 'w-3 h-3', color: 'bg-[#ffd700]/70', animation: 'animate-bounce', delay: 400 },
+      { bottom: '24%', left: '16%', size: 'w-5 h-5', color: 'bg-[#f5deb3]/50', animation: 'animate-pulse', delay: 600 },
+      { top: '50%', left: '25%', size: 'w-2 h-2', color: 'bg-[#daa520]/80', animation: 'animate-spin', delay: 800 },
+      { top: '33%', right: '33%', size: 'w-3 h-3', color: 'bg-[#ffd700]/40', animation: 'animate-pulse', delay: 1000 },
+    ];
+
+    return (
+      <>
+        {elements.map((element, index) => (
+          <div
+            key={index}
+            className={`absolute ${element.size} ${element.color} rounded-full transition-all duration-[2000ms] ${
+              visible ? `opacity-100 ${element.animation}` : 'opacity-0 scale-0'
+            }`}
+            style={{
+              top: element.top,
+              left: element.left,
+              right: element.right,
+              bottom: element.bottom,
+              transitionDelay: `${element.delay}ms`
+            }}
+          />
+        ))}
+      </>
+    );
   };
 
   return (
@@ -81,97 +208,35 @@ export default function Two() {
       {/* Margin area above hero for all screens */}
       <div className="w-full" style={{height: '44px', background: '#000'}}></div>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative bg-theme-primary pt-28 sm:pt-32 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden">
+      <section 
+        ref={heroRef} 
+        className="relative bg-black pt-20 sm:pt-24 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden"
+      >
         {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-theme-primary"></div>
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffd700]/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#daa520]/15 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-[#f5deb3]/10 rounded-full blur-2xl"></div>
+        <div className="absolute inset-0 bg-black" />
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffd700]/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#daa520]/15 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-[#f5deb3]/10 rounded-full blur-2xl" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div ref={heroContentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Logo Section - Right Side */}
+            
+            {/* Logo Section */}
             <div className="flex justify-center lg:justify-end order-1 lg:order-2">
               <div className="relative group">
-                {/* Main logo container with enhanced styling - no outer rings or stars */}
                 <div className="w-64 sm:w-80 lg:w-[28rem] h-64 sm:h-80 lg:h-[28rem] relative flex items-center justify-center mx-auto rounded-full bg-transparent overflow-hidden">
-                  {/* 4-Ray Star Shine Effects (animated stars with random positions) */}
-                  <div className="pointer-events-none absolute z-20 random-star-1">
-                    <div className="star-shine" style={{ animationDelay: '0s' }}>
-                      <div className="star-ray ray-1"></div>
-                      <div className="star-ray ray-2"></div>
-                      <div className="star-ray ray-3"></div>
-                      <div className="star-ray ray-4"></div>
-                      <div className="star-center"></div>
-                    </div>
-                  </div>
-                  <div className="pointer-events-none absolute z-20 random-star-2">
-                    <div className="star-shine" style={{ animationDelay: '1.2s' }}>
-                      <div className="star-ray ray-1"></div>
-                      <div className="star-ray ray-2"></div>
-                      <div className="star-ray ray-3"></div>
-                      <div className="star-ray ray-4"></div>
-                      <div className="star-center"></div>
-                    </div>
-                  </div>
-                  <div className="pointer-events-none absolute z-20 random-star-3">
-                    <div className="star-shine" style={{ animationDelay: '2.1s' }}>
-                      <div className="star-ray ray-1"></div>
-                      <div className="star-ray ray-2"></div>
-                      <div className="star-ray ray-3"></div>
-                      <div className="star-ray ray-4"></div>
-                      <div className="star-center"></div>
-                    </div>
-                  </div>
-                  <div className="pointer-events-none absolute z-20 random-star-4">
-                    <div className="star-shine" style={{ animationDelay: '0.7s' }}>
-                      <div className="star-ray ray-1"></div>
-                      <div className="star-ray ray-2"></div>
-                      <div className="star-ray ray-3"></div>
-                      <div className="star-ray ray-4"></div>
-                      <div className="star-center"></div>
-                    </div>
-                  </div>
-                  <div className="pointer-events-none absolute z-20 random-star-5">
-                    <div className="star-shine" style={{ animationDelay: '1.8s' }}>
-                      <div className="star-ray ray-1"></div>
-                      <div className="star-ray ray-2"></div>
-                      <div className="star-ray ray-3"></div>
-                      <div className="star-ray ray-4"></div>
-                      <div className="star-center"></div>
-                    </div>
-                  </div>
-                  <div className="pointer-events-none absolute z-20 random-star-6">
-                    <div className="star-shine" style={{ animationDelay: '3.2s' }}>
-                      <div className="star-ray ray-1"></div>
-                      <div className="star-ray ray-2"></div>
-                      <div className="star-ray ray-3"></div>
-                      <div className="star-ray ray-4"></div>
-                      <div className="star-center"></div>
-                    </div>
-                  </div>
+                  
+                  {/* Star shine effects */}
+                  <StarShine className="random-star-1" delay={0} />
+                  <StarShine className="random-star-2" delay={1.2} />
+                  <StarShine className="random-star-3" delay={2.1} />
+                  <StarShine className="random-star-4" delay={0.7} />
+                  <StarShine className="random-star-5" delay={1.8} />
+                  <StarShine className="random-star-6" delay={3.2} />
 
-                  {/* Animated blurred radial gradient background */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-1/2 h-1/2 rounded-full bg-gradient-to-br from-[#fffbe6]/20 via-[#daa520]/30 to-[#daa520]/20 blur-2xl animate-bg-pulse"></div>
-                  </div>
-
-                  {/* Glistening circular spot overlays (multiple sun flares) */}
-                  <div className="absolute inset-0 pointer-events-none overflow-visible rounded-full">
-                    {/* Second, smaller and subtler glisten spot */}
-                    <div className="glisten-spot2 absolute w-20 h-20 left-[-10%] top-[80%] bg-gradient-radial from-[#d4af37]/70 via-white/30 to-white/0 rounded-full blur-xl opacity-50 animate-glisten-spot2"></div>
-                    {/* Third, medium, golden glisten spot */}
-                    <div className="glisten-spot3 absolute w-24 h-24 left-0 top-[50%] bg-gradient-radial from-[#d4af37]/60 via-[#d4af37]/30 to-white/0 rounded-full blur-xl opacity-60 animate-glisten-spot3"></div>
-                  </div>
-
-                  {/* Logo image, larger */}
-                  <img src={logo2} alt="One Medical Centre Hero Logo" className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" />
-                </div>
-
-                {/* Glisten and background animation keyframes */}
-                <style>{`
+                  <style>{`
                   /* Random star positioning - fixed positions with 4px blur */
                   .random-star-1 {
                     top: 15%;
@@ -454,27 +519,45 @@ export default function Two() {
                     }
                   }
                 `}</style>
+                
+                  {/* Animated background */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-1/2 h-1/2 rounded-full bg-gradient-to-br from-[#fffbe6]/20 via-[#daa520]/30 to-[#daa520]/20 blur-2xl animate-bg-pulse" />
+                  </div>
+
+                  {/* Glisten spots */}
+                  <div className="absolute inset-0 pointer-events-none overflow-visible rounded-full">
+                    <div className="absolute w-20 h-20 left-[-10%] top-[80%] bg-gradient-radial from-[#d4af37]/70 via-white/30 to-white/0 rounded-full blur-xl opacity-50 animate-glisten-spot2" />
+                    <div className="absolute w-24 h-24 left-0 top-[50%] bg-gradient-radial from-[#d4af37]/60 via-[#d4af37]/30 to-white/0 rounded-full blur-xl opacity-60 animate-glisten-spot3" />
+                  </div>
+
+                  {/* Logo */}
+                  <img 
+                    src={logo2} 
+                    alt="One Medical Centre Hero Logo" 
+                    className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
+                  />
+                </div>
               </div>
             </div>
                 
-            {/* Content Section - Left Side */}
-            <div className="space-y-12 lg:space-y-8 text-center lg:text-left order-2 lg:order-1">
-
+            {/* Content Section */}
+            <div className="space-y-8 lg:space-y-6 text-center lg:text-left order-2 lg:order-1">
               {/* Location Badge */}
-              <div className="lg:mt-24 inline-flex items-center space-x-2 bg-theme-primary text-[#b8860b] px-5 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 lg:mt-7">
+              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-black text-[#b8860b] px-5 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20">
                 <MapPin className="h-4 w-4" />
                 <span>Located in Mississauga</span>
               </div>
                 
               {/* Main Headlines */}
               <div className="space-y-3 sm:space-y-4">
-                <h1 className="text-3xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-white leading-tight whitespace-nowrap drop-shadow" style={{ textShadow: '0 1px 2px #daa520' }}>
+                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow" style={{ textShadow: '0 1px 2px #daa520' }}>
                   ONE MEDICAL CENTRE
                 </h1>
-                <div className="flex justify-center lg:justify-start text-center lg:text-left">
-                  <div className="w-[20rem] sm:w-[25rem] md:w-[32rem] lg:w-[32rem] xl:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse"></div>
+                <div className="flex justify-center lg:justify-start">
+                  <div className="w-80 sm:w-96 md:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse" />
                 </div>
-                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-white leading-snug">
+                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug">
                   Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#daa520]">Complete Healthcare</span> Destination
                 </h2>
                 <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
@@ -496,8 +579,7 @@ export default function Two() {
                 </button>
                 <a
                   href={pdfFile}
-                  className="px-8 py-4 border-2 border-[#daa520] bg-theme-primary text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] dark:hover:bg-black hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
-                  tabIndex={0}
+                  className="px-8 py-4 border-2 border-[#daa520] bg-black text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   target="_blank"
                   rel="noopener noreferrer"
                   download="OneMedicalCentre.pdf"
@@ -540,7 +622,7 @@ export default function Two() {
         </div>
       </section>
 
-      {/* Enhanced Doctors Section */}
+      {/* Doctors Section */}
       <section
         ref={doctorsSectionRef}
         className="relative py-16 xs:py-20 sm:py-28 md:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden bg-theme-primary"
