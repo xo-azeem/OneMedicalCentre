@@ -570,7 +570,7 @@ export default function OptimizedMedicalPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#daa520]/5 via-transparent to-[#ffd700]/5 rounded-3xl"></div>
               
               {/* Badge with Enhanced Animation */}
-              <div className={`inline-flex items-center space-x-3 bg-gradient-to-r from-[#fffacd]/80 to-[#fff8dc]/80 text-[#b8860b] px-6 py-3 rounded-full text-sm font-semibold border border-[#daa520]/60 shadow-lg backdrop-blur-sm transition-all duration-[800ms] delay-200 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+              <div className={`inline-flex items-center space-x-3 bg-gradient-to-r from-[#fffacd]/90 to-[#fff8dc]/90 text-[#b8860b] px-6 py-3 rounded-full text-sm font-semibold border border-[#daa520]/60 shadow-lg backdrop-blur-sm transition-all duration-[800ms] delay-200 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
                 <Stethoscope className="h-5 w-5 text-[#b8860b]" />
                 <span className="tracking-wide ">Our Medical Team</span>
               </div>
