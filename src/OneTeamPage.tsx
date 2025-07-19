@@ -70,24 +70,11 @@ export default function OptimizedMedicalPage() {
 
   // Doctors cards observer
   useEffect(() => {
-    const observer = createIntersectionObserver(
-      (entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setDoctorsCardsVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      0.2
-    );
-
-    if (doctorsCardsRef.current) {
-      observer.observe(doctorsCardsRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [createIntersectionObserver]);
+    const timer = setTimeout(() => {
+      setDoctorsCardsVisible(true);
+    }, 400); // 400ms delay for smooth entrance
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleBookAppointment = useCallback(() => {
     window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
@@ -131,7 +118,7 @@ export default function OptimizedMedicalPage() {
               <div className="relative group">
 
                 {/* Square Container with Border */}
-                <div className="w-64 sm:w-80 lg:w-[28rem] h-64 sm:h-80 lg:h-[28rem] border-2 border-[#d4af37]/50 rounded-lg shadow-lg transition-all duration-300 group-hover:border-[#d4af37]/70 group-hover:shadow-xl group-hover:shadow-[#d4af37]/20 bg-gradient-to-br from-transparent via-[#fffbe6]/5 to-transparent">
+                <div className="w-80 sm:w-80 lg:w-[28rem] h-80 sm:h-80 lg:h-[28rem] border-2 border-[#d4af37]/50 rounded-lg shadow-lg transition-all duration-300 group-hover:border-[#d4af37]/70 group-hover:shadow-xl group-hover:shadow-[#d4af37]/20 bg-gradient-to-br from-transparent via-[#fffbe6]/5 to-transparent">
 
                   {/* Inner container for all effects and logo */}
                   <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg">
@@ -645,28 +632,30 @@ export default function OptimizedMedicalPage() {
         </div>
       </section>
 
-      {/* Enhanced Doctors Cards Section */}
-      <section ref={doctorsCardsRef} className="py-16 xs:py-20 sm:py-28 md:py-32 bg-theme-primary relative overflow-hidden">
+      <section className="py-16 xs:py-20 sm:py-28 md:py-32 bg-theme-primary relative overflow-hidden">
 
         {/* Dynamic Background Layers */}
         <div className="absolute inset-0 bg-theme-primary"></div>
         
         {/* Enhanced Floating Elements with Dynamic Animations */}
-        <div className={`absolute top-16 left-12 w-4 h-4 bg-[#daa520]/60 rounded-full transition-all duration-[2500ms] delay-200 ${doctorsCardsVisible ? 'opacity-100 animate-ping scale-110' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute top-32 right-24 w-3 h-3 bg-[#ffd700]/70 rounded-full transition-all duration-[2300ms] delay-400 ${doctorsCardsVisible ? 'opacity-100 animate-bounce scale-125' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-24 left-16 w-5 h-5 bg-[#f5deb3]/50 rounded-full transition-all duration-[2700ms] delay-600 ${doctorsCardsVisible ? 'opacity-100 animate-pulse scale-105' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute top-1/2 left-1/4 w-2 h-2 bg-[#daa520]/80 rounded-full transition-all duration-[2100ms] delay-800 ${doctorsCardsVisible ? 'opacity-100 animate-spin' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute top-1/3 right-1/3 w-3 h-3 bg-[#ffd700]/40 rounded-full transition-all duration-[2400ms] delay-1000 ${doctorsCardsVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-1/3 right-12 w-4 h-4 bg-[#daa520]/60 rounded-full transition-all duration-[2600ms] delay-1200 ${doctorsCardsVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute top-16 left-12 w-4 h-4 bg-[#d4af37]/60 rounded-full transition-all duration-[2500ms] delay-200 ${doctorsCardsVisible ? 'opacity-100 animate-ping scale-110' : 'opacity-0 scale-0'}`}></div>
+        {/* <div className={`absolute top-32 right-24 w-3 h-3 bg-[#ffd700]/70 rounded-full transition-all duration-[2300ms] delay-400 ${doctorsCardsVisible ? 'opacity-100 animate-bounce scale-125' : 'opacity-0 scale-0'}`}></div> */}
+        <div className={`absolute bottom-24 left-16 w-5 h-5 bg-[#d4af37]/50 rounded-full transition-all duration-[2700ms] delay-600 ${doctorsCardsVisible ? 'opacity-100 animate-pulse scale-105' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute top-1/2 left-1/4 w-2 h-2 bg-[#d4af37]/80 rounded-full transition-all duration-[2100ms] delay-800 ${doctorsCardsVisible ? 'opacity-100 animate-spin' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute top-1/3 right-1/3 w-3 h-3 bg-[#d4af37]/40 rounded-full transition-all duration-[2400ms] delay-1000 ${doctorsCardsVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute bottom-1/3 right-12 w-4 h-4 bg-[#d4af37]/60 rounded-full transition-all duration-[2600ms] delay-1200 ${doctorsCardsVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
         <div className={`absolute top-20 left-1/2 w-2 h-2 bg-[#ffd700]/70 rounded-full transition-all duration-[2200ms] delay-1400 ${doctorsCardsVisible ? 'opacity-100 animate-bounce' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-16 right-1/4 w-3 h-3 bg-[#f5deb3]/50 rounded-full transition-all duration-[2800ms] delay-1600 ${doctorsCardsVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute bottom-16 right-1/4 w-3 h-3 bg-[#d4af37]/50 rounded-full transition-all duration-[2800ms] delay-1600 ${doctorsCardsVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
         
         {/* Dynamic Light Rays with Staggered Reveal */}
         <div className={`absolute top-0 left-1/5 w-0.5 h-32 bg-gradient-to-b from-[#daa520]/30 to-transparent transition-all duration-[3000ms] delay-300 ${doctorsCardsVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}></div>
         <div className={`absolute top-0 right-1/4 w-0.5 h-24 bg-gradient-to-b from-[#ffd700]/25 to-transparent transition-all duration-[3200ms] delay-600 ${doctorsCardsVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}></div>
         <div className={`absolute bottom-0 left-1/3 w-0.5 h-28 bg-gradient-to-t from-[#daa520]/20 to-transparent transition-all duration-[3400ms] delay-900 ${doctorsCardsVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}></div>
         <div className={`absolute top-0 right-1/6 w-0.5 h-20 bg-gradient-to-b from-[#ffd700]/35 to-transparent transition-all duration-[3100ms] delay-1100 ${doctorsCardsVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}></div>
-        
+      </section>
+
+      {/* Enhanced Doctors Cards Section */}
+      <section ref={doctorsCardsRef} className="py-16 xs:py-20 sm:py-28 md:py-32 bg-theme-primary relative overflow-hidden">
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.4\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'1\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
         
@@ -758,9 +747,7 @@ export default function OptimizedMedicalPage() {
               return (
                 <div
                   key={index}
-                  className={`group transition-all duration-[1500ms] ease-out transform ${
-                    doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-90'
-                  }`}
+                  className={`group transition-all duration-[1500ms] ease-out transform ${doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
                   style={{ transitionDelay: `${doctor.delay}ms` }}
                 >
                   <div className="relative bg-gradient-to-br from-theme-primary/95 to-[#fff8dc]/80 group-hover:from-theme-primary group-hover:to-[#fffacd] transition-all duration-700 p-8 rounded-3xl shadow-xl border border-[#daa520] group-hover:border-[#ffd700] group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden backdrop-blur-sm">
