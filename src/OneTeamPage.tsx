@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { MapPin, ArrowRight, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
+import { MapPin, ArrowRight, Clock, Award, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
+import { motion } from 'framer-motion';
 
 export default function OptimizedMedicalPage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -519,115 +520,283 @@ export default function OptimizedMedicalPage() {
           </div>
         </div>
       </section>
-
+      
       {/* Doctors Section */}
       <section
         ref={doctorsSectionRef}
-        className="relative py-16 xs:py-20 sm:py-28 md:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden bg-theme-primary"
+        className="relative py-16 xs:py-20 sm:py-28 md:py-32 min-h-[90vh] bg-theme-primary overflow-hidden"
       >
-        {/* Animated Background with Parallax Effect */}
-        <div
-          className={`absolute inset-0 w-full h-full bg-center bg-cover transition-all duration-300 ease-out transform ${
-            doctorsVisible ? 'scale-105 opacity-100' : 'scale-110 opacity-80'
-          }`}
-          style={{ 
-            backgroundImage: `url(${doctorsImg})`, 
-            filter: 'brightness(0.75) contrast(1.3) saturate(1.1)',
-            backgroundAttachment: 'fixed'
-          }}
-          aria-hidden="true"
-        ></div>
+        {/* Floating Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={doctorsVisible ? { 
+                opacity: [0.2, 0.5, 0.2], 
+                scale: [0.5, 1, 0.5],
+                x: [0, Math.random() * 100 - 50, 0],
+                y: [0, Math.random() * 50 - 25, 0]
+              } : { opacity: 0, scale: 0 }}
+              transition={{
+                duration: 6 + Math.random() * 3,
+                delay: i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className={`absolute w-2 h-2 bg-[#daa520] rounded-full blur-sm`}
+              style={{
+                top: `${10 + Math.random() * 80}%`,
+                left: `${5 + Math.random() * 90}%`,
+              }}
+            />
+          ))}
+        </div>
         
-        {/* Dynamic Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 via-slate-800/20 to-slate-900/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-slate-900/30"></div>
-        
-        {/* Enhanced Floating Elements with Staggered Animation */}
-        <div className={`absolute top-20 left-10 w-4 h-4 bg-[#daa520]/70 rounded-full transition-all duration-[2000ms] delay-300 ${doctorsVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute top-40 right-20 w-3 h-3 bg-[#ffd700]/60 rounded-full transition-all duration-[2200ms] delay-500 ${doctorsVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-32 left-20 w-5 h-5 bg-[#f5deb3]/50 rounded-full transition-all duration-[2400ms] delay-700 ${doctorsVisible ? 'opacity-100 animate-bounce' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute top-60 right-40 w-2 h-2 bg-[#daa520]/80 rounded-full transition-all duration-[1800ms] delay-900 ${doctorsVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-20 right-16 w-3 h-3 bg-[#ffd700]/40 rounded-full transition-all duration-[2600ms] delay-1100 ${doctorsVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
-        
-        {/* Subtle Light Rays */}
-        <div className={`absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-[#daa520]/20 to-transparent transition-all duration-[2000ms] delay-400 ${doctorsVisible ? 'opacity-100' : 'opacity-0'}`}></div>
-        <div className={`absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-[#f0e68c]/15 to-transparent transition-all duration-[2200ms] delay-600 ${doctorsVisible ? 'opacity-100' : 'opacity-0'}`}></div>
-        
-        {/* Main Content Container */}
-        <div className="relative z-10 max-w-5xl mx-auto px-2 xs:px-4 sm:px-8">
-          <div className={`transition-all duration-300 ease-out transform ${
-            doctorsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'
-          }`}>
-            <div className="bg-theme-primary/15 dark:bg-slate-800/20 backdrop-blur-xl border border-[#daa520] shadow-2xl shadow-slate-900/30 rounded-3xl p-10 sm:p-8 flex flex-col items-center text-center gap-8 relative overflow-hidden">
-              
-              {/* Subtle Inner Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#daa520]/5 via-transparent to-[#ffd700]/5 rounded-3xl"></div>
-              
-              {/* Badge with Enhanced Animation */}
-              <div className={`inline-flex items-center space-x-3 bg-gradient-to-r from-[#fffacd]/90 to-[#fff8dc]/90 text-[#b8860b] px-6 py-3 rounded-full text-sm font-semibold border border-[#daa520]/60 shadow-lg backdrop-blur-sm transition-all duration-[800ms] delay-200 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-                <Stethoscope className="h-5 w-5 text-[#b8860b]" />
-                <span className="tracking-wide ">Our Medical Team</span>
-              </div>
-              
-              {/* Main Heading with Enhanced Typography */}
-              <h3 className={`text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-4 transition-all duration-[1000ms] delay-400 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                Meet Our{' '}
-                <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-[#daa520] via-[#ffd700] to-[#daa520] bg-clip-text text-transparent drop-shadow-2xl animate-pulse">
-                    Dedicated Doctors
-                  </span>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#daa520]/30 via-[#ffd700]/30 to-[#daa520]/30 blur-xl opacity-70 animate-pulse"></div>
-                </span>
-              </h3>
-              
-              {/* Description with Better Readability */}
-              <p className={`text-xl sm:text-2xl text-white max-w-3xl mx-auto leading-relaxed mb-4 font-light transition-all duration-[1000ms] delay-600 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                Our team of experienced and compassionate healthcare professionals is committed to providing 
-                <span className="text-[#f0e68c] font-medium"> personalized, world-class medical care</span> for you and your family.
-              </p>
-              
-              {/* Decorative Divider */}
-              <div className={`w-24 h-0.5 bg-gradient-to-r from-transparent via-[#daa520]/60 to-transparent my-4 transition-all duration-[800ms] delay-800 ${doctorsVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}></div>
-              
-              {/* Secondary Heading */}
-              <h4 className={`text-3xl sm:text-4xl font-bold text-white mt-4 mb-3 transition-all duration-[1000ms] delay-1000 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                Ready to Meet Your{' '}
-                <span className="text-[#daa520]">Healthcare Team?</span>
-              </h4>
-              
-              {/* Secondary Description */}
-              <p className={`text-lg sm:text-xl text-white mb-6 max-w-2xl mx-auto leading-relaxed transition-all duration-[1000ms] delay-1200 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our 
-                <span className="text-[#d4af37] font-medium"> state-of-the-art facility.</span>
-              </p>
-              
-              {/* Enhanced Action Buttons */}
-              <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mt-4 transition-all duration-[1000ms] delay-1400 ${doctorsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <button
-                  className="group relative px-10 py-4 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-slate-900 font-bold rounded-xl transition-all duration-300 hover:from-[#ffd700] hover:to-[#f0e68c] hover:shadow-2xl hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform active:scale-95 overflow-hidden"
-                  onClick={handleBookAppointment}
-                  aria-label="Book Your Appointment"
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[80vh]">
+            
+            {/* Image Section - Left Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -100, scale: 0.8 }}
+              animate={doctorsVisible ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -100, scale: 0.8 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                {/* Image Container */}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="relative"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="relative flex items-center space-x-3">
-                    <span className="text-lg">Book Appointment</span>
-                    <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
-                  </span>
-                </button>
+                  <img 
+                    src={doctorsImg} 
+                    alt="Our Medical Team"
+                    className="w-full h-[500px] lg:h-[600px] object-cover object-center rounded-3xl"
+                    style={{ imageRendering: 'auto' }}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  
+                  {/* Subtle overlay for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-slate-900/20"></div>
+                </motion.div>
                 
-                <a
-                  href="tel:+16476602591"
-                  className="group relative px-10 py-4 bg-gradient-to-r from-slate-700/80 to-slate-800/80 text-white font-bold rounded-xl transition-all duration-300 hover:from-slate-600/80 hover:to-slate-700/80 hover:shadow-2xl hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-slate-400/50 backdrop-blur-sm border border-slate-500/30 transform active:scale-95 overflow-hidden"
-                  aria-label="Call Now"
+                {/* Floating Badge on Image */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  animate={doctorsVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.8 }}
+                  transition={{ duration: 0.8, delay: 1.0 }}
+                  className="absolute top-6 left-6 bg-white/95 backdrop-blur-lg rounded-2xl px-4 py-3 shadow-xl border border-[#daa520]/30"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="relative flex items-center space-x-3">
-                    <Phone className="h-6 w-6 group-hover:animate-pulse" />
-                    <span className="text-lg">Call Now</span>
-                  </span>
-                </a>
+                  <div className="flex items-center space-x-2">
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <Stethoscope className="h-5 w-5 text-[#b8860b]" />
+                    </motion.div>
+                    <span className="text-[#b8860b] font-semibold text-sm">Medical Excellence</span>
+                  </div>
+                </motion.div>
+                
+                {/* Stats Badge */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20, scale: 0.8 }}
+                  animate={doctorsVisible ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 20, scale: 0.8 }}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                  className="absolute bottom-6 right-6 bg-gradient-to-r from-[#daa520] to-[#ffd700] rounded-2xl px-4 py-3 shadow-xl"
+                >
+                  <div className="text-slate-900 font-bold text-sm">
+                    <div className="text-2xl font-black">Expert</div>
+                    <div className="text-xl">Doctors</div>
+                  </div>
+                </motion.div>
               </div>
-            </div>
+              
+              {/* Decorative Elements around Image */}
+              <motion.div
+                animate={{ 
+                  rotate: [0, 360],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{ 
+                  duration: 20, 
+                  repeat: Infinity, 
+                  ease: "linear" 
+                }}
+                className="absolute -top-4 -right-4 w-8 h-8 border-2 border-[#daa520] rounded-full opacity-60"
+              />
+              <motion.div
+                animate={{ 
+                  rotate: [360, 0],
+                  scale: [1, 0.9, 1]
+                }}
+                transition={{ 
+                  duration: 15, 
+                  repeat: Infinity, 
+                  ease: "linear" 
+                }}
+                className="absolute -bottom-6 -left-6 w-12 h-12 border-2 border-[#ffd700] rounded-full opacity-40"
+              />
+            </motion.div>
+              
+            {/* Content Section - Right Side */}
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              animate={doctorsVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+              className="relative z-10 space-y-8"
+            >
+              
+              {/* Main Heading */}
+              <div className="space-y-4">
+                <motion.h2
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={doctorsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight"
+                >
+                  Meet Our{' '}
+                  <div className="relative inline-block mt-2">
+                    <motion.span
+                      initial={{ backgroundPosition: "0% 50%" }}
+                      animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="bg-gradient-to-r from-[#daa520] via-[#ffd700] to-[#daa520] bg-[length:200%_100%] bg-clip-text text-transparent drop-shadow-lg"
+                    >
+                      Dedicated Doctors
+                    </motion.span>
+                    <motion.div
+                      animate={{ opacity: [0.3, 0.7, 0.3] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -inset-2 bg-gradient-to-r from-[#daa520]/20 via-[#ffd700]/20 to-[#daa520]/20 blur-xl rounded-lg -z-10"
+                    />
+                  </div>
+                </motion.h2>
+              </div>
+              
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={doctorsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+                className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-xl"
+              >
+                Our team of experienced and compassionate healthcare professionals is committed to providing 
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={doctorsVisible ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 0.6, delay: 1.4 }}
+                  className="text-[#f0e68c] font-medium"
+                > personalized, world-class medical care</motion.span> for you and your family.
+              </motion.p>
+              
+              {/* Features List */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={doctorsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.8, delay: 1.2 }}
+                className="space-y-4"
+              >
+                {[
+                  { icon: Shield, text: "Board-certified specialists", delay: 1.4 },
+                  { icon: Clock, text: "24/7 emergency care", delay: 1.6 },
+                  { icon: Award, text: "Award-winning patient care", delay: 1.8 }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={doctorsVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    transition={{ duration: 0.6, delay: item.delay }}
+                    className="flex items-center space-x-3 text-white/80"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-[#daa520] to-[#ffd700] rounded-full flex items-center justify-center">
+                      <item.icon className="h-4 w-4 text-slate-900" />
+                    </div>
+                    <span className="text-base font-medium">{item.text}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+              
+              {/* Call to Action */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={doctorsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.8, delay: 2.0 }}
+                className="pt-6"
+              >
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                  Ready to Meet Your{' '}
+                  <span className="text-[#daa520]">Healthcare Team?</span>
+                </h3>
+                
+                <p className="text-base sm:text-lg text-white/80 mb-8 max-w-lg leading-relaxed">
+                  Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our 
+                  <span className="text-[#d4af37] font-medium"> state-of-the-art facility.</span>
+                </p>
+              
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.button
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -2,
+                      boxShadow: "0 20px 40px rgba(218, 165, 32, 0.4)"
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-slate-900 font-bold rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden"
+                    onClick={handleBookAppointment}
+                    aria-label="Book Your Appointment"
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+                      initial={{ opacity: 0, x: '-100%' }}
+                      whileHover={{ opacity: 1, x: '100%' }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <span className="relative flex items-center space-x-3">
+                      <span className="text-lg">Book Appointment</span>
+                      <motion.div
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="h-5 w-5" />
+                      </motion.div>
+                    </span>
+                  </motion.button>
+                  
+                  <motion.a
+                    href="tel:+16476602591"
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -2,
+                      boxShadow: "0 15px 30px rgba(0, 0, 0, 0.3)"
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative px-8 py-4 bg-transparent text-white font-bold rounded-xl border-2 border-white/30 hover:border-white/50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 overflow-hidden"
+                    aria-label="Call Now"
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-white/5"
+                      initial={{ opacity: 0, x: '-100%' }}
+                      whileHover={{ opacity: 1, x: '100%' }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <span className="relative flex items-center space-x-3">
+                      <motion.div
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <Phone className="h-5 w-5" />
+                      </motion.div>
+                      <span className="text-lg">Call Now</span>
+                    </span>
+                  </motion.a>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
