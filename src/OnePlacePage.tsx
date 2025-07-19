@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect } from 'react';
 import { MapPin, Car, Calendar, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';
 import logo2 from './assets/logo2.png';
 import qrCode from './assets/qr.png';
@@ -18,29 +19,30 @@ export default function OnePlacePage() {
   const featuresSectionRef = useRef<HTMLDivElement>(null);
   const mapSectionRef = useRef<HTMLDivElement>(null);
 
-  // Enhanced hero animation with smoother timing (from test.tsx)
+  // Enhanced hero animation with smoother timing (from OneTeamPage)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (heroContentRef.current && heroContentRef.current.children && !heroAnimated) {
-        const heroChildren = Array.from(heroContentRef.current.children) as HTMLElement[];
-        if (heroChildren.length > 0) {
-          heroChildren.forEach((child, index) => {
-            (child as HTMLElement).style.opacity = '0';
-            (child as HTMLElement).style.transform = 'translateY(60px) scale(0.95)';
-            (child as HTMLElement).style.filter = 'blur(2px)';
-            setTimeout(() => {
-              (child as HTMLElement).style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-              (child as HTMLElement).style.opacity = '1';
-              (child as HTMLElement).style.transform = 'translateY(0px) scale(1)';
-              (child as HTMLElement).style.filter = 'blur(0px)';
-            }, 300 + (index * 200));
-          });
-          setHeroAnimated(true);
-        }
+    if (heroContentRef.current && heroContentRef.current.children && !heroAnimated) {
+      const heroChildren = Array.from(heroContentRef.current.children) as HTMLElement[];
+      if (heroChildren.length > 0) {
+        heroChildren.forEach(child => {
+          (child as HTMLElement).style.opacity = '0';
+          (child as HTMLElement).style.transform = 'translateY(60px) scale(0.95)';
+        });
+        heroChildren.forEach((child, index) => {
+          setTimeout(() => {
+            (child as HTMLElement).style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            (child as HTMLElement).style.opacity = '1';
+            (child as HTMLElement).style.transform = 'translateY(0px) scale(1)';
+          }, 300 + (index * 200));
+        });
+        setHeroAnimated(true);
       }
-    }, 100);
-    return () => clearTimeout(timer);
+    }
   }, [heroAnimated]);
+
+  useLayoutEffect(() => {
+    // setHeroVisible(true); // This line is removed as per the new_code
+  }, []);
 
   // Location section animation
   useEffect(() => {
