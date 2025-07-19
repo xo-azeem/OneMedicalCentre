@@ -129,317 +129,324 @@ export default function OptimizedMedicalPage() {
             {/* Logo Section */}
             <div className="flex justify-center lg:justify-end order-1 lg:order-2">
               <div className="relative group">
-                <div className="w-64 sm:w-80 lg:w-[28rem] h-64 sm:h-80 lg:h-[28rem] relative flex items-center justify-center mx-auto rounded-full bg-transparent overflow-hidden">
-                  
-                  {/* Star shine effects */}
-                  <StarShine className="random-star-1" delay={0} />
-                  <StarShine className="random-star-2" delay={1.2} />
-                  <StarShine className="random-star-3" delay={2.1} />
-                  <StarShine className="random-star-4" delay={0.7} />
-                  <StarShine className="random-star-5" delay={1.8} />
-                  <StarShine className="random-star-6" delay={3.2} />
 
-                  <style>{`
-                  /* Random star positioning - fixed positions with 4px blur */
-                  .random-star-1 {
-                    top: 15%;
-                    left: 25%;
-                    filter: blur(4px);
-                  }
-                  .random-star-2 {
-                    top: 70%;
-                    left: 18%;
-                    filter: blur(4px);
-                  }
-                  .random-star-3 {
-                    top: 45%;
-                    left: 77%;
-                    filter: blur(4px);
-                  }
-                  .random-star-4 {
-                    top: 19%;
-                    left: 65%;
-                    filter: blur(4px);
-                  }
-                  .random-star-5 {
-                    top: 76%;
-                    left: 45%;
-                    filter: blur(4px);
-                  }
-                  .random-star-6 {
-                    top: 35%;
-                    left: 10%;
-                    filter: blur(4px);
-                  }
-                
-                  @keyframes bg-pulse {
-                    0%, 100% { filter: blur(32px) brightness(1); opacity: 0.7; }
-                    50% { filter: blur(48px) brightness(1.15); opacity: 1; }
-                  }
-                  .animate-bg-pulse {
-                    animation: bg-pulse 6s infinite ease-in-out;
-                  }
+                {/* Square Container with Border */}
+                <div className="w-64 sm:w-80 lg:w-[28rem] h-64 sm:h-80 lg:h-[28rem] border-2 border-[#d4af37]/50 rounded-lg shadow-lg transition-all duration-300 group-hover:border-[#d4af37]/70 group-hover:shadow-xl group-hover:shadow-[#d4af37]/20 bg-gradient-to-br from-transparent via-[#fffbe6]/5 to-transparent">
 
-                  @keyframes glisten-spot2 {
-                    0% {
-                      left: -10%;
-                      top: 80%;
-                      opacity: 0.05;
-                      transform: scale(0.5);
-                    }
-                    40% {
-                      opacity: 0.4;
-                      transform: scale(0.7);
-                    }
-                    60% {
-                      left: 60%;
-                      top: 40%;
-                      opacity: 0.7;
-                      transform: scale(1);
-                    }
-                    80% {
-                      opacity: 0.3;
-                      transform: scale(0.7);
-                    }
-                    100% {
-                      left: 120%;
-                      top: 10%;
-                      opacity: 0.01;
-                      transform: scale(0.4);
-                    }
-                  }
-                  .animate-glisten-spot2 {
-                    animation: glisten-spot2 4.5s infinite cubic-bezier(0.4,0,0.2,1) 1.2s;
-                  }
+                  {/* Inner container for all effects and logo */}
+                  <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg">
 
-                  @keyframes glisten-spot3 {
-                    0% {
-                      left: 0%;
-                      top: 50%;
-                      opacity: 0.08;
-                      transform: scale(0.7);
-                    }
-                    25% {
-                      opacity: 0.3;
-                      transform: scale(0.9);
-                    }
-                    55% {
-                      left: 50%;
-                      top: 10%;
-                      opacity: 0.6;
-                      transform: scale(1.2);
-                    }
-                    80% {
-                      opacity: 0.2;
-                      transform: scale(0.8);
-                    }
-                    100% {
-                      left: 100%;
-                      top: -10%;
-                      opacity: 0.01;
-                      transform: scale(0.5);
-                    }
-                  }
-                  .animate-glisten-spot3 {
-                    animation: glisten-spot3 5.2s infinite cubic-bezier(0.4,0,0.2,1) 2.1s;
-                  }
+                    {/* Star shine effects */}
+                    <StarShine className="random-star-1" delay={0} />
+                    <StarShine className="random-star-2" delay={1.2} />
+                    <StarShine className="random-star-3" delay={2.1} />
+                    <StarShine className="random-star-4" delay={0.7} />
+                    <StarShine className="random-star-5" delay={1.8} />
+                    <StarShine className="random-star-6" delay={3.2} />
 
-                  /* Radial gradient utility for Tailwind (if not present) */
-                  .bg-gradient-radial {
-                    background: radial-gradient(circle, var(--tw-gradient-stops));
-                  }
-
-                  @keyframes star-shine {
-                    0%, 100% {
-                      opacity: 0;
+                    <style>{`
+                    /* Random star positioning - fixed positions with 4px blur */
+                    .random-star-1 {
+                      top: 15%;
+                      left: 25%;
+                      filter: blur(4px);
                     }
-                    50% {
-                      opacity: 1;
+                    .random-star-2 {
+                      top: 70%;
+                      left: 18%;
+                      filter: blur(4px);
                     }
-                  }
-                
-                  .star-shine {
-                    position: relative;
-                    width: 30px;
-                    height: 30px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    animation: star-shine 3s infinite ease-in-out;
-                  }
-                
-                  /* Responsive star sizes */
-                  @media (min-width: 640px) {
+                    .random-star-3 {
+                      top: 45%;
+                      left: 77%;
+                      filter: blur(4px);
+                    }
+                    .random-star-4 {
+                      top: 19%;
+                      left: 65%;
+                      filter: blur(4px);
+                    }
+                    .random-star-5 {
+                      top: 76%;
+                      left: 45%;
+                      filter: blur(4px);
+                    }
+                    .random-star-6 {
+                      top: 35%;
+                      left: 10%;
+                      filter: blur(4px);
+                    }
+                    
+                    @keyframes bg-pulse {
+                      0%, 100% { filter: blur(32px) brightness(1); opacity: 0.7; }
+                      50% { filter: blur(48px) brightness(1.15); opacity: 1; }
+                    }
+                    .animate-bg-pulse {
+                      animation: bg-pulse 6s infinite ease-in-out;
+                    }
+                    
+                    @keyframes glisten-spot2 {
+                      0% {
+                        left: -10%;
+                        top: 80%;
+                        opacity: 0.05;
+                        transform: scale(0.5);
+                      }
+                      40% {
+                        opacity: 0.4;
+                        transform: scale(0.7);
+                      }
+                      60% {
+                        left: 60%;
+                        top: 40%;
+                        opacity: 0.7;
+                        transform: scale(1);
+                      }
+                      80% {
+                        opacity: 0.3;
+                        transform: scale(0.7);
+                      }
+                      100% {
+                        left: 120%;
+                        top: 10%;
+                        opacity: 0.01;
+                        transform: scale(0.4);
+                      }
+                    }
+                    .animate-glisten-spot2 {
+                      animation: glisten-spot2 4.5s infinite cubic-bezier(0.4,0,0.2,1) 1.2s;
+                    }
+                    
+                    @keyframes glisten-spot3 {
+                      0% {
+                        left: 0%;
+                        top: 50%;
+                        opacity: 0.08;
+                        transform: scale(0.7);
+                      }
+                      25% {
+                        opacity: 0.3;
+                        transform: scale(0.9);
+                      }
+                      55% {
+                        left: 50%;
+                        top: 10%;
+                        opacity: 0.6;
+                        transform: scale(1.2);
+                      }
+                      80% {
+                        opacity: 0.2;
+                        transform: scale(0.8);
+                      }
+                      100% {
+                        left: 100%;
+                        top: -10%;
+                        opacity: 0.01;
+                        transform: scale(0.5);
+                      }
+                    }
+                    .animate-glisten-spot3 {
+                      animation: glisten-spot3 5.2s infinite cubic-bezier(0.4,0,0.2,1) 2.1s;
+                    }
+                    
+                    /* Radial gradient utility for Tailwind (if not present) */
+                    .bg-gradient-radial {
+                      background: radial-gradient(circle, var(--tw-gradient-stops));
+                    }
+                    
+                    @keyframes star-shine {
+                      0%, 100% {
+                        opacity: 0;
+                      }
+                      50% {
+                        opacity: 1;
+                      }
+                    }
+                    
                     .star-shine {
-                      width: 40px;
-                      height: 40px;
-                    }
-                  }
-                
-                  @media (min-width: 1024px) {
-                    .star-shine {
-                      width: 50px;
-                      height: 50px;
-                    }
-                  }
-                
-                  .star-ray {
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    width: 8px;
-                    height: 24px;
-                    background: linear-gradient(180deg, #fffbe6 0%, #fffbe6 15%, #d4af37 35%, #d4af37 60%, rgba(255, 215, 0, 0.35) 90%, transparent 100%);
-                    clip-path: polygon(50% 0%, 92% 100%, 8% 100%);
-                    opacity: 0.99;
-                    transform-origin: 50% 100%;
-                    box-shadow:
-                      0 0 32px 12px #fffbe6,
-                      0 0 64px 24px #d4af37,
-                      0 0 48px 12px #fffbe6,
-                      0 0 96px 32px #d4af37,
-                      0 0 24px 6px #fffbe6;
-                  }
-                
-                  /* Responsive star ray sizes */
-                  @media (min-width: 640px) {
-                    .star-ray {
-                      width: 10px;
+                      position: relative;
+                      width: 30px;
                       height: 30px;
-                      box-shadow:
-                        0 0 40px 14px #fffbe6,
-                        0 0 80px 28px #d4af37,
-                        0 0 56px 14px #fffbe6,
-                        0 0 112px 40px #d4af37,
-                        0 0 28px 7px #fffbe6;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      animation: star-shine 3s infinite ease-in-out;
                     }
-                  }
-                
-                  @media (min-width: 1024px) {
+                    
+                    /* Responsive star sizes */
+                    @media (min-width: 640px) {
+                      .star-shine {
+                        width: 40px;
+                        height: 40px;
+                      }
+                    }
+                    
+                    @media (min-width: 1024px) {
+                      .star-shine {
+                        width: 50px;
+                        height: 50px;
+                      }
+                    }
+                    
                     .star-ray {
-                      width: 12px;
-                      height: 38px;
+                      position: absolute;
+                      left: 50%;
+                      top: 50%;
+                      width: 8px;
+                      height: 24px;
+                      background: linear-gradient(180deg, #fffbe6 0%, #fffbe6 15%, #d4af37 35%, #d4af37 60%, rgba(255, 215, 0, 0.35) 90%, transparent 100%);
+                      clip-path: polygon(50% 0%, 92% 100%, 8% 100%);
+                      opacity: 0.99;
+                      transform-origin: 50% 100%;
                       box-shadow:
-                        0 0 48px 16px #fffbe6,
+                        0 0 32px 12px #fffbe6,
+                        0 0 64px 24px #d4af37,
+                        0 0 48px 12px #fffbe6,
                         0 0 96px 32px #d4af37,
-                        0 0 64px 16px #fffbe6,
-                        0 0 128px 48px #d4af37,
-                        0 0 32px 8px #fffbe6;
+                        0 0 24px 6px #fffbe6;
                     }
-                  }
-
-                  .star-ray.ray-1::before,
-                  .star-ray.ray-2::before,
-                  .star-ray.ray-3::before,
-                  .star-ray.ray-4::before {
-                    content: '';
-                    position: absolute;
-                    left: 50%;
-                    top: 0;
-                    width: 12px;
-                    height: 12px;
-                    background: radial-gradient(circle, #fffbe6 0%, #ffd700 60%, transparent 100%);
-                    transform: translate(-50%, -40%);
-                    z-index: 1;
-                    filter: blur(1.5px);
-                    opacity: 0.7;
-                    pointer-events: none;
-                  }
-                
-                  /* Responsive star ray before elements */
-                  @media (min-width: 640px) {
+                    
+                    /* Responsive star ray sizes */
+                    @media (min-width: 640px) {
+                      .star-ray {
+                        width: 10px;
+                        height: 30px;
+                        box-shadow:
+                          0 0 40px 14px #fffbe6,
+                          0 0 80px 28px #d4af37,
+                          0 0 56px 14px #fffbe6,
+                          0 0 112px 40px #d4af37,
+                          0 0 28px 7px #fffbe6;
+                      }
+                    }
+                    
+                    @media (min-width: 1024px) {
+                      .star-ray {
+                        width: 12px;
+                        height: 38px;
+                        box-shadow:
+                          0 0 48px 16px #fffbe6,
+                          0 0 96px 32px #d4af37,
+                          0 0 64px 16px #fffbe6,
+                          0 0 128px 48px #d4af37,
+                          0 0 32px 8px #fffbe6;
+                      }
+                    }
+                    
                     .star-ray.ray-1::before,
                     .star-ray.ray-2::before,
                     .star-ray.ray-3::before,
                     .star-ray.ray-4::before {
-                      width: 15px;
-                      height: 15px;
-                      filter: blur(1.8px);
+                      content: '';
+                      position: absolute;
+                      left: 50%;
+                      top: 0;
+                      width: 12px;
+                      height: 12px;
+                      background: radial-gradient(circle, #fffbe6 0%, #ffd700 60%, transparent 100%);
+                      transform: translate(-50%, -40%);
+                      z-index: 1;
+                      filter: blur(1.5px);
+                      opacity: 0.7;
+                      pointer-events: none;
                     }
-                  }
-                
-                  @media (min-width: 1024px) {
-                    .star-ray.ray-1::before,
-                    .star-ray.ray-2::before,
-                    .star-ray.ray-3::before,
-                    .star-ray.ray-4::before {
-                      width: 18px;
-                      height: 18px;
-                      filter: blur(2px);
+                    
+                    /* Responsive star ray before elements */
+                    @media (min-width: 640px) {
+                      .star-ray.ray-1::before,
+                      .star-ray.ray-2::before,
+                      .star-ray.ray-3::before,
+                      .star-ray.ray-4::before {
+                        width: 15px;
+                        height: 15px;
+                        filter: blur(1.8px);
+                      }
                     }
-                  }
-                
-                  .star-ray.ray-1 { 
-                    transform: translate(-50%, -100%) rotate(0deg); 
-                  }
-                  .star-ray.ray-2 { 
-                    transform: translate(-50%, -100%) rotate(90deg); 
-                  }
-                  .star-ray.ray-3 { 
-                    transform: translate(-50%, -100%) rotate(180deg); 
-                  }
-                  .star-ray.ray-4 { 
-                    transform: translate(-50%, -100%) rotate(270deg); 
-                  }
-                
-                  .star-center {
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    width: 10px;
-                    height: 10px;
-                    background: radial-gradient(circle, #fffbe6 0%, #ffd700 70%, #daa520 100%);
-                    border-radius: 50%;
-                    box-shadow: 
-                      0 0 12px 3px #fffbe6,
-                      0 0 24px 6px #daa520,
-                      0 0 36px 9px rgba(255, 215, 0, 0.2);
-                    opacity: 1;
-                    transform: translate(-50%, -50%);
-                    z-index: 2;
-                  }
-                
-                  /* Responsive star center sizes */
-                  @media (min-width: 640px) {
+                    
+                    @media (min-width: 1024px) {
+                      .star-ray.ray-1::before,
+                      .star-ray.ray-2::before,
+                      .star-ray.ray-3::before,
+                      .star-ray.ray-4::before {
+                        width: 18px;
+                        height: 18px;
+                        filter: blur(2px);
+                      }
+                    }
+                    
+                    .star-ray.ray-1 { 
+                      transform: translate(-50%, -100%) rotate(0deg); 
+                    }
+                    .star-ray.ray-2 { 
+                      transform: translate(-50%, -100%) rotate(90deg); 
+                    }
+                    .star-ray.ray-3 { 
+                      transform: translate(-50%, -100%) rotate(180deg); 
+                    }
+                    .star-ray.ray-4 { 
+                      transform: translate(-50%, -100%) rotate(270deg); 
+                    }
+                    
                     .star-center {
-                      width: 13px;
-                      height: 13px;
+                      position: absolute;
+                      left: 50%;
+                      top: 50%;
+                      width: 10px;
+                      height: 10px;
+                      background: radial-gradient(circle, #fffbe6 0%, #ffd700 70%, #daa520 100%);
+                      border-radius: 50%;
                       box-shadow: 
-                        0 0 14px 3.5px #fffbe6,
-                        0 0 28px 7px #daa520,
-                        0 0 42px 10.5px rgba(255, 215, 0, 0.2);
+                        0 0 12px 3px #fffbe6,
+                        0 0 24px 6px #daa520,
+                        0 0 36px 9px rgba(255, 215, 0, 0.2);
+                      opacity: 1;
+                      transform: translate(-50%, -50%);
+                      z-index: 2;
                     }
-                  }
-                
-                  @media (min-width: 1024px) {
-                    .star-center {
-                      width: 16px;
-                      height: 16px;
-                      box-shadow: 
-                        0 0 16px 4px #fffbe6,
-                        0 0 32px 8px #daa520,
-                        0 0 48px 12px rgba(255, 215, 0, 0.2);
+                    
+                    /* Responsive star center sizes */
+                    @media (min-width: 640px) {
+                      .star-center {
+                        width: 13px;
+                        height: 13px;
+                        box-shadow: 
+                          0 0 14px 3.5px #fffbe6,
+                          0 0 28px 7px #daa520,
+                          0 0 42px 10.5px rgba(255, 215, 0, 0.2);
+                      }
                     }
-                  }
-                `}</style>
-                
-                  {/* Animated background */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-1/2 h-1/2 rounded-full bg-gradient-to-br from-[#fffbe6]/20 via-[#daa520]/30 to-[#daa520]/20 blur-2xl animate-bg-pulse" />
-                  </div>
+                    
+                    @media (min-width: 1024px) {
+                      .star-center {
+                        width: 16px;
+                        height: 16px;
+                        box-shadow: 
+                          0 0 16px 4px #fffbe6,
+                          0 0 32px 8px #daa520,
+                          0 0 48px 12px rgba(255, 215, 0, 0.2);
+                      }
+                    }
+                  `}</style>
 
-                  {/* Glisten spots */}
-                  <div className="absolute inset-0 pointer-events-none overflow-visible rounded-full">
-                    <div className="absolute w-20 h-20 left-[-10%] top-[80%] bg-gradient-radial from-[#d4af37]/70 via-white/30 to-white/0 rounded-full blur-xl opacity-50 animate-glisten-spot2" />
-                    <div className="absolute w-24 h-24 left-0 top-[50%] bg-gradient-radial from-[#d4af37]/60 via-[#d4af37]/30 to-white/0 rounded-full blur-xl opacity-60 animate-glisten-spot3" />
-                  </div>
+                    {/* Animated background */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="w-1/2 h-1/2 rounded-full bg-gradient-to-br from-[#fffbe6]/20 via-[#daa520]/30 to-[#daa520]/20 blur-2xl animate-bg-pulse" />
+                    </div>
+                    
+                    {/* Glisten spots */}
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                      <div className="absolute w-20 h-20 left-[-10%] top-[80%] bg-gradient-radial from-[#d4af37]/70 via-white/30 to-white/0 rounded-full blur-xl opacity-50 animate-glisten-spot2" />
+                      <div className="absolute w-24 h-24 left-0 top-[50%] bg-gradient-radial from-[#d4af37]/60 via-[#d4af37]/30 to-white/0 rounded-full blur-xl opacity-60 animate-glisten-spot3" />
+                    </div>
+                    
+                    {/* Logo */}
+                    <img 
+                      src={logo2} 
+                      alt="One Medical Centre Hero Logo" 
+                      className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
+                    />
 
-                  {/* Logo */}
-                  <img 
-                    src={logo2} 
-                    alt="One Medical Centre Hero Logo" 
-                    className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
-                  />
+                  </div>
                 </div>
               </div>
             </div>
