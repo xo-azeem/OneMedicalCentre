@@ -6,7 +6,6 @@ import ScrollToTop from './ScrollToTop';
 import OneTeamPage from './OneTeamPage';
 import OnePriorityPage from './OnePriorityPage';
 import OnePlacePage from './OnePlacePage';
-// Removed theme context and provider
 
 function Header() {
   const location = useLocation();
