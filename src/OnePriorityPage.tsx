@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { Heart, Stethoscope, Shield, Award, ArrowRight, Pill, Smile, Eye, Activity, Leaf, Sparkles, Ear, Footprints, Users } from 'lucide-react';
-import logo2 from './assets/logo2.png';
+import { Heart, Stethoscope, Shield, Award, ArrowRight, Pill, ShoppingBag, Eye, Dumbbell, UserCheck, Sparkles, Ear, Footprints, Users } from 'lucide-react';
+import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import DigitalPulse from "./DigitalPulse";
 
 const services = [
   { icon: Stethoscope, name: "Medical Doctors", description: "Comprehensive primary care and specialized medical services with experienced physicians", color: "from-amber-400 to-yellow-500" },
   { icon: Pill, name: "Pharmacy", description: "Full-service pharmacy with prescription medications and health consultations", color: "from-green-400 to-green-600" },
-  { icon: Smile, name: "Medical Products", description: "Including CPAP masks and sleep products", color: "from-teal-400 to-teal-600" },
+  { icon: ShoppingBag, name: "Medical Products", description: "Including CPAP masks and sleep products", color: "from-teal-400 to-teal-600" },
   { icon: Eye, name: "Optometry", description: "Eye exams, vision correction, and comprehensive eye health services", color: "from-purple-400 to-purple-600" },
-  { icon: Activity, name: "Physiotherapy", description: "Rehabilitation and wellness programs for optimal physical health recovery", color: "from-orange-400 to-orange-600" },
-  { icon: Leaf, name: "Men's Health", description: "Specialized care in urology, hormonal therapy, and anti-aging treatments tailored for men", color: "from-emerald-400 to-emerald-600" },
+  { icon: Dumbbell, name: "Physiotherapy", description: "Rehabilitation and wellness programs for optimal physical health recovery", color: "from-orange-400 to-orange-600" },
+  { icon: UserCheck, name: "Men's Health", description: "Specialized care in urology and anti-aging treatments tailored for men", color: "from-emerald-400 to-emerald-600" },
   { icon: Sparkles, name: "Medical Aesthetics", description: "Professional cosmetic treatments and skin rejuvenation services", color: "from-pink-400 to-pink-600" },
   { icon: Ear, name: "Hearing Clinic", description: "Comprehensive hearing assessments and hearing aid services", color: "from-indigo-400 to-indigo-600" },
   { icon: Footprints, name: "Chiropody", description: "Expert foot and ankle care, including assessment, treatment, and prevention of foot disorders", color: "from-amber-400 to-amber-600" },
@@ -191,7 +191,7 @@ export default function OnePriorityPage() {
                     </div>
                     {/* Logo */}
                     <img 
-                      src={logo2} 
+                      src={logo} 
                       alt="One Medical Centre Hero Logo" 
                       className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
                     />

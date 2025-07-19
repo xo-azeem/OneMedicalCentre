@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
-import logo2 from './assets/logo2.png';
+import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
 
@@ -428,7 +428,7 @@ export default function OptimizedMedicalPage() {
                     
                     {/* Logo */}
                     <img 
-                      src={logo2} 
+                      src={logo} 
                       alt="One Medical Centre Hero Logo" 
                       className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
                     />

@@ -1,7 +1,6 @@
 import {useState } from 'react';
 import { Phone } from 'lucide-react';
 import logo from './assets/logo.png';
-import logo2 from './assets/logo2.png';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import OneTeamPage from './OneTeamPage';
@@ -23,7 +22,7 @@ function Header() {
         <div className="mx-auto w-full flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 bg-theme-primary border border-[#daa520] shadow-xl shadow-[#ffd700]/20 rounded-3xl relative overflow-hidden">
           <div className="relative z-10 flex items-center space-x-4">
             <Link to="/" className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-theme-primary border border-theme-primary transition-all duration-300 hover:scale-110">
-              <img src={logo2} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+              <img src={logo} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
             </Link>
             <Link to="/" className="hidden sm:block cursor-pointer group">
               <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300">
@@ -101,13 +100,17 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-4 mb-6">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-theme-primary border border-theme-primary">
-                <img src={logo} alt="One Medical Centre Logo" className="w-full h-full object-contain" />
-              </div>
-              <div>
-                <h5 className="text-xl font-bold text-[#b8860b]">One Medical Centre</h5>
-                <p className="text-[#daa520] text-sm">Complete Healthcare Destination</p>
-              </div>
+              <Link to="/" className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-theme-primary border border-theme-primary transition-all duration-300 hover:scale-110">
+              <img src={logo} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+            </Link>
+            <Link to="/" className="hidden sm:block cursor-pointer group">
+              <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300">
+                One Medical Centre
+              </h1>
+              <p className="text-sm font-semibold text-[#b8860b]/80 group-hover:text-[#daa520] transition-colors duration-300">
+                Complete Healthcare Destination
+              </p>
+            </Link>
             </div>
             <p className="leading-relaxed text-lg max-w-md text-theme-secondary">
               Your trusted healthcare partner in Mississauga, offering comprehensive medical services under one roof with a focus on quality care and patient satisfaction.

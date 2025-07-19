@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLayoutEffect } from 'react';
 import { MapPin, Car, Calendar, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';
-import logo2 from './assets/logo2.png';
+import logo from './assets/logo.png';
 import qrCode from './assets/qr.png';
 import DigitalPulse from "./DigitalPulse";
 
@@ -233,7 +233,7 @@ export default function OnePlacePage() {
                     </div>
                     {/* Logo */}
                     <img 
-                      src={logo2} 
+                      src={logo} 
                       alt="One Medical Centre Hero Logo" 
                       className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
                     />
