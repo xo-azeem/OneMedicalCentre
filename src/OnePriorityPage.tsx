@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Heart, Stethoscope, Shield, Award, MapPin, ArrowRight, Phone, Mail, Car, Pill, Smile, Eye, Activity, Leaf, Sparkles, Ear, Footprints, Users } from 'lucide-react';
+import { Heart, Stethoscope, Shield, Award, ArrowRight, Pill, Smile, Eye, Activity, Leaf, Sparkles, Ear, Footprints, Users } from 'lucide-react';
 import logo2 from './assets/logo2.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import DigitalPulse from "./DigitalPulse";
@@ -104,6 +104,19 @@ export default function OnePriorityPage() {
     window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
   };
 
+  // Add StarShine component from OneTeamPage
+  const StarShine = ({ className, delay }: { className: string; delay: number }) => (
+    <div className={`pointer-events-none absolute z-20 ${className}`}>
+      <div className="star-shine" style={{ animationDelay: `${delay}s` }}>
+        <div className="star-ray ray-1"></div>
+        <div className="star-ray ray-2"></div>
+        <div className="star-ray ray-3"></div>
+        <div className="star-ray ray-4"></div>
+        <div className="star-center"></div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-black relative">
       {/* Margin area above hero for all screens */}
@@ -111,53 +124,79 @@ export default function OnePriorityPage() {
       {/* Hero Section with Tagline */}
       <section ref={heroRef} className="relative bg-black py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden">
         <div className="absolute inset-0 bg-black"></div>
+
         {/* Floating decorative elements */}
-        <div className="absolute top-20 left-10 w-4 h-4 bg-[#d4af37]/30 rounded-full transition-all duration-[2000ms] delay-300 animate-ping opacity-60"></div>
+        {/* <div className="absolute top-20 left-10 w-4 h-4 bg-[#d4af37]/30 rounded-full transition-all duration-[2000ms] delay-300 animate-ping opacity-60"></div>
         <div className="absolute top-40 right-20 w-3 h-3 bg-[#d4af37]/20 rounded-full transition-all duration-[2200ms] delay-500 animate-pulse opacity-40"></div>
         <div className="absolute bottom-32 left-20 w-5 h-5 bg-[#d4af37]/10 rounded-full transition-all duration-[2400ms] delay-700 animate-bounce"></div>
-        <div className="absolute bottom-20 right-10 w-3 h-3 bg-[#d4af37]/10 rounded-full transition-all duration-[2600ms] delay-1100 animate-ping"></div>
+        <div className="absolute bottom-20 right-10 w-3 h-3 bg-[#d4af37]/10 rounded-full transition-all duration-[2600ms] delay-1100 animate-ping"></div> */}
 
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={heroContentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Right Content - Logo with Main Page Hero Style */}
             <div className="flex justify-center lg:justify-end mt-8 lg:mt-0 order-1 lg:order-2">
-              <div className="relative flex items-center justify-center mb-4">
-                {/* Logo container*/}
-                <div className="w-64 sm:w-80 lg:w-[28rem] h-64 sm:h-80 lg:h-[28rem] relative flex items-center justify-center mx-auto rounded-full bg-transparent overflow-hidden">
-                  <img
-                    src={logo2}
-                    alt="One Medical Centre Logo"
-                    className="w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain relative z-10 transition-transform duration-300"
-                  />
+              <div className="relative group">
+                {/* Square Container with Border (copied from OneTeamPage) */}
+                <div className="w-80 sm:w-80 lg:w-[28rem] h-80 sm:h-80 lg:h-[28rem] border-2 border-[#d4af37]/50 rounded-lg shadow-lg transition-all duration-300 group-hover:border-[#d4af37]/70 group-hover:shadow-xl group-hover:shadow-[#d4af37]/20 bg-gradient-to-br from-transparent via-[#fffbe6]/5 to-transparent">
+                  {/* Inner container for all effects and logo */}
+                  <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg">
+                    {/* Star shine effects */}
+                    <StarShine className="random-star-1" delay={0} />
+                    <StarShine className="random-star-2" delay={1.2} />
+                    <StarShine className="random-star-3" delay={2.1} />
+                    <StarShine className="random-star-4" delay={0.7} />
+                    <StarShine className="random-star-5" delay={1.8} />
+                    <StarShine className="random-star-6" delay={3.2} />
+                    <style>{`
+                    .random-star-1 { top: 15%; left: 25%; filter: blur(4px); }
+                    .random-star-2 { top: 70%; left: 18%; filter: blur(4px); }
+                    .random-star-3 { top: 45%; left: 77%; filter: blur(4px); }
+                    .random-star-4 { top: 19%; left: 65%; filter: blur(4px); }
+                    .random-star-5 { top: 76%; left: 45%; filter: blur(4px); }
+                    .random-star-6 { top: 35%; left: 10%; filter: blur(4px); }
+                    @keyframes bg-pulse { 0%, 100% { filter: blur(32px) brightness(1); opacity: 0.7; } 50% { filter: blur(48px) brightness(1.15); opacity: 1; } }
+                    .animate-bg-pulse { animation: bg-pulse 6s infinite ease-in-out; }
+                    @keyframes glisten-spot2 { 0% { left: -10%; top: 80%; opacity: 0.05; transform: scale(0.5); } 40% { opacity: 0.4; transform: scale(0.7); } 60% { left: 60%; top: 40%; opacity: 0.7; transform: scale(1); } 80% { opacity: 0.3; transform: scale(0.7); } 100% { left: 120%; top: 10%; opacity: 0.01; transform: scale(0.4); } }
+                    .animate-glisten-spot2 { animation: glisten-spot2 4.5s infinite cubic-bezier(0.4,0,0.2,1) 1.2s; }
+                    @keyframes glisten-spot3 { 0% { left: 0%; top: 50%; opacity: 0.08; transform: scale(0.7); } 25% { opacity: 0.3; transform: scale(0.9); } 55% { left: 50%; top: 10%; opacity: 0.6; transform: scale(1.2); } 80% { opacity: 0.2; transform: scale(0.8); } 100% { left: 100%; top: -10%; opacity: 0.01; transform: scale(0.5); } }
+                    .animate-glisten-spot3 { animation: glisten-spot3 5.2s infinite cubic-bezier(0.4,0,0.2,1) 2.1s; }
+                    .bg-gradient-radial { background: radial-gradient(circle, var(--tw-gradient-stops)); }
+                    @keyframes star-shine { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+                    .star-shine { position: relative; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; animation: star-shine 3s infinite ease-in-out; }
+                    @media (min-width: 640px) { .star-shine { width: 40px; height: 40px; } }
+                    @media (min-width: 1024px) { .star-shine { width: 50px; height: 50px; } }
+                    .star-ray { position: absolute; left: 50%; top: 50%; width: 8px; height: 24px; background: linear-gradient(180deg, #fffbe6 0%, #fffbe6 15%, #d4af37 35%, #d4af37 60%, rgba(255, 215, 0, 0.35) 90%, transparent 100%); clip-path: polygon(50% 0%, 92% 100%, 8% 100%); opacity: 0.99; transform-origin: 50% 100%; box-shadow: 0 0 32px 12px #fffbe6, 0 0 64px 24px #d4af37, 0 0 48px 12px #fffbe6, 0 0 96px 32px #d4af37, 0 0 24px 6px #fffbe6; }
+                    @media (min-width: 640px) { .star-ray { width: 10px; height: 30px; box-shadow: 0 0 40px 14px #fffbe6, 0 0 80px 28px #d4af37, 0 0 56px 14px #fffbe6, 0 0 112px 40px #d4af37, 0 0 28px 7px #fffbe6; } }
+                    @media (min-width: 1024px) { .star-ray { width: 12px; height: 38px; box-shadow: 0 0 48px 16px #fffbe6, 0 0 96px 32px #d4af37, 0 0 64px 16px #fffbe6, 0 0 128px 48px #d4af37, 0 0 32px 8px #fffbe6; } }
+                    .star-ray.ray-1::before, .star-ray.ray-2::before, .star-ray.ray-3::before, .star-ray.ray-4::before { content: ''; position: absolute; left: 50%; top: 0; width: 12px; height: 12px; background: radial-gradient(circle, #fffbe6 0%, #ffd700 60%, transparent 100%); transform: translate(-50%, -40%); z-index: 1; filter: blur(1.5px); opacity: 0.7; pointer-events: none; }
+                    @media (min-width: 640px) { .star-ray.ray-1::before, .star-ray.ray-2::before, .star-ray.ray-3::before, .star-ray.ray-4::before { width: 15px; height: 15px; filter: blur(1.8px); } }
+                    @media (min-width: 1024px) { .star-ray.ray-1::before, .star-ray.ray-2::before, .star-ray.ray-3::before, .star-ray.ray-4::before { width: 18px; height: 18px; filter: blur(2px); } }
+                    .star-ray.ray-1 { transform: translate(-50%, -100%) rotate(0deg); }
+                    .star-ray.ray-2 { transform: translate(-50%, -100%) rotate(90deg); }
+                    .star-ray.ray-3 { transform: translate(-50%, -100%) rotate(180deg); }
+                    .star-ray.ray-4 { transform: translate(-50%, -100%) rotate(270deg); }
+                    .star-center { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; background: radial-gradient(circle, #fffbe6 0%, #ffd700 70%, #daa520 100%); border-radius: 50%; box-shadow: 0 0 12px 3px #fffbe6, 0 0 24px 6px #daa520, 0 0 36px 9px rgba(255, 215, 0, 0.2); opacity: 1; transform: translate(-50%, -50%); z-index: 2; }
+                    @media (min-width: 640px) { .star-center { width: 13px; height: 13px; box-shadow: 0 0 14px 3.5px #fffbe6, 0 0 28px 7px #daa520, 0 0 42px 10.5px rgba(255, 215, 0, 0.2); } }
+                    @media (min-width: 1024px) { .star-center { width: 16px; height: 16px; box-shadow: 0 0 16px 4px #fffbe6, 0 0 32px 8px #daa520, 0 0 48px 12px rgba(255, 215, 0, 0.2); } }
+                    `}</style>
+                    {/* Animated background */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="w-1/2 h-1/2 rounded-full bg-gradient-to-br from-[#fffbe6]/20 via-[#daa520]/30 to-[#daa520]/20 blur-2xl animate-bg-pulse" />
+                    </div>
+                    {/* Glisten spots */}
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                      <div className="absolute w-20 h-20 left-[-10%] top-[80%] bg-gradient-radial from-[#d4af37]/70 via-white/30 to-white/0 rounded-full blur-xl opacity-50 animate-glisten-spot2" />
+                      <div className="absolute w-24 h-24 left-0 top-[50%] bg-gradient-radial from-[#d4af37]/60 via-[#d4af37]/30 to-white/0 rounded-full blur-xl opacity-60 animate-glisten-spot3" />
+                    </div>
+                    {/* Logo */}
+                    <img 
+                      src={logo2} 
+                      alt="One Medical Centre Hero Logo" 
+                      className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
+                    />
+                  </div>
                 </div>
-
-                {/* Floating Lucide icons around the logo */}
-                <Heart className="absolute -top-8 left-1/2 -translate-x-1/2 w-8 h-8 text-yellow-400 drop-shadow-lg animate-float-slow" />
-                <MapPin className="absolute top-1/2 -right-10 -translate-y-1/2 w-8 h-8 text-yellow-400 drop-shadow-lg animate-float-medium" />
-                <Phone className="absolute -top-2 -left-10 w-7 h-7 text-yellow-400 drop-shadow-lg animate-float-medium" />
-                <Mail className="absolute -bottom-2 -right-8 w-7 h-7 text-yellow-400 drop-shadow-lg animate-float-slow" />
-                <Car className="absolute -bottom-2 -left-8 w-8 h-8 text-yellow-400 drop-shadow-lg animate-float-fast" />
-                
-                {/* Shimmer and glow keyframes */}
-                <style>{`
-                  @keyframes float-slow { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(2deg); } }
-                  @keyframes float-medium { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(-2deg); } }
-                  @keyframes float-fast { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(1deg); } }
-                  @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.3); } 50% { box-shadow: 0 0 30px rgba(250, 204, 21, 0.5); } }
-                  .animate-float-slow { animation: float-slow 5s ease-in-out infinite; }
-                  .animate-float-medium { animation: float-medium 4s ease-in-out infinite; }
-                  .animate-float-fast { animation: float-fast 3s ease-in-out infinite; }
-                  .animate-glow { animation: glow 3s ease-in-out infinite; }
-                  @keyframes shimmer-light {
-                    0% { opacity: 0.4; }
-                    50% { opacity: 0.8; }
-                    100% { opacity: 0.4; }
-                  }
-                  .animate-shimmer-light {
-                    animation: shimmer-light 2.5s infinite linear;
-                  }
-                `}</style>
               </div>
             </div>
             {/* Left Content */}
