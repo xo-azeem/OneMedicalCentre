@@ -727,7 +727,7 @@ export default function OptimizedMedicalPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-2 xs:px-4 sm:px-6 lg:px-8">
           {/* Enhanced Header with Layered Animation */}
           <div className={`text-center mb-6 mt-0 sm:mt-1`}>
-            <h4 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-2 leading-tight">
+            <h4 className="text-4xl mb-5 sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-2 leading-tight">
               Meet our{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] bg-clip-text text-transparent">
