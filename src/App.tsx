@@ -23,11 +23,11 @@ function Header() {
             <Link to="/" className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-theme-primary border border-theme-primary transition-all duration-300 hover:scale-110">
               <img src={logo} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
             </Link>
-            <Link to="/" className="hidden sm:block cursor-pointer group">
-              <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300">
+            <Link to="/" className="block cursor-pointer group">
+              <h1 className="text-lg sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300">
                 One Medical Centre
               </h1>
-              <p className="text-sm font-semibold text-[#b8860b]/80 group-hover:text-[#daa520] transition-colors duration-300">
+              <p className="text-xs sm:text-sm font-semibold text-[#b8860b]/80 group-hover:text-[#daa520] transition-colors duration-300">
                 Complete Healthcare Destination
               </p>
             </Link>
@@ -102,16 +102,16 @@ function Footer() {
               <Link to="/" className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-theme-primary border border-theme-primary transition-all duration-300 hover:scale-110">
               <img src={logo} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
             </Link>
-            <Link to="/" className="hidden sm:block cursor-pointer group">
-              <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300">
+            <Link to="/" className="block cursor-pointer group">
+              <h1 className="text-lg sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300">
                 One Medical Centre
               </h1>
-              <p className="text-sm font-semibold text-[#b8860b]/80 group-hover:text-[#daa520] transition-colors duration-300">
+              <p className="text-xs sm:text-sm font-semibold text-[#b8860b]/80 group-hover:text-[#daa520] transition-colors duration-300">
                 Complete Healthcare Destination
               </p>
             </Link>
             </div>
-            <p className="leading-relaxed text-lg max-w-md text-theme-secondary">
+            <p className="leading-relaxed text-sm sm:text-base md:text-lg max-w-md text-theme-secondary">
               Your trusted healthcare partner in Mississauga, offering comprehensive medical services under one roof with a focus on quality care and patient satisfaction.
             </p>
           </div>

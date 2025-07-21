@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLayoutEffect } from 'react';
-import { MapPin, Car, Calendar, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';
+import { MapPin, Car, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';
 import logo from './assets/logo.png';
 import qrCode from './assets/qr.png';
 import DigitalPulse from "./DigitalPulse";
@@ -260,7 +260,7 @@ export default function OnePlacePage() {
                   </h3>
                 </div>
                 <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium mt-2 mb-2">
-                  Medical, Dental, Pharmacy, Wellness & More — All Under One Roof for Your Convenience.
+                  Family Doctors, Medical Specialists, Pharmacy & More — All Under One Roof for Your Convenience.
                 </p>
               </div>
               {/* Action Buttons */}
@@ -428,21 +428,6 @@ export default function OnePlacePage() {
                     <div>
                       <p className="text-sm text-gray-300">Email us at</p>
                       <p className="text-lg font-semibold text-white">onemedicalmississauga@gmail.com</p>
-                    </div>
-                  </a>
-                  
-                  <a
-                    href="https://onemedicalcentre.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-gray-300 hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
-                  >
-                    <div className="bg-[#fffacd] dark:bg-[#b8860b] rounded-xl p-3 transition-all duration-300">
-                      <Calendar className="h-6 w-6 text-[#d4af37] dark:text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-300">Book online at</p>
-                      <p className="text-lg font-semibold text-white">onemedicalcentre.com</p>
                     </div>
                   </a>
                 </div>
