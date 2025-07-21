@@ -847,101 +847,39 @@ export default function OptimizedMedicalPage() {
         </div>
       </section>
 
-      <section className="relative pt-0 sm:pt-0 md:pt-0 pb-6 sm:pb-10 md:pb-14 bg-gradient-to-b from-theme-primary via-[#18181b] to-[#18181b] overflow-hidden" style={{ borderTop: '2px solid rgba(218, 165, 32, 0.13)' }}>
-        {/* Enhanced Gold Accent Background */}
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="absolute left-1/2 top-0 w-[32rem] h-[32rem] -translate-x-1/2 -translate-y-1/3 bg-gradient-radial from-[#daa520]/10 via-[#18181b]/0 to-transparent rounded-full blur-3xl animate-pulse" />
-          <div className="absolute right-10 bottom-0 w-40 h-40 bg-gradient-to-br from-[#ffd700]/10 to-transparent rounded-full blur-2xl animate-pulse" />
-        </div>
+      <section className="relative pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-12 md:pb-16 bg-theme-primary overflow-hidden border-t-2 border-[#daa520]/20">
         {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 1.1, ease: "easeOut" }}
-          className="relative z-10 max-w-2xl mx-auto text-center px-4 sm:px-0 mt-0"
-        >
-          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-white mb-3 sm:mb-4 drop-shadow-lg whitespace-nowrap tracking-tight">
-            Ready to Meet Your{' '}
-            <span className="relative inline-block shimmer-text">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#daa520] to-[#ffd700]">Healthcare Team?</span>
-              
-            </span>
+        <div className="max-w-2xl mx-auto text-center px-4 sm:px-0">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">
+            Ready to Meet Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#daa520] to-[#ffd700]">Healthcare Team?</span>
           </h3>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 mb-6 sm:mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed font-medium">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
             Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our
             <span className="text-[#d4af37] font-semibold"> state-of-the-art facility.</span>
           </p>
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center">
-            <motion.button
-              whileHover={{
-                scale: 1.09,
-                y: -4,
-                boxShadow: "0 12px 36px 0 rgba(218, 165, 32, 0.22)"
-              }}
-              whileTap={{ scale: 0.97 }}
-              className="group relative px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-slate-900 font-bold rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden shadow-2xl shadow-[#ffd700]/20 hover:shadow-[#ffd700]/40 text-sm sm:text-base md:text-lg border border-[#ffd700]/30"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              className="group relative px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-slate-900 font-bold rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden shadow-xl shadow-[#ffd700]/20 hover:shadow-[#ffd700]/30 text-base sm:text-lg md:text-xl"
               onClick={handleBookAppointment}
               aria-label="Book Your Appointment"
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent"
-                initial={{ opacity: 0, x: '-100%' }}
-                whileHover={{ opacity: 1, x: '100%' }}
-                transition={{ duration: 0.6 }}
-              />
-              <span className="relative flex items-center space-x-2 sm:space-x-3">
-                <span className="text-base sm:text-lg md:text-xl">Book Appointment</span>
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
-                </motion.div>
+              <span className="flex items-center space-x-3">
+                <span>Book Appointment</span>
+                <ArrowRight className="h-5 w-5" />
               </span>
-            </motion.button>
-            <motion.a
+            </button>
+            <a
               href="tel:+16476602591"
-              whileHover={{
-                scale: 1.09,
-                y: -4,
-                boxShadow: "0 12px 36px 0 rgba(218, 165, 32, 0.22)"
-              }}
-              whileTap={{ scale: 0.97 }}
-              className="group relative px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 bg-transparent text-white font-bold rounded-2xl border-2 border-white/20 hover:border-[#ffd700] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 overflow-hidden shadow-xl shadow-[#ffd700]/20 hover:shadow-[#ffd700]/40 text-sm sm:text-base md:text-lg"
+              className="group relative px-8 py-4 bg-transparent text-white font-bold rounded-2xl border-2 border-white/20 hover:border-[#ffd700] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 overflow-hidden shadow-lg shadow-[#ffd700]/10 hover:shadow-[#ffd700]/30 text-base sm:text-lg md:text-xl"
               aria-label="Call Now"
             >
-              <motion.div
-                className="absolute inset-0 bg-white/5"
-                initial={{ opacity: 0, x: '-100%' }}
-                whileHover={{ opacity: 1, x: '100%' }}
-                transition={{ duration: 0.6 }}
-              />
-              <span className="relative flex items-center space-x-2 sm:space-x-3">
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Phone className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
-                </motion.div>
-                <span className="text-base sm:text-lg md:text-xl">Call Now</span>
+              <span className="flex items-center space-x-3">
+                <Phone className="h-5 w-5" />
+                <span>Call Now</span>
               </span>
-            </motion.a>
+            </a>
           </div>
-        </motion.div>
-        <style>{`
-          @keyframes shimmer {
-            0% { opacity: 0; left: -40%; }
-            40% { opacity: 0.7; left: 60%; }
-            100% { opacity: 0; left: 120%; }
-          }
-          .shimmer-anim {
-            pointer-events: none;
-            animation: shimmer 2.5s infinite linear;
-            z-index: 2;
-          }
-        `}</style>
+        </div>
       </section>
     </div>
   );
