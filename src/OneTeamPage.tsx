@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { MapPin, ArrowRight, Clock, Award, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
+import { MapPin, ArrowRight, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
@@ -126,14 +126,14 @@ export default function OptimizedMedicalPage() {
 
                     {/* Star shine effects */}
                     <StarShine className="random-star-1" delay={0} />
-                    <StarShine className="random-star-2" delay={1.2} />
-                    <StarShine className="random-star-3" delay={2.1} />
-                    <StarShine className="random-star-4" delay={0.7} />
-                    <StarShine className="random-star-5" delay={1.8} />
+                    <StarShine className="random-star-2" delay={1.8} />
+                    <StarShine className="random-star-3" delay={0.9} />
+                    <StarShine className="random-star-4" delay={2.2} />
+                    <StarShine className="random-star-5" delay={2.8} />
                     <StarShine className="random-star-6" delay={3.2} />
 
                     <style>{`
-                    /* Random star positioning - fixed positions with 4px blur */
+                    /* Desktop star positioning - fixed positions with 4px blur */
                     .random-star-1 {
                       top: 15%;
                       left: 25%;
@@ -164,7 +164,78 @@ export default function OptimizedMedicalPage() {
                       left: 10%;
                       filter: blur(4px);
                     }
-                    
+                                        
+                    /* Mobile star positioning - optimized for smaller screens */
+                    @media (max-width: 768px) {
+                      .random-star-1 {
+                        top: 22%;
+                        left: 30%;
+                        filter: blur(3px);
+                      }
+                      .random-star-2 {
+                        top: 65%;
+                        left: 17%;
+                        filter: blur(3px);
+                      }
+                      .random-star-3 {
+                        top: 55%;
+                        left: 73%;
+                        filter: blur(3px);
+                      }
+                      .random-star-4 {
+                        top: 22%;
+                        left: 70%;
+                        filter: blur(3px);
+                      }
+                      .random-star-5 {
+                        display: none;
+                        top: 78%;
+                        left: 42%;
+                        filter: blur(3px);
+                      }
+                      .random-star-6 {
+                        display:none;
+                        top: 38%;
+                        left: 12%;
+                        filter: blur(3px);
+                      }
+                    }
+                                        
+                    /* Tablet positioning (optional - for medium screens) */
+                    @media (max-width: 1024px) and (min-width: 769px) {
+                      .random-star-1 {
+                        top: 14%;
+                        left: 23%;
+                        filter: blur(3.5px);
+                      }
+                      .random-star-2 {
+                        top: 68%;
+                        left: 16%;
+                        filter: blur(3.5px);
+                      }
+                      .random-star-3 {
+                        top: 43%;
+                        left: 81%;
+                        filter: blur(3.5px);
+                      }
+                      .random-star-4 {
+                        
+                        top: 14%;
+                        left: 66%;
+                        filter: blur(3.5px);
+                      }
+                      .random-star-5 {
+                        top: 81%;
+                        left: 43%;
+                        filter: blur(3.5px);
+                      }
+                      .random-star-6 {
+                        display: none;
+                        top: 36%;
+                        left: 9%;
+                        filter: blur(3.5px);
+                      }
+                    }      
                     @keyframes bg-pulse {
                       0%, 100% { filter: blur(32px) brightness(1); opacity: 0.7; }
                       50% { filter: blur(48px) brightness(1.15); opacity: 1; }
@@ -567,9 +638,12 @@ export default function OptimizedMedicalPage() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#daa520]/20 via-[#ffd700]/20 to-[#daa520]/20 blur-xl opacity-60 animate-pulse"></div>
               </span>
             </h3>
-            <p className={`text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Team of <span className="text-[#b8860b] font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
-              combining expertise with <span className="text-[#b8860b] font-semibold">compassionate patient-centered approach.</span>
+            {/* <p className={`text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Our team of <span className="text-[#b8860b] font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
+              combining expertise and a <span className="text-[#b8860b] font-semibold">compassionate patient-centered approach.</span>
+            </p> */}
+            <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200">
+              Our specialists are here to provide you with expert, compassionate care across a range of medical fields.
             </p>
           </div>
           {/* Full Width Image Section */}
@@ -660,7 +734,7 @@ export default function OptimizedMedicalPage() {
             transition={{ duration: 1.2, delay: 1, ease: "easeOut" }}
             className="max-w-4xl mx-auto mt-4 mb-6 sm:mt-6 sm:mb-8"
           >
-            {/* Features List - Responsive Grid Layout */}
+            {/* Features List - Responsive Grid Layout
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 justify-items-center">
               {[
                 { icon: Shield, text: "Board-certified specialists", delay: 1.6 },
@@ -692,13 +766,46 @@ export default function OptimizedMedicalPage() {
                   <span className="text-sm sm:text-base font-semibold leading-snug text-center lg:text-left flex-1">{item.text}</span>
                 </motion.div>
               ))}
+            </div> */}
+
+            {/* Call to Action */}
+            <div className="mt-12 max-w-2xl mx-auto text-center px-4 sm:px-0">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">
+                Ready to Meet Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#daa520] to-[#ffd700]">Healthcare Team?</span>
+              </h3>
+              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
+                Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our
+                <span className="text-[#d4af37] font-semibold"> state-of-the-art facility.</span>
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button
+                  className="group relative px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-slate-900 font-bold rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden shadow-xl shadow-[#ffd700]/20 hover:shadow-[#ffd700]/30 text-base sm:text-lg md:text-xl"
+                  onClick={handleBookAppointment}
+                  aria-label="Book Your Appointment"
+                >
+                  <span className="flex items-center space-x-3">
+                    <span>Book Appointment</span>
+                    <ArrowRight className="h-5 w-5" />
+                  </span>
+                </button>
+                <a
+                  href="tel:+16476602591"
+                  className="group relative px-8 py-4 bg-transparent text-white font-bold rounded-2xl border-2 border-white/20 hover:border-[#ffd700] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 overflow-hidden shadow-lg shadow-[#ffd700]/10 hover:shadow-[#ffd700]/30 text-base sm:text-lg md:text-xl"
+                  aria-label="Call Now"
+                >
+                  <span className="flex items-center space-x-3">
+                    <Phone className="h-5 w-5" />
+                    <span>Call Now</span>
+                  </span>
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
       <section className="py-6 xs:py-10 sm:py-12 md:py-14 bg-theme-primary relative overflow-hidden">
-
+        
         {/* Dynamic Background Layers */}
         <div className="absolute inset-0 bg-theme-primary"></div>
         
@@ -736,8 +843,12 @@ export default function OptimizedMedicalPage() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#daa520]/20 via-[#ffd700]/20 to-[#daa520]/20 blur-xl opacity-60 animate-pulse"></div>
               </span>
             </h4>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200">
+            {/* <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200">
               Our specialists are here to provide you with expert, compassionate care across a range of medical fields.
+            </p> */}
+            <p className={`text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Our team of <span className="text-[#b8860b] font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
+              combining expertise and a <span className="text-[#b8860b] font-semibold">compassionate patient-centered approach.</span>
             </p>
           </div>
           
@@ -843,41 +954,6 @@ export default function OptimizedMedicalPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-12 md:pb-16 bg-theme-primary overflow-hidden border-t-2 border-[#daa520]/20">
-        {/* Call to Action */}
-        <div className="max-w-2xl mx-auto text-center px-4 sm:px-0">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">
-            Ready to Meet Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#daa520] to-[#ffd700]">Healthcare Team?</span>
-          </h3>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
-            Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our
-            <span className="text-[#d4af37] font-semibold"> state-of-the-art facility.</span>
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              className="group relative px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-slate-900 font-bold rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden shadow-xl shadow-[#ffd700]/20 hover:shadow-[#ffd700]/30 text-base sm:text-lg md:text-xl"
-              onClick={handleBookAppointment}
-              aria-label="Book Your Appointment"
-            >
-              <span className="flex items-center space-x-3">
-                <span>Book Appointment</span>
-                <ArrowRight className="h-5 w-5" />
-              </span>
-            </button>
-            <a
-              href="tel:+16476602591"
-              className="group relative px-8 py-4 bg-transparent text-white font-bold rounded-2xl border-2 border-white/20 hover:border-[#ffd700] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 overflow-hidden shadow-lg shadow-[#ffd700]/10 hover:shadow-[#ffd700]/30 text-base sm:text-lg md:text-xl"
-              aria-label="Call Now"
-            >
-              <span className="flex items-center space-x-3">
-                <Phone className="h-5 w-5" />
-                <span>Call Now</span>
-              </span>
-            </a>
           </div>
         </div>
       </section>
