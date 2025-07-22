@@ -168,8 +168,8 @@ export default function OptimizedMedicalPage() {
                     /* Mobile star positioning - optimized for smaller screens */
                     @media (max-width: 768px) {
                       .random-star-1 {
-                        top: 22%;
-                        left: 30%;
+                        top: 23%;
+                        left: 20%;
                         filter: blur(3px);
                       }
                       .random-star-2 {
