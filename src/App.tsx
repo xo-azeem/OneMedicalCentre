@@ -6,6 +6,8 @@ import ScrollToTop from './ScrollToTop';
 import OneTeamPage from './OneTeamPage';
 import OnePriorityPage from './OnePriorityPage';
 import OnePlacePage from './OnePlacePage';
+import NewOneTeamPage from './NewOneTeamPage';
+import NewOneTeamPageTwo from './NewOneTeamPageTwo';
 
 function Header() {
   const location = useLocation();
@@ -13,6 +15,8 @@ function Header() {
     { key: '/', label: 'One Team' },
     { key: '/priority', label: 'One Priority' },
     { key: '/place', label: 'One Place' },
+    { key: '/newoneteam', label: 'White' },
+    { key: '/newoneteamtwo', label: 'Grey' },
   ];
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   return (
@@ -160,6 +164,8 @@ function App() {
           <Route path="/" element={<OneTeamPage />} />
           <Route path="/priority" element={<OnePriorityPage />} />
           <Route path="/place" element={<OnePlacePage />} />
+          <Route path="/newoneteam" element={<NewOneTeamPage />} />
+          <Route path="/newoneteamtwo" element={<NewOneTeamPageTwo />} />
         </Routes>
       </main>
       <Footer />
