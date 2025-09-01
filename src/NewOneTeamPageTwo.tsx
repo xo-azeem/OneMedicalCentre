@@ -142,9 +142,9 @@ export default function OptimizedMedicalPage() {
                   <div className="w-80 sm:w-96 md:w-[32rem] h-1 bg-[#F4CE6D] rounded-full opacity-80" />
                 </div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-black leading-snug" style={cossetteFont}>
-                  Your <span className="text-[#F4CE6D] font-bold">Complete Healthcare</span> Destination
+                <span className="text-gray-500 font-bold">Your</span> <span className="text-[#F4CE6D] font-bold">Complete Healthcare</span> <span className="text-gray-500 font-bold">Destination</span>
                 </h2>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal text-justify" style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
                   Just steps from Square One, our modern facility brings you medical care, pharmacy, eye care, physiotherapy, and wellness solutions for all your health concerns in one convenient location.
                 </p>
               </div>
@@ -152,7 +152,7 @@ export default function OptimizedMedicalPage() {
               {/* Action Buttons */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 justify-center lg:justify-start pt-4">
                 <button
-                  className="group w-full px-8 py-4 bg-[#F4CE6D] text-white font-semibold text-lg rounded-2xl transition-all duration-300 hover:bg-[#F4CE6D]/90 hover:shadow-2xl hover:shadow-[#F4CE6D]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#F4CE6D]/50 transform-gpu"
+                  className="group w-full px-8 py-4 bg-[#F4CE6D] text-white font-semibold text-lg rounded-2xl transition-all duration-300 hover:bg-[#F4CE6D]/90 hover:shadow-xl hover:shadow-gray-400/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#F4CE6D]/50 transform-gpu shadow-lg"
                   onClick={handleBookAppointment}
                   aria-label="Book Appointment"
                 >
@@ -176,23 +176,23 @@ export default function OptimizedMedicalPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 pt-0">
                 <a
                   href="tel:+16476602591"
-                  className="flex items-center justify-center space-x-3 bg-gray-100 px-8 py-3 rounded-xl border border-gray-200 text-gray-700 text-base hover:text-gray-900 hover:border-gray-300 hover:shadow-xl hover:shadow-gray-400/30 focus:outline-none focus:ring-4 focus:ring-gray-300/50 transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-sm"
+                  className="flex items-center justify-center space-x-3 bg-white px-8 py-3 rounded-2xl border-2 border-gray-300 text-gray-700 text-base hover:text-gray-900 hover:border-gray-400 hover:shadow-xl hover:shadow-gray-400/30 focus:outline-none focus:ring-4 focus:ring-gray-300/50 transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg"
                   aria-label="Call +647 660 2591"
                 >
                   <div className="p-2">
                     <Phone className="h-6 w-6 text-gray-600" />
                   </div>
-                  <span className="font-medium">Contact Us</span>
+                  <span className="font-semibold">Contact Us</span>
                 </a>
                 <a
                   href="mailto:onemedicalmississauga@gmail.com"
-                  className="flex items-center justify-center space-x-3 bg-gray-100 px-8 py-3 rounded-xl border border-gray-200 text-gray-700 text-base hover:text-gray-900 hover:border-gray-300 hover:shadow-xl hover:shadow-gray-400/30 focus:outline-none focus:ring-4 focus:ring-gray-300/50 transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-sm"
+                  className="flex items-center justify-center space-x-3 bg-white px-8 py-3 rounded-2xl border-2 border-gray-300 text-gray-700 text-base hover:text-gray-900 hover:border-gray-400 hover:shadow-xl hover:shadow-gray-400/30 focus:outline-none focus:ring-4 focus:ring-gray-300/50 transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg"
                   aria-label="Email Us"
                 >
                   <div className="p-2">
                     <Mail className="h-6 w-6 text-gray-600" />
                   </div>
-                  <span className="font-medium">Email Us</span>
+                  <span className="font-semibold">Email Us</span>
                 </a>
               </div>
             </div>
@@ -208,20 +208,19 @@ export default function OptimizedMedicalPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Doctors Section Header and Description */}
           <div className={`text-center mb-5 sm:mb-14 transition-all duration-400 ease-out transform ${doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}>
-            <div className={`inline-flex items-center space-x-3 bg-white text-gray-700 px-8 py-4 rounded-full text-sm font-semibold border border-gray-200 shadow-sm mb-6 ${doctorsCardsVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-4 rotate-3'}`}>
-              <Stethoscope className="h-5 w-5 text-gray-600" />
-              <span className="tracking-wide">Our Medical Experts</span>
-            </div>
             <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F4CE6D] mb-6 leading-tight transition-all duration-300 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={cossetteFont}>
-              Our{' '}
+              OUR{' '}
               <span className="relative inline-block">
                 <span className="text-[#F4CE6D] font-bold">
-                  Expert Doctors
+                  EXPERT DOCTORS
                 </span>
               </span>
             </h3>
-            <p className="text-xl sm:text-2xl text-gray-800 max-w-4xl mx-auto leading-relaxed transition-all duration-200 mb-8">
-              Our specialists are here as <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 font-semibold">One Team</span> to provide you with expert, compassionate care across a range of medical fields.
+            <h4 className="text-2xl sm:text-3xl font-semibold text-gray-700 mb-4 tracking-tight" style={cossetteFont}>
+              ONE TEAM
+            </h4>
+            <p className="text-xl sm:text-2xl text-gray-800 max-w-5xl mx-auto leading-relaxed transition-all duration-200 mb-0 text-justify" style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
+              Our specialists are here as <span className="text-gray-800 font-semibold">One Team</span> to provide you with expert, compassionate care across a range of medical fields. With certified physicians and allied health professionals under one roof, you benefit from <span className="font-bold" >integrated treatment plans</span>, <span className="font-bold">modern diagnostics</span>, and <span className="font-bold">personalized follow-up</span> designed around your goals.
             </p>
           </div>
           
@@ -268,12 +267,11 @@ export default function OptimizedMedicalPage() {
             {/* Call to Action */}
             <div className="mt-12 max-w-2xl mx-auto text-center px-4 sm:px-0">
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#F4CE6D] mb-4 tracking-tight" style={cossetteFont}>
-                Ready to Meet Your <span className="text-[#F4CE6D] font-bold">Healthcare Team?</span>
+                READY TO MEET YOUR HEALTHCARE TEAM?
               </h3>
-              <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-8 max-w-xl mx-auto leading-relaxed font-normal">
-                Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-600 font-semibold"> state-of-the-art facility.</span>
-              </p>
+              <p className="text-xl sm:text-2xl text-gray-800 max-w-5xl mx-auto leading-relaxed transition-all duration-200 m-5 text-justify" style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
+              Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our <span className="font-semibold"> state-of-the-art</span> facility.
+            </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
                   className="group relative px-8 py-4 bg-[#F4CE6D] text-white font-bold rounded-2xl transition-all duration-300 hover:bg-[#F4CE6D]/90 hover:shadow-2xl hover:shadow-[#F4CE6D]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#F4CE6D]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu"
@@ -314,14 +312,14 @@ export default function OptimizedMedicalPage() {
                 </span>
               </span>
             </h4>
-            <p className={`text-xl sm:text-2xl text-gray-800 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className={`text-xl sm:text-2xl text-gray-800 max-w-5xl mx-auto leading-relaxed transition-all duration-200 text-justify ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
               Our team of <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-600 font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
               combining expertise and a <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-600 font-semibold">compassionate patient-centered approach.</span>
             </p>
           </div>
           
           {/* Enhanced Cards Grid with Premium Hover Effects */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 mb-10 sm:mb-16 md:mb-20 transition-all duration-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 mb-10 sm:mb-16 md:mb-20 transition-all duration-300" style={{ fontWeight: 400, letterSpacing: '0.01em' }}>
             {[
               {
                 name: "Dr. Kashif Surahio",
@@ -389,7 +387,7 @@ export default function OptimizedMedicalPage() {
                 >
                   <div className="relative bg-white group-hover:bg-gray-50 transition-all duration-700 p-8 rounded-3xl shadow-lg border border-gray-200 group-hover:border-gray-300 group-hover:shadow-2xl group-hover:shadow-gray-400/25 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden">
                     <div className="relative z-10 flex flex-col items-center text-center h-full">
-                                              <div className="relative group-hover:scale-110 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:shadow-gray-400/30">
+                        <div className="relative group-hover:scale-110 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:shadow-gray-400/30">
                           <div className="absolute inset-0 bg-[#F4CE6D] rounded-2xl"></div>
                           <div className="absolute inset-1 bg-white rounded-xl"></div>
                           <div className="relative p-3 w-full h-full flex items-center justify-center">
@@ -399,10 +397,10 @@ export default function OptimizedMedicalPage() {
                       <h4 className="text-xl font-bold text-black mb-3 group-hover:text-gray-800 transition-all duration-500 group-hover:scale-105">
                         {doctor.name}
                       </h4>
-                      <div className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gray-200 shadow-sm">
+                      <div className="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gray-200 shadow-sm">
                         {doctor.specialty}
                       </div>
-                      <p className="text-gray-700 leading-relaxed min-h-[100px] group-hover:text-gray-900 transition-all duration-500 text-base flex-grow">
+                      <p className="text-gray-800 leading-relaxed min-h-[100px] group-hover:text-gray-900 transition-all duration-500 text-base flex-grow">
                         {doctor.description}
                       </p>
                     </div>
