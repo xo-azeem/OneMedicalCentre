@@ -94,7 +94,7 @@ export default function OptimizedMedicalPage() {
       {/* Hero Section */}
       <section 
         ref={heroRef} 
-        className="relative bg-white pt-20 sm:pt-24 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden"
+        className="relative bg-white pt-24 sm:pt-36 md:pt-32 lg:pt-28 xl:pt-24 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden"
       >
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -139,12 +139,12 @@ export default function OptimizedMedicalPage() {
                   ONE MEDICAL CENTRE
                 </h1>
                 <div className="flex justify-center lg:justify-start">
-                  <div className="w-80 sm:w-96 md:w-[32rem] h-1 bg-[#F4CE6D] rounded-full opacity-80" />
+                  <div className="w-80 sm:w-96 md:w-[34rem] h-1 bg-[#F4CE6D] rounded-full opacity-80" />
                 </div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-black leading-snug" style={cossetteFont}>
                 <span className="text-gray-500 font-bold">Your</span> <span className="text-[#F4CE6D] font-bold">Complete Healthcare</span> <span className="text-gray-500 font-bold">Destination</span>
                 </h2>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal text-justify" style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
+                <p className="text-xl sm:text-2xl text-gray-800 max-w-5xl mx-auto leading-relaxed transition-all duration-200 mb-0 text-justify" style={{ fontWeight: 400, letterSpacing: '0.02em'  }}>
                   Just steps from Square One, our modern facility brings you medical care, pharmacy, eye care, physiotherapy, and wellness solutions for all your health concerns in one convenient location.
                 </p>
               </div>
@@ -265,13 +265,22 @@ export default function OptimizedMedicalPage() {
             className="max-w-4xl mx-auto mt-4 mb-6 sm:mt-6 sm:mb-8"
           >
             {/* Call to Action */}
-            <div className="mt-12 max-w-2xl mx-auto text-center px-4 sm:px-0">
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#F4CE6D] mb-4 tracking-tight" style={cossetteFont}>
+            <div className="mt-12 max-w-5xl mx-auto text-center px-4 sm:px-0">
+              <h3 className="text-3xl sm:text-3xl md:text-4xl font-bold text-[#F4CE6D] mb-7 tracking-tight" style={cossetteFont}>
                 READY TO MEET YOUR HEALTHCARE TEAM?
               </h3>
-              <p className="text-xl sm:text-2xl text-gray-800 max-w-5xl mx-auto leading-relaxed transition-all duration-200 m-5 text-justify" style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
-              Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our <span className="font-semibold"> state-of-the-art</span> facility.
-            </p>
+              <p 
+                className="text-xl sm:text-2xl text-gray-800 max-w-5xl mx-auto leading-relaxed transition-all               duration-200 mb-5 text-justify" 
+                style={{ fontWeight: 400, letterSpacing: '0.02em' }}
+              >
+                Schedule your appointment today and experience the difference of 
+                <span className="font-semibold"> personalized and comprehensive healthcare</span> in our <span className="font-semibold"> state-of-the-art</span> facility. From routine check-ups to 
+                advanced treatments, our dedicated team is here to provide you with the 
+                highest quality of care in a comfortable and welcoming environment. 
+                Take the first step towards better health and let us be your trusted partner 
+                in every stage of your wellness journey.
+              </p>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
                   className="group relative px-8 py-4 bg-[#F4CE6D] text-white font-bold rounded-2xl transition-all duration-300 hover:bg-[#F4CE6D]/90 hover:shadow-2xl hover:shadow-[#F4CE6D]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#F4CE6D]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu"
@@ -303,8 +312,8 @@ export default function OptimizedMedicalPage() {
       <section ref={doctorsCardsRef} className="py-8 xs:py-10 sm:py-14 md:py-16 bg-white relative overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-2 xs:px-4 sm:px-6 lg:px-8">
           {/* Enhanced Header with Layered Animation */}
-          <div className={`text-center mb-6 mt-0 sm:mt-1`}>
-            <h4 className="text-4xl mb-5 sm:text-5xl lg:text-6xl font-bold text-[#F4CE6D] tracking-tight mb-2 leading-tight" style={cossetteFont}>
+          <div className={`mb-6 mt-0 sm:mt-1`}>
+            <h4 className="text-4xl mb-5 sm:text-5xl lg:text-6xl font-bold text-[#F4CE6D] tracking-tight mb-2 leading-tight text-center" style={cossetteFont}>
               Meet our{' '}
               <span className="relative inline-block">
                 <span className="text-[#F4CE6D] font-bold">
@@ -312,10 +321,12 @@ export default function OptimizedMedicalPage() {
                 </span>
               </span>
             </h4>
-            <p className={`text-xl sm:text-2xl text-gray-800 max-w-5xl mx-auto leading-relaxed transition-all duration-200 text-justify ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
-              Our team of <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-600 font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
-              combining expertise and a <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-600 font-semibold">compassionate patient-centered approach.</span>
-            </p>
+            <div className="flex justify-center">
+              <p className={`text-xl sm:text-2xl text-gray-800 max-w-4xl mt-3 mb-5 leading-relaxed transition-all duration-200 text-justify ml-5 mr-5 sm:ml-0 sm:mr-0 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
+              Our team of <span className="text-gray-800 font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
+              combining expertise and a <span className="text-gray-800 font-semibold"> patient-centered</span> approach.
+              </p>
+            </div>
           </div>
           
           {/* Enhanced Cards Grid with Premium Hover Effects */}
