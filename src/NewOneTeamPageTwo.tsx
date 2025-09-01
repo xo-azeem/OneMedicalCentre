@@ -283,7 +283,7 @@ export default function OptimizedMedicalPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
-                  className="group relative px-8 py-4 bg-[#F4CE6D] text-white font-bold rounded-2xl transition-all duration-300 hover:bg-[#F4CE6D]/90 hover:shadow-2xl hover:shadow-[#F4CE6D]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#F4CE6D]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu"
+                  className="group relative px-8 py-4 bg-[#F4CE6D] text-white font-bold rounded-2xl transition-all duration-300 hover:bg-[#F4CE6D]/90 hover:shadow-xl hover:shadow-gray-400/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#F4CE6D]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu shadow-lg"
                   onClick={handleBookAppointment}
                   aria-label="Book Your Appointment"
                 >
@@ -408,7 +408,7 @@ export default function OptimizedMedicalPage() {
                       <h4 className="text-xl font-bold text-black mb-3 group-hover:text-gray-800 transition-all duration-500 group-hover:scale-105">
                         {doctor.name}
                       </h4>
-                      <div className="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gray-200 shadow-sm">
+                      <div className="bg-[#DFDFDF] text-gray-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gray-200 shadow-sm">
                         {doctor.specialty}
                       </div>
                       <p className="text-gray-800 leading-relaxed min-h-[100px] group-hover:text-gray-900 transition-all duration-500 text-base flex-grow">
