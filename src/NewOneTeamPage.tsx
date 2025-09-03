@@ -4,12 +4,6 @@ import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
 import { motion } from 'framer-motion';
-const font = {
-  fontWeight: 900,
-  letterSpacing: '0.05em',
-  lineHeight: '0.9'
-};
-
 
 export default function OptimizedMedicalPage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -221,7 +215,7 @@ export default function OptimizedMedicalPage() {
               
               {/* Main Headlines */}
               <div className="space-y-2 sm:space-y-4">
-                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl font-bold tracking-tight leading-tight drop-shadow text-[#daa520]" style={{ textShadow: '0 1px 2px #daa520' }}>
+                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl font-bold tracking-tight leading-tight drop-shadow text-[#daa520]" style={{ textShadow: '0 1px 1px #daa520' }}>
                   ONE MEDICAL CENTRE
                 </h1>
                 <div className="flex justify-center lg:justify-start">
