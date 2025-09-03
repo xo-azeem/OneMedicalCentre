@@ -4,6 +4,12 @@ import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
 import { motion } from 'framer-motion';
+const font = {
+  fontWeight: 900,
+  letterSpacing: '0.05em',
+  lineHeight: '0.9'
+};
+
 
 export default function OptimizedMedicalPage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -135,14 +141,14 @@ export default function OptimizedMedicalPage() {
                     <style>{`
                     .random-star-1{top:15%;left:25%;filter:blur(4px);}
                     .random-star-2{top:70%;left:18%;filter:blur(4px);}
-                    .random-star-3{top:45%;left:77%;filter:blur(4px);}
+                    .random-star-3{top:45%;left:80%;filter:blur(4px);}
                     .random-star-4{top:19%;left:65%;filter:blur(4px);}
                     .random-star-5{top:76%;left:45%;filter:blur(4px);}
                     .random-star-6{top:35%;left:10%;filter:blur(4px);}
                     @media (max-width:768px){
                     .random-star-1{top:23%;left:20%;filter:blur(3px);}
                     .random-star-2{top:65%;left:17%;filter:blur(3px);}
-                    .random-star-3{top:55%;left:73%;filter:blur(3px);}
+                    .random-star-3{top:55%;left:75%;filter:blur(3px);}
                     .random-star-4{top:22%;left:70%;filter:blur(3px);}
                     .random-star-5{display:none;top:78%;left:42%;filter:blur(3px);}
                     .random-star-6{display:none;top:38%;left:12%;filter:blur(3px);}
@@ -150,7 +156,7 @@ export default function OptimizedMedicalPage() {
                     @media (max-width:1024px) and (min-width:769px){
                     .random-star-1{top:14%;left:23%;filter:blur(3.5px);}
                     .random-star-2{top:68%;left:16%;filter:blur(3.5px);}
-                    .random-star-3{top:43%;left:81%;filter:blur(3.5px);}
+                    .random-star-3{top:43%;left:82%;filter:blur(3.5px);}
                     .random-star-4{top:14%;left:66%;filter:blur(3.5px);}
                     .random-star-5{top:81%;left:43%;filter:blur(3.5px);}
                     .random-star-6{display:none;top:36%;left:9%;filter:blur(3.5px);}
@@ -176,9 +182,9 @@ export default function OptimizedMedicalPage() {
                     .star-ray.ray-2{transform:translate(-50%,-100%) rotate(90deg);}
                     .star-ray.ray-3{transform:translate(-50%,-100%) rotate(180deg);}
                     .star-ray.ray-4{transform:translate(-50%,-100%) rotate(270deg);}
-                    .star-center{position:absolute;left:50%;top:50%;width:10px;height:10px;background:radial-gradient(circle,#fffbe6 0%,#ffd700 70%,#daa520 100%);border-radius:50%;box-shadow:0 0 12px 3px #fffbe6,0 0 24px 6px #daa520,0 0 36px 9px rgba(255,215,0,0.2);opacity:1;transform:translate(-50%,-50%);z-index:2;}
-                    @media (min-width:640px){.star-center{width:13px;height:13px;box-shadow:0 0 14px 3.5px #fffbe6,0 0 28px 7px #daa520,0 0 42px 10.5px rgba(255,215,0,0.2);}}
-                    @media (min-width:1024px){.star-center{width:16px;height:16px;box-shadow:0 0 16px 4px #fffbe6,0 0 32px 8px #daa520,0 0 48px 12px rgba(255,215,0,0.2);}}
+                    .star-center{position:absolute;left:50%;top:50%;width:10px;height:10px;background:radial-gradient(circle,#fffbe6 0%,#ffd700 70%,#daa520 100%);border-radius:50%;box-shadow:0 0 6px 1.5px rgba(255,251,230,0.4),0 0 12px 3px rgba(218,165,32,0.3),0 0 18px 4.5px rgba(255,215,0,0.1);opacity:0.6;transform:translate(-50%,-50%);z-index:2;}
+                    @media (min-width:640px){.star-center{width:13px;height:13px;box-shadow:0 0 7px 1.75px rgba(255,251,230,0.4),0 0 14px 3.5px rgba(218,165,32,0.3),0 0 21px 5.25px rgba(255,215,0,0.1);}}
+                    @media (min-width:1024px){.star-center{width:16px;height:16px;box-shadow:0 0 8px 2px rgba(255,251,230,0.4),0 0 16px 4px rgba(218,165,32,0.3),0 0 24px 6px rgba(255,215,0,0.1);}}
                     `}</style>
 
                     {/* Animated background */}
@@ -224,7 +230,7 @@ export default function OptimizedMedicalPage() {
                 <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-clip-text text-transparent leading-snug">
                   Your <span className="text-[#daa520] font-bold">Complete Healthcare</span> Destination
                 </h2>
-                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium text-justify">
                   Just steps from Square One, our modern facility brings you medical care, pharmacy, eye care, physiotherapy, and wellness solutions for all your health concerns in one convenient location.
                 </p>
               </div>
@@ -313,10 +319,10 @@ export default function OptimizedMedicalPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Doctors Section Header and Description - moved above image */}
           <div className={`text-center mb-5 sm:mb-14 transition-all duration-400 ease-out transform ${doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}>
-            <div className={`inline-flex items-center space-x-3 bg-white text-[#b8860b] px-8 py-4 rounded-full text-sm font-bold border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6 ${doctorsCardsVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-4 rotate-3'}`}>
+            {/* <div className={`inline-flex items-center space-x-3 bg-white text-[#b8860b] px-8 py-4 rounded-full text-sm font-bold border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6 ${doctorsCardsVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-4 rotate-3'}`}>
               <Stethoscope className="h-5 w-5 text-[#b8860b]" />
               <span className="tracking-wide">Our Medical Experts</span>
-            </div>
+            </div> */}
             <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6 leading-tight transition-all duration-300 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Our{' '}
               <span className="relative inline-block">
@@ -327,18 +333,12 @@ export default function OptimizedMedicalPage() {
               </span>
             </h3>
             <p className="text-xl sm:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed transition-all duration-200 mb-8">
-              Our specialists are here as <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#daa520] font-semibold">One Team</span> to provide you with expert, compassionate care across a range of medical fields.
+              Our Doctors are here as <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#daa520] font-semibold">One Team</span> to provide you with expert, compassionate care across a range of medical fields.
             </p>
           </div>
             {/* One Team Heading */}
             <div className="text-center">
               <div className="w-24 h-1 bg-gradient-to-r from-[#daa520] to-[#ffd700] rounded-full mx-auto opacity-80 mb-6"></div>
-              {/* <div className="inline-flex items-center space-x-3 bg-white text-[#b8860b] px-16 py-4 rounded-full text-sm font-bold border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 mb-6">
-                <div className="w-2 h-2 bg-[#daa520] rounded-full"></div>
-                <span className="tracking-wide">One Team</span>
-                <div className="w-2 h-2 bg-[#daa520] rounded-full"></div>
-              </div> */}
-              {/* <div className="w-24 h-1 bg-gradient-to-r from-[#daa520] to-[#ffd700] rounded-full mx-auto opacity-80"></div> */}
             </div>
 
             {/* Full Width Image Section */}
