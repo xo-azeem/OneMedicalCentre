@@ -64,7 +64,7 @@ function Header() {
           </nav>
           <div className="flex items-center space-x-2">
             <button
-              className="md:hidden p-3 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#daa520]/30 bg-white hover:bg-white border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 hover:scale-105 cursor-pointer z-20"
+              className="md:hidden p-3 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#daa520] bg-white hover:bg-white border-2 border-[#daa520] shadow-lg shadow-gray-700/30 hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#daa520] transition-all duration-300 hover:scale-105 cursor-pointer z-20"
               onClick={() => setMobileNavOpen(v => !v)}
             >
               <span className="sr-only">Open navigation menu</span>
@@ -75,7 +75,7 @@ function Header() {
           </div>
         </div>
         {mobileNavOpen && (
-          <nav className="md:hidden mt-3 mx-auto w-full bg-white border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 rounded-3xl flex flex-col items-center py-6 space-y-1 animate-fade-in relative overflow-hidden z-40">
+          <nav className="md:hidden mt-3 mx-auto w-full bg-white border-2 border-[#daa520] shadow-lg shadow-gray-700/20 hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#daa520] transition-all duration-300 rounded-3xl flex flex-col items-center py-6 space-y-1 animate-fade-in relative overflow-hidden z-40">
             {navItems.map((item, index) => {
               const isActive = location.pathname === item.key;
               return (

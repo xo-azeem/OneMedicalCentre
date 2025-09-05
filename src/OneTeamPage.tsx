@@ -408,7 +408,7 @@ export default function OptimizedMedicalPage() {
                 </button>
                 <a
                   href="tel:+16476602591"
-                  className="group relative px-8 py-4 bg-transparent text-[#b8860b] font-bold rounded-2xl border-2 border-[#daa520] hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="group relative px-8 py-4 bg-transparent text-gray-700 font-bold rounded-2xl border-2 border-[#daa520] hover:text-[#daa520] hover:border-[#daa520] hover:shadow-xl shadow-lg shadow-gray-400/30 hover:shadow-gray-400/30 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu hover:-translate-y-1"
                   aria-label="Call Now"
                 >
                   <span className="flex items-center space-x-3">
@@ -552,7 +552,7 @@ export default function OptimizedMedicalPage() {
                       <h4 className="text-1xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-3 group-hover:text-amber-800 transition-all duration-500 group-hover:scale-105">
                         {doctor.name}
                       </h4>
-                      <div className="bg-white text-amber-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 border-2 border-amber-300 shadow-lg shadow-amber-300/20 hover:shadow-xl hover:shadow-amber-400/30 hover:border-amber-400 transition-all duration-300">
+                      <div className="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 border-2 border-[#daa520] shadow-lg shadow-gray-400/20 hover:shadow-xl hover:shadow-gray-700/30 hover:border-amber-400 transition-all duration-300">
                         {doctor.specialty}
                       </div>
                       <p className="text-gray-700 leading-relaxed min-h-[100px] group-hover:text-gray-900 transition-all duration-500 text-base flex-grow">

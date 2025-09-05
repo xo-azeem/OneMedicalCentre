@@ -233,9 +233,9 @@ export default function OnePlacePage() {
             <div className="space-y-8 lg:space-y-6 text-center lg:text-left order-2 lg:order-1">
 
               {/* Location Badge */}
-              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#b8860b] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
-                  <Sparkles className="h-4 w-4 text-[#b8860b]" />
-                  <span>One Place</span>
+              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300">
+                  <Sparkles className="h-4 w-4 text-gray-700" />
+                  <span className="text-gray-700">One Place</span>
               </div>
               
               {/* Main Headlines */}
@@ -268,7 +268,7 @@ export default function OnePlacePage() {
                 </button>
                 <a
                   href="tel:+16476602591"
-                   className="w-full px-8 py-4 border-2 border-[#daa520] bg-white text-[#b8860b] font-semibold text-lg rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                   className="w-full px-8 py-4 border-2 border-[#daa520] bg-white text-gray-700 font-semibold text-lg rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:shadow-xl shadow-lg shadow-gray-400/30 hover:shadow-gray-500/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1"
                 >
                   Call Now
                 </a>
@@ -278,7 +278,7 @@ export default function OnePlacePage() {
         </div>
       </section>
       
-      <DigitalPulse/>
+      
 
       {/* Location Details Section */}
       <section ref={locationSectionRef} className="py-20 sm:py-24 bg-gray-50 relative overflow-hidden">
@@ -339,11 +339,11 @@ export default function OnePlacePage() {
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             locationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
-              <Building className="h-4 w-4" />
-              <span>Our Location</span>
+            <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300 mb-6">
+              <Building className="h-4 w-4 text-gray-700" />
+              <span className='text-gray-700'>Our Location</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-8" style={{ lineHeight: '1.4' }}>
               Easy to <span className="text-[#daa520] font-bold">Find & Access</span>
             </h3>
             <p className="text-lg text-gray-700 leading-relaxed">
@@ -411,7 +411,7 @@ export default function OnePlacePage() {
                     </div>
                     <div>
                       <p className="text-sm text-gray-600">Call us at</p>
-                      <p className="text-lg font-semibold text-gray-800">+647 660 2591</p>
+                      <p className="text-text-base sm:text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-all sm:break-normal">+647 660 2591</p>
                     </div>
                   </a>
                   
@@ -426,9 +426,9 @@ export default function OnePlacePage() {
                         <Mail className="h-6 w-6 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
                       </div>
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <p className="text-sm text-gray-600">Email us at</p>
-                      <p className="text-lg font-semibold text-gray-800">onemedicalmississauga@gmail.com</p>
+                      <p className="text-text-base sm:text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-all sm:break-normal">onemedicalmississauga@gmail.com</p>
                     </div>
                   </a>
                 </div>
@@ -469,8 +469,8 @@ export default function OnePlacePage() {
           <div className="relative flex flex-col items-center">
             {/* Floating Pin Icon */}
             <div className="relative mb-4 z-20">
-              <div className="bg-white p-4 rounded-full shadow-2xl animate-bounce border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
-                <MapPin className="w-8 h-8 text-[#daa520]" />
+              <div className="bg-white p-4 rounded-full shadow-2xl animate-bounce border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#daa520] transition-all duration-300">
+                <MapPin className="w-8 h-8 text-gray-700" />
               </div>
             </div>
                 
@@ -492,28 +492,30 @@ export default function OnePlacePage() {
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-                
+            
             {/* Google Maps Button */}
             <a
               href="https://maps.app.goo.gl/NfnrniFAtQGAVzx49"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-white text-[#b8860b] font-semibold rounded-xl border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] hover:text-[#daa520] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-base tracking-wide mb-4"
+              className="inline-block px-8 py-3 bg-white text-gray-700 font-semibold rounded-xl border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-700/30 hover:text-[#daa520] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-base tracking-wide mt-8 mb-8"
             >
               Open in Google Maps
             </a>
                 
             {/* QR Code */}
             <div className="text-center">
-              <p className="text-gray-600 mb-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>
-              <div className="p-3 bg-white backdrop-blur-sm border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 rounded-2xl inline-block">
+              
+              <div className="p-3 bg-white backdrop-blur-sm border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-700/30 transition-all duration-300 rounded-2xl inline-block">
                 <img
                   src={qrCode}
                   alt="Google Maps QR Code"
                   className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-48 lg:h-48 object-contain rounded-xl"
                 />
               </div>
+              <p className="text-gray-600 mt-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>
             </div>
+            
           </div>
         </div>
       </section>
@@ -539,20 +541,25 @@ export default function OnePlacePage() {
         </div>
 
         {/* Animated floating elements */}
-        <div className={`absolute top-20 left-10 w-3 h-3 bg-[#ffd700]/60 rounded-full transition-all duration-[1500ms] delay-300 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
-        <div className={`absolute top-40 right-20 w-2 h-2 bg-[#ffd700]/70 rounded-full transition-all duration-[1500ms] delay-500 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
-        <div className={`absolute bottom-20 left-20 w-4 h-4 bg-[#ffd700]/50 rounded-full transition-all duration-[1500ms] delay-700 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-20 left-10 w-3 h-3 bg-[#daa520]/60 rounded-full transition-all duration-[1500ms] delay-300 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-40 right-20 w-2 h-2 bg-[#daa520]/70 rounded-full transition-all duration-[1500ms] delay-500 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute bottom-20 left-20 w-4 h-4 bg-[#daa520]/50 rounded-full transition-all duration-[1500ms] delay-700 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Digital Pulse Component */}
+          <div className="flex justify-center mb-16">
+            <DigitalPulse />
+          </div>
+          
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
-              <Sparkles className="h-4 w-4" />
-              <span>Why Choose Our Location</span>
+            <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300 mb-6">
+              <Sparkles className="h-4 w-4 text-gray-700" />
+              <span className='text-gray-700'>Why Choose Our Location</span>
             </div>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
-              Designed for Your <span className="text-[#daa520] font-bold">Convenience</span>
+              Designed for Your <span className="text-[#daa520] font-bold" style={{ lineHeight: '1.4' }}>Convenience</span>
             </h3>
             <p className="text-lg text-gray-700 leading-relaxed">
               Every aspect of our location has been carefully chosen to provide you with the most convenient and comfortable healthcare experience.

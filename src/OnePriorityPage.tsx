@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Heart, Stethoscope, Shield, Award, ArrowRight, Pill, ShoppingBag, Eye, Dumbbell, UserCheck, Sparkles, Ear, Footprints, Users } from 'lucide-react';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
-import DigitalPulse from "./DigitalPulse";
+//import DigitalPulse from "./DigitalPulse";
 
 const services = [
   { icon: Stethoscope, name: "Medical Doctors", description: "Comprehensive primary care and specialized medical services with experienced physicians", color: "from-amber-400 to-yellow-500" },
@@ -231,9 +231,9 @@ export default function OnePriorityPage() {
             <div className="space-y-8 lg:space-y-6 text-center lg:text-left order-2 lg:order-1">
 
               {/* Location Badge */}
-              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#b8860b] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
-                  <Heart className="h-4 w-4 text-[#b8860b]" />
-                  <span>One Priority</span>
+              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300">
+                  <Heart className="h-4 w-4 text-gray-700" />
+                  <span className="text-gray-700">One Priority</span>
               </div>
               
               {/* Main Headlines */}
@@ -266,7 +266,7 @@ export default function OnePriorityPage() {
                 </button>
                 <a
                   href={pdfFile}
-                  className="w-full px-8 py-4 border-2 border-[#daa520] bg-white text-[#b8860b] font-semibold text-lg rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="w-full px-8 py-4 border-2 border-[#daa520] bg-white text-gray-700 font-semibold text-lg rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:shadow-xl shadow-lg shadow-gray-400/30 hover:shadow-gray-500/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1"
                   target="_blank"
                   rel="noopener noreferrer"
                   download="OneMedicalCentre.pdf"
@@ -278,8 +278,6 @@ export default function OnePriorityPage() {
           </div>
         </div>
       </section>
-
-      <DigitalPulse />
 
       {/* Services Section */}
       <section ref={servicesSectionRef} id="services" className="py-24 sm:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden relative bg-gray-50">
@@ -342,11 +340,11 @@ export default function OnePriorityPage() {
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
-              <Stethoscope className="h-4 w-4" />
-              <span>Our Services</span>
+            <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#daa520] mb-8 px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300">
+              <Stethoscope className="h-4 w-4 text-gray-700" />
+              <span className='text-gray-700'>Our Services</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-4">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-8">
               Our <span className="text-[#daa520] font-bold">Healthcare Services</span>
             </h3>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
@@ -420,8 +418,8 @@ export default function OnePriorityPage() {
                   <div
                     key={index}
                     className={`absolute group rounded-3xl border-2 transition-all duration-700 ease-out cursor-pointer backdrop-blur-sm shadow-xl
-                      bg-white border-[#daa520] shadow-[#ffd700]/30
-                      hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/40 hover:-translate-y-4 hover:scale-[1.02]
+                      bg-white border-[#daa520] shadow-gray-400/30
+                      hover:border-[#ffd700] hover:shadow-2xl hover:shadow-gray-700/30 hover:-translate-y-4 hover:scale-[1.02]
                       ${isActive ? '' : absOffset === 1 ? '' : absOffset === 2 ? '' : ''}
                     `}
                     style={{
@@ -510,9 +508,9 @@ export default function OnePriorityPage() {
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             priorityValuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
-              <Heart className="h-4 w-4" />
-              <span>Our Values</span>
+            <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300 mb-8">
+              <Heart className="h-4 w-4 text-gray-700" />
+              <span className="text-gray-700">Our Values</span>
             </div>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
               What Makes Us <span className="text-[#daa520] font-bold">Different</span>
