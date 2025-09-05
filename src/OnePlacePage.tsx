@@ -281,8 +281,8 @@ export default function OnePlacePage() {
       <DigitalPulse/>
 
       {/* Location Details Section */}
-      <section ref={locationSectionRef} className="py-20 sm:py-24 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-black"></div>
+      <section ref={locationSectionRef} className="py-20 sm:py-24 bg-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gray-50"></div>
         
         {/* Hero Section Glitter Effect */}
         <div className="absolute inset-0 pointer-events-none">
@@ -331,24 +331,23 @@ export default function OnePlacePage() {
         `}</style>
 
         {/* Animated floating elements */}
-        <div className={`absolute top-10 left-10 w-2 h-2 bg-[#d4af37] rounded-full transition-all duration-[1500ms] delay-300 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
-        <div className={`absolute top-20 right-20 w-3 h-3 bg-[#d4af37]/20 rounded-full transition-all duration-[1500ms] delay-500 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
-        <div className={`absolute bottom-20 left-20 w-4 h-4 bg-[#d4af37]/10 rounded-full transition-all duration-[1500ms] delay-700 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-10 left-10 w-2 h-2 bg-[#d4af37]/60 rounded-full transition-all duration-[1500ms] delay-300 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-20 right-20 w-3 h-3 bg-[#d4af37]/50 rounded-full transition-all duration-[1500ms] delay-500 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute bottom-20 left-20 w-4 h-4 bg-[#d4af37]/40 rounded-full transition-all duration-[1500ms] delay-700 ${locationVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             locationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-black/10 text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
               <Building className="h-4 w-4" />
               <span>Our Location</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
-              Easy to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Find & Access</span>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
+              Easy to <span className="text-[#daa520] font-bold">Find & Access</span>
             </h3>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Our modern medical facility is conveniently located for patients throughout the GTA, 
-              with excellent transit connections and ample parking options.
+            <p className="text-lg text-gray-700 leading-relaxed">
+            Our clinic is easy to get to from anywhere in the GTA, with direct access to public transit and plenty of on-site parking for your convenience.
             </p>
           </div>
 
@@ -357,31 +356,35 @@ export default function OnePlacePage() {
             <div className={`transition-all duration-1000 ease-out transform ${
               locationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`} style={{ transitionDelay: '200ms' }}>
-              <div className="bg-gradient-to-br from-black/95 to-[#d4af37]/80 rounded-3xl p-8 shadow-xl border border-[#daa520]/60 hover:border-[#ffd700]/60 hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300">
+              <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 shadow-xl border-2 border-[#daa520] hover:shadow-2xl hover:shadow-gray-400/30 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300">
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="bg-[#fffacd] dark:bg-[#b8860b] rounded-xl p-3 transition-all duration-300">
-                    <MapPin className="h-8 w-8 text-[#daa520] dark:text-white" />
+                  <div className="relative group-hover:scale-110 transition-all duration-500 p-3 rounded-2xl w-fit group-hover:shadow-gray-400/30">
+                    {/* <div className="absolute inset-0 bg-[#daa520] rounded-2xl"></div>
+                    <div className="absolute inset-0.5 bg-white rounded-xl"></div> */}
+                    <div className="relative p-3 w-full h-full flex items-center justify-center">
+                      <MapPin className="h-8 w-8 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
+                    </div>
                   </div>
                   <div>
-                    <h4 className="text-2xl font-bold text-white mb-2">Our Address</h4>
-                    <p className="text-gray-300 leading-relaxed">
-                      50 Burnhamthorpe Rd West<br />
-                      Unit 102<br />
+                    <h4 className="text-2xl font-bold text-gray-800 mb-2">Our Address</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      50 Burnhamthorpe Rd West,
+                      Unit 102,
                       Mississauga, ON
                     </p>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-3 text-gray-300">
-                    <Navigation className="h-5 w-5 text-[#d4af37]" />
+                  <div className="flex items-center space-x-3 text-gray-700">
+                    <Navigation className="h-5 w-5 text-[#daa520]" />
                     <span>Directly across from Square One Shopping Centre</span>
                   </div>
-                  <div className="flex items-center space-x-3 text-gray-300">
-                    <Car className="h-5 w-5 text-[#d4af37]" />
-                    <span>Unlimited underground & above-ground parking</span>
+                  <div className="flex items-center space-x-3 text-gray-700">
+                    <Car className="h-5 w-5 text-[#daa520]" />
+                    <span>Free & Unlimited underground & above-ground parking</span>
                   </div>
-                  <div className="flex items-center space-x-3 text-gray-300">
-                    <Clock className="h-5 w-5 text-[#d4af37]" />
+                  <div className="flex items-center space-x-3 text-gray-700">
+                    <Clock className="h-5 w-5 text-[#daa520]" />
                     <span>Easy access via major highways and public transit</span>
                   </div>
                 </div>
@@ -393,31 +396,39 @@ export default function OnePlacePage() {
               locationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`} style={{ transitionDelay: '400ms' }}>
               <div className="space-y-6">
-                <h4 className="text-2xl font-bold text-white mb-8">Get In Touch</h4>
-                <div className="space-y-4">
+                <h4 className="text-2xl font-bold text-gray-800 mb-8">Get In Touch</h4>
+                <div className="space-y-8">
                   <a
                     href="tel:+16476602591"
-                    className="flex items-center space-x-4 bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-gray-300 hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
+                    className="flex items-center space-x-4 bg-white backdrop-blur-sm px-6 py-4 rounded-xl border-2 border-[#daa520] text-gray-700 hover:text-[#daa520] hover:border-[#daa520] hover:shadow-2xl hover:shadow-gray-400/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
                   >
-                    <div className="bg-[#fffacd] dark:bg-[#b8860b] rounded-xl p-3 transition-all duration-300">
-                      <Phone className="h-6 w-6 text-[#d4af37] dark:text-white" />
+                    <div className="relative shadow-gray-400 group-hover:scale-110 transition-all duration-500 p-3 rounded-2xl w-fit group-hover:shadow-white">
+                      {/* <div className="absolute inset-0 bg-[#daa520] rounded-2xl"></div>
+                      <div className="absolute inset-0.5 bg-white rounded-xl"></div> */}
+                      <div className="relative p-2 w-full h-full flex items-center justify-center">
+                        <Phone className="h-6 w-6 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
+                      </div>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-300">Call us at</p>
-                      <p className="text-lg font-semibold text-white">+647 660 2591</p>
+                      <p className="text-sm text-gray-600">Call us at</p>
+                      <p className="text-lg font-semibold text-gray-800">+647 660 2591</p>
                     </div>
                   </a>
                   
                   <a
                     href="mailto:onemedicalmississauga@gmail.com"
-                    className="flex items-center space-x-4 bg-black backdrop-blur-sm px-6 py-4 rounded-xl border border-[#daa520] text-gray-300 hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
+                    className="flex items-center space-x-4 bg-white backdrop-blur-sm px-6 py-4 rounded-xl border-2 border-[#daa520] text-gray-700 hover:text-[#daa520] hover:border-[#daa520] hover:shadow-2xl hover:shadow-gray-400/20 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 group"
                   >
-                    <div className="bg-[#fffacd] dark:bg-[#b8860b] rounded-xl p-3 transition-all duration-300">
-                      <Mail className="h-6 w-6 text-[#d4af37] dark:text-white" />
+                    <div className="relative shadow-gray-400 group-hover:scale-110 transition-all duration-500 p-3 rounded-2xl w-fit group-hover:shadow-white">
+                      {/* <div className="absolute inset-0 bg-[#daa520] rounded-2xl"></div>
+                      <div className="absolute inset-0.5 bg-white rounded-xl"></div> */}
+                      <div className="relative p-2 w-full h-full flex items-center justify-center">
+                        <Mail className="h-6 w-6 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
+                      </div>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-300">Email us at</p>
-                      <p className="text-lg font-semibold text-white">onemedicalmississauga@gmail.com</p>
+                      <p className="text-sm text-gray-600">Email us at</p>
+                      <p className="text-lg font-semibold text-gray-800">onemedicalmississauga@gmail.com</p>
                     </div>
                   </a>
                 </div>
@@ -430,7 +441,7 @@ export default function OnePlacePage() {
       {/* Google Maps + QR Code Section */}
       <section
         ref={mapSectionRef}
-        className="relative py-12 sm:py-16 bg-black flex justify-center items-center overflow-hidden"
+        className="relative py-12 sm:py-16 bg-white flex justify-center items-center overflow-hidden"
       >
 
         {/* Hero Section Glitter Effect */}
@@ -449,29 +460,27 @@ export default function OnePlacePage() {
           <div className="glitter-star absolute top-[10%] right-[30%] w-1.5 h-1.5 bg-[#f0e68c] rounded-full opacity-85"></div>
         </div>
 
-      
         {/* Floating background elements */}
-        <div className="absolute top-10 left-10 w-3 h-3 bg-[#ffd700] rounded-full animate-pulse animate-float-slow opacity-60"></div>
-        <div className="absolute top-1/3 right-20 w-2 h-2 bg-[#ffd700]/20 rounded-full animate-pulse delay-700 opacity-50 animate-float-medium"></div>
-        <div className="absolute bottom-20 left-20 w-4 h-4 bg-[#ffd700]/10 rounded-full animate-pulse delay-1000 animate-float-fast"></div>
+        <div className="absolute top-10 left-10 w-3 h-3 bg-[#ffd700]/60 rounded-full animate-pulse animate-float-slow opacity-60"></div>
+        <div className="absolute top-1/3 right-20 w-2 h-2 bg-[#ffd700]/50 rounded-full animate-pulse delay-700 opacity-50 animate-float-medium"></div>
+        <div className="absolute bottom-20 left-20 w-4 h-4 bg-[#ffd700]/40 rounded-full animate-pulse delay-1000 animate-float-fast"></div>
                 
         <div className={`w-full max-w-4xl px-4 transition-all duration-1000 ease-out transform ${mapVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <div className="relative flex flex-col items-center">
-                
-                          {/* Floating Pin Icon */}
-              <div className="relative mb-4 z-20">
-                <div className="bg-black p-4 rounded-full shadow-2xl animate-bounce border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
-                  <MapPin className="w-8 h-8 text-[#daa520] dark:text-[#ffd700]" />
-                </div>
+            {/* Floating Pin Icon */}
+            <div className="relative mb-4 z-20">
+              <div className="bg-white p-4 rounded-full shadow-2xl animate-bounce border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
+                <MapPin className="w-8 h-8 text-[#daa520]" />
               </div>
+            </div>
                 
             {/* Heading */}
-            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 text-center drop-shadow-lg">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center drop-shadow-lg">
               Our Location on Google Maps
             </h2>
                 
             {/* Google Map Iframe */}
-            <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl border border-black/40 mb-4 bg-black dark:bg-white">
+            <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl border border-gray-300 mb-4 bg-white">
               <iframe
                 src="https://www.google.com/maps?q=50+Burnhamthorpe+Rd+W,+Mississauga,+ON+L5B+3C2,+Canada&output=embed"
                 title="One Medical Centre Location"
@@ -489,15 +498,15 @@ export default function OnePlacePage() {
               href="https://maps.app.goo.gl/NfnrniFAtQGAVzx49"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-black text-[#b8860b] dark:text-[#ffd700] font-semibold rounded-xl border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] hover:text-[#daa520] dark:hover:text-[#ffd700] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-base tracking-wide mb-4"
+              className="inline-block px-8 py-3 bg-white text-[#b8860b] font-semibold rounded-xl border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] hover:text-[#daa520] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-base tracking-wide mb-4"
             >
               Open in Google Maps
             </a>
                 
             {/* QR Code */}
             <div className="text-center">
-              <p className="text-gray-300 mb-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>
-              <div className="p-3 bg-black backdrop-blur-sm border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 rounded-2xl inline-block">
+              <p className="text-gray-600 mb-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>
+              <div className="p-3 bg-white backdrop-blur-sm border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 rounded-2xl inline-block">
                 <img
                   src={qrCode}
                   alt="Google Maps QR Code"
@@ -510,8 +519,8 @@ export default function OnePlacePage() {
       </section>
 
       {/* Features Section */}
-      <section ref={featuresSectionRef} className="py-20 sm:py-24 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-black"></div>
+      <section ref={featuresSectionRef} className="py-20 sm:py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-white"></div>
         
         {/* Hero Section Glitter Effect */}
         <div className="absolute inset-0 pointer-events-none">
@@ -530,22 +539,22 @@ export default function OnePlacePage() {
         </div>
 
         {/* Animated floating elements */}
-        <div className={`absolute top-20 left-10 w-3 h-3 bg-[#ffd700]/20 rounded-full transition-all duration-[1500ms] delay-300 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
-        <div className={`absolute top-40 right-20 w-2 h-2 bg-[#ffd700]/30 rounded-full transition-all duration-[1500ms] delay-500 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
-        <div className={`absolute bottom-20 left-20 w-4 h-4 bg-[#ffd700]/10 rounded-full transition-all duration-[1500ms] delay-700 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-20 left-10 w-3 h-3 bg-[#ffd700]/60 rounded-full transition-all duration-[1500ms] delay-300 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-40 right-20 w-2 h-2 bg-[#ffd700]/70 rounded-full transition-all duration-[1500ms] delay-500 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute bottom-20 left-20 w-4 h-4 bg-[#ffd700]/50 rounded-full transition-all duration-[1500ms] delay-700 ${featuresVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-black/10 text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
               <Sparkles className="h-4 w-4" />
               <span>Why Choose Our Location</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
-              Designed for Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Convenience</span>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
+              Designed for Your <span className="text-[#daa520] font-bold">Convenience</span>
             </h3>
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <p className="text-lg text-gray-700 leading-relaxed">
               Every aspect of our location has been carefully chosen to provide you with the most convenient and comfortable healthcare experience.
             </p>
           </div>
@@ -560,7 +569,7 @@ export default function OnePlacePage() {
               },
               { 
                 icon: Car, 
-                title: "Unlimited Parking", 
+                title: "Free & Unlimited Parking", 
                 description: "Never worry about finding parking with our unlimited underground and above-ground parking options.",
                 delay: 400
               },
@@ -580,14 +589,18 @@ export default function OnePlacePage() {
                   }`}
                   style={{ transitionDelay: `${feature.delay}ms` }}
                 >
-                  <div className="bg-gradient-to-br group-hover:from-[#daa520]/10 group-hover:to-[#ffd700]/10 transition-all duration-500 p-8 rounded-3xl shadow-xl border border-[#daa520]/60 group-hover:border-[#ffd700]/60 group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] flex flex-col items-center min-h-[320px] min-w-0 w-full max-w-full">
-                    <div className="bg-[#fffacd] dark:bg-[#b8860b] p-4 rounded-2xl w-fit mx-auto mb-6">
-                      <Icon className="h-8 w-8 text-[#daa520] dark:text-white group-hover:scale-110 transition-all duration-300" />
+                  <div className="bg-gradient-to-br group-hover:from-[#daa520]/10 group-hover:to-[#ffd700]/10 transition-all duration-500 p-8 rounded-3xl shadow-xl border border-2 border-[#daa520]/60 group-hover:border-[#daa520]/60 group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] flex flex-col items-center min-h-[320px] min-w-0 w-full max-w-full">
+                    <div className="relative group-hover:scale-110 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:shadow-gray-400/30">
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] rounded-2xl"></div>
+                      <div className="absolute inset-1 bg-white rounded-xl"></div>
+                      <div className="relative p-3 w-full h-full flex items-center justify-center">
+                        <Icon className="h-8 w-8 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
+                      </div>
                     </div>
-                    <h4 className="text-xl font-semibold text-white mb-3 group-hover:text-[#b8860b] transition-colors duration-300">
+                    <h4 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-[#b8860b] transition-colors duration-300">
                       {feature.title}
                     </h4>
-                    <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
+                    <p className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
                       {feature.description}
                     </p>
                   </div>

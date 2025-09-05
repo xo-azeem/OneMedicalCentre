@@ -282,9 +282,9 @@ export default function OnePriorityPage() {
       <DigitalPulse />
 
       {/* Services Section */}
-      <section ref={servicesSectionRef} id="services" className="py-24 sm:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden relative bg-black">
+      <section ref={servicesSectionRef} id="services" className="py-24 sm:py-32 min-h-[90vh] flex items-center justify-center overflow-hidden relative bg-gray-50">
         {/* Animated Background with Parallax Effect */}
-        <div className="absolute inset-0 bg-black"></div>
+        <div className="absolute inset-0 bg-gray-50"></div>
 
         {/* Hero Section Glitter Effect */}
         <div className="absolute inset-0 pointer-events-none">
@@ -333,23 +333,23 @@ export default function OnePriorityPage() {
           }`}</style>
 
         {/* Animated floating elements */}
-        <div className={`absolute top-10 left-10 w-3 h-3 bg-[#d4af37]/30 rounded-full transition-all duration-[1500ms] delay-300 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute top-20 right-20 w-4 h-4 bg-[#d4af37]/20 rounded-full transition-all duration-[1700ms] delay-500 ${servicesVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-20 left-20 w-5 h-5 bg-[#d4af37]/10 rounded-full transition-all duration-[1900ms] delay-700 ${servicesVisible ? 'opacity-100 animate-bounce' : 'opacity-0 scale-0'}`}></div>
-        <div className={`absolute bottom-10 right-10 w-3 h-3 bg-[#d4af37]/10 rounded-full transition-all duration-[2100ms] delay-900 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute top-10 left-10 w-3 h-3 bg-[#d4af37]/60 rounded-full transition-all duration-[1500ms] delay-300 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute top-20 right-20 w-4 h-4 bg-[#d4af37]/50 rounded-full transition-all duration-[1700ms] delay-500 ${servicesVisible ? 'opacity-100 animate-pulse' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute bottom-20 left-20 w-5 h-5 bg-[#d4af37]/40 rounded-full transition-all duration-[1900ms] delay-700 ${servicesVisible ? 'opacity-100 animate-bounce' : 'opacity-0 scale-0'}`}></div>
+        <div className={`absolute bottom-10 right-10 w-3 h-3 bg-[#d4af37]/40 rounded-full transition-all duration-[2100ms] delay-900 ${servicesVisible ? 'opacity-100 animate-ping' : 'opacity-0 scale-0'}`}></div>
         {/* Main Content Container */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-black text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
               <Stethoscope className="h-4 w-4" />
               <span>Our Services</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Healthcare Services</span>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-4">
+              Our <span className="text-[#daa520] font-bold">Healthcare Services</span>
             </h3>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
               Comprehensive medical services designed to meet all your healthcare needs under one roof.
             </p>
           </div>
@@ -420,7 +420,7 @@ export default function OnePriorityPage() {
                   <div
                     key={index}
                     className={`absolute group rounded-3xl border-2 transition-all duration-700 ease-out cursor-pointer backdrop-blur-sm shadow-xl
-                      bg-black border-[#daa520] shadow-[#ffd700]/30
+                      bg-white border-[#daa520] shadow-[#ffd700]/30
                       hover:border-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/40 hover:-translate-y-4 hover:scale-[1.02]
                       ${isActive ? '' : absOffset === 1 ? '' : absOffset === 2 ? '' : ''}
                     `}
@@ -441,18 +441,22 @@ export default function OnePriorityPage() {
                     <div className={`flex flex-col items-center text-center h-full justify-center transition-all duration-500 ${
                       isActive ? 'p-6' : absOffset === 1 ? 'p-4' : 'p-3'
                     }`}>
-                      <div className={`relative rounded-2xl transition-all duration-500 flex-shrink-0 mb-4 p-4 bg-gradient-to-br from-[#fffacd] to-[#fff8dc] dark:from-[#b8860b]/30 dark:to-[#daa520]/20 shadow-lg`}>
-                        <Icon className={`h-10 w-10 text-[#daa520] dark:text-[#ffd700]`} />
+                      <div className="relative rounded-2xl flex-shrink-0 mb-4 p-5 w-fit mx-auto shadow-lg">
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] rounded-2xl"></div>
+                        <div className="absolute inset-1 bg-white rounded-xl"></div>
+                        <div className="relative p-3 w-full h-full flex items-center justify-center">
+                          <Icon className="h-10 w-10 text-gray-500" />
+                        </div>
                       </div>
                       <div className="space-y-3 flex-1 flex flex-col justify-center min-h-0">
                         <h4 className={`font-bold transition-all duration-500 leading-tight ${
-                          isActive ? 'text-xl text-white' : absOffset === 1 ? 'text-lg text-white' : 'text-base text-gray-300'
+                          isActive ? 'text-xl text-gray-800' : absOffset === 1 ? 'text-lg text-gray-800' : 'text-base text-gray-600'
                         }`}>
                           {service.name}
                         </h4>
                         {isActive && (
                           <div className="relative">
-                            <p className="text-gray-300 leading-relaxed transition-all duration-500 text-sm px-2 line-clamp-4">
+                            <p className="text-gray-700 leading-relaxed transition-all duration-500 text-sm px-2 line-clamp-4">
                               {service.description}
                             </p>
                             {/* Divider: subtle gold */}
@@ -460,7 +464,7 @@ export default function OnePriorityPage() {
                           </div>
                         )}
                         {absOffset === 1 && (
-                          <p className="text-gray-300 opacity-75 leading-relaxed transition-all duration-500 text-xs px-1 line-clamp-3">
+                          <p className="text-gray-600 opacity-75 leading-relaxed transition-all duration-500 text-xs px-1 line-clamp-3">
                             {service.description}
                           </p>
                         )}
@@ -495,25 +499,25 @@ export default function OnePriorityPage() {
       </section>
 
       {/* Enhanced Priority Values Section */}
-      <section ref={priorityValuesRef} className="py-24 sm:py-32 bg-black relative overflow-hidden">
+      <section ref={priorityValuesRef} className="py-24 sm:py-32 bg-white relative overflow-hidden">
         {/* Animated background elements */}
-        <div className="absolute inset-0 bg-black"></div>
-        <div className={`absolute top-20 left-10 w-4 h-4 bg-amber-400/40 rounded-full transition-all duration-[1500ms] delay-300 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
-        <div className={`absolute top-40 right-20 w-3 h-3 bg-yellow-500/60 rounded-full transition-all duration-[1500ms] delay-500 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
-        <div className={`absolute bottom-20 left-20 w-5 h-5 bg-amber-200/30 rounded-full transition-all duration-[1500ms] delay-700 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className="absolute inset-0 bg-white"></div>
+        <div className={`absolute top-20 left-10 w-4 h-4 bg-[#d4af37]/60 rounded-full transition-all duration-[1500ms] delay-300 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute top-40 right-20 w-3 h-3 bg-[#ffd700]/70 rounded-full transition-all duration-[1500ms] delay-500 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
+        <div className={`absolute bottom-20 left-20 w-5 h-5 bg-[#d4af37]/50 rounded-full transition-all duration-[1500ms] delay-700 ${priorityValuesVisible ? 'opacity-100 animate-pulse' : 'opacity-0'}`}></div>
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Section Header */}
           <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
             priorityValuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-black text-[#d4af37] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-white text-[#b8860b] px-6 py-3 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6">
               <Heart className="h-4 w-4" />
               <span>Our Values</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
-              What Makes Us <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] to-[#daa520]">Different</span>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
+              What Makes Us <span className="text-[#daa520] font-bold">Different</span>
             </h3>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
               Our commitment to excellence drives everything we do, ensuring you receive the highest quality healthcare experience.
             </p>
           </div>
@@ -547,13 +551,17 @@ export default function OnePriorityPage() {
                   }`}
                   style={{ transitionDelay: `${value.delay}ms` }}
                 >
-                  <div className="bg-gradient-to-br group-hover:from-[#daa520]/10 group-hover:to-[#ffd700]/10 transition-all duration-500 p-6 rounded-2xl w-fit mx-auto mb-6 shadow-xl border border-[#daa520] group-hover:border-[#ffd700]/30 group-hover:shadow-2xl group-hover:shadow-[#ffd700]/10 group-hover:-translate-y-2">
-                    <Icon className="h-10 w-10 text-[#daa520] group-hover:scale-110 group-hover:text-[#ffd700] transition-all duration-300" />
+                  <div className="relative group-hover:scale-110 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:shadow-gray-400/30">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] rounded-2xl"></div>
+                    <div className="absolute inset-1 bg-white rounded-xl"></div>
+                    <div className="relative p-3 w-full h-full flex items-center justify-center">
+                      <Icon className="h-10 w-10 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
+                    </div>
                   </div>
-                  <h4 className="text-xl font-semibold text-white mb-3 group-hover:text-[#b8860b] transition-colors duration-300">
+                  <h4 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-[#b8860b] transition-colors duration-300">
                     {value.title}
                   </h4>
-                  <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
+                  <p className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
                     {value.description}
                   </p>
                 </div>

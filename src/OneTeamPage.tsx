@@ -121,7 +121,7 @@ export default function OptimizedMedicalPage() {
               <div className="relative group">
 
                 {/* Square Container with Border */}
-                <div className="w-80 sm:w-80 lg:w-[28rem] h-80 sm:h-80 lg:h-[28rem] border-2 border-[#d4af37]/50 rounded-lg shadow-lg transition-all duration-300 group-hover:border-[#d4af37]/70 group-hover:shadow-xl group-hover:shadow-[#d4af37]/20 bg-gradient-to-br from-transparent via-[#fffbe6]/5 to-transparent">
+                <div className="w-80 sm:w-80 lg:w-[28rem] h-80 sm:h-80 lg:h-[28rem] border-2 border-[#daa520]/50 rounded-lg shadow-lg transition-all duration-300 group-hover:border-[#d4af37]/70 group-hover:shadow-xl group-hover:shadow-[#d4af37]/20 bg-gradient-to-br from-transparent via-[#fffbe6]/5 to-transparent">
 
                   {/* Inner container for all effects and logo */}
                   <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg">
@@ -210,9 +210,9 @@ export default function OptimizedMedicalPage() {
             <div className="space-y-8 lg:space-y-6 text-center lg:text-left order-2 lg:order-1">
 
               {/* Location Badge */}
-              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#b8860b] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
-                  <MapPin className="h-4 w-4 text-[#b8860b]" />
-                  <span>Located in Mississauga</span>
+              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300">
+                  <MapPin className="h-4 w-4 text-gray-700" />
+                  <span className="text-gray-700">Located in Mississauga</span>
               </div>
               
               {/* Main Headlines */}
@@ -234,7 +234,7 @@ export default function OptimizedMedicalPage() {
               {/* Action Buttons */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 justify-center lg:justify-start pt-4">
                 <button
-                  className="group w-full px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold text-lg rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
+                  className="group w-full px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold text-lg rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl shadow-gray-400/30 hover:shadow-gray-700/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
                   onClick={handleBookAppointment}
                   aria-label="Book Appointment"
                 >
@@ -245,7 +245,7 @@ export default function OptimizedMedicalPage() {
                 </button>
                 <a
                   href={pdfFile}
-                  className="w-full px-8 py-4 border-2 border-[#daa520] bg-white text-[#b8860b] font-semibold text-lg rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="w-full px-8 py-4 border-2 border-[#daa520] bg-white text-gray-700 font-semibold text-lg rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:shadow-xl shadow-lg shadow-gray-400/30 hover:shadow-gray-500/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1"
                   target="_blank"
                   rel="noopener noreferrer"
                   download="OneMedicalCentre.pdf"
@@ -258,21 +258,21 @@ export default function OptimizedMedicalPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 pt-0">
                 <a
                   href="tel:+16476602591"
-                  className="flex items-center justify-center space-x-3 bg-white px-8 py-3 rounded-xl border-2 border-[#daa520] text-[#b8860b] text-base hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="flex items-center justify-center space-x-3 bg-white px-8 py-3 rounded-xl border-2 border-[#daa520] text-gray-700 text-base hover:text-[#daa520] hover:shadow-xl shadow-lg shadow-gray-400/30 hover:shadow-gray-500/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transition-all duration-300 transform-gpu hover:-translate-y-1"
                   aria-label="Call +647 660 2591"
                 >
                   <div className="p-2">
-                    <Phone className="h-6 w-6 text-[#daa520]" />
+                    <Phone className="h-6 w-6 hover:text-[#daa520]" />
                   </div>
                   <span className="font-medium">Contact Us</span>
                 </a>
                 <a
                   href="mailto:onemedicalmississauga@gmail.com"
-                  className="flex items-center justify-center space-x-3 bg-white px-8 py-3 rounded-xl border-2 border-[#daa520] text-[#b8860b] text-base hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="flex items-center justify-center space-x-3 bg-white px-8 py-3 rounded-xl border-2 border-[#daa520] text-gray-700 text-base hover:text-[#daa520] hover:shadow-xl shadow-lg shadow-gray-400/30 hover:shadow-gray-500/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transition-all duration-300 transform-gpu hover:-translate-y-1"
                   aria-label="Email Us"
                 >
                   <div className="p-2">
-                    <Mail className="h-6 w-6 text-[#daa520]" />
+                    <Mail className="h-6 w-6 hover:text-[#daa520]" />
                   </div>
                   <span className="font-medium">Email Us</span>
                 </a>

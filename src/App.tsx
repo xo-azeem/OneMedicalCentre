@@ -26,7 +26,7 @@ function Header() {
   return (
     <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[98vw] sm:w-[95vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw] flex justify-center">
       <div className="w-full flex flex-col">
-        <div className="mx-auto w-full flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 bg-white border-2 border-[#daa520] shadow-xl shadow-[#ffd700]/20 rounded-3xl relative overflow-hidden">
+        <div className="mx-auto w-full flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 bg-white border-2 border-[#daa520] shadow-xl shadow-gray-400/30 rounded-3xl relative overflow-hidden">
           <div className="relative z-10 flex items-center space-x-4">
             <Link to="/" className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white border border-white transition-all duration-300 hover:scale-110">
               <img src={logo} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
@@ -112,15 +112,16 @@ function Footer() {
               <img src={logo} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
             </Link>
             <Link to="/" className="block cursor-pointer group">
-              <h1 className="text-xl sm:text-3xl font-black text-[#daa520] tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300" style={font}>
-                One Medical Centre
+              <h1 className="text-xl sm:text-3xl font-black text-gray-700 tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300" style={font}>
+                ONE MEDICAL CENTRE
+                {/* This was in [#daa520] but now in [#000000] */}
               </h1>
               <p className="text-xs sm:text-sm font-semibold text-[#b8860b]/80 group-hover:text-[#daa520] transition-colors duration-300">
                 Your Complete Healthcare Destination
               </p>
             </Link>
             </div>
-            <p className="leading-relaxed text-sm sm:text-base md:text-lg max-w-md text-black">
+            <p className="leading-relaxed text-sm sm:text-base md:text-lg max-w-md text-gray-700 text-justify">
               Your trusted healthcare partner in Mississauga, offering comprehensive medical services under one roof with a focus on quality care and patient satisfaction.
             </p>
           </div>
@@ -128,17 +129,17 @@ function Footer() {
             <h6 className="font-semibold mb-6 text-[#b8860b] text-lg">Services</h6>
             <ul className="space-y-3">
               {['Medical Care', 'Wellness Services', 'Eye Care', 'Physiotherapy', 'Pharmacy'].map((service, index) => (
-                <li key={index} className="text-black hover:text-[#daa520] cursor-pointer transition-colors">{service}</li>
+                <li key={index} className="text-gray-700 hover:text-[#daa520] cursor-pointer transition-colors">{service}</li>
               ))}
             </ul>
           </div>
           <div>
             <h6 className="font-semibold mb-6 text-[#b8860b] text-lg">Contact</h6>
-            <ul className="space-y-3 text-black">
+            <ul className="space-y-3 text-gray-700">
               <li>50 Burnhamthorpe Rd W,</li>
               <li>Unit 102, Mississauga,</li>
               <li>Free Parking Available</li>
-              <li className="flex items-center gap-2 text-black hover:text-[#daa520] transition-colors cursor-pointer">
+              <li className="flex items-center gap-2 text-gray-700 hover:text-[#daa520] transition-colors cursor-pointer">
                 <Phone className="h-4 w-4" /> +647 660 2591
               </li>
             </ul>
@@ -147,7 +148,7 @@ function Footer() {
 
         {/* Theme toggle removed */}
 
-        <div className="border-t-2 border-[#daa520] mt-16 sm:mt-20 pt-8 sm:pt-10 text-center text-black">
+        <div className="border-t-2 border-[#daa520] mt-16 sm:mt-20 pt-8 sm:pt-10 text-center text-gray-700">
           <p>© 2024 One Medical Centre. All rights reserved. Your health is our priority.</p>
         </div>
       </div>

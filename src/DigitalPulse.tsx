@@ -1,7 +1,7 @@
 export default function DigitalPulse() {
   return (
     <div
-      className="w-full max-w-3xl mx-auto bg-theme-primary dark:bg-black rounded-3xl p-6 flex items-center justify-center mb-2"
+      className="w-full max-w-3xl mx-auto bg-white rounded-3xl p-6 flex items-center justify-center mb-2"
     >
       <svg
         viewBox="0 0 600 180"
