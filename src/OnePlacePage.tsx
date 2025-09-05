@@ -192,8 +192,8 @@ export default function OnePlacePage() {
                     @media (min-width:640px){.star-shine{width:40px;height:40px;}}
                     @media (min-width:1024px){.star-shine{width:50px;height:50px;}}
                     .star-ray{position:absolute;left:50%;top:50%;width:8px;height:24px;background:linear-gradient(180deg,#fffbe6 0%,#fffbe6 15%,#d4af37 35%,#d4af37 60%,rgba(255,215,0,0.35) 90%,transparent 100%);clip-path:polygon(50% 0%,92% 100%,8% 100%);opacity:0.99;transform-origin:50% 100%;box-shadow:0 0 32px 12px #fffbe6,0 0 64px 24px #d4af37,0 0 48px 12px #fffbe6,0 0 96px 32px #d4af37,0 0 24px 6px #fffbe6;}
-                    @media (min-width:640px){.star-ray{width:10px;height:30px;box-shadow:0 0 40px 14px #fffbe6,0 0 80px 28px #d4af37,0 0 56px 14px #fffbe6,0 0 112px 40px #d4af37,0 0 28px 7px #fffbe6;}}
-                    @media (min-width:1024px){.star-ray{width:12px;height:38px;box-shadow:0 0 48px 16px #fffbe6,0 0 96px 32px #d4af37,0 0 64px 16px #fffbe6,0 0 128px 48px #d4af37,0 0 32px 8px #fffbe6;}}
+                    @media (min-width:640px){.star-ray{width:10px;height:30px;box-shadow:0 0 40px 14px #fffbe6,0 0 80px 28px #daa520,0 0 56px 14px #fffbe6,0 0 112px 40px #daa520,0 0 28px 7px #fffbe6;}}
+                    @media (min-width:1024px){.star-ray{width:12px;height:38px;box-shadow:0 0 48px 16px #fffbe6,0 0 96px 32px #daa520,0 0 64px 16px #fffbe6,0 0 128px 48px #daa520,0 0 32px 8px #fffbe6;}}
                     .star-ray.ray-1::before,.star-ray.ray-2::before,.star-ray.ray-3::before,.star-ray.ray-4::before{content:'';position:absolute;left:50%;top:0;width:12px;height:12px;background:radial-gradient(circle,#fffbe6 0%,#ffd700 60%,transparent 100%);transform:translate(-50%,-40%);z-index:1;filter:blur(1.5px);opacity:0.7;pointer-events:none;}
                     @media (min-width:640px){.star-ray.ray-1::before,.star-ray.ray-2::before,.star-ray.ray-3::before,.star-ray.ray-4::before{width:15px;height:15px;filter:blur(1.8px);}}
                     @media (min-width:1024px){.star-ray.ray-1::before,.star-ray.ray-2::before,.star-ray.ray-3::before,.star-ray.ray-4::before{width:18px;height:18px;filter:blur(2px);}}
