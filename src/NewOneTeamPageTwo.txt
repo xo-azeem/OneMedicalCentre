@@ -1,3 +1,5 @@
+// Made by me and Ma'am Uzma
+
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo from './assets/logo.png';

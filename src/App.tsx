@@ -6,11 +6,11 @@ import ScrollToTop from './ScrollToTop';
 import OneTeamPage from './OneTeamPage';
 import OnePriorityPage from './OnePriorityPage';
 import OnePlacePage from './OnePlacePage';
-import NewOneTeamPage from './NewOneTeamPage';
+//import NewOneTeamPage from './NewOneTeamPage';
 
 const font = {
   fontWeight: 900,
-  letterSpacing: '0.05em',
+  letterSpacing: '0.0em', // was in 0.05em
   lineHeight: '0.9'
 };
 
@@ -20,8 +20,8 @@ function Header() {
     { key: '/', label: 'One Team' },
     { key: '/priority', label: 'One Priority' },
     { key: '/place', label: 'One Place' },
-    { key: '/newoneteam', label: 'Theme 1' },
   ];
+
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   return (
     <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[98vw] sm:w-[95vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw] flex justify-center">
@@ -32,15 +32,16 @@ function Header() {
               <img src={logo} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
             </Link>
             <Link to="/" className="block cursor-pointer group">
-              <h1 className="text-xl sm:text-3xl font-black text-[#daa520] tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300" style={font}>
-                One Medical Centre
+              <h1 className="text-xl sm:text-3xl font-black text-gray-700 tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300" style={font}>
+                ONE MEDICAL CENTRE
+                {/* This was in [#daa520] but now in [#000000] */}
               </h1>
-              <p className="text-xs sm:text-sm font-semibold text-[#b8860b]/80 group-hover:text-[#daa520] transition-colors duration-300">
+              <p className="text-xs sm:text-sm font-semibold text-[#daa520]">
                 Your Complete Healthcare Destination
               </p>
             </Link>
           </div>
-          <nav className="hidden md:flex items-center space-x-2">
+          <nav className="hidden md:flex items-center space-x-3">
             {navItems.map((item) => {
               const isActive = location.pathname === item.key;
               return (
@@ -168,7 +169,6 @@ function App() {
           <Route path="/" element={<OneTeamPage />} />
           <Route path="/priority" element={<OnePriorityPage />} />
           <Route path="/place" element={<OnePlacePage />} />
-          <Route path="/newoneteam" element={<NewOneTeamPage />} />
         </Routes>
       </main>
       <Footer />

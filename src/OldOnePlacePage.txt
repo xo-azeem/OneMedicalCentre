@@ -120,35 +120,70 @@ export default function OnePlacePage() {
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black overflow-x-hidden">
       {/* Margin area above hero for all screens */}
-      <div className="w-full" style={{height: '44px', background: '#f8f9fa'}}></div>
+      <div className="w-full" style={{height: '44px', background: '#000'}}></div>
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .shimmer-text {
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 30%,
+            rgba(255, 215, 0, 0.3) 40%,
+            rgba(255, 215, 0, 0.8) 50%,
+            rgba(255, 215, 0, 1) 60%,
+            rgba(255, 215, 0, 0.8) 70%,
+            rgba(255, 215, 0, 0.3) 80%,
+            transparent 90%,
+            transparent 100%
+          );
+          background-size: 300% 100%;
+          animation: shimmer 2.5s ease-in-out infinite;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          position: relative;
+          display: inline-block;
+        }
+        .shimmer-text::before {
+          content: attr(data-text);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          z-index: -1;
+        }
+      `}</style>
       {/* Hero Section */}
-      <section  
-        ref={heroRef} 
-        className="relative bg-white pt-20 sm:pt-24 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden"
-      >
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-white" />
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffd700]/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#daa520]/15 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-[#f5deb3]/10 rounded-full blur-2xl" />
-        </div>
+      <section ref={heroRef} className="relative bg-black py-20 sm:py-28 min-h-[80vh] flex items-center mb-8 overflow-hidden">
+        <div className="absolute inset-0 bg-black"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div ref={heroContentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            
-            {/* Logo Section */}
-            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+        {/* Floating decorative elements */}
+        {/* <div className="absolute top-20 left-10 w-4 h-4 bg-[#ffd700]/30 rounded-full transition-all duration-[2000ms] delay-300 animate-ping opacity-60"></div>
+        <div className="absolute top-40 right-20 w-3 h-3 bg-[#ffd700]/20 rounded-full transition-all duration-[2200ms] delay-500 animate-pulse opacity-40"></div>
+        <div className="absolute bottom-32 left-20 w-5 h-5 bg-[#ffd700]/10 rounded-full transition-all duration-[2400ms] delay-700 animate-bounce"></div>
+        <div className="absolute bottom-20 right-10 w-3 h-3 bg-[#ffd700]/10 rounded-full transition-all duration-[2600ms] delay-1100 animate-ping"></div>*/}
+        
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div ref={heroContentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Right Content - Logo with Main Page Hero Style */}
+            <div className="flex justify-center lg:justify-end mt-8 lg:mt-0 order-1 lg:order-2">
               <div className="relative group">
-
-                {/* Square Container with Border */}
+                {/* Square Container with Border (copied from OneTeamPage) */}
                 <div className="w-80 sm:w-80 lg:w-[28rem] h-80 sm:h-80 lg:h-[28rem] border-2 border-[#d4af37]/50 rounded-lg shadow-lg transition-all duration-300 group-hover:border-[#d4af37]/70 group-hover:shadow-xl group-hover:shadow-[#d4af37]/20 bg-gradient-to-br from-transparent via-[#fffbe6]/5 to-transparent">
-
                   {/* Inner container for all effects and logo */}
                   <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg">
-
+                    
                     {/* Star shine effects */}
                     <StarShine className="random-star-1" delay={0} />
                     <StarShine className="random-star-2" delay={1.8} />
@@ -160,14 +195,14 @@ export default function OnePlacePage() {
                     <style>{`
                     .random-star-1{top:15%;left:25%;filter:blur(4px);}
                     .random-star-2{top:70%;left:18%;filter:blur(4px);}
-                    .random-star-3{top:45%;left:80%;filter:blur(4px);}
+                    .random-star-3{top:45%;left:77%;filter:blur(4px);}
                     .random-star-4{top:19%;left:65%;filter:blur(4px);}
                     .random-star-5{top:76%;left:45%;filter:blur(4px);}
                     .random-star-6{top:35%;left:10%;filter:blur(4px);}
                     @media (max-width:768px){
                     .random-star-1{top:23%;left:20%;filter:blur(3px);}
                     .random-star-2{top:65%;left:17%;filter:blur(3px);}
-                    .random-star-3{top:55%;left:75%;filter:blur(3px);}
+                    .random-star-3{top:55%;left:73%;filter:blur(3px);}
                     .random-star-4{top:22%;left:70%;filter:blur(3px);}
                     .random-star-5{display:none;top:78%;left:42%;filter:blur(3px);}
                     .random-star-6{display:none;top:38%;left:12%;filter:blur(3px);}
@@ -175,7 +210,7 @@ export default function OnePlacePage() {
                     @media (max-width:1024px) and (min-width:769px){
                     .random-star-1{top:14%;left:23%;filter:blur(3.5px);}
                     .random-star-2{top:68%;left:16%;filter:blur(3.5px);}
-                    .random-star-3{top:43%;left:82%;filter:blur(3.5px);}
+                    .random-star-3{top:43%;left:81%;filter:blur(3.5px);}
                     .random-star-4{top:14%;left:66%;filter:blur(3.5px);}
                     .random-star-5{top:81%;left:43%;filter:blur(3.5px);}
                     .random-star-6{display:none;top:36%;left:9%;filter:blur(3.5px);}
@@ -201,77 +236,71 @@ export default function OnePlacePage() {
                     .star-ray.ray-2{transform:translate(-50%,-100%) rotate(90deg);}
                     .star-ray.ray-3{transform:translate(-50%,-100%) rotate(180deg);}
                     .star-ray.ray-4{transform:translate(-50%,-100%) rotate(270deg);}
-                    .star-center{position:absolute;left:50%;top:50%;width:10px;height:10px;background:radial-gradient(circle,#fffbe6 0%,#ffd700 70%,#daa520 100%);border-radius:50%;box-shadow:0 0 6px 1.5px rgba(255,251,230,0.4),0 0 12px 3px rgba(218,165,32,0.3),0 0 18px 4.5px rgba(255,215,0,0.1);opacity:0.6;transform:translate(-50%,-50%);z-index:2;}
-                    @media (min-width:640px){.star-center{width:13px;height:13px;box-shadow:0 0 7px 1.75px rgba(255,251,230,0.4),0 0 14px 3.5px rgba(218,165,32,0.3),0 0 21px 5.25px rgba(255,215,0,0.1);}}
-                    @media (min-width:1024px){.star-center{width:16px;height:16px;box-shadow:0 0 8px 2px rgba(255,251,230,0.4),0 0 16px 4px rgba(218,165,32,0.3),0 0 24px 6px rgba(255,215,0,0.1);}}
+                    .star-center{position:absolute;left:50%;top:50%;width:10px;height:10px;background:radial-gradient(circle,#fffbe6 0%,#ffd700 70%,#daa520 100%);border-radius:50%;box-shadow:0 0 12px 3px #fffbe6,0 0 24px 6px #daa520,0 0 36px 9px rgba(255,215,0,0.2);opacity:1;transform:translate(-50%,-50%);z-index:2;}
+                    @media (min-width:640px){.star-center{width:13px;height:13px;box-shadow:0 0 14px 3.5px #fffbe6,0 0 28px 7px #daa520,0 0 42px 10.5px rgba(255,215,0,0.2);}}
+                    @media (min-width:1024px){.star-center{width:16px;height:16px;box-shadow:0 0 16px 4px #fffbe6,0 0 32px 8px #daa520,0 0 48px 12px rgba(255,215,0,0.2);}}
                     `}</style>
 
                     {/* Animated background */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <div className="w-1/2 h-1/2 rounded-full bg-gradient-to-br from-[#fffbe6]/20 via-[#daa520]/30 to-[#daa520]/20 blur-2xl animate-bg-pulse" />
                     </div>
-                    
                     {/* Glisten spots */}
                     <div className="absolute inset-0 pointer-events-none overflow-hidden">
                       <div className="absolute w-20 h-20 left-[-10%] top-[80%] bg-gradient-radial from-[#d4af37]/70 via-white/30 to-white/0 rounded-full blur-xl opacity-50 animate-glisten-spot2" />
                       <div className="absolute w-24 h-24 left-0 top-[50%] bg-gradient-radial from-[#d4af37]/60 via-[#d4af37]/30 to-white/0 rounded-full blur-xl opacity-60 animate-glisten-spot3" />
                     </div>
-                    
                     {/* Logo */}
                     <img 
                       src={logo} 
                       alt="One Medical Centre Hero Logo" 
                       className="relative z-10 w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
                     />
-
                   </div>
                 </div>
               </div>
             </div>
-                
-            {/* Content Section */}
-            <div className="space-y-8 lg:space-y-6 text-center lg:text-left order-2 lg:order-1">
-
-              {/* Location Badge */}
-              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#b8860b] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
-                  <Sparkles className="h-4 w-4 text-[#b8860b]" />
+            {/* Left Content */}
+            <div className="space-y-8 order-2 lg:order-1 w-full text-center lg:text-left">
+              <div className="space-y-6 max-w-2xl mx-auto lg:mx-0">
+                <div className="inline-flex items-center space-x-2 bg-black text-[#d4af37] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
+                  <Sparkles className="h-4 w-4" />
                   <span>One Place</span>
-              </div>
-              
-              {/* Main Headlines */}
-              <div className="space-y-2 sm:space-y-4">
-                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl font-bold tracking-tight leading-tight drop-shadow text-[#daa520]" style={{ textShadow: '0 1px 1px #daa520' }}>
-                  OUR PLACE
-                </h1>
-                <div className="flex justify-center lg:justify-start">
-                  <div className="w-80 sm:w-96 md:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse" />
                 </div>
-                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-clip-text text-transparent leading-snug">
-                  Everything you need for your health, <span className="text-[#daa520]">all together</span> in one location.
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                  All in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#daa520]">One Place</span>
                 </h2>
-                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium text-justify">
+                <div className="flex justify-center lg:justify-start text-center lg:text-left">
+                  <div className="w-[460px] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse"></div>
+                </div>
+                <div className="bg-gradient-to-r from-[#d4af37] to-[#ffd700] bg-clip-text text-transparent">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
+                    Everything you need for your health, <span className="underline decoration-[#d4af37]/70 font-black">all together</span> in one location.
+                  </h3>
+                </div>
+                <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium mt-2 mb-2">
                   Family Doctors, Medical Specialists, Pharmacy & More — All Under One Roof for Your Convenience.
                 </p>
               </div>
-                
               {/* Action Buttons */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 justify-center lg:justify-start pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center lg:justify-start pt-4">
                 <button
-                  className="group w-full px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold text-lg rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
+                  className="group px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
                   onClick={handleBookAppointment}
                   aria-label="Book Appointment"
                 >
-                  <span className="flex items-center space-x-3 justify-center">
+                  <span className="flex items-center space-x-3">
                     <span>Book Appointment</span>
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </button>
-                <a
-                  href="tel:+16476602591"
-                   className="w-full px-8 py-4 border-2 border-[#daa520] bg-white text-[#b8860b] font-semibold text-lg rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
-                >
-                  Call Now
-                </a>
+                                  <a
+                   href="tel:+16476602591"
+                   className="px-8 py-4 border-2 border-[#daa520] bg-black text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:bg-[#fff8dc] dark:hover:bg-black hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                   tabIndex={0}
+                  >
+                   Call Now
+                  </a>
               </div>
             </div>
           </div>

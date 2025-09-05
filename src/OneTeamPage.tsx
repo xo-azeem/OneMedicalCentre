@@ -1,5 +1,7 @@
+// New Theme
+
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { MapPin, ArrowRight, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
+import { MapPin, ArrowRight, Phone, Mail, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors.png';
@@ -95,16 +97,16 @@ export default function OptimizedMedicalPage() {
   );
 
   return (
-    <div className="min-h-screen bg-theme-primary">
+    <div className="min-h-screen bg-white">
       {/* Margin area above hero for all screens */}
-      <div className="w-full" style={{height: '44px', background: '#000'}}></div>
+      <div className="w-full" style={{height: '44px', background: '#f8f9fa'}}></div>
       {/* Hero Section */}
       <section 
         ref={heroRef} 
-        className="relative bg-black pt-20 sm:pt-24 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden"
+        className="relative bg-white pt-20 sm:pt-24 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden"
       >
         {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-black" />
+        <div className="absolute inset-0 bg-white" />
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffd700]/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#daa520]/15 rounded-full blur-3xl" />
@@ -135,14 +137,14 @@ export default function OptimizedMedicalPage() {
                     <style>{`
                     .random-star-1{top:15%;left:25%;filter:blur(4px);}
                     .random-star-2{top:70%;left:18%;filter:blur(4px);}
-                    .random-star-3{top:45%;left:77%;filter:blur(4px);}
+                    .random-star-3{top:45%;left:80%;filter:blur(4px);}
                     .random-star-4{top:19%;left:65%;filter:blur(4px);}
                     .random-star-5{top:76%;left:45%;filter:blur(4px);}
                     .random-star-6{top:35%;left:10%;filter:blur(4px);}
                     @media (max-width:768px){
                     .random-star-1{top:23%;left:20%;filter:blur(3px);}
                     .random-star-2{top:65%;left:17%;filter:blur(3px);}
-                    .random-star-3{top:55%;left:73%;filter:blur(3px);}
+                    .random-star-3{top:55%;left:75%;filter:blur(3px);}
                     .random-star-4{top:22%;left:70%;filter:blur(3px);}
                     .random-star-5{display:none;top:78%;left:42%;filter:blur(3px);}
                     .random-star-6{display:none;top:38%;left:12%;filter:blur(3px);}
@@ -150,7 +152,7 @@ export default function OptimizedMedicalPage() {
                     @media (max-width:1024px) and (min-width:769px){
                     .random-star-1{top:14%;left:23%;filter:blur(3.5px);}
                     .random-star-2{top:68%;left:16%;filter:blur(3.5px);}
-                    .random-star-3{top:43%;left:81%;filter:blur(3.5px);}
+                    .random-star-3{top:43%;left:82%;filter:blur(3.5px);}
                     .random-star-4{top:14%;left:66%;filter:blur(3.5px);}
                     .random-star-5{top:81%;left:43%;filter:blur(3.5px);}
                     .random-star-6{display:none;top:36%;left:9%;filter:blur(3.5px);}
@@ -176,9 +178,9 @@ export default function OptimizedMedicalPage() {
                     .star-ray.ray-2{transform:translate(-50%,-100%) rotate(90deg);}
                     .star-ray.ray-3{transform:translate(-50%,-100%) rotate(180deg);}
                     .star-ray.ray-4{transform:translate(-50%,-100%) rotate(270deg);}
-                    .star-center{position:absolute;left:50%;top:50%;width:10px;height:10px;background:radial-gradient(circle,#fffbe6 0%,#ffd700 70%,#daa520 100%);border-radius:50%;box-shadow:0 0 12px 3px #fffbe6,0 0 24px 6px #daa520,0 0 36px 9px rgba(255,215,0,0.2);opacity:1;transform:translate(-50%,-50%);z-index:2;}
-                    @media (min-width:640px){.star-center{width:13px;height:13px;box-shadow:0 0 14px 3.5px #fffbe6,0 0 28px 7px #daa520,0 0 42px 10.5px rgba(255,215,0,0.2);}}
-                    @media (min-width:1024px){.star-center{width:16px;height:16px;box-shadow:0 0 16px 4px #fffbe6,0 0 32px 8px #daa520,0 0 48px 12px rgba(255,215,0,0.2);}}
+                    .star-center{position:absolute;left:50%;top:50%;width:10px;height:10px;background:radial-gradient(circle,#fffbe6 0%,#ffd700 70%,#daa520 100%);border-radius:50%;box-shadow:0 0 6px 1.5px rgba(255,251,230,0.4),0 0 12px 3px rgba(218,165,32,0.3),0 0 18px 4.5px rgba(255,215,0,0.1);opacity:0.6;transform:translate(-50%,-50%);z-index:2;}
+                    @media (min-width:640px){.star-center{width:13px;height:13px;box-shadow:0 0 7px 1.75px rgba(255,251,230,0.4),0 0 14px 3.5px rgba(218,165,32,0.3),0 0 21px 5.25px rgba(255,215,0,0.1);}}
+                    @media (min-width:1024px){.star-center{width:16px;height:16px;box-shadow:0 0 8px 2px rgba(255,251,230,0.4),0 0 16px 4px rgba(218,165,32,0.3),0 0 24px 6px rgba(255,215,0,0.1);}}
                     `}</style>
 
                     {/* Animated background */}
@@ -208,42 +210,42 @@ export default function OptimizedMedicalPage() {
             <div className="space-y-8 lg:space-y-6 text-center lg:text-left order-2 lg:order-1">
 
               {/* Location Badge */}
-              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-black text-[#d4af37] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
-                  <MapPin className="h-4 w-4" />
+              <div className="lg:mt-[5%] inline-flex items-center space-x-2 bg-white text-[#b8860b] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300">
+                  <MapPin className="h-4 w-4 text-[#b8860b]" />
                   <span>Located in Mississauga</span>
               </div>
               
               {/* Main Headlines */}
-              <div className="space-y-3 sm:space-y-4">
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow" style={{ textShadow: '0 1px 2px #daa520' }}>
+              <div className="space-y-2 sm:space-y-4">
+                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl font-bold tracking-tight leading-tight drop-shadow text-[#daa520]" style={{ textShadow: '0 1px 1px #daa520' }}>
                   ONE MEDICAL CENTRE
                 </h1>
                 <div className="flex justify-center lg:justify-start">
                   <div className="w-80 sm:w-96 md:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse" />
                 </div>
-                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug">
-                  Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#daa520]">Complete Healthcare</span> Destination
+                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-clip-text text-transparent leading-snug">
+                  Your <span className="text-[#daa520] font-bold">Complete Healthcare</span> Destination
                 </h2>
-                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium text-justify">
                   Just steps from Square One, our modern facility brings you medical care, pharmacy, eye care, physiotherapy, and wellness solutions for all your health concerns in one convenient location.
                 </p>
               </div>
                 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center lg:justify-start pt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 justify-center lg:justify-start pt-4">
                 <button
-                  className="group px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
+                  className="group w-full px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold text-lg rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transform-gpu"
                   onClick={handleBookAppointment}
                   aria-label="Book Appointment"
                 >
-                  <span className="flex items-center space-x-3">
+                  <span className="flex items-center space-x-3 justify-center">
                     <span>Book Appointment</span>
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </button>
                 <a
                   href={pdfFile}
-                  className="px-8 py-4 border-2 border-[#daa520] bg-black text-[#b8860b] font-semibold rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="w-full px-8 py-4 border-2 border-[#daa520] bg-white text-[#b8860b] font-semibold text-lg rounded-2xl transition-all duration-300 hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 text-center transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   target="_blank"
                   rel="noopener noreferrer"
                   download="OneMedicalCentre.pdf"
@@ -253,33 +255,27 @@ export default function OptimizedMedicalPage() {
               </div>
                 
               {/* Contact Info Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 pt-0">
                 <a
                   href="tel:+16476602591"
-                  className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-gray-300 text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="flex items-center justify-center space-x-3 bg-white px-8 py-3 rounded-xl border-2 border-[#daa520] text-[#b8860b] text-base hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   aria-label="Call +647 660 2591"
                 >
-                  <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
-                    <Phone className="h-4 w-4 text-[#daa520] dark:text-white" />
+                  <div className="p-2">
+                    <Phone className="h-6 w-6 text-[#daa520]" />
                   </div>
-                  <span className="font-medium">+647 660 2591</span>
+                  <span className="font-medium">Contact Us</span>
                 </a>
                 <a
                   href="mailto:onemedicalmississauga@gmail.com"
-                  className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-gray-300 text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
+                  className="flex items-center justify-center space-x-3 bg-white px-8 py-3 rounded-xl border-2 border-[#daa520] text-[#b8860b] text-base hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   aria-label="Email Us"
                 >
-                  <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
-                    <Mail className="h-4 w-4 text-[#daa520] dark:text-white" />
+                  <div className="p-2">
+                    <Mail className="h-6 w-6 text-[#daa520]" />
                   </div>
                   <span className="font-medium">Email Us</span>
                 </a>
-                <div className="flex items-center space-x-3 bg-theme-primary dark:bg-black px-4 py-4 rounded-xl border-2 border-[#daa520] text-gray-300 text-sm hover:text-[#b8860b] dark:hover:text-[#ffd700] hover:bg-[#fffaf0] dark:hover:bg-black hover:border-[#ffd700] dark:hover:border-[#ffd700] hover:shadow-lg hover:shadow-[#ffd700]/30 focus:outline-none focus:ring-2 focus:ring-[#daa520] transition-all duration-300 transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20">
-                  <div className="p-2 bg-[#fffacd] dark:bg-[#b8860b] rounded-lg">
-                    <Car className="h-5 w-5 text-[#daa520] dark:text-white" />
-                  </div>
-                  <span className="text-gray-300 text-sm font-medium">Free Parking</span>
-                </div>
               </div>
             </div>
           </div>
@@ -289,7 +285,7 @@ export default function OptimizedMedicalPage() {
       {/* Doctors Section */}
       <section
         ref={doctorsSectionRef}
-        className="relative bg-theme-primary pt-8 pb-6 sm:pt-10 sm:pb-8 md:pt-12 md:pb-10 overflow-hidden border-t-2 border-[#d4af37]/20"
+        className="relative bg-gray-50 pt-8 pb-6 sm:pt-10 sm:pb-8 md:pt-12 md:pb-10 overflow-hidden border-t-2 border-[#d4af37]/20"
       >
         {/* Animated Background Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -318,45 +314,46 @@ export default function OptimizedMedicalPage() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Doctors Section Header and Description - moved above image */}
-          <div className={`text-center mb-10 sm:mb-14 transition-all duration-400 ease-out transform ${doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}>
-            <div className={`inline-flex items-center space-x-3 bg-theme-primary text-[#d4af37] px-8 py-4 rounded-full text-sm font-bold border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-8 ${doctorsCardsVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-4 rotate-3'}`}>
-              <Stethoscope className="h-5 w-5 text-[#d4af37]" />
+          <div className={`text-center mb-5 sm:mb-14 transition-all duration-400 ease-out transform ${doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}>
+            {/* <div className={`inline-flex items-center space-x-3 bg-white text-[#b8860b] px-8 py-4 rounded-full text-sm font-bold border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300 mb-6 ${doctorsCardsVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-4 rotate-3'}`}>
+              <Stethoscope className="h-5 w-5 text-[#b8860b]" />
               <span className="tracking-wide">Our Medical Experts</span>
-            </div>
-            <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight transition-all duration-300 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            </div> */}
+            <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6 leading-tight transition-all duration-300 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Our{' '}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] bg-clip-text text-transparent">
+                <span className="text-[#daa520] font-bold">
                   Expert Doctors
                 </span>
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#daa520]/20 via-[#ffd700]/20 to-[#daa520]/20 blur-xl opacity-60 animate-pulse"></div>
               </span>
             </h3>
-            {/* <p className={`text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Our team of <span className="text-[#b8860b] font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
-              combining expertise and a <span className="text-[#b8860b] font-semibold">compassionate patient-centered approach.</span>
-            </p> */}
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200">
-              Our specialists are here to provide you with expert, compassionate care across a range of medical fields.
+            <p className="text-xl sm:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed transition-all duration-200 mb-8">
+              Our Doctors are here as <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#daa520] font-semibold">One Team</span> to provide you with expert, compassionate care across a range of medical fields.
             </p>
           </div>
-          {/* Full Width Image Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={doctorsVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.95 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="relative mb-6 md:mb-8"
-          >
+            {/* One Team Heading */}
+            <div className="text-center">
+              <div className="w-24 h-1 bg-gradient-to-r from-[#daa520] to-[#ffd700] rounded-full mx-auto opacity-80 mb-6"></div>
+            </div>
+
+            {/* Full Width Image Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              animate={doctorsVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.95 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative mb-6 md:mb-8"
+            >
             {/* Animated Corner Elements - moved outside image container */}
             <motion.div
-              animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }}
+              animate={{ rotate: [0, 360], scale: [1, 1.4, 1] }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -top-4 -right-4 w-12 h-12 border-2 border-[#daa520] rounded-full opacity-70 z-20"
+              className="absolute -top-4 -right-4 w-12 h-12 border-2 border-[#daa520] rounded-full opacity-80 z-20"
             />
             <motion.div
-              animate={{ rotate: [360, 0], scale: [1, 0.8, 1] }}
+              animate={{ rotate: [360, 0], scale: [1, 1.2, 1] }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-6 -left-6 w-16 h-16 border-2 border-[#ffd700] rounded-full opacity-50 z-20"
+              className="absolute -bottom-6 -left-6 w-16 h-16 border-2 border-[#ffd700] rounded-full opacity-70 z-20"
             />
             <div className="relative overflow-hidden rounded-3xl shadow-2xl border-2 border-[#d4af37]/30 bg-black">
               {/* Main Image Container */}
@@ -378,46 +375,7 @@ export default function OptimizedMedicalPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-3xl"></div>
               </motion.div>
               
-              {/* Medical Excellence Badge - Top Left */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: -20 }}
-                animate={doctorsVisible ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: -20 }}
-                transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-                className="absolute top-3 left-3 sm:top-6 sm:left-6 md:top-8 md:left-8"
-              >
-                <div className="bg-white/95 backdrop-blur-lg rounded-xl md:rounded-2xl px-3 py-2 sm:px-4 sm:py-3 md:px-6 md:py-4 shadow-xl border border-[#daa520]/30">
-                  <div className="flex items-center space-x-2 sm:space-x-3">
-                    <motion.div
-                      animate={{ rotate: [0, 15, -15, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                      className="flex-shrink-0"
-                    >
-                      <Stethoscope className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#b8860b]" />
-                    </motion.div>
-                    <div className="min-w-0">
-                      <span className="text-[#b8860b] font-bold text-xs sm:text-sm md:text-base lg:text-lg whitespace-nowrap">
-                        Medical Excellence
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
               
-              {/* One Team Badge - Bottom Right */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={doctorsVisible ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-                transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-                className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8"
-              >
-                <div className="bg-gradient-to-r from-[#daa520] to-[#ffd700] rounded-xl md:rounded-2xl px-3 py-2 sm:px-4 sm:py-3 md:px-6 md:py-4 shadow-2xl">
-                  <div className="flex items-center justify-center">
-                    <span className="text-slate-900 font-extrabold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl tracking-wide whitespace-nowrap drop-shadow-sm">
-                      One Team
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
           
@@ -428,52 +386,18 @@ export default function OptimizedMedicalPage() {
             transition={{ duration: 1.2, delay: 1, ease: "easeOut" }}
             className="max-w-4xl mx-auto mt-4 mb-6 sm:mt-6 sm:mb-8"
           >
-            {/* Features List - Responsive Grid Layout
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 justify-items-center">
-              {[
-                { icon: Shield, text: "Board-certified specialists", delay: 1.6 },
-                { icon: Clock, text: "24/7 emergency care", delay: 1.8 },
-                { icon: Award, text: "Award-winning patient care", delay: 2.0 }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -30, scale: 0.9 }}
-                  animate={doctorsVisible ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -30, scale: 0.9 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: item.delay,
-                    ease: "easeOut",
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  whileHover={{
-                    y: -5,
-                    scale: 1.03,
-                    boxShadow: "0 8px 32px 0 rgba(218, 165, 32, 0.2)",
-                    transition: { duration: 0.2, ease: "easeOut" }
-                  }}
-                  className="flex items-center gap-3 sm:gap-4 text-white/90 w-full max-w-[280px] px-3 py-2 sm:px-5 sm:py-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 cursor-pointer transition-all duration-200 hover:bg-white/8 hover:border-[#daa520]/30"
-                >
-                  <div className="flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 bg-gradient-to-r from-[#daa520] to-[#ffd700] rounded-full flex items-center justify-center shadow-lg">
-                    <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-slate-900" />
-                  </div>
-                  <span className="text-sm sm:text-base font-semibold leading-snug text-center lg:text-left flex-1">{item.text}</span>
-                </motion.div>
-              ))}
-            </div> */}
-
             {/* Call to Action */}
             <div className="mt-12 max-w-2xl mx-auto text-center px-4 sm:px-0">
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">
-                Ready to Meet Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#daa520] to-[#ffd700]">Healthcare Team?</span>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-4 tracking-tight">
+                Ready to Meet Your <span className="text-[#daa520] font-bold">Healthcare Team?</span>
               </h3>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
                 Schedule your appointment today and experience the difference of personalized, comprehensive healthcare in our
-                <span className="text-[#d4af37] font-semibold"> state-of-the-art facility.</span>
+                <span className="text-[#b8860b] font-semibold"> state-of-the-art facility.</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
-                  className="group relative px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#ffd700] text-slate-900 font-bold rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden shadow-xl shadow-[#ffd700]/20 hover:shadow-[#ffd700]/30 text-base sm:text-lg md:text-xl"
+                  className="group relative px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-bold rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu"
                   onClick={handleBookAppointment}
                   aria-label="Book Your Appointment"
                 >
@@ -484,7 +408,7 @@ export default function OptimizedMedicalPage() {
                 </button>
                 <a
                   href="tel:+16476602591"
-                  className="group relative px-8 py-4 bg-transparent text-white font-bold rounded-2xl border-2 border-white/20 hover:border-[#ffd700] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20 overflow-hidden shadow-lg shadow-[#ffd700]/10 hover:shadow-[#ffd700]/30 text-base sm:text-lg md:text-xl"
+                  className="group relative px-8 py-4 bg-transparent text-[#b8860b] font-bold rounded-2xl border-2 border-[#daa520] hover:text-[#daa520] hover:border-[#ffd700] hover:shadow-xl hover:shadow-[#ffd700]/30 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu hover:-translate-y-1 shadow-lg shadow-[#ffd700]/20"
                   aria-label="Call Now"
                 >
                   <span className="flex items-center space-x-3">
@@ -498,10 +422,10 @@ export default function OptimizedMedicalPage() {
         </div>
       </section>
 
-      <section className="py-6 xs:py-10 sm:py-12 md:py-14 bg-theme-primary relative overflow-hidden">
+      <section className="py-6 xs:py-10 sm:py-12 md:py-14 bg-white relative overflow-hidden">
         
         {/* Dynamic Background Layers */}
-        <div className="absolute inset-0 bg-theme-primary"></div>
+        <div className="absolute inset-0 bg-white"></div>
         
         {/* Enhanced Floating Elements with Dynamic Animations */}
         <div className={`absolute top-16 left-12 w-4 h-4 bg-[#d4af37]/60 rounded-full transition-all duration-[2500ms] delay-200 ${doctorsCardsVisible ? 'opacity-100 animate-ping scale-110' : 'opacity-0 scale-0'}`}></div>
@@ -521,26 +445,23 @@ export default function OptimizedMedicalPage() {
       </section>
 
       {/* Enhanced Doctors Cards Section */}
-      <section ref={doctorsCardsRef} className="py-8 xs:py-10 sm:py-14 md:py-16 bg-theme-primary relative overflow-hidden">
+      <section ref={doctorsCardsRef} className="py-8 xs:py-10 sm:py-14 md:py-16 bg-gray-50 relative overflow-hidden">
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.4\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'1\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-2 xs:px-4 sm:px-6 lg:px-8">
           {/* Enhanced Header with Layered Animation */}
           <div className={`text-center mb-6 mt-0 sm:mt-1`}>
-            <h4 className="text-4xl mb-5 sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-2 leading-tight">
+            <h4 className="text-4xl mb-5 sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent tracking-tight mb-2 leading-tight">
               Meet our{' '}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] bg-clip-text text-transparent">
+                <span className="text-[#daa520] font-bold">
                   Team
                 </span>
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#daa520]/20 via-[#ffd700]/20 to-[#daa520]/20 blur-xl opacity-60 animate-pulse"></div>
               </span>
             </h4>
-            {/* <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200">
-              Our specialists are here to provide you with expert, compassionate care across a range of medical fields.
-            </p> */}
-            <p className={`text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className={`text-xl sm:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed transition-all duration-200 ${doctorsCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Our team of <span className="text-[#b8860b] font-semibold">experienced healthcare professionals</span> is dedicated to providing you with the highest quality medical care, 
               combining expertise and a <span className="text-[#b8860b] font-semibold">compassionate patient-centered approach.</span>
             </p>
@@ -613,37 +534,41 @@ export default function OptimizedMedicalPage() {
                   className={`group transition-all duration-[1500ms] ease-out transform ${doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
                   style={{ transitionDelay: `${doctor.delay}ms` }}
                 >
-                  <div className="relative bg-gradient-to-br from-theme-primary/95 to-[#fff8dc]/80 group-hover:from-theme-primary group-hover:to-[#fffacd] transition-all duration-700 p-8 rounded-3xl shadow-xl border border-[#daa520] group-hover:border-[#ffd700] group-hover:shadow-2xl group-hover:shadow-[#ffd700]/20 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden backdrop-blur-sm">
+                  <div className="relative bg-gradient-to-br from-gray-50/90 to-gray-100/85 group-hover:from-amber-50/95 group-hover:to-yellow-50/90 transition-all duration-700 p-8 rounded-3xl shadow-xl border border-gray-200 group-hover:border-amber-300 group-hover:shadow-2xl group-hover:shadow-amber-400/25 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden backdrop-blur-sm">
                     {/* Glow Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#daa520]/0 via-[#ffd700]/0 to-[#daa520]/0 group-hover:from-[#daa520]/10 group-hover:via-[#ffd700]/15 group-hover:to-[#daa520]/10 transition-all duration-700 rounded-3xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-300/5 via-gray-400/3 to-gray-300/5 group-hover:from-amber-400/12 group-hover:via-yellow-400/18 group-hover:to-amber-400/12 transition-all duration-700 rounded-3xl"></div>
                     {/* Corners */}
-                    <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-[#daa520]/0 to-transparent group-hover:from-[#daa520]/20 transition-all duration-500 rounded-3xl"></div>
-                    <div className="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-tl from-[#ffd700]/0 to-transparent group-hover:from-[#ffd700]/15 transition-all duration-500 rounded-3xl"></div>
+                    <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-gray-300/8 to-transparent group-hover:from-amber-400/25 transition-all duration-500 rounded-3xl"></div>
+                    <div className="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-tl from-gray-400/6 to-transparent group-hover:from-yellow-400/22 transition-all duration-500 rounded-3xl"></div>
 
                     <div className="relative z-10 flex flex-col items-center text-center h-full">
-                      <div className="bg-gradient-to-br from-[#daa520] to-[#ffd700] group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl">
-                        <Icon className="h-10 w-10 text-white group-hover:scale-110 transition-all duration-500" />
+                      <div className="relative group-hover:scale-110 transition-all duration-500 p-5 rounded-2xl w-fit mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:shadow-gray-400/30">
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] rounded-2xl"></div>
+                        <div className="absolute inset-1 bg-white rounded-xl"></div>
+                        <div className="relative p-3 w-full h-full flex items-center justify-center">
+                          <Icon className="h-10 w-10 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
+                        </div>
                       </div>
-                      <h4 className="text-1xl font-bold text-white mb-3 group-hover:text-[#b8860b] transition-all duration-500 group-hover:scale-105">
+                      <h4 className="text-1xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-3 group-hover:text-amber-800 transition-all duration-500 group-hover:scale-105">
                         {doctor.name}
                       </h4>
-                      <div className="bg-theme-primary dark:bg-black text-[#d4af37] dark:text-[#ffd700] px-4 py-2 rounded-full text-sm font-semibold mb-4 border-2 border-[#daa520] shadow-lg shadow-[#ffd700]/20 hover:shadow-xl hover:shadow-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-300">
+                      <div className="bg-white text-amber-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 border-2 border-amber-300 shadow-lg shadow-amber-300/20 hover:shadow-xl hover:shadow-amber-400/30 hover:border-amber-400 transition-all duration-300">
                         {doctor.specialty}
                       </div>
-                      <p className="text-gray-300 leading-relaxed min-h-[100px] group-hover:text-theme-primary transition-all duration-500 text-base flex-grow">
+                      <p className="text-gray-700 leading-relaxed min-h-[100px] group-hover:text-gray-900 transition-all duration-500 text-base flex-grow">
                         {doctor.description}
                       </p>
                 
                       {/* Floating Dots */}
-                      <div className="absolute -top-3 -right-3 w-4 h-4 bg-[#daa520]/0 group-hover:bg-[#daa520]/90 rounded-full transition-all duration-500 group-hover:animate-pulse"></div>
-                      <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-[#ffd700]/0 group-hover:bg-[#ffd700]/70 rounded-full transition-all duration-700 group-hover:animate-bounce"></div>
+                      <div className="absolute -top-3 -right-3 w-4 h-4 bg-gray-300/20 group-hover:bg-amber-500/80 rounded-full transition-all duration-500 group-hover:animate-pulse"></div>
+                      <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gray-400/15 group-hover:bg-yellow-500/70 rounded-full transition-all duration-700 group-hover:animate-bounce"></div>
                     </div>
                 
                     {/* Animated Border Lines */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#daa520]/0 to-transparent group-hover:via-[#daa520]/70 transition-all duration-700 rounded-t-3xl"></div>
-                    <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-transparent via-[#ffd700]/0 to-transparent group-hover:via-[#ffd700]/70 transition-all duration-700 rounded-b-3xl"></div>
-                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#daa520]/0 to-transparent group-hover:via-[#daa520]/50 transition-all duration-700 rounded-l-3xl"></div>
-                    <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-transparent via-[#ffd700]/0 to-transparent group-hover:via-[#ffd700]/50 transition-all duration-700 rounded-r-3xl"></div>
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gray-300/15 to-transparent group-hover:via-amber-500/70 transition-all duration-700 rounded-t-3xl"></div>
+                    <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-transparent via-gray-400/12 to-transparent group-hover:via-yellow-500/70 transition-all duration-700 rounded-b-3xl"></div>
+                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-gray-300/10 to-transparent group-hover:via-amber-500/50 transition-all duration-700 rounded-l-3xl"></div>
+                    <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-transparent via-gray-400/8 to-transparent group-hover:via-yellow-500/50 transition-all duration-700 rounded-r-3xl"></div>
                   </div>
                 </div>
               );
