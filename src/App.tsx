@@ -48,16 +48,16 @@ function Header() {
                 <Link
                   key={item.key}
                   to={item.key}
-                  className={`group relative px-5 py-2.5 font-semibold text-base transition-all duration-300 rounded-xl hover:shadow-md hover:scale-105 active:scale-95 z-20 ${
+                  className={`group relative px-5 py-2.5 font-semibold text-base transition-all duration-300 rounded-xl hover:scale-105 active:scale-95 z-20 ${
                     isActive
                       ? 'text-[#b8860b] bg-white shadow-md border border-[#fffacd] dark:border-[#daa520]'
-                      : 'text-[#b8860b] hover:text-[#daa520] hover:bg-[#fff8dc] dark:hover:bg-white'
+                      : 'text-[#b8860b] hover:text-[#daa520] hover:bg-[#fff8dc] dark:hover:bg-white hover:shadow-lg hover:shadow-gray-700/30'
                   }`}
                 >
                   <span className="relative z-30 pointer-events-none">{item.label}</span>
-                  <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-[#daa520] to-[#ffd700] transition-all duration-300 rounded-full pointer-events-none ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}></div>
+                  {/* <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-[#daa520] to-[#ffd700] transition-all duration-300 rounded-full pointer-events-none ${
+                    isActive ? 'w-[91%]' : 'w-0 group-hover:w-[91%]'
+                  }`}></div> */}
                 </Link>
               );
             })}
