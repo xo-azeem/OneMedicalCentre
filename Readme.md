@@ -134,7 +134,7 @@ npm run lint
 
 ```
 src/
-├── App.tsx                 # Main app component with routing
+├── App.tsx                # Main app component with routing
 ├── main.tsx               # Application entry point
 ├── index.css              # Global styles
 ├── assets/                # Static assets
