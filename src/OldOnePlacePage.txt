@@ -1,3 +1,5 @@
+// Original (Old) Theme for the website One Place Page in Dark/Gold Theme
+
 import { useEffect, useRef, useState } from 'react';
 import { useLayoutEffect } from 'react';
 import { MapPin, Car, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';

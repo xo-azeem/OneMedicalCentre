@@ -1,3 +1,5 @@
+// Original (Old) Theme for the website One Team (Home) Page in Dark/Gold Theme
+
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, Car, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo from './assets/logo.png';

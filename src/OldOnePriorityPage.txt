@@ -1,3 +1,5 @@
+// Original (Old) Theme for the website One Priority Page in Dark/Gold Theme
+
 import { useEffect, useRef, useState } from 'react';
 import { Heart, Stethoscope, Shield, Award, ArrowRight, Pill, ShoppingBag, Eye, Dumbbell, UserCheck, Sparkles, Ear, Footprints, Users } from 'lucide-react';
 import logo from './assets/logo.png';
