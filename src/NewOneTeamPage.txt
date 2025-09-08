@@ -1,4 +1,4 @@
-// New Theme
+// Updated working Theme - This code is a bit old  for the OneTeamPage (Home) as some new changes were made to it.
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
