@@ -6,11 +6,7 @@ import logo from './assets/logo.png';
 
 const services = [
   { 
-    icon: Stethoscope, 
-    name: "Family Doctor", 
-    shortName: "Family Dr.", 
-    url: "https://mdplusmedical.inputhealth.com/ebooking#new", 
-    description: "Comprehensive primary care",
+    icon: Stethoscope, name: "Family Doctor", shortName: "Family Dr.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Comprehensive primary care", 
     subServices: [
       { name: "Male Doctor", url: "https://mdplusmedical.inputhealth.com/ebooking#new" },
       { name: "Female Doctor", url: "https://mdplusmedical.inputhealth.com/ebooking#new" }
@@ -26,7 +22,17 @@ const services = [
   { icon: Dumbbell, name: "Weight Loss Clinic", shortName: "Weight", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Weight management programs" },
   { icon: Brain, name: "Mental Health", shortName: "Mental Health", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Mental health services" },
   { icon: Baby, name: "Pediatrics", shortName: "Kids Clinic", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare" },
-  { icon: UserRound, name: "Senior Care", shortName: "Senior", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Critical care services" },
+  { 
+    icon: UserRound, 
+    name: "Senior Care", 
+    shortName: "Senior", 
+    url: "https://mdplusmedical.inputhealth.com/ebooking#new", 
+    description: "Critical care services",
+    subServices: [
+      { name: "In-Person", url: "https://mdplusmedical.inputhealth.com/ebooking#new" },
+      { name: "Virtual", url: "https://mdplusmedical.inputhealth.com/ebooking#new" }
+    ]
+  },
   { icon: UserCircle, name: "Men's Health", shortName: "Men's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Men's health services" },
   { icon: Users, name: "Women's Health", shortName: "Women's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Women's health services" },
   { icon: Award, name: "Laser Botox", shortName: "Laser", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cosmetic treatments" },
@@ -45,7 +51,9 @@ export default function AppointmentBookingPage() {
   const [servicesAnimationTriggered, setServicesAnimationTriggered] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [showFamilySubServices, setShowFamilySubServices] = useState(false);
+  const [showSeniorCareSubServices, setShowSeniorCareSubServices] = useState(false);
   const [showFamilySubServicesMobile, setShowFamilySubServicesMobile] = useState(false);
+  const [showSeniorCareSubServicesMobile, setShowSeniorCareSubServicesMobile] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState<number | null>(null);
 
   const heroRef = useRef<HTMLDivElement>(null);
@@ -244,9 +252,10 @@ export default function AppointmentBookingPage() {
               {services.map((service, index) => {
                 const Icon = service.icon;
                 const radius = 335; // Distance from center
-                const position = getCircularPosition(index, services.length, radius);
-                const isHovered = hoveredService === index;
-                const isFamilyDoctor = service.name === "Family Doctor";
+                 const position = getCircularPosition(index, services.length, radius);
+                 const isHovered = hoveredService === index;
+                 const isFamilyDoctor = service.name === "Family Doctor";
+                 const isSeniorCare = service.name === "Senior Care";
                 
                 return (
                   <div key={index}>
@@ -259,34 +268,36 @@ export default function AppointmentBookingPage() {
                         transform: 'translate(-50%, -50%)',
                         zIndex: isHovered ? 20 : 10
                       }}
-                      onMouseEnter={() => {
-                        if (hoverTimeout) {
-                          clearTimeout(hoverTimeout);
-                          setHoverTimeout(null);
-                        }
-                        setHoveredService(index);
-                        if (isFamilyDoctor) setShowFamilySubServices(true);
-                      }}
-                      onMouseLeave={() => {
-                        const timeout = setTimeout(() => {
-                          setHoveredService(null);
-                          if (isFamilyDoctor) setShowFamilySubServices(false);
-                        }, 200); // 200ms delay
-                        setHoverTimeout(timeout);
-                      }}
-                      onClick={() => !isFamilyDoctor && handleServiceClick(service.url)}
+                       onMouseEnter={() => {
+                         if (hoverTimeout) {
+                           clearTimeout(hoverTimeout);
+                           setHoverTimeout(null);
+                         }
+                         setHoveredService(index);
+                         if (isFamilyDoctor) setShowFamilySubServices(true);
+                         if (isSeniorCare) setShowSeniorCareSubServices(true);
+                       }}
+                       onMouseLeave={() => {
+                         const timeout = setTimeout(() => {
+                           setHoveredService(null);
+                           if (isFamilyDoctor) setShowFamilySubServices(false);
+                           if (isSeniorCare) setShowSeniorCareSubServices(false);
+                         }, 200); // 200ms delay
+                         setHoverTimeout(timeout);
+                       }}
+                       onClick={() => !isFamilyDoctor && !isSeniorCare && handleServiceClick(service.url)}
                     >
                        {/* Service Button */}
-                       <div className="relative w-24 h-24 bg-white border-2 border-[#daa520] rounded-full shadow-lg hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#ffd700] hover:scale-110 transition-all duration-300 flex flex-col items-center justify-center">
-                         <Icon className="h-7 w-7 text-[#daa520] group-hover:text-[#b8860b] transition-colors duration-300" />
-                         <span className="text-xs font-semibold text-[#b8860b] mt-1 group-hover:text-[#daa520] transition-colors duration-300 text-center leading-tight px-2">
+                       <div className="relative w-24 h-24 bg-white border-2 border-[#daa520] rounded-full shadow-lg hover:shadow-2xl hover:shadow-[#daa520]/20 hover:border-[#ffd700] hover:scale-110 transition-all duration-500 ease-out flex flex-col items-center justify-center">
+                         <Icon className="h-7 w-7 text-gray-500 group-hover:text-[#b8860b] transition-all duration-500 ease-out" />
+                         <span className="text-xs font-semibold text-gray-500 mt-1 group-hover:text-[#daa520] transition-all duration-500 ease-out text-center leading-tight px-2 group-hover:scale-105">
                            {service.name}
                          </span>
                        </div>
 
-                      {/* Tooltip for non-family doctor services */}
-                      {isHovered && !isFamilyDoctor && (
-                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-lg whitespace-nowrap z-30">
+                       {/* Tooltip for non-family doctor and non-senior care services */}
+                       {isHovered && !isFamilyDoctor && !isSeniorCare && (
+                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-2xl whitespace-nowrap z-30 animate-in slide-in-from-bottom-2 fade-in duration-300">
                           <div className="text-center">
                             <div className="font-semibold">{service.name}</div>
                             <div className="text-xs text-gray-300">{service.description}</div>
@@ -294,11 +305,26 @@ export default function AppointmentBookingPage() {
                           {/* Arrow */}
                           <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
                         </div>
-                      )}
+                       )}
 
-                      {/* Family Doctor Sub-Services - Now inside the main hover area */}
-                      {isFamilyDoctor && showFamilySubServices && service.subServices && (
-                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white border-2 border-[#daa520] rounded-lg shadow-xl p-2 whitespace-nowrap z-30">
+                       {/* Family Doctor Sub-Services - Below the icon */}
+                       {isFamilyDoctor && showFamilySubServices && service.subServices && (
+                        <div 
+                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white border-2 border-[#daa520] rounded-lg shadow-2xl shadow-[#daa520]/20 p-2 whitespace-nowrap z-30 animate-in slide-in-from-top-2 fade-in duration-300"
+                          onMouseEnter={() => {
+                            if (hoverTimeout) {
+                              clearTimeout(hoverTimeout);
+                              setHoverTimeout(null);
+                            }
+                          }}
+                          onMouseLeave={() => {
+                            const timeout = setTimeout(() => {
+                              setHoveredService(null);
+                              setShowFamilySubServices(false);
+                            }, 200);
+                            setHoverTimeout(timeout);
+                          }}
+                        >
                           <div className="text-center mb-2">
                             <div className="font-semibold text-gray-800">{service.name}</div>
                             <div className="text-xs text-gray-600">{service.description}</div>
@@ -308,7 +334,7 @@ export default function AppointmentBookingPage() {
                               <button
                                 key={subIndex}
                                 onClick={() => handleServiceClick(subService.url)}
-                                className="block w-full px-4 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-md hover:from-[#d4af37] hover:to-[#ffd700] transition-all duration-300"
+                                className="block w-full px-4 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-md hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 hover:shadow-lg transition-all duration-300 ease-out transform"
                               >
                                 {subService.name}
                               </button>
@@ -317,7 +343,45 @@ export default function AppointmentBookingPage() {
                           {/* Arrow pointing up */}
                           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-white"></div>
                         </div>
-                      )}
+                       )}
+
+                       {/* Senior Care Sub-Services - Above the icon */}
+                       {isSeniorCare && showSeniorCareSubServices && service.subServices && (
+                        <div 
+                          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 bg-white border-2 border-[#daa520] rounded-lg shadow-2xl shadow-[#daa520]/20 p-2 whitespace-nowrap z-30 animate-in slide-in-from-bottom-2 fade-in duration-300"
+                          onMouseEnter={() => {
+                            if (hoverTimeout) {
+                              clearTimeout(hoverTimeout);
+                              setHoverTimeout(null);
+                            }
+                          }}
+                          onMouseLeave={() => {
+                            const timeout = setTimeout(() => {
+                              setHoveredService(null);
+                              setShowSeniorCareSubServices(false);
+                            }, 200);
+                            setHoverTimeout(timeout);
+                          }}
+                        >
+                          <div className="text-center mb-2">
+                            <div className="font-semibold text-gray-800">{service.name}</div>
+                            <div className="text-xs text-gray-600">{service.description}</div>
+                          </div>
+                          <div className="space-y-2">
+                            {service.subServices.map((subService, subIndex) => (
+                              <button
+                                key={subIndex}
+                                onClick={() => handleServiceClick(subService.url)}
+                                className="block w-full px-4 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-md hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 hover:shadow-lg transition-all duration-300 ease-out transform"
+                              >
+                                {subService.name}
+                              </button>
+                            ))}
+                          </div>
+                          {/* Arrow pointing down */}
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                       )}
                     </div>
                   </div>
                 );
@@ -331,8 +395,9 @@ export default function AppointmentBookingPage() {
               servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`} style={{ transitionDelay: '200ms' }}>
               {services.map((service, index) => {
-                const Icon = service.icon;
-                const isFamilyDoctor = service.name === "Family Doctor";
+                 const Icon = service.icon;
+                 const isFamilyDoctor = service.name === "Family Doctor";
+                 const isSeniorCare = service.name === "Senior Care";
                 
                 return (
                   <div key={index} className="relative">
@@ -341,6 +406,8 @@ export default function AppointmentBookingPage() {
                       onClick={() => {
                         if (isFamilyDoctor) {
                           setShowFamilySubServicesMobile(!showFamilySubServicesMobile);
+                        } else if (isSeniorCare) {
+                          setShowSeniorCareSubServicesMobile(!showSeniorCareSubServicesMobile);
                         } else {
                           handleServiceClick(service.url);
                         }
@@ -365,6 +432,21 @@ export default function AppointmentBookingPage() {
 
                     {/* Family Doctor Sub-Services for Mobile */}
                     {isFamilyDoctor && showFamilySubServicesMobile && service.subServices && (
+                      <div className="mt-2 space-y-2">
+                        {service.subServices.map((subService, subIndex) => (
+                          <button
+                            key={subIndex}
+                            onClick={() => handleServiceClick(subService.url)}
+                            className="w-full px-3 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-lg hover:from-[#d4af37] hover:to-[#ffd700] transition-all duration-300 shadow-md hover:shadow-lg"
+                          >
+                            {subService.name}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Senior Care Sub-Services for Mobile */}
+                    {isSeniorCare && showSeniorCareSubServicesMobile && service.subServices && (
                       <div className="mt-2 space-y-2">
                         {service.subServices.map((subService, subIndex) => (
                           <button
