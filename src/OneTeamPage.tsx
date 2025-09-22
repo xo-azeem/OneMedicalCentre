@@ -80,7 +80,7 @@ export default function OptimizedMedicalPage() {
   }, []);
 
   const handleBookAppointment = useCallback(() => {
-    window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
+    window.location.href = '/book-appointment';
   }, []);
 
   // Star shine component for reusability

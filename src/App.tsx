@@ -6,6 +6,7 @@ import ScrollToTop from './ScrollToTop';
 import OneTeamPage from './OneTeamPage';
 import OnePriorityPage from './OnePriorityPage';
 import OnePlacePage from './OnePlacePage';
+import AppointmentBookingPage from './AppointmentBookingPage';
 //import NewOneTeamPage from './NewOneTeamPage';
 
 const font = {
@@ -20,6 +21,7 @@ function Header() {
     { key: '/', label: 'One Team' },
     { key: '/priority', label: 'One Priority' },
     { key: '/place', label: 'One Place' },
+    { key: '/book-appointment', label: 'Book Appointment' },
   ];
 
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -170,6 +172,7 @@ function App() {
           <Route path="/" element={<OneTeamPage />} />
           <Route path="/priority" element={<OnePriorityPage />} />
           <Route path="/place" element={<OnePlacePage />} />
+          <Route path="/book-appointment" element={<AppointmentBookingPage />} />
         </Routes>
       </main>
       <Footer />

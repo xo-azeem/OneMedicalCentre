@@ -103,7 +103,7 @@ export default function OnePlacePage() {
   }, []);
 
   const handleBookAppointment = () => {
-    window.open('https://mdplusmedical.inputhealth.com/ebooking#new', '_blank');
+    window.location.href = '/book-appointment';
   };
 
   // Add StarShine component from OneTeamPage
