@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Stethoscope, Heart, Eye, Pill, Dumbbell, Sparkles, Ear, Footprints, Users,Shield,Award,Calendar,Clock,Phone,Mail,Activity,Brain,Bone,Baby,Zap,UserRound, UserCircle} from 'lucide-react';
+import { Stethoscope, Heart, Eye, Pill, Dumbbell, Sparkles, Ear, Footprints, Users,Shield,Award,Calendar,Clock,Phone,Mail,Activity,Brain,Bone,Baby,Zap,UserRound, UserCircle, Hand} from 'lucide-react';
 import logo from './assets/logo.png';
 
 // 22 services with icons and booking URLs including Family Doctor with sub-options
@@ -8,7 +8,7 @@ const services = [
   { 
     icon: Stethoscope, 
     name: "Family Doctor", 
-    shortName: "Family", 
+    shortName: "Family Dr.", 
     url: "https://mdplusmedical.inputhealth.com/ebooking#new", 
     description: "Comprehensive primary care",
     subServices: [
@@ -16,16 +16,16 @@ const services = [
       { name: "Female Doctor", url: "https://mdplusmedical.inputhealth.com/ebooking#new" }
     ]
   },
-  { icon: Shield, name: "Internal Medicine", shortName: "Internal", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Internal medicine specialists" },
-  { icon: Zap, name: "Infectious Disease", shortName: "Infection", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Infectious disease treatment" },
+  { icon: Shield, name: "Internal Medicine", shortName: "Internal Med.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Internal medicine specialists" },
+  { icon: Zap, name: "Infectious Disease", shortName: "Infection Dis.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Infectious disease treatment" },
   { icon: Calendar, name: "Travel Clinic", shortName: "Travel", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Travel health services" },
   { icon: Activity, name: "Diabetes Clinic", shortName: "Diabetes", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Diabetes management" },
   { icon: Heart, name: "Heart Health", shortName: "Heart", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cardiovascular care" },
   { icon: Bone, name: "Pain / Injury", shortName: "Pain", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Pain and injury treatment" },
   { icon: Sparkles, name: "Allergy Clinic", shortName: "Allergy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Allergy testing and treatment" },
   { icon: Dumbbell, name: "Weight Loss Clinic", shortName: "Weight", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Weight management programs" },
-  { icon: Brain, name: "Mental Health", shortName: "Mental", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Mental health services" },
-  { icon: Baby, name: "Pediatrics", shortName: "Kids", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare" },
+  { icon: Brain, name: "Mental Health", shortName: "Mental Health", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Mental health services" },
+  { icon: Baby, name: "Pediatrics", shortName: "Kids Clinic", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare" },
   { icon: UserRound, name: "Senior Care", shortName: "Senior", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Critical care services" },
   { icon: UserCircle, name: "Men's Health", shortName: "Men's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Men's health services" },
   { icon: Users, name: "Women's Health", shortName: "Women's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Women's health services" },
@@ -33,7 +33,7 @@ const services = [
   { icon: Clock, name: "Sleep Clinic", shortName: "Sleep", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Sleep disorder treatment" },
   { icon: Ear, name: "Hearing Clinic", shortName: "Hearing", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Hearing assessment and care" },
   { icon: Eye, name: "Vision Clinic", shortName: "Vision", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Eye care and vision services" },
-  { icon: Footprints, name: "Massage Therapy", shortName: "Massage", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Therapeutic massage" },
+  { icon: Hand, name: "Massage Therapy", shortName: "Massage", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Therapeutic massage" },
   { icon: Footprints, name: "Foot Clinic", shortName: "Feet", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Podiatry and foot care" },
   { icon: Dumbbell, name: "Physiotherapy", shortName: "Physio", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Physical therapy and rehabilitation" },
   { icon: Pill, name: "Pharmacy", shortName: "Pharmacy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Prescription and pharmacy services" }
@@ -232,18 +232,18 @@ export default function AppointmentBookingPage() {
             }`} style={{ transitionDelay: '200ms' }}>
               
               {/* Central Logo */}
-              <div className="relative z-10 w-48 h-48 bg-white border-2 border-[#daa520]/50 rounded-full shadow-xl flex items-center justify-center group hover:border-[#d4af37]/70 hover:shadow-2xl hover:shadow-[#d4af37]/20 transition-all duration-300">
+              <div className="relative z-10 flex items-center justify-center">
                 <img 
                   src={logo} 
                   alt="One Medical Centre Logo" 
-                  className="w-32 h-32 object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xl" 
+                  className="w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain drop-shadow-2xl" 
                 />
               </div>
 
               {/* Circular Service Links */}
               {services.map((service, index) => {
                 const Icon = service.icon;
-                const radius = 280; // Distance from center
+                const radius = 335; // Distance from center
                 const position = getCircularPosition(index, services.length, radius);
                 const isHovered = hoveredService === index;
                 const isFamilyDoctor = service.name === "Family Doctor";
@@ -276,13 +276,13 @@ export default function AppointmentBookingPage() {
                       }}
                       onClick={() => !isFamilyDoctor && handleServiceClick(service.url)}
                     >
-                      {/* Service Button */}
-                      <div className="relative w-20 h-20 bg-white border-2 border-[#daa520] rounded-full shadow-lg hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#ffd700] hover:scale-110 transition-all duration-300 flex flex-col items-center justify-center">
-                        <Icon className="h-6 w-6 text-[#daa520] group-hover:text-[#b8860b] transition-colors duration-300" />
-                        <span className="text-xs font-semibold text-[#b8860b] mt-1 group-hover:text-[#daa520] transition-colors duration-300">
-                          {service.shortName}
-                        </span>
-                      </div>
+                       {/* Service Button */}
+                       <div className="relative w-24 h-24 bg-white border-2 border-[#daa520] rounded-full shadow-lg hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#ffd700] hover:scale-110 transition-all duration-300 flex flex-col items-center justify-center">
+                         <Icon className="h-7 w-7 text-[#daa520] group-hover:text-[#b8860b] transition-colors duration-300" />
+                         <span className="text-xs font-semibold text-[#b8860b] mt-1 group-hover:text-[#daa520] transition-colors duration-300 text-center leading-tight px-2">
+                           {service.name}
+                         </span>
+                       </div>
 
                       {/* Tooltip for non-family doctor services */}
                       {isHovered && !isFamilyDoctor && (
@@ -384,7 +384,7 @@ export default function AppointmentBookingPage() {
           </div>
 
           {/* Page Links and Contact Information */}
-          <div className={`mt-16 text-center transition-all duration-1000 ease-out transform ${
+          <div className={`mt-8 sm:mt-12 lg:mt-8 text-center transition-all duration-1000 ease-out transform ${
             servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`} style={{ transitionDelay: '400ms' }}>
             <div className="max-w-2xl mx-auto">
