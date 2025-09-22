@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Stethoscope, Heart, Eye, Pill, Dumbbell, Sparkles, Ear, Footprints, Users,Shield,Award,Calendar,Clock,Phone,Mail,Activity,Brain,Bone,Baby,Zap,UserRound, UserCircle, Hand} from 'lucide-react';
+import { Stethoscope, Heart, Eye, Pill, Dumbbell, Sparkles, Ear, Footprints, Users,Shield,Award,Calendar,Clock,Phone,Mail,Activity,Brain,Bone,Baby,Zap,UserRound, UserCircle, Hand, Biohazard, Flower } from 'lucide-react';
 import logo from './assets/logo.png';
 
 // 22 services with icons and booking URLs including Family Doctor with sub-options
@@ -13,12 +13,12 @@ const services = [
     ]
   },
   { icon: Shield, name: "Internal Medicine", shortName: "Internal Med.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Internal medicine specialists" },
-  { icon: Zap, name: "Infectious Disease", shortName: "Infection Dis.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Infectious disease treatment" },
+  { icon: Biohazard, name: "Infectious Disease", shortName: "Infection Dis.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Infectious disease treatment" },
   { icon: Calendar, name: "Travel Clinic", shortName: "Travel", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Travel health services" },
   { icon: Activity, name: "Diabetes Clinic", shortName: "Diabetes", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Diabetes management" },
   { icon: Heart, name: "Heart Health", shortName: "Heart", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cardiovascular care" },
   { icon: Bone, name: "Pain / Injury", shortName: "Pain", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Pain and injury treatment" },
-  { icon: Sparkles, name: "Allergy Clinic", shortName: "Allergy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Allergy testing and treatment" },
+  { icon: Flower, name: "Allergy Clinic", shortName: "Allergy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Allergy testing and treatment" },
   { icon: Dumbbell, name: "Weight Loss Clinic", shortName: "Weight", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Weight management programs" },
   { icon: Brain, name: "Mental Health", shortName: "Mental Health", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Mental health services" },
   { icon: Baby, name: "Pediatrics", shortName: "Kids Clinic", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare" },
@@ -288,9 +288,9 @@ export default function AppointmentBookingPage() {
                        onClick={() => !isFamilyDoctor && !isSeniorCare && handleServiceClick(service.url)}
                     >
                        {/* Service Button */}
-                       <div className="relative w-24 h-24 bg-white border-2 border-[#daa520] rounded-full shadow-lg hover:shadow-2xl hover:shadow-[#daa520]/20 hover:border-[#ffd700] hover:scale-110 transition-all duration-500 ease-out flex flex-col items-center justify-center">
-                         <Icon className="h-7 w-7 text-gray-500 group-hover:text-[#b8860b] transition-all duration-500 ease-out" />
-                         <span className="text-xs font-semibold text-gray-500 mt-1 group-hover:text-[#daa520] transition-all duration-500 ease-out text-center leading-tight px-2 group-hover:scale-105">
+                       <div className="relative w-24 h-24 bg-white border-2 border-[#daa520] rounded-full shadow-lg hover:shadow-2xl hover:shadow-[#daa520]/20 hover:border-[#daa520] hover:scale-110 transition-all duration-500 ease-out flex flex-col items-center justify-center">
+                         <Icon className="h-7 w-7 text-[#daa520] group-hover:text-[#b8860b] transition-all duration-500 ease-out" />
+                         <span className="text-xs font-semibold text-gray-700 mt-1 group-hover:text-[#daa520] transition-all duration-500 ease-out text-center leading-tight px-2 group-hover:scale-105">
                            {service.name}
                          </span>
                        </div>
