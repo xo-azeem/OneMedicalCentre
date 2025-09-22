@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
-import doctorsImg from './assets/doctors.png';
+import doctorsImg from './assets/doctors.jpg';
 import { motion } from 'framer-motion';
 
 export default function OptimizedMedicalPage() {
@@ -397,7 +397,7 @@ export default function OptimizedMedicalPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
-                  className="group relative px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-bold rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl hover:shadow-[#ffd700]/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu"
+                  className="group relative px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-bold rounded-2xl transition-all duration-300 hover:from-[#d4af37] hover:to-[#ffd700] hover:shadow-2xl shadow-gray-400/30 hover:shadow-gray-700/30 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#daa520]/50 overflow-hidden text-base sm:text-lg md:text-xl transform-gpu"
                   onClick={handleBookAppointment}
                   aria-label="Book Your Appointment"
                 >
