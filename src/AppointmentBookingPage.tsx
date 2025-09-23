@@ -24,10 +24,10 @@ const services = [
   { icon: Baby, name: "Pediatrics", shortName: "Kids Clinic", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare" },
   { 
     icon: UserRound, 
-    name: "Senior Care", 
+    name: "Senior's Care", 
     shortName: "Senior", 
     url: "https://mdplusmedical.inputhealth.com/ebooking#new", 
-    description: "Critical care services",
+    description: "Geriatric services",
     subServices: [
       { name: "In-Person", url: "https://mdplusmedical.inputhealth.com/ebooking#new" },
       { name: "Virtual", url: "https://mdplusmedical.inputhealth.com/ebooking#new" }
@@ -35,12 +35,12 @@ const services = [
   },
   { icon: UserCircle, name: "Men's Health", shortName: "Men's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Men's health services" },
   { icon: Users, name: "Women's Health", shortName: "Women's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Women's health services" },
-  { icon: Award, name: "Laser Botox", shortName: "Laser", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cosmetic treatments" },
+  { icon: Award, name: "Laser / Botox", shortName: "Laser", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cosmetic treatments" },
   { icon: Clock, name: "Sleep Clinic", shortName: "Sleep", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Sleep disorder treatment" },
   { icon: Ear, name: "Hearing Clinic", shortName: "Hearing", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Hearing assessment and care" },
   { icon: Eye, name: "Vision Clinic", shortName: "Vision", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Eye care and vision services" },
   { icon: Hand, name: "Massage Therapy", shortName: "Massage", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Therapeutic massage" },
-  { icon: Footprints, name: "Foot Clinic", shortName: "Feet", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Podiatry and foot care" },
+  { icon: Footprints, name: "Foot Clinic", shortName: "Feet", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Chiropody and foot care" },
   { icon: Dumbbell, name: "Physiotherapy", shortName: "Physio", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Physical therapy and rehabilitation" },
   { icon: Pill, name: "Pharmacy", shortName: "Pharmacy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Prescription and pharmacy services" }
 ];
@@ -255,7 +255,7 @@ export default function AppointmentBookingPage() {
                  const position = getCircularPosition(index, services.length, radius);
                  const isHovered = hoveredService === index;
                  const isFamilyDoctor = service.name === "Family Doctor";
-                 const isSeniorCare = service.name === "Senior Care";
+                 const isSeniorCare = service.name === "Senior's Care";
                 
                 return (
                   <div key={index}>
@@ -274,15 +274,23 @@ export default function AppointmentBookingPage() {
                            setHoverTimeout(null);
                          }
                          setHoveredService(index);
-                         if (isFamilyDoctor) setShowFamilySubServices(true);
-                         if (isSeniorCare) setShowSeniorCareSubServices(true);
+                         if (isFamilyDoctor) {
+                           setShowFamilySubServices(true);
+                         }
+                         if (isSeniorCare) {
+                           setShowSeniorCareSubServices(true);
+                         }
                        }}
                        onMouseLeave={() => {
                          const timeout = setTimeout(() => {
                            setHoveredService(null);
-                           if (isFamilyDoctor) setShowFamilySubServices(false);
-                           if (isSeniorCare) setShowSeniorCareSubServices(false);
-                         }, 200); // 200ms delay
+                           if (isFamilyDoctor) {
+                             setShowFamilySubServices(false);
+                           }
+                           if (isSeniorCare) {
+                             setShowSeniorCareSubServices(false);
+                           }
+                         }, 150); // Reduced delay for smoother transitions
                          setHoverTimeout(timeout);
                        }}
                        onClick={() => !isFamilyDoctor && !isSeniorCare && handleServiceClick(service.url)}
@@ -297,7 +305,7 @@ export default function AppointmentBookingPage() {
 
                        {/* Tooltip for non-family doctor and non-senior care services */}
                        {isHovered && !isFamilyDoctor && !isSeniorCare && (
-                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-2xl whitespace-nowrap z-30 animate-in slide-in-from-bottom-2 fade-in duration-300">
+                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-2xl whitespace-nowrap z-30 transition-all duration-300 ease-out opacity-100 translate-y-0">
                           <div className="text-center">
                             <div className="font-semibold">{service.name}</div>
                             <div className="text-xs text-gray-300">{service.description}</div>
@@ -310,7 +318,7 @@ export default function AppointmentBookingPage() {
                        {/* Family Doctor Sub-Services - Below the icon */}
                        {isFamilyDoctor && showFamilySubServices && service.subServices && (
                         <div 
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white border-2 border-[#daa520] rounded-lg shadow-2xl shadow-[#daa520]/20 p-2 whitespace-nowrap z-30 animate-in slide-in-from-top-2 fade-in duration-300"
+                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white border-2 border-[#daa520] rounded-lg shadow-2xl shadow-[#daa520]/20 p-2 whitespace-nowrap z-30 transition-all duration-300 ease-out opacity-100 translate-y-0"
                           onMouseEnter={() => {
                             if (hoverTimeout) {
                               clearTimeout(hoverTimeout);
@@ -321,7 +329,7 @@ export default function AppointmentBookingPage() {
                             const timeout = setTimeout(() => {
                               setHoveredService(null);
                               setShowFamilySubServices(false);
-                            }, 200);
+                            }, 150);
                             setHoverTimeout(timeout);
                           }}
                         >
@@ -348,7 +356,7 @@ export default function AppointmentBookingPage() {
                        {/* Senior Care Sub-Services - Above the icon */}
                        {isSeniorCare && showSeniorCareSubServices && service.subServices && (
                         <div 
-                          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 bg-white border-2 border-[#daa520] rounded-lg shadow-2xl shadow-[#daa520]/20 p-2 whitespace-nowrap z-30 animate-in slide-in-from-bottom-2 fade-in duration-300"
+                          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 bg-white border-2 border-[#daa520] rounded-lg shadow-2xl shadow-[#daa520]/20 p-2 whitespace-nowrap z-30 transition-all duration-300 ease-out opacity-100 translate-y-0"
                           onMouseEnter={() => {
                             if (hoverTimeout) {
                               clearTimeout(hoverTimeout);
@@ -359,7 +367,7 @@ export default function AppointmentBookingPage() {
                             const timeout = setTimeout(() => {
                               setHoveredService(null);
                               setShowSeniorCareSubServices(false);
-                            }, 200);
+                            }, 150);
                             setHoverTimeout(timeout);
                           }}
                         >
@@ -397,7 +405,7 @@ export default function AppointmentBookingPage() {
               {services.map((service, index) => {
                  const Icon = service.icon;
                  const isFamilyDoctor = service.name === "Family Doctor";
-                 const isSeniorCare = service.name === "Senior Care";
+                 const isSeniorCare = service.name === "Senior's Care";
                 
                 return (
                   <div key={index} className="relative">
