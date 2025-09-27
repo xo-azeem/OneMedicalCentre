@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { Stethoscope, Heart, Eye, Pill, Dumbbell, Ear, Footprints, Users,Shield,Award,Calendar,Clock,Phone,Mail,Activity,Brain,Bone,Baby,UserRound, UserCircle, Hand, Biohazard, Flower, Globe, X } from 'lucide-react';
+import { 
+  Stethoscope, Heart, Eye, Pill, Dumbbell, Ear, Footprints, Users, Shield, Award, 
+  Calendar, Clock, Phone, Mail, Activity, Brain, Bone, Baby, UserRound, UserCircle, 
+  Hand, Biohazard, Flower, Globe, X 
+} from 'lucide-react';
 import logo from './assets/logo.png';
 
-// 22 services with icons and booking URLs including Family Doctor with sub-options
-
+// Services data with icons, doctor names, descriptions and booking URLs
 const services = [
   { 
     icon: Stethoscope, name: "Family Doctor", shortName: "Family Dr.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Comprehensive primary care", 
@@ -149,7 +152,14 @@ const services = [
   }
 ];
 
-// ServicePopupCard Component
+// Types and Interfaces
+interface SubService {
+  name: string;
+  url: string;
+  doctorName: string;
+  description: string;
+}
+
 interface Service {
   icon: React.ComponentType<{ className?: string }>;
   name: string;
@@ -158,12 +168,7 @@ interface Service {
   description: string;
   doctorName: string;
   detailedDescription: string;
-  subServices?: Array<{ 
-    name: string; 
-    url: string; 
-    doctorName: string; 
-    description: string; 
-  }>;
+  subServices?: SubService[];
 }
 
 interface ServicePopupCardProps {
@@ -173,8 +178,14 @@ interface ServicePopupCardProps {
   position: { x: number; y: number };
 }
 
+// ServicePopupCard Component
 function ServicePopupCard({ service, isVisible, onClose }: ServicePopupCardProps) {
   const Icon = service.icon;
+  
+  const handleBookingClick = (url: string) => {
+    window.open(url, '_blank');
+    onClose();
+  };
   
   return (
     <div 
@@ -236,10 +247,7 @@ function ServicePopupCard({ service, isVisible, onClose }: ServicePopupCardProps
                     </div>
                     <p className="text-sm text-gray-600 mb-3 text-justify">{subService.description}</p>
                     <button
-                      onClick={() => {
-                        window.open(subService.url, '_blank');
-                        onClose();
-                      }}
+                      onClick={() => handleBookingClick(subService.url)}
                       className="w-full px-4 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-lg hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       Book {subService.name}
@@ -253,10 +261,7 @@ function ServicePopupCard({ service, isVisible, onClose }: ServicePopupCardProps
           {/* Main Booking Button - Only show if no sub-services */}
           {!service.subServices && (
             <button
-              onClick={() => {
-                window.open(service.url, '_blank');
-                onClose();
-              }}
+              onClick={() => handleBookingClick(service.url)}
               className="w-full px-6 py-3 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold rounded-xl hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Book Appointment
@@ -281,7 +286,9 @@ function ServicePopupCard({ service, isVisible, onClose }: ServicePopupCardProps
   );
 }
 
+// Main Component
 export default function AppointmentBookingPage() {
+  // State management
   const [heroAnimated, setHeroAnimated] = useState(false);
   const [servicesVisible, setServicesVisible] = useState(false);
   const [servicesAnimationTriggered, setServicesAnimationTriggered] = useState(false);
@@ -290,11 +297,12 @@ export default function AppointmentBookingPage() {
   const [popupService, setPopupService] = useState<Service | null>(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
 
+  // Refs
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const servicesSectionRef = useRef<HTMLDivElement>(null);
 
-  // Hero animation
+  // Effects
   useEffect(() => {
     if (heroContentRef.current && heroContentRef.current.children && !heroAnimated) {
       const heroChildren = Array.from(heroContentRef.current.children) as HTMLElement[];
@@ -315,7 +323,6 @@ export default function AppointmentBookingPage() {
     }
   }, [heroAnimated]);
 
-  // Services section animation
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       (entries) => {
@@ -335,7 +342,6 @@ export default function AppointmentBookingPage() {
     return () => observer.disconnect();
   }, [servicesAnimationTriggered]);
 
-  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
       if (hoverTimeout) {
@@ -344,10 +350,7 @@ export default function AppointmentBookingPage() {
     };
   }, [hoverTimeout]);
 
-  const handleServiceClick = (url: string) => {
-    window.open(url, '_blank');
-  };
-
+  // Event handlers
   const handleServiceIconClick = (service: Service, event: React.MouseEvent) => {
     event.stopPropagation();
     setPopupService(service);
@@ -358,8 +361,7 @@ export default function AppointmentBookingPage() {
     setPopupService(null);
   };
 
-
-  // Calculate position for circular layout
+  // Utility functions
   const getCircularPosition = (index: number, total: number, radius: number) => {
     const angle = (2 * Math.PI * index) / total - Math.PI / 2; // Start from top
     const x = Math.cos(angle) * radius;
@@ -369,7 +371,7 @@ export default function AppointmentBookingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Margin area above hero for all screens */}
+      {/* Top margin */}
       <div className="w-full" style={{height: '44px', background: '#f8f9fa'}}></div>
       
       {/* Hero Section */}
@@ -377,7 +379,7 @@ export default function AppointmentBookingPage() {
         ref={heroRef} 
         className="relative bg-white pt-20 sm:pt-24 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden"
       >
-        {/* Background */}
+        {/* Background decorations */}
         <div className="absolute inset-0 bg-white" />
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffd700]/20 rounded-full blur-3xl" />
@@ -387,7 +389,6 @@ export default function AppointmentBookingPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div ref={heroContentRef} className="text-center">
-             
             {/* Badge */}
             <div className="inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300 mb-8">
               <Calendar className="h-4 w-4 text-gray-700" />
@@ -498,8 +499,6 @@ export default function AppointmentBookingPage() {
                 const radius = 335; // Distance from center
                  const position = getCircularPosition(index, services.length, radius);
                  const isHovered = hoveredService === index;
-                 const isFamilyDoctor = service.name === "Family Doctor";
-                 const isSeniorCare = service.name === "Senior's Care";
                 
                 return (
                   <div key={index}>
