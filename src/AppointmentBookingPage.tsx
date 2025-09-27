@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Stethoscope, Heart, Eye, Pill, Dumbbell, Ear, Footprints, Users,Shield,Award,Calendar,Clock,Phone,Mail,Activity,Brain,Bone,Baby,UserRound, UserCircle, Hand, Biohazard, Flower, Globe } from 'lucide-react';
+import { Stethoscope, Heart, Eye, Pill, Dumbbell, Ear, Footprints, Users,Shield,Award,Calendar,Clock,Phone,Mail,Activity,Brain,Bone,Baby,UserRound, UserCircle, Hand, Biohazard, Flower, Globe, X } from 'lucide-react';
 import logo from './assets/logo.png';
 
 // 22 services with icons and booking URLs including Family Doctor with sub-options
@@ -7,54 +7,288 @@ import logo from './assets/logo.png';
 const services = [
   { 
     icon: Stethoscope, name: "Family Doctor", shortName: "Family Dr.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Comprehensive primary care", 
+    doctorName: "",
+    detailedDescription: "Choose from our team of experienced family physicians. We offer both male and female doctors to provide personalized healthcare that meets your comfort and preference needs.",
     subServices: [
-      { name: "Male Doctor", url: "https://mdplusmedical.inputhealth.com/ebooking#new" },
-      { name: "Female Doctor", url: "https://mdplusmedical.inputhealth.com/ebooking#new" }
+      { 
+        name: "Male Doctor", 
+        url: "https://mdplusmedical.inputhealth.com/ebooking#new",
+        doctorName: "Dr. Kashif Surahio",
+        description: "Dr. Kashif Surahio is our male Family doctor accepting new patients. Please click below to book an appointment for yourself or Family. You can also book meet and greet (family doctor registration appointments)."
+      },
+      { 
+        name: "Female Doctor", 
+        url: "https://mdplusmedical.inputhealth.com/ebooking#new",
+        doctorName: "Dr. Zaeinab Hssunei",
+        description: "Dr. Zaeinab Hssunei is our female family doctor accepting new patients. Please click below to book an appointment for yourself or family. You can also book meet and greet (family doctor registration appointments)."
+      }
     ]
   },
-  { icon: Shield, name: "Internal Medicine", shortName: "Internal Med.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Internal medicine specialists" },
-  { icon: Biohazard, name: "Infectious Disease", shortName: "Infection Dis.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Infectious disease treatment" },
-  { icon: Globe, name: "Travel Clinic", shortName: "Travel", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Travel health services" },
-  { icon: Activity, name: "Diabetes Clinic", shortName: "Diabetes", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Diabetes management" },
-  { icon: Heart, name: "Heart Health", shortName: "Heart", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cardiovascular care" },
-  { icon: Bone, name: "Pain / Injury", shortName: "Pain", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Pain and injury treatment" },
-  { icon: Flower, name: "Allergy Clinic", shortName: "Allergy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Allergy testing and treatment" },
-  { icon: Dumbbell, name: "Weight Loss Clinic", shortName: "Weight", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Weight management programs" },
-  { icon: Brain, name: "Mental Health", shortName: "Mental Health", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Mental health services" },
-  { icon: Baby, name: "Pediatrics", shortName: "Kids Clinic", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare" },
+  { 
+    icon: Shield, name: "Internal Medicine", shortName: "Internal Med.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Internal medicine specialists",
+    doctorName: "Dr. Morcos Fahmy",
+    detailedDescription: "Dr. Morcos Fahmy is our internal medicine physician specialized in medical issues such as hypertension, diabetes and all conditions that affect adults. Please click below to book a direct appointment."
+  },
+  { 
+    icon: Biohazard, name: "Infectious Disease", shortName: "Infection Dis.", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Infectious disease treatment",
+    doctorName: "Dr. Christina Gearges",
+    detailedDescription: "Dr. Christina Gearges specializes in infectious diseases. From minor viral infections and ailments to treating more complex infections she can assess, diagnose and treat. You can book an appointment below with Dr. Gearges."
+  },
+  { 
+    icon: Globe, name: "Travel Clinic", shortName: "Travel", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Travel health services",
+    doctorName: "Dr. Morcos Fahmy",
+    detailedDescription: "Dr. Morcos Fahmy is our travel medicine specialist for ages 18 and up. If you are planning a vacation or a trip to the middle middle east, far east or anywhere out of country book an initial assessment with Dr. Fahmy covered by your Ontario health card.  After the assessment Dr. Fahmy will recommend the vaccines you may need. Additional fees will apply to the vaccination process that are not covered by the Ontario Health Card. To book the initial OHIP covered assessment, please book from the link below."
+  },
+  { 
+    icon: Activity, name: "Diabetes Clinic", shortName: "Diabetes", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Diabetes management",
+    doctorName: "Dr. Kashif Surahio",
+    detailedDescription: "Dr. Kashif Surahio is our physician who will provide the initial diabetes assessment by doing a physical exam including bloodwork and review of your medical history and medications. After the initial assessment, Dr. Surahio will work with the diabetes team in the clinic which includes endocrinology, cardiology, dietitians, diabetic educators, and ophthalmologists to provide total diabetes care in one location. Please click below to book your initial diabetes evaluation."
+  },
+  { 
+    icon: Heart, name: "Heart Health", shortName: "Heart", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cardiovascular care",
+    doctorName: "Dr. Zaeinab Hssunaei",
+    detailedDescription: "Dr. Zaeinab Hssunaei is our physician doing initial assessment of your cardiovascular health by doing some initial heart tests and blood tests. After the initial assessment she will work with the cardiologists and cardiac diagnostics team to provide total medical care for your heart and cardiovascular system. Click below to book."
+  },
+  { 
+    icon: Bone, name: "Pain / Injury", shortName: "Pain", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Pain and injury treatment",
+    doctorName: "Dr. Faheem Naeem",
+    detailedDescription: "Dr. Faheem Naeem is our physician who will examine you with regards to any injury from motor vehicle accidents, work place, sports, or other accidents. He also provides examinations for chronic pain conditions. After the initial assessment he will work with our team of physiotherapists, rheumatologists and our joint injection clinic in order to best manage your injury or pain related symptoms. Please click below to book."
+  },
+  { 
+    icon: Flower, name: "Allergy Clinic", shortName: "Allergy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Allergy testing and treatment",
+    doctorName: "Dr. Faheem Naeem",
+    detailedDescription: "Dr. Faheem Naeem provides examinations for allergies as well as chronic immunological conditions. When necessary, he will work in conjunction with our allergy and immunology specialist to treat more complex conditions. Please click below to book."
+  },
+  { 
+    icon: Dumbbell, name: "Weight Loss Clinic", shortName: "Weight", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Weight management programs",
+    doctorName: "Dr. Zaeinab Hssunaei",
+    detailedDescription: "Dr. Zaeinab Hssunaei will do an initial assessment for weight management including checking initial weight, BMI, and relevant blood tests. She would work in conjunction with our weight management team which includes endocrinology, dietitians and fitness coaches to come up with the best and most effective weight loss plan for you. Please book your OHIP covered weight loss assessment below."
+  },
+  { 
+    icon: Brain, name: "Mental Health", shortName: "Mental Health", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Mental health services",
+    doctorName: "Dr. Zaeinab Hssunaei",
+    detailedDescription: "The initial assessment for mental health related concerns is done by Dr. Zaeinab Hssunaei. This is an ohip covered consultation to assess your concerns as well as any hormonal imbalances that could be a contributing factor. She will work with our Psychotherapy team to facilitate counseling as needed. Counseling sessions would be not covered by OHIP but may be covered by third party benefits. Please book your initial OHIP covered assessment below."
+  },
+  { 
+    icon: Baby, name: "Pediatrics", shortName: "Kids Clinic", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare",
+    doctorName: "Dr. Kashif Surahio",
+    detailedDescription: "Dr. Kashif Surahio is our family physician accepting all pediatric patients. He will provide general health assessments, pediatric vaccines and deal with all health concerns. For more complex conditions he will work with our pediatric specialists. Please book below to book a pediatric appointment."
+  },
   { 
     icon: UserRound, 
     name: "Senior's Care", 
     shortName: "Senior", 
     url: "https://mdplusmedical.inputhealth.com/ebooking#new", 
     description: "Geriatric services",
+    doctorName: "Dr. Christina Gearges",
+    detailedDescription: "Specialized healthcare services for seniors with flexible options. Choose between in-person consultations for comprehensive care or virtual appointments for convenient access to our geriatric specialists.",
     subServices: [
-      { name: "In-Person", url: "https://mdplusmedical.inputhealth.com/ebooking#new" },
-      { name: "Virtual", url: "https://mdplusmedical.inputhealth.com/ebooking#new" }
+      { 
+        name: "In-Clinic", 
+        url: "https://mdplusmedical.inputhealth.com/ebooking#new",
+        doctorName: "Dr. Christina Gearges",
+        description: "Dr. Christina Gearges as a specialist in internal medicine is highly trained to see geriatric patients and treat complex health conditions. Please book below to book an inclinic appointment."
+      },
+      { 
+        name: "Virtual", 
+        url: "https://mdplusmedical.inputhealth.com/ebooking#new",
+        doctorName: "Dr. Christina Gearges",
+        description: "Dr. Christina Gearges as a specialist in internal medicine is highly trained to see geriatric patients and treat complex health conditions. Sometimes coming into the clinic is difficult so with a caregiver present you can book an ohip covered virtual video call. Medication home delivery and home delivery of medical devices and assistive living products is also provided by our clinic as needed. Please click below to book a virtual video or phone call."
+      }
     ]
   },
-  { icon: UserCircle, name: "Men's Health", shortName: "Men's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Men's health services" },
-  { icon: Users, name: "Women's Health", shortName: "Women's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Women's health services" },
-  { icon: Award, name: "Laser / Botox", shortName: "Laser", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cosmetic treatments" },
-  { icon: Clock, name: "Sleep Clinic", shortName: "Sleep", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Sleep disorder treatment" },
-  { icon: Ear, name: "Hearing Clinic", shortName: "Hearing", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Hearing assessment and care" },
-  { icon: Eye, name: "Vision Clinic", shortName: "Vision", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Eye care and vision services" },
-  { icon: Hand, name: "Massage Therapy", shortName: "Massage", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Therapeutic massage" },
-  { icon: Footprints, name: "Foot Clinic", shortName: "Feet", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Chiropody and foot care" },
-  { icon: Dumbbell, name: "Physiotherapy", shortName: "Physio", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Physical therapy and rehabilitation" },
-  { icon: Pill, name: "Pharmacy", shortName: "Pharmacy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Prescription and pharmacy services" }
+  { 
+    icon: UserCircle, name: "Men's Health", shortName: "Men's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Men's health services",
+    doctorName: "Dr. Kashif Surahio",
+    detailedDescription: "Dr. Kashif Surahio will see you for examinations related to men's health issues that can range from sexual function,  urology issues. male aging, and all other concerns. He will work with our men's health clinic to recommend specialized anti aging, urology and laser therapies when necessary.  Please click below to book your initial ohip covered assessment."
+  },
+  { 
+    icon: Users, name: "Women's Health", shortName: "Women's", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Women's health services",
+    doctorName: "Dr. Christina Gearges",
+    detailedDescription: "Dr. Christina Gearges will see you for specific female issues ranging from pelvic health, reproductive health, menstrual cycle problems, overall female anti aging and any other concerns. For more complex cases she will work in conjunction with our Gynecology specialist.  Please book below to book."
+  },
+  { 
+    icon: Award, name: "Laser / Botox", shortName: "Laser", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Cosmetic treatments",
+    doctorName: "Dr. Kashif Surahio",
+    detailedDescription: "Dr. Kashif Surahio will do your initial dermatologic evaluation. After the assessment he can treat many conditions such as acne as well as skin tag and wart removals, biopsies and minor surgeries. For anti aging cases he can refer along to our beauty clinic for laser and botox after the initial assessment. Please book your initial ohip covered skin assessment below."
+  },
+  { 
+    icon: Clock, name: "Sleep Clinic", shortName: "Sleep", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Sleep disorder treatment",
+    doctorName: "Dr. Morcos Fahmy",
+    detailedDescription: "Dr. Morcos Fahmy is a specialist in internal medicine and will see you for an initial sleep consultation to analyze your sleep concerns. He can do baseline bood tests to check for hormonal imbalances that may be affecting sleep as well as perform sleep apnea screening. Treatments may include nutritionsl healing, medications and sleep products such as CPAP machines. Please click below to book your sleep assessment."
+  },
+  { 
+    icon: Ear, name: "Hearing Clinic", shortName: "Hearing", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Hearing assessment and care",
+    doctorName: "Dr. Faheem Naeem",
+    detailedDescription: "Dr. Faheem Naeem will do an initial assessment of your ears and evaluate any hearing problems you may be experiences. When hearing aids may be acquired he will work with our hearing clinic who can provide free hearing tests and addictive devices such as hearing aids. Please click below to book your initial hearing and ear assessment."
+  },
+  { 
+    icon: Eye, name: "Vision Clinic", shortName: "Vision", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Eye care and vision services",
+    doctorName: "",
+    detailedDescription: "Our comprehesive vision team of opticians, optometrists and ophthalmologists can take care of all your vision related and eye health related concerns. Book below to book an initial optometric eye exam. The optometrist will work in conjunction with the ophthalmologist in the clinic when needed. Please click below to book."
+  },
+  { 
+    icon: Hand, name: "Massage Therapy", shortName: "Massage", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Therapeutic massage",
+    doctorName: "",
+    detailedDescription: "The massage therapist in our clinic will give you access to booking directly for registered massage therapy appointments. These may be covered through third party benefits. Please click below to book."
+  },
+  { 
+    icon: Footprints, name: "Foot Clinic", shortName: "Feet", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Chiropody and foot care",
+    doctorName: "Dr. Morcos Fahmy",
+    detailedDescription: "Dr. Morcos Fahmy will evaluate any medical concerns related to your feet including infectioms, skin or nail discoloration, diabetic foot conditions and foot pain or injury. When necessary, he will work in conjunction with our chiropodist to provide fittings for orthotics and orthopedic products covered by most third party benefits. Book your initial ohip covered foot assessment below"
+  },
+  { 
+    icon: Dumbbell, name: "Physiotherapy", shortName: "Physio", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Physical therapy and rehabilitation",
+    doctorName: "Dr. Faheem Naeem",
+    detailedDescription: "Dr. Faheem Naeem will conduct an initial examination for any health concerns that may require physiotherapy. This assessment may include reviewing X-ray and ultrasound results or prescribing pain medication, if needed, to support the physiotherapist in developing a comprehensive treatment plan. Subsequent physiotherapy visits may be covered by third-party benefits. Please use the link below to book your OHIP-covered initial assessment."
+  },
+  { 
+    icon: Pill, name: "Pharmacy", shortName: "Pharmacy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Prescription and pharmacy services",
+    doctorName: "Dr. Pharmacy Team",
+    detailedDescription: "Michael at one health pharmacy will provide personalized service for you and your family.  One health pharmacy works with all your coverages, will price match on Over the counter items and is happy to provide home delivery service.  Please have your prescription faxed to 289-720-2871 or click the link to book a free video or phone call with the Pharmacy for any questions."
+  }
 ];
+
+// ServicePopupCard Component
+interface Service {
+  icon: React.ComponentType<{ className?: string }>;
+  name: string;
+  shortName: string;
+  url: string;
+  description: string;
+  doctorName: string;
+  detailedDescription: string;
+  subServices?: Array<{ 
+    name: string; 
+    url: string; 
+    doctorName: string; 
+    description: string; 
+  }>;
+}
+
+interface ServicePopupCardProps {
+  service: Service;
+  isVisible: boolean;
+  onClose: () => void;
+  position: { x: number; y: number };
+}
+
+function ServicePopupCard({ service, isVisible, onClose }: ServicePopupCardProps) {
+  const Icon = service.icon;
+  
+  return (
+    <div 
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-300 ${
+        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
+      
+      {/* Popup Card */}
+      <div 
+        className={`relative bg-white rounded-2xl shadow-2xl border-2 border-[#daa520] max-w-md w-full mx-4 transform transition-all duration-500 ease-out ${
+          isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
+        }`}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          animation: isVisible ? 'popupSlideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'
+        }}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200 z-10"
+        >
+          <X className="h-4 w-4 text-gray-600" />
+        </button>
+
+        {/* Header */}
+        <div className="p-6 pb-4">
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="p-3 rounded-xl bg-gradient-to-r from-[#daa520] to-[#ffd700] shadow-lg">
+              <Icon className="h-8 w-8 text-white" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-800">{service.name}</h3>
+              {service.doctorName && (
+                <p className="text-sm text-[#daa520] font-semibold">{service.doctorName}</p>
+              )}
+            </div>
+          </div>
+          
+          {/* Description */}
+          <p className="text-gray-700 leading-relaxed mb-6 text-justify">
+            {service.detailedDescription}
+          </p>
+
+          {/* Sub-services for Family Doctor and Senior's Care */}
+          {service.subServices && (
+            <div className="mb-6">
+              <h4 className="text-sm font-semibold text-gray-800 mb-3">Available Options:</h4>
+              <div className="space-y-3">
+                {service.subServices.map((subService, index: number) => (
+                  <div key={index} className="border border-gray-200 rounded-lg p-3 hover:border-[#daa520] transition-colors duration-200">
+                    <div className="flex items-center justify-between mb-2">
+                      <h5 className="font-semibold text-gray-800">{subService.name}</h5>
+                      <span className="text-xs text-[#daa520] font-medium">{subService.doctorName}</span>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-3 text-justify">{subService.description}</p>
+                    <button
+                      onClick={() => {
+                        window.open(subService.url, '_blank');
+                        onClose();
+                      }}
+                      className="w-full px-4 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-lg hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                    >
+                      Book {subService.name}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Main Booking Button - Only show if no sub-services */}
+          {!service.subServices && (
+            <button
+              onClick={() => {
+                window.open(service.url, '_blank');
+                onClose();
+              }}
+              className="w-full px-6 py-3 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold rounded-xl hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Book Appointment
+            </button>
+          )}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes popupSlideIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
 
 export default function AppointmentBookingPage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
   const [servicesVisible, setServicesVisible] = useState(false);
   const [servicesAnimationTriggered, setServicesAnimationTriggered] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
-  const [showFamilySubServices, setShowFamilySubServices] = useState(false);
-  const [showSeniorCareSubServices, setShowSeniorCareSubServices] = useState(false);
-  const [showFamilySubServicesMobile, setShowFamilySubServicesMobile] = useState(false);
-  const [showSeniorCareSubServicesMobile, setShowSeniorCareSubServicesMobile] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState<number | null>(null);
+  const [popupService, setPopupService] = useState<Service | null>(null);
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
 
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -112,6 +346,16 @@ export default function AppointmentBookingPage() {
 
   const handleServiceClick = (url: string) => {
     window.open(url, '_blank');
+  };
+
+  const handleServiceIconClick = (service: Service, event: React.MouseEvent) => {
+    event.stopPropagation();
+    setPopupService(service);
+    setPopupPosition({ x: event.clientX, y: event.clientY });
+  };
+
+  const closePopup = () => {
+    setPopupService(null);
   };
 
 
@@ -274,26 +518,14 @@ export default function AppointmentBookingPage() {
                            setHoverTimeout(null);
                          }
                          setHoveredService(index);
-                         if (isFamilyDoctor) {
-                           setShowFamilySubServices(true);
-                         }
-                         if (isSeniorCare) {
-                           setShowSeniorCareSubServices(true);
-                         }
                        }}
                        onMouseLeave={() => {
                          const timeout = setTimeout(() => {
                            setHoveredService(null);
-                           if (isFamilyDoctor) {
-                             setShowFamilySubServices(false);
-                           }
-                           if (isSeniorCare) {
-                             setShowSeniorCareSubServices(false);
-                           }
                          }, 150); // Reduced delay for smoother transitions
                          setHoverTimeout(timeout);
                        }}
-                       onClick={() => !isFamilyDoctor && !isSeniorCare && handleServiceClick(service.url)}
+                       onClick={(e) => handleServiceIconClick(service, e)}
                     >
                        {/* Service Button */}
                        <div className="relative w-24 h-24 bg-white border-2 border-[#daa520] rounded-full shadow-lg hover:shadow-2xl hover:shadow-[#daa520]/20 hover:border-[#daa520] hover:scale-110 transition-all duration-500 ease-out flex flex-col items-center justify-center">
@@ -303,93 +535,20 @@ export default function AppointmentBookingPage() {
                          </span>
                        </div>
 
-                       {/* Tooltip for non-family doctor and non-senior care services */}
-                       {isHovered && !isFamilyDoctor && !isSeniorCare && (
+                       {/* Hover Tooltip for all services */}
+                       {isHovered && (
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-2xl whitespace-nowrap z-30 transition-all duration-300 ease-out opacity-100 translate-y-0">
                           <div className="text-center">
                             <div className="font-semibold">{service.name}</div>
                             <div className="text-xs text-gray-300">{service.description}</div>
                           </div>
-                          {/* Arrow */}
+                          {/* Arrow pointing down toward icon */}
                           <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
                         </div>
                        )}
 
-                       {/* Family Doctor Sub-Services - Below the icon */}
-                       {isFamilyDoctor && showFamilySubServices && service.subServices && (
-                        <div 
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white border-2 border-[#daa520] rounded-lg shadow-2xl shadow-[#daa520]/20 p-2 whitespace-nowrap z-30 transition-all duration-300 ease-out opacity-100 translate-y-0"
-                          onMouseEnter={() => {
-                            if (hoverTimeout) {
-                              clearTimeout(hoverTimeout);
-                              setHoverTimeout(null);
-                            }
-                          }}
-                          onMouseLeave={() => {
-                            const timeout = setTimeout(() => {
-                              setHoveredService(null);
-                              setShowFamilySubServices(false);
-                            }, 150);
-                            setHoverTimeout(timeout);
-                          }}
-                        >
-                          <div className="text-center mb-2">
-                            <div className="font-semibold text-gray-800">{service.name}</div>
-                            <div className="text-xs text-gray-600">{service.description}</div>
-                          </div>
-                          <div className="space-y-2">
-                            {service.subServices.map((subService, subIndex) => (
-                              <button
-                                key={subIndex}
-                                onClick={() => handleServiceClick(subService.url)}
-                                className="block w-full px-4 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-md hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 hover:shadow-lg transition-all duration-300 ease-out transform"
-                              >
-                                {subService.name}
-                              </button>
-                            ))}
-                          </div>
-                          {/* Arrow pointing up */}
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-white"></div>
-                        </div>
-                       )}
 
-                       {/* Senior Care Sub-Services - Above the icon */}
-                       {isSeniorCare && showSeniorCareSubServices && service.subServices && (
-                        <div 
-                          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 bg-white border-2 border-[#daa520] rounded-lg shadow-2xl shadow-[#daa520]/20 p-2 whitespace-nowrap z-30 transition-all duration-300 ease-out opacity-100 translate-y-0"
-                          onMouseEnter={() => {
-                            if (hoverTimeout) {
-                              clearTimeout(hoverTimeout);
-                              setHoverTimeout(null);
-                            }
-                          }}
-                          onMouseLeave={() => {
-                            const timeout = setTimeout(() => {
-                              setHoveredService(null);
-                              setShowSeniorCareSubServices(false);
-                            }, 150);
-                            setHoverTimeout(timeout);
-                          }}
-                        >
-                          <div className="text-center mb-2">
-                            <div className="font-semibold text-gray-800">{service.name}</div>
-                            <div className="text-xs text-gray-600">{service.description}</div>
-                          </div>
-                          <div className="space-y-2">
-                            {service.subServices.map((subService, subIndex) => (
-                              <button
-                                key={subIndex}
-                                onClick={() => handleServiceClick(subService.url)}
-                                className="block w-full px-4 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-md hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 hover:shadow-lg transition-all duration-300 ease-out transform"
-                              >
-                                {subService.name}
-                              </button>
-                            ))}
-                          </div>
-                          {/* Arrow pointing down */}
-                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                        </div>
-                       )}
+
                     </div>
                   </div>
                 );
@@ -404,22 +563,12 @@ export default function AppointmentBookingPage() {
             }`} style={{ transitionDelay: '200ms' }}>
               {services.map((service, index) => {
                  const Icon = service.icon;
-                 const isFamilyDoctor = service.name === "Family Doctor";
-                 const isSeniorCare = service.name === "Senior's Care";
                 
                 return (
                   <div key={index} className="relative">
                     <div
                       className="group bg-white border-2 border-[#daa520] rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#ffd700] hover:-translate-y-2 hover:scale-105 transition-all duration-300 cursor-pointer"
-                      onClick={() => {
-                        if (isFamilyDoctor) {
-                          setShowFamilySubServicesMobile(!showFamilySubServicesMobile);
-                        } else if (isSeniorCare) {
-                          setShowSeniorCareSubServicesMobile(!showSeniorCareSubServicesMobile);
-                        } else {
-                          handleServiceClick(service.url);
-                        }
-                      }}
+                      onClick={(e) => handleServiceIconClick(service, e)}
                     >
                       <div className="flex flex-col items-center text-center">
                         <div className="relative p-3 rounded-xl w-fit mx-auto mb-3 shadow-lg group-hover:shadow-xl group-hover:shadow-gray-400/30">
@@ -438,35 +587,6 @@ export default function AppointmentBookingPage() {
                       </div>
                     </div>
 
-                    {/* Family Doctor Sub-Services for Mobile */}
-                    {isFamilyDoctor && showFamilySubServicesMobile && service.subServices && (
-                      <div className="mt-2 space-y-2">
-                        {service.subServices.map((subService, subIndex) => (
-                          <button
-                            key={subIndex}
-                            onClick={() => handleServiceClick(subService.url)}
-                            className="w-full px-3 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-lg hover:from-[#d4af37] hover:to-[#ffd700] transition-all duration-300 shadow-md hover:shadow-lg"
-                          >
-                            {subService.name}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Senior Care Sub-Services for Mobile */}
-                    {isSeniorCare && showSeniorCareSubServicesMobile && service.subServices && (
-                      <div className="mt-2 space-y-2">
-                        {service.subServices.map((subService, subIndex) => (
-                          <button
-                            key={subIndex}
-                            onClick={() => handleServiceClick(subService.url)}
-                            className="w-full px-3 py-2 text-sm bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white rounded-lg hover:from-[#d4af37] hover:to-[#ffd700] transition-all duration-300 shadow-md hover:shadow-lg"
-                          >
-                            {subService.name}
-                          </button>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 );
               })}
@@ -533,6 +653,16 @@ export default function AppointmentBookingPage() {
           </div>
         </div>
       </section>
+
+      {/* Service Popup Card */}
+      {popupService && (
+        <ServicePopupCard
+          service={popupService}
+          isVisible={!!popupService}
+          onClose={closePopup}
+          position={popupPosition}
+        />
+      )}
     </div>
   );
 }
