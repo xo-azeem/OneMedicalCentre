@@ -73,9 +73,9 @@ const services = [
     detailedDescription: "The initial assessment for mental health related concerns is done by Dr. Zaeinab Hssunaei. This is an ohip covered consultation to assess your concerns as well as any hormonal imbalances that could be a contributing factor. She will work with our Psychotherapy team to facilitate counseling as needed. Counseling sessions would be not covered by OHIP but may be covered by third party benefits. Please book your initial OHIP covered assessment below."
   },
   { 
-    icon: Baby, name: "Pediatrics", shortName: "Kids Clinic", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare",
+    icon: Baby, name: "Paediatrics", shortName: "Kids Clinic", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Children's healthcare",
     doctorName: "Dr. Kashif Surahio",
-    detailedDescription: "Dr. Kashif Surahio is our family physician accepting all pediatric patients. He will provide general health assessments, pediatric vaccines and deal with all health concerns. For more complex conditions he will work with our pediatric specialists. Please book below to book a pediatric appointment."
+    detailedDescription: "Dr. Kashif Surahio is our family physician accepting all paediatrics patients. He will provide general health assessments, paediatrics vaccines and deal with all health concerns. For more complex conditions he will work with our paediatrics specialists. Please book below to book a paediatrics appointment."
   },
   { 
     icon: UserRound, 
