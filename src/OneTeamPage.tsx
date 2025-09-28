@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
-import doctorsImg from './assets/doctors.jpg';
+import doctorsImg from './assets/doctors.webp';
 import { motion } from 'framer-motion';
 
 export default function OptimizedMedicalPage() {

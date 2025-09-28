@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { 
   Stethoscope, Heart, Eye, Pill, Dumbbell, Ear, Footprints, Users, Shield, Award, 
   Calendar, Clock, Phone, Mail, Activity, Brain, Bone, Baby, UserRound, UserCircle, 
-  Hand, Biohazard, Flower, Globe, X 
+  Hand, Biohazard, Flower, Globe, X, ChevronDown 
 } from 'lucide-react';
 import logo from './assets/logo.png';
 
@@ -296,6 +296,7 @@ export default function AppointmentBookingPage() {
   const [hoverTimeout, setHoverTimeout] = useState<number | null>(null);
   const [popupService, setPopupService] = useState<Service | null>(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const [showScrollButton, setShowScrollButton] = useState(true);
 
   // Refs
   const heroRef = useRef<HTMLDivElement>(null);
@@ -350,6 +351,20 @@ export default function AppointmentBookingPage() {
     };
   }, [hoverTimeout]);
 
+  // Scroll listener to hide/show scroll button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (servicesSectionRef.current) {
+        const rect = servicesSectionRef.current.getBoundingClientRect();
+        const isInView = rect.top <= window.innerHeight * 0.3; // Hide when services section is 30% visible
+        setShowScrollButton(!isInView);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Event handlers
   const handleServiceIconClick = (service: Service, event: React.MouseEvent) => {
     event.stopPropagation();
@@ -359,6 +374,15 @@ export default function AppointmentBookingPage() {
 
   const closePopup = () => {
     setPopupService(null);
+  };
+
+  const scrollToServices = () => {
+    if (servicesSectionRef.current) {
+      servicesSectionRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   // Utility functions
@@ -423,6 +447,24 @@ export default function AppointmentBookingPage() {
         </div>
       </section>
 
+      {/* Scroll Down Indicator */}
+      <div className={`fixed bottom-6 right-6 z-40 transition-all duration-500 ease-in-out ${
+        showScrollButton 
+          ? 'opacity-100 translate-y-0 scale-100' 
+          : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
+      }`}>
+        <button
+          onClick={scrollToServices}
+          className="group flex flex-col items-center space-y-2 bg-white/90 backdrop-blur-sm border-2 border-[#daa520] rounded-full p-3 shadow-lg hover:shadow-xl hover:shadow-[#daa520]/20 hover:scale-110 transition-all duration-300 animate-bounce-slow"
+          aria-label="Scroll to services"
+        >
+          <ChevronDown className="h-6 w-6 text-[#daa520] group-hover:text-[#b8860b] transition-colors duration-300 group-hover:animate-pulse" />
+          <span className="text-xs font-semibold text-[#daa520] group-hover:text-[#b8860b] transition-colors duration-300">
+            Book
+          </span>
+        </button>
+      </div>
+
       {/* Services Section */}
       <section 
         ref={servicesSectionRef} 
@@ -443,25 +485,27 @@ export default function AppointmentBookingPage() {
         @keyframes glisten-spot3{0%{left:0%;top:50%;opacity:0.08;transform:scale(0.7);}25%{opacity:0.3;transform:scale(0.9);}55%{left:50%;top:10%;opacity:0.6;transform:scale(1.2);}80%{opacity:0.2;transform:scale(0.8);}100%{left:100%;top:-10%;opacity:0.01;transform:scale(0.5);}}
         .animate-glisten-spot3{animation:glisten-spot3 5.2s infinite cubic-bezier(0.4,0,0.2,1) 2.1s;}
         .bg-gradient-radial{background:radial-gradient(circle,var(--tw-gradient-stops));}
+        @keyframes bounce-slow{0%,20%,50%,80%,100%{transform:translateY(0);}40%{transform:translateY(-8px);}60%{transform:translateY(-4px);}}
+        .animate-bounce-slow{animation:bounce-slow 2s infinite;}
         `}</style>
         
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
-          <div className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
+          <div className={`text-center mb-16 transition-all duration-500 ease-out transform ${
             servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
               Our <span className="text-[#daa520] font-bold">Medical Services</span>
             </h3>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-              Choose from our comprehensive range of healthcare services. Click on any service to book your appointment.
+              Browse our specialized medical departments and click on any service to view details and book your appointment.
             </p>
           </div>
 
           {/* Instruction text for desktop */}
-          <div className={`text-center mb-4 transition-all duration-1000 ease-out transform ${
+          <div className={`text-center mb-4 transition-all duration-500 ease-out transform ${
             servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`} style={{ transitionDelay: '100ms' }}>
             <p className="text-lg text-gray-600 font-medium">
@@ -471,16 +515,7 @@ export default function AppointmentBookingPage() {
             
           {/* Desktop Circular Layout */}
           <div className="hidden lg:block">
-            {/* Instruction text for desktop */}
-            {/* <div className={`text-center mb-8 transition-all duration-1000 ease-out transform ${
-              servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`} style={{ transitionDelay: '100ms' }}>
-              <p className="text-lg text-gray-600 font-medium">
-                <span className="text-[#daa520] font-semibold">Click an icon</span> you want to book for
-              </p>
-            </div> */}
-            
-            <div className={`relative w-full h-[800px] flex items-center justify-center transition-all duration-1000 ease-out transform ${
+            <div className={`relative w-full h-[800px] flex items-center justify-center transition-all duration-500 ease-out transform ${
               servicesVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`} style={{ transitionDelay: '200ms' }}>
               
@@ -545,9 +580,6 @@ export default function AppointmentBookingPage() {
                           <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
                         </div>
                        )}
-
-
-
                     </div>
                   </div>
                 );
@@ -585,7 +617,6 @@ export default function AppointmentBookingPage() {
                         </p>
                       </div>
                     </div>
-
                   </div>
                 );
               })}
