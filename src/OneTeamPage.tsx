@@ -353,7 +353,7 @@ export default function OptimizedMedicalPage() {
             <motion.div
               animate={{ rotate: [360, 0], scale: [1, 1.2, 1] }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-6 -left-6 w-16 h-16 border-2 border-[#ffd700] rounded-full opacity-70 z-20"
+              className="absolute -bottom-6 -left-6 w-16 h-16 border-2 border-[#daa520] rounded-full opacity-70 z-20"
             />
             <div className="relative overflow-hidden rounded-3xl shadow-2xl border-2 border-[#d4af37]/30 bg-black">
               {/* Main Image Container */}
@@ -365,7 +365,7 @@ export default function OptimizedMedicalPage() {
                 <img
                   src={doctorsImg}
                   alt="Our Medical Team"
-                  className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover object-center rounded-3xl border-2 border-[#d4af37]/30 bg-black"
+                  className="w-full h-[300px] sm:h-[500px] lg:h-[630px] object-cover object-center rounded-3xl border-2 border-[#d4af37]/30 bg-black"
                   style={{ imageRendering: 'auto', background: '#18181b' }}
                   loading="lazy"
                   decoding="async"

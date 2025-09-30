@@ -131,7 +131,7 @@ const services = [
     detailedDescription: "Our comprehesive vision team of opticians, optometrists and ophthalmologists can take care of all your vision related and eye health related concerns. Book below to book an initial optometric eye exam. The optometrist will work in conjunction with the ophthalmologist in the clinic when needed. Please click below to book."
   },
   { 
-    icon: Hand, name: "Massage Therapy", shortName: "Massage", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Therapeutic massage",
+    icon: Hand, name: "Massage Therapy", shortName: "Massage", url: "https://crystalcarewellness.noterro.com/", description: "Therapeutic massage",
     doctorName: "",
     detailedDescription: "The massage therapist in our clinic will give you access to booking directly for registered massage therapy appointments. These may be covered through third party benefits. Please click below to book."
   },
@@ -146,7 +146,7 @@ const services = [
     detailedDescription: "Dr. Faheem Naeem will conduct an initial examination for any health concerns that may require physiotherapy. This assessment may include reviewing X-ray and ultrasound results or prescribing pain medication, if needed, to support the physiotherapist in developing a comprehensive treatment plan. Subsequent physiotherapy visits may be covered by third-party benefits. Please use the link below to book your OHIP-covered initial assessment."
   },
   { 
-    icon: Pill, name: "Pharmacy", shortName: "Pharmacy", url: "https://mdplusmedical.inputhealth.com/ebooking#new", description: "Prescription and pharmacy services",
+    icon: Pill, name: "Pharmacy", shortName: "Pharmacy", url: "https://www.facebook.com/share/19oZLbZJto/?mibextid=wwXIfr", description: "Prescription and pharmacy services",
     doctorName: "Dr. Pharmacy Team",
     detailedDescription: "Michael at one health pharmacy will provide personalized service for you and your family.  One health pharmacy works with all your coverages, will price match on Over the counter items and is happy to provide home delivery service.  Please have your prescription faxed to 289-720-2871 or click the link to book a free video or phone call with the Pharmacy for any questions."
   }

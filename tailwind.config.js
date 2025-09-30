@@ -6,6 +6,7 @@ export default {
     extend: {
       screens: {
         'xs': '475px',
+        'xxs': '360px',
       },
       colors: {
         // Light Theme Colors
