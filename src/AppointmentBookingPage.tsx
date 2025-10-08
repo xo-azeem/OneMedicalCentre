@@ -438,7 +438,7 @@ export default function AppointmentBookingPage() {
             {/* Main Headlines */}
             <div className="space-y-4 mb-12">
               <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow text-[#daa520]" style={{ textShadow: '0 1px 1px #daa520' }}>
-                BOOK APPOINTMENT
+                ONE MEDICAL BOOKING
               </h1>
               <div className="flex justify-center">
                 <div className="w-80 sm:w-96 md:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse" />
