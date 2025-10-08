@@ -298,7 +298,6 @@ export default function AppointmentBookingPage() {
   // State management
   const [heroAnimated, setHeroAnimated] = useState(false);
   const [servicesVisible, setServicesVisible] = useState(false);
-  const [servicesAnimationTriggered, setServicesAnimationTriggered] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [hoverTimeout, setHoverTimeout] = useState<number | null>(null);
   const [popupService, setPopupService] = useState<Service | null>(null);
@@ -310,19 +309,20 @@ export default function AppointmentBookingPage() {
 
   // Effects
   useEffect(() => {
+    // Animate hero content immediately on mount
     if (heroContentRef.current && heroContentRef.current.children && !heroAnimated) {
       const heroChildren = Array.from(heroContentRef.current.children) as HTMLElement[];
       if (heroChildren.length > 0) {
         heroChildren.forEach(child => {
           child.style.opacity = '0';
-          child.style.transform = 'translateY(60px) scale(0.95)';
+          child.style.transform = 'translateY(30px) scale(0.98)';
         });
         heroChildren.forEach((child, index) => {
           setTimeout(() => {
-            child.style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            child.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             child.style.opacity = '1';
             child.style.transform = 'translateY(0px) scale(1)';
-          }, 300 + (index * 200));
+          }, 100 + (index * 100)); // Reduced delays for faster animation
         });
         setHeroAnimated(true);
       }
@@ -330,23 +330,14 @@ export default function AppointmentBookingPage() {
   }, [heroAnimated]);
 
   useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !servicesAnimationTriggered) {
-            setServicesVisible(true);
-            setServicesAnimationTriggered(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '50px 0px' }
-    );
-    if (servicesSectionRef.current) {
-      observer.observe(servicesSectionRef.current);
+    // Trigger services animation after hero content is animated
+    if (heroAnimated) {
+      const timer = setTimeout(() => {
+        setServicesVisible(true);
+      }, 800); // Show services after hero animation completes
+      return () => clearTimeout(timer);
     }
-    return () => observer.disconnect();
-  }, [servicesAnimationTriggered]);
+  }, [heroAnimated]);
 
   useEffect(() => {
     return () => {
@@ -443,8 +434,8 @@ export default function AppointmentBookingPage() {
           </div>
 
           {/* Section Header */}
-          <div className={`text-center mb-16 transition-all duration-300 ease-out transform ${
-            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          <div className={`text-center mb-16 transition-all duration-500 ease-out transform ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
               Our <span className="text-[#daa520] font-bold">Medical Services</span>
@@ -455,9 +446,9 @@ export default function AppointmentBookingPage() {
           </div>
 
           {/* Instruction text for desktop */}
-          <div className={`text-center mb-4 transition-all duration-300 ease-out transform ${
-            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`} style={{ transitionDelay: '150ms' }}>
+          <div className={`text-center mb-4 transition-all duration-500 ease-out transform ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
             <p className="text-lg text-gray-600 font-medium">
               <span className="text-[#daa520] font-semibold">Click an icon</span> you want to book for
             </p>
@@ -465,9 +456,9 @@ export default function AppointmentBookingPage() {
             
           {/* Desktop Circular Layout */}
           <div className="hidden lg:block">
-            <div className={`relative w-full h-[800px] flex items-center justify-center transition-all duration-400 ease-out transform ${
+            <div className={`relative w-full h-[800px] flex items-center justify-center transition-all duration-500 ease-out transform ${
               servicesVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-            }`} style={{ transitionDelay: '200ms' }}>
+            }`}>
               
               {/* Central Logo */}
               <div className="relative z-10 flex items-center justify-center">
@@ -539,9 +530,9 @@ export default function AppointmentBookingPage() {
 
           {/* Mobile/Tablet Grid Layout */}
           <div className="lg:hidden">
-            <div className={`grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 transition-all duration-400 ease-out ${
-              servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`} style={{ transitionDelay: '250ms' }}>
+            <div className={`grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 transition-all duration-500 ease-out ${
+              servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               {services.map((service, index) => {
                  const Icon = service.icon;
                 
@@ -574,9 +565,9 @@ export default function AppointmentBookingPage() {
           </div>
 
           {/* Page Links and Contact Information */}
-          <div className={`mt-8 sm:mt-12 lg:mt-8 text-center transition-all duration-400 ease-out ${
-            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`} style={{ transitionDelay: '300ms' }}>
+          <div className={`mt-8 sm:mt-12 lg:mt-8 text-center transition-all duration-500 ease-out ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
             <div className="max-w-2xl mx-auto">
               {/* Page Links */}
               <div className="mb-8">
