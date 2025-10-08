@@ -126,7 +126,7 @@ const services = [
     detailedDescription: "Dr. Faheem Naeem will do an initial assessment of your ears and evaluate any hearing problems you may be experiences. When hearing aids may be acquired he will work with our hearing clinic who can provide free hearing tests and addictive devices such as hearing aids. Please click below to book your initial hearing and ear assessment."
   },
   { 
-    icon: Eye, name: "Vision Clinic", shortName: "Vision", url: "https://onevisioncenter.ca/book-eye-exam", description: "Eye care and vision services",
+    icon: Eye, name: "Vision Clinic", shortName: "Vision", url: "https://onevisioncenter.ca/", description: "Eye care and vision services",
     doctorName: "",
     detailedDescription: "Our comprehesive vision team of opticians, optometrists and ophthalmologists can take care of all your vision related and eye health related concerns. Book below to book an initial optometric eye exam. The optometrist will work in conjunction with the ophthalmologist in the clinic when needed. Please click below to book."
   },
