@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin, ArrowRight, Phone, Mail, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors-main.jpeg';
@@ -13,6 +14,7 @@ export default function OptimizedMedicalPage() {
   const [doctorsAnimationTriggered, setDoctorsAnimationTriggered] = useState(false);
   const [doctorsCardsVisible, setDoctorsCardsVisible] = useState(false);
   
+  const navigate = useNavigate();
   const heroRef = useRef(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const doctorsSectionRef = useRef(null);
@@ -80,8 +82,8 @@ export default function OptimizedMedicalPage() {
   }, []);
 
   const handleBookAppointment = useCallback(() => {
-    window.location.href = '/book-appointment';
-  }, []);
+    navigate('/book-appointment');
+  }, [navigate]);
 
   // Star shine component for reusability
   const StarShine = ({ className, delay }: { className: string; delay: number }) => (

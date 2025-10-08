@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Heart, Stethoscope, Shield, Award, ArrowRight, Pill, ShoppingBag, Eye, Dumbbell, UserCheck, Sparkles, Ear, Footprints, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 //import DigitalPulse from "./DigitalPulse";
@@ -26,6 +27,7 @@ export default function OnePriorityPage() {
   const [servicesAnimationTriggered, setServicesAnimationTriggered] = useState(false);
   const [priorityAnimationTriggered, setPriorityAnimationTriggered] = useState(false);
 
+  const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const servicesSectionRef = useRef<HTMLDivElement>(null);
@@ -101,7 +103,7 @@ export default function OnePriorityPage() {
   }, [priorityAnimationTriggered]);
 
   const handleBookAppointment = () => {
-    window.location.href = '/book-appointment';
+    navigate('/book-appointment');
   };
 
   // Add StarShine component from OneTeamPage

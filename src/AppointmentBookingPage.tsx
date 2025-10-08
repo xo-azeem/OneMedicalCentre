@@ -187,10 +187,15 @@ function ServicePopupCard({ service, isVisible, onClose }: ServicePopupCardProps
     onClose();
   };
   
+  // Check if it's mobile (lg breakpoint and below)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+  
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-300 ${
-        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      className={`fixed inset-0 z-50 flex items-center justify-center ${
+        isMobile ? '' : `transition-all duration-300 ${
+          isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`
       }`}
       onClick={onClose}
     >
@@ -199,11 +204,13 @@ function ServicePopupCard({ service, isVisible, onClose }: ServicePopupCardProps
       
       {/* Popup Card */}
       <div 
-        className={`relative bg-white rounded-2xl shadow-2xl border-2 border-[#daa520] max-w-md w-full mx-4 transform transition-all duration-500 ease-out ${
-          isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
+        className={`relative bg-white rounded-2xl shadow-2xl border-2 border-[#daa520] max-w-md w-full mx-4 ${
+          isMobile ? '' : `transform transition-all duration-500 ease-out ${
+            isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
+          }`
         }`}
         onClick={(e) => e.stopPropagation()}
-        style={{
+        style={isMobile ? {} : {
           animation: isVisible ? 'popupSlideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'
         }}
       >
@@ -335,7 +342,7 @@ export default function AppointmentBookingPage() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '50px 0px' }
     );
     if (servicesSectionRef.current) {
       observer.observe(servicesSectionRef.current);
@@ -493,8 +500,8 @@ export default function AppointmentBookingPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
-          <div className={`text-center mb-16 transition-all duration-500 ease-out transform ${
-            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          <div className={`text-center mb-16 transition-all duration-300 ease-out transform ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6">
               Our <span className="text-[#daa520] font-bold">Medical Services</span>
@@ -505,9 +512,9 @@ export default function AppointmentBookingPage() {
           </div>
 
           {/* Instruction text for desktop */}
-          <div className={`text-center mb-4 transition-all duration-500 ease-out transform ${
-            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`} style={{ transitionDelay: '100ms' }}>
+          <div className={`text-center mb-4 transition-all duration-300 ease-out transform ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`} style={{ transitionDelay: '150ms' }}>
             <p className="text-lg text-gray-600 font-medium">
               <span className="text-[#daa520] font-semibold">Click an icon</span> you want to book for
             </p>
@@ -515,7 +522,7 @@ export default function AppointmentBookingPage() {
             
           {/* Desktop Circular Layout */}
           <div className="hidden lg:block">
-            <div className={`relative w-full h-[800px] flex items-center justify-center transition-all duration-500 ease-out transform ${
+            <div className={`relative w-full h-[800px] flex items-center justify-center transition-all duration-400 ease-out transform ${
               servicesVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`} style={{ transitionDelay: '200ms' }}>
               
@@ -589,9 +596,9 @@ export default function AppointmentBookingPage() {
 
           {/* Mobile/Tablet Grid Layout */}
           <div className="lg:hidden">
-            <div className={`grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 transition-all duration-1000 ease-out transform ${
-              servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-            }`} style={{ transitionDelay: '200ms' }}>
+            <div className={`grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 transition-all duration-400 ease-out ${
+              servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`} style={{ transitionDelay: '250ms' }}>
               {services.map((service, index) => {
                  const Icon = service.icon;
                 
@@ -624,9 +631,9 @@ export default function AppointmentBookingPage() {
           </div>
 
           {/* Page Links and Contact Information */}
-          <div className={`mt-8 sm:mt-12 lg:mt-8 text-center transition-all duration-1000 ease-out transform ${
-            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`} style={{ transitionDelay: '400ms' }}>
+          <div className={`mt-8 sm:mt-12 lg:mt-8 text-center transition-all duration-400 ease-out ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`} style={{ transitionDelay: '300ms' }}>
             <div className="max-w-2xl mx-auto">
               {/* Page Links */}
               <div className="mb-8">

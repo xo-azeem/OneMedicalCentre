@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLayoutEffect } from 'react';
 import { MapPin, Car, ArrowRight, Phone, Mail, Clock, Building, Navigation, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import logo from './assets/logo.png';
 import qrCode from './assets/qr.png';
 import DigitalPulse from "./DigitalPulse";
@@ -13,6 +14,7 @@ export default function OnePlacePage() {
   const [featuresAnimationTriggered, setFeaturesAnimationTriggered] = useState(false);
   const [mapVisible, setMapVisible] = useState(false);
   
+  const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const locationSectionRef = useRef<HTMLDivElement>(null);
@@ -103,7 +105,7 @@ export default function OnePlacePage() {
   }, []);
 
   const handleBookAppointment = () => {
-    window.location.href = '/book-appointment';
+    navigate('/book-appointment');
   };
 
   // Add StarShine component from OneTeamPage
