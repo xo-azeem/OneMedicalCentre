@@ -28,29 +28,29 @@ function Header() {
   return (
     <header className="fixed top-1 xxs:top-2 left-1/2 transform -translate-x-1/2 z-50 w-[98vw] sm:w-[95vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw] flex justify-center">
       <div className="w-full flex flex-col">
-        <div className="mx-auto w-full flex items-center justify-between px-1 xxs:px-2 xs:px-4 sm:px-8 py-1 xxs:py-2 xs:py-3 sm:py-4 bg-white border-2 border-[#daa520] shadow-xl shadow-gray-400/30 rounded-xl xxs:rounded-2xl xs:rounded-3xl relative overflow-hidden">
-          <div className="relative z-10 flex items-center space-x-1 xxs:space-x-2 xs:space-x-4">
-            <Link to="/" className="group w-6 h-6 xxs:w-8 xxs:h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white border border-white transition-all duration-300 hover:scale-110">
+        <div className="mx-auto w-full flex items-center justify-between px-1 xxs:px-2 xs:px-3 sm:px-6 py-1 xxs:py-2 xs:py-3 sm:py-4 bg-white border-2 border-[#daa520] shadow-xl shadow-gray-400/30 rounded-xl xxs:rounded-2xl xs:rounded-3xl relative overflow-hidden">
+          <div className="relative z-10 flex items-center space-x-1 xxs:space-x-2 xs:space-x-3 sm:space-x-4 min-w-0 flex-shrink-0">
+            <Link to="/" className="group w-6 h-6 xxs:w-8 xxs:h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden bg-white border border-white transition-all duration-300 hover:scale-110 flex-shrink-0">
               <img src={logo} alt="Logo" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
             </Link>
-            <Link to="/" className="block cursor-pointer group">
-              <h1 className="text-xs xxs:text-sm xs:text-lg sm:text-xl md:text-3xl font-black text-gray-700 tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300" style={font}>
+            <Link to="/" className="block cursor-pointer group min-w-0 flex-shrink">
+              <h1 className="text-xs xxs:text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-black text-gray-700 tracking-tight group-hover:from-[#daa520] group-hover:via-[#ffd700] group-hover:to-[#f0e68c] transition-all duration-300 whitespace-nowrap" style={font}>
                 ONE MEDICAL CENTRE
                 {/* This was in [#daa520] but now in [#000000] */}
               </h1>
-              <p className="text-xs xxs:text-xs xs:text-xs sm:text-sm font-semibold text-[#daa520]">
+              <p className="text-xs xxs:text-xs xs:text-xs sm:text-sm font-semibold text-[#daa520] whitespace-nowrap">
                 Your Complete Healthcare Destination
               </p>
             </Link>
           </div>
-          <nav className="hidden min-[900px]:flex items-center space-x-2 min-[1100px]:space-x-3">
+          <nav className="hidden min-[900px]:flex items-center space-x-1 min-[1000px]:space-x-2 min-[1200px]:space-x-3 flex-shrink-0">
             {navItems.map((item) => {
               const isActive = location.pathname === item.key;
               return (
                 <Link
                   key={item.key}
                   to={item.key}
-                  className={`group relative px-3 min-[1100px]:px-5 py-2.5 font-semibold text-sm min-[1100px]:text-base transition-all duration-300 rounded-xl hover:scale-105 active:scale-95 z-20 ${
+                  className={`group relative px-2 min-[1000px]:px-3 min-[1200px]:px-4 py-2 font-semibold text-xs min-[1000px]:text-sm min-[1200px]:text-base transition-all duration-300 rounded-lg hover:scale-105 active:scale-95 z-20 whitespace-nowrap ${
                     isActive
                       ? 'text-[#b8860b] bg-white shadow-md border border-[#fffacd] dark:border-[#daa520]'
                       : 'text-[#b8860b] hover:text-[#daa520] hover:bg-[#fff8dc] dark:hover:bg-white hover:shadow-lg hover:shadow-gray-700/30'
@@ -84,7 +84,7 @@ function Header() {
                 <Link
                   key={item.key}
                   to={item.key}
-                  className={`group relative font-semibold text-sm xxs:text-base xs:text-lg px-4 xxs:px-6 xs:px-8 py-2 xxs:py-3 xs:py-4 rounded-lg xxs:rounded-xl xs:rounded-2xl transition-all duration-300 w-5/6 text-center hover:shadow-lg hover:scale-105 active:scale-95 z-50 ${
+                  className={`group relative font-semibold text-sm xxs:text-base xs:text-lg px-4 xxs:px-6 xs:px-8 py-2 xxs:py-3 xs:py-4 rounded-lg xxs:rounded-xl xs:rounded-2xl transition-all duration-300 w-5/6 text-center hover:shadow-lg hover:scale-105 active:scale-95 z-50 whitespace-nowrap ${
                     isActive
                       ? 'text-[#b8860b] bg-white shadow-lg border-2 border-[#daa520]'
                       : 'text-[#b8860b] hover:text-[#daa520] hover:bg-[#daa520]/10'

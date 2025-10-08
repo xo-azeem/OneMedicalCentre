@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { 
   Stethoscope, Heart, Eye, Pill, Dumbbell, Ear, Footprints, Users, Shield, Award, 
   Calendar, Clock, Phone, Mail, Activity, Brain, Bone, Baby, UserRound, UserCircle, 
-  Hand, Biohazard, Flower, Globe, X, ChevronDown 
+  Hand, Biohazard, Flower, Globe, X
 } from 'lucide-react';
 import logo from './assets/logo.png';
 
@@ -303,10 +303,8 @@ export default function AppointmentBookingPage() {
   const [hoverTimeout, setHoverTimeout] = useState<number | null>(null);
   const [popupService, setPopupService] = useState<Service | null>(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
-  const [showScrollButton, setShowScrollButton] = useState(true);
 
   // Refs
-  const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const servicesSectionRef = useRef<HTMLDivElement>(null);
 
@@ -358,19 +356,6 @@ export default function AppointmentBookingPage() {
     };
   }, [hoverTimeout]);
 
-  // Scroll listener to hide/show scroll button
-  useEffect(() => {
-    const handleScroll = () => {
-      if (servicesSectionRef.current) {
-        const rect = servicesSectionRef.current.getBoundingClientRect();
-        const isInView = rect.top <= window.innerHeight * 0.3; // Hide when services section is 30% visible
-        setShowScrollButton(!isInView);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Event handlers
   const handleServiceIconClick = (service: Service, event: React.MouseEvent) => {
@@ -383,14 +368,6 @@ export default function AppointmentBookingPage() {
     setPopupService(null);
   };
 
-  const scrollToServices = () => {
-    if (servicesSectionRef.current) {
-      servicesSectionRef.current.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
 
   // Utility functions
   const getCircularPosition = (index: number, total: number, radius: number) => {
@@ -405,77 +382,12 @@ export default function AppointmentBookingPage() {
       {/* Top margin */}
       <div className="w-full" style={{height: '44px', background: '#f8f9fa'}}></div>
       
-      {/* Hero Section */}
-      <section 
-        ref={heroRef} 
-        className="relative bg-white pt-20 sm:pt-24 lg:pt-14 pb-16 sm:pb-20 lg:pb-24 min-h-screen flex items-center overflow-hidden"
-      >
-        {/* Background decorations */}
-        <div className="absolute inset-0 bg-white" />
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffd700]/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#daa520]/15 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-[#f5deb3]/10 rounded-full blur-2xl" />
-        </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div ref={heroContentRef} className="text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300 mb-8">
-              <Calendar className="h-4 w-4 text-gray-700" />
-              <span className="text-gray-700">Book Your Appointment</span>
-            </div>
-            
-            {/* Logo */}
-            <div className="flex justify-center mb-8">
-              <img 
-                src={logo} 
-                alt="One Medical Centre Logo" 
-                className="w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain drop-shadow-2xl" 
-              />
-            </div>
-
-            {/* Main Headlines */}
-            <div className="space-y-4 mb-12">
-              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow text-[#daa520]" style={{ textShadow: '0 1px 1px #daa520' }}>
-                ONE MEDICAL BOOKING
-              </h1>
-              <div className="flex justify-center">
-                <div className="w-80 sm:w-96 md:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse" />
-              </div>
-              <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-clip-text text-transparent leading-snug">
-                Choose Your <span className="text-[#daa520] font-bold">Healthcare Service</span>
-              </h2>
-              <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-4xl mx-auto font-medium text-center">
-                Select from our comprehensive range of medical services and book your appointment with ease.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Scroll Down Indicator */}
-      <div className={`fixed bottom-6 right-6 z-40 transition-all duration-500 ease-in-out ${
-        showScrollButton 
-          ? 'opacity-100 translate-y-0 scale-100' 
-          : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
-      }`}>
-        <button
-          onClick={scrollToServices}
-          className="group flex flex-col items-center space-y-2 bg-white/90 backdrop-blur-sm border-2 border-[#daa520] rounded-full p-3 shadow-lg hover:shadow-xl hover:shadow-[#daa520]/20 hover:scale-110 transition-all duration-300 animate-bounce-slow"
-          aria-label="Scroll to services"
-        >
-          <ChevronDown className="h-6 w-6 text-[#daa520] group-hover:text-[#b8860b] transition-colors duration-300 group-hover:animate-pulse" />
-          <span className="text-xs font-semibold text-[#daa520] group-hover:text-[#b8860b] transition-colors duration-300">
-            Book
-          </span>
-        </button>
-      </div>
 
       {/* Services Section */}
       <section 
         ref={servicesSectionRef} 
-        className="py-20 sm:py-24 bg-gray-50 relative overflow-hidden"
+        className="py-20 sm:py-24 bg-gray-50 relative overflow-hidden min-h-screen flex items-center"
       >
         {/* Background */}
         <div className="absolute inset-0 bg-gray-50"></div>
@@ -499,6 +411,37 @@ export default function AppointmentBookingPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
+          {/* Hero Content */}
+          <div ref={heroContentRef} className="text-center mb-16">
+            {/* Badge */}
+            <div className="inline-flex items-center space-x-2 bg-white text-[#daa520] px-4 py-2 rounded-full text-sm font-medium border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-500/30 transition-all duration-300 mb-8">
+              <Calendar className="h-4 w-4 text-gray-700" />
+              <span className="text-gray-700">Book Your Appointment</span>
+            </div>
+            
+            {/* Logo */}
+            <div className="flex justify-center mb-8">
+              <img 
+                src={logo} 
+                alt="One Medical Centre Logo" 
+                className="w-56 sm:w-72 lg:w-[22rem] h-56 sm:h-72 lg:h-[22rem] object-contain drop-shadow-2xl" 
+              />
+            </div>
+
+            {/* Main Headlines */}
+            <div className="space-y-4 mb-12">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow text-[#daa520]" style={{ textShadow: '0 1px 1px #daa520' }}>
+                ONE MEDICAL BOOKING
+              </h1>
+              <div className="flex justify-center">
+                <div className="w-80 sm:w-96 md:w-[32rem] h-1 bg-gradient-to-r from-[#ffd700] via-[#d4af37] to-[#b8860b] rounded-full opacity-70 animate-pulse" />
+              </div>
+              {/* <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-clip-text text-transparent leading-snug">
+                Choose Your <span className="text-[#daa520] font-bold">Healthcare Service</span>
+              </h2> */}
+            </div>
+          </div>
+
           {/* Section Header */}
           <div className={`text-center mb-16 transition-all duration-300 ease-out transform ${
             servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
