@@ -11,7 +11,7 @@ const services = [
   { 
     icon: Stethoscope, name: "Family Doctor", shortName: "Family Dr.", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Comprehensive primary care", 
     doctorName: "",
-    detailedDescription: "Choose from our team of experienced family physicians. We offer both male and female doctors to provide personalized healthcare that meets your comfort and preference needs.",
+    detailedDescription: "Choose from our team of experienced physicians. We offer a male Family doctor and a female Internal medicine doctor to provide personalized Healthcare.",
     subServices: [
       { 
         name: "Male Doctor", 
@@ -22,8 +22,8 @@ const services = [
       { 
         name: "Female Doctor", 
         url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking",
-        doctorName: "Dr. Zaeinab Hssunei",
-        description: "Dr. Zaeinab Hssunei is our female family doctor accepting new patients. Please click below to book an appointment for yourself or family. You can also book meet and greet (family doctor registration appointments)."
+        doctorName: "Dr. Christina Gearges",
+        description: "Dr. Christina Gearges is our female doctor who sees adult patients over the age of 18 for urgent issues as well as general medical conditions. Please click below to book an appointment"
       }
     ]
   },
@@ -49,8 +49,8 @@ const services = [
   },
   { 
     icon: Heart, name: "Heart Health", shortName: "Heart", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Cardiovascular care",
-    doctorName: "Dr. Zaeinab Hssunaei",
-    detailedDescription: "Dr. Zaeinab Hssunaei is our physician doing initial assessment of your cardiovascular health by doing some initial heart tests and blood tests. After the initial assessment she will work with the cardiologists and cardiac diagnostics team to provide total medical care for your heart and cardiovascular system. Click below to book."
+    doctorName: "Dr. Christina Gearges",
+    detailedDescription: "Dr. Christina Gearges is our physician doing initial assessment of your cardiovascular health by doing some initial heart tests and blood tests. After the initial assessment she will work with the cardiologists and cardiac diagnostics team to provide total medical care for your heart and cardiovascular system. Click below to book."
   },
   { 
     icon: Bone, name: "Pain / Injury", shortName: "Pain", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Pain and injury treatment",
@@ -64,13 +64,13 @@ const services = [
   },
   { 
     icon: Dumbbell, name: "Weight Loss Clinic", shortName: "Weight", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Weight management programs",
-    doctorName: "Dr. Zaeinab Hssunaei",
-    detailedDescription: "Dr. Zaeinab Hssunaei will do an initial assessment for weight management including checking initial weight, BMI, and relevant blood tests. She would work in conjunction with our weight management team which includes endocrinology, dietitians and fitness coaches to come up with the best and most effective weight loss plan for you. Please book your OHIP covered weight loss assessment below."
+    doctorName: "Dr. Christina Gearges",
+    detailedDescription: "Dr. Christina Gearges will do an initial assessment for weight management including checking initial weight, BMI, and relevant blood tests. She would work in conjunction with our weight management team which includes endocrinology, dietitians and fitness coaches to come up with the best and most effective weight loss plan for you. Please book your OHIP covered weight loss assessment below."
   },
   { 
     icon: Brain, name: "Mental Health", shortName: "Mental Health", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Mental health services",
-    doctorName: "Dr. Zaeinab Hssunaei",
-    detailedDescription: "The initial assessment for mental health related concerns is done by Dr. Zaeinab Hssunaei. This is an ohip covered consultation to assess your concerns as well as any hormonal imbalances that could be a contributing factor. She will work with our Psychotherapy team to facilitate counseling as needed. Counseling sessions would be not covered by OHIP but may be covered by third party benefits. Please book your initial OHIP covered assessment below."
+    doctorName: "Dr. Christina Gearges",
+    detailedDescription: "The initial assessment for mental health related concerns is done by Dr. Christina Gearges. This is an ohip covered consultation to assess your concerns as well as any hormonal imbalances that could be a contributing factor. She will work with our Psychotherapy team to facilitate counseling as needed. Counseling sessions would be not covered by OHIP but may be covered by third party benefits. Please book your initial OHIP covered assessment below."
   },
   { 
     icon: Baby, name: "Paediatrics", shortName: "Kids Clinic", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Children's healthcare",
