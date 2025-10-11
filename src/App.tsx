@@ -164,7 +164,7 @@ function App() {
     document.documentElement.classList.add('dark');
   }
   return (
-    <Router future={{ v7_relativeSplatPath: true }}>
+    <Router future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
       <ScrollToTop />
       <Header />
       <main>
