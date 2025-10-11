@@ -2,6 +2,9 @@
 RewriteEngine On
 RewriteBase /
 
+# Serve all files in /assets/ directory directly (CRITICAL for Vite builds)
+RewriteRule ^assets/ - [L]
+
 # Explicitly serve static assets (JS, CSS, images) directly
 RewriteCond %{REQUEST_URI} \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|pdf)$ [NC]
 RewriteRule ^ - [L]
