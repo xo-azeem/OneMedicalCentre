@@ -48,6 +48,11 @@ export const handleImageError = (
   const target = event.currentTarget;
   console.warn('Failed to load image:', target.src);
   
+  // Prevent any external URL loading
+  if (target.src && (target.src.startsWith('http://') || target.src.startsWith('https://'))) {
+    console.warn('Blocked external URL loading, creating local placeholder instead');
+  }
+  
   const placeholder = createPlaceholderImage(
     target.width || 1200,
     target.height || 600,
@@ -55,5 +60,21 @@ export const handleImageError = (
     fallbackSubtitle
   );
   
-  target.src = placeholder;
+  // Ensure we only set local data URLs
+  if (placeholder && placeholder.startsWith('data:')) {
+    target.src = placeholder;
+  } else {
+    console.error('Failed to create placeholder image');
+    // Fallback to a simple colored div
+    target.style.display = 'none';
+    const parent = target.parentElement;
+    if (parent) {
+      const fallbackDiv = document.createElement('div');
+      fallbackDiv.className = 'flex items-center justify-center bg-gray-200 text-gray-600 font-medium';
+      fallbackDiv.style.width = target.width ? `${target.width}px` : '100%';
+      fallbackDiv.style.height = target.height ? `${target.height}px` : '300px';
+      fallbackDiv.textContent = fallbackText;
+      parent.appendChild(fallbackDiv);
+    }
+  }
 };
