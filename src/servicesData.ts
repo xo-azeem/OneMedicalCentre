@@ -1,6 +1,5 @@
 import { 
-  Stethoscope, Heart, Eye, Pill, Dumbbell, Ear, Footprints, Users, Shield, Award, 
-  Calendar, Clock, Phone, Mail, Activity, Brain, Bone, Baby, UserRound, UserCircle, 
+  Stethoscope, Heart, Eye, Pill, Dumbbell, Ear, Footprints, Users, Shield, Award, Clock, Activity, Brain, Bone, Baby, UserRound, UserCircle, 
   Hand, Biohazard, Flower, Globe
 } from 'lucide-react';
 

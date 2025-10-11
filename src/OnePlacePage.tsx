@@ -4,6 +4,7 @@ import { MapPin, Car, ArrowRight, Phone, Mail, Clock, Building, Navigation, Spar
 import { useNavigate } from 'react-router-dom';
 import logo from './assets/logo.png';
 import qrCode from './assets/qr.png';
+import SafeImage from './components/SafeImage';
 import DigitalPulse from "./DigitalPulse";
 
 export default function OnePlacePage() {
@@ -509,10 +510,12 @@ export default function OnePlacePage() {
             <div className="text-center">
               
               <div className="p-3 bg-white backdrop-blur-sm border-2 border-[#daa520] shadow-lg shadow-gray-400/30 hover:shadow-xl hover:shadow-gray-700/30 transition-all duration-300 rounded-2xl inline-block">
-                <img
+                <SafeImage
                   src={qrCode}
                   alt="Google Maps QR Code"
                   className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-48 lg:h-48 object-contain rounded-xl"
+                  fallbackText="QR Code"
+                  fallbackSubtitle="Scan to open location"
                 />
               </div>
               <p className="text-gray-600 mt-2 text-xs sm:text-sm">Scan the QR code to open location directly on your phone</p>

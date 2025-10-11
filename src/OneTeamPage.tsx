@@ -8,7 +8,7 @@ import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors-main.jpeg';
 import { motion } from 'framer-motion';
 import './animations.css';
-import { handleImageError } from './utils/imageUtils';
+import SafeImage from './components/SafeImage';
 
 // Types and Interfaces
 interface Doctor {
@@ -477,14 +477,16 @@ export default function OptimizedMedicalPage() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="relative"
               >
-                <img
+                <SafeImage
                   src={doctorsImg}
                   alt="Our Medical Team"
                   className="w-full h-[300px] sm:h-[500px] lg:h-[630px] object-cover object-center rounded-3xl border-2 border-[#d4af37]/30 bg-black"
                   style={{ imageRendering: 'auto', background: '#18181b' }}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
-                  onError={(e) => handleImageError(e, 'Our Medical Team', 'Professional Healthcare Services')}
+                  fallbackText="Our Medical Team"
+                  fallbackSubtitle="Professional Healthcare Services"
+                  onLoad={() => console.log('Image loaded successfully:', doctorsImg)}
                 />
                 {/* Elegant overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-3xl"></div>
