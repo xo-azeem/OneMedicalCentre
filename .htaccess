@@ -1,76 +1,67 @@
 # Enable URL rewriting
 RewriteEngine On
+RewriteBase /
 
-# CRITICAL: Serve static files directly BEFORE routing rules
+# Serve static files directly
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
 # Handle client-side routing for React Router
-# Only apply to requests that aren't actual files
 RewriteRule ^ /index.html [L]
 
-# Fix MIME types - MOST IMPORTANT
+# MIME types
 <IfModule mod_mime.c>
-    AddType application/javascript .js
-    AddType application/javascript .mjs
+    AddType application/javascript .js .mjs
     AddType text/css .css
     AddType image/svg+xml .svg
+    AddType image/x-icon .ico
 </IfModule>
 
-# Remove the conflicting deflate rules for .js files
+# Increase timeout limits
+<IfModule mod_fcgid.c>
+    FcgidIOTimeout 300
+    FcgidConnectTimeout 300
+    FcgidBusyTimeout 300
+    FcgidIdleTimeout 300
+</IfModule>
+
+# Disable gzip ONLY if connection resets persist
+# <IfModule mod_deflate.c>
+#     SetEnvIfNoCase Request_URI \.js$ no-gzip
+# </IfModule>
+
+# Enable gzip compression (excluding JS files to prevent connection resets)
 <IfModule mod_deflate.c>
     # Compress text files
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
     
-    # DO NOT disable compression for JS - let it compress
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE text/javascript
+    # DO NOT compress JavaScript files - causes connection resets on shared hosting
+    # AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
 </IfModule>
 
-# Cache static assets
+# Cache control
 <IfModule mod_expires.c>
     ExpiresActive On
-    
-    # Images
-    ExpiresByType image/jpg "access plus 1 month"
-    ExpiresByType image/jpeg "access plus 1 month"
-    ExpiresByType image/gif "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType image/webp "access plus 1 month"
-    ExpiresByType image/svg+xml "access plus 1 month"
-    
-    # CSS and JavaScript
-    ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType text/javascript "access plus 1 month"
-    
-    # HTML (shorter cache)
+    ExpiresByType text/css "access plus 1 month"
     ExpiresByType text/html "access plus 1 hour"
 </IfModule>
 
 # Security headers
 <IfModule mod_headers.c>
-    Header set X-Content-Type-Options nosniff
-    Header set X-Frame-Options SAMEORIGIN
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
 # Prevent access to sensitive files
-<FilesMatch "\.(htaccess|json|ts|tsx|jsx)$">
+<FilesMatch "\.(htaccess|json|ts|tsx|jsx|env)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
 
 # Error pages
 ErrorDocument 404 /index.html
-ErrorDocument 500 /index.html
