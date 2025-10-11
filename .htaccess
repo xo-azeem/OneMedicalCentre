@@ -1,6 +1,6 @@
 # Enable URL rewriting
 RewriteEngine On
-RewriteBase /
+# No RewriteBase needed for subfolder deployment
 
 # Serve all files in /assets/ directory directly (CRITICAL for Vite builds)
 RewriteRule ^assets/ - [L]
@@ -15,15 +15,22 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
 # Handle client-side routing for React Router
-RewriteRule ^ /index.html [L]
+RewriteRule ^ index.html [L]
 
-# MIME types
+# MIME types (CRITICAL - Force correct MIME types)
 <IfModule mod_mime.c>
     AddType application/javascript .js .mjs
     AddType text/css .css
     AddType image/svg+xml .svg
     AddType image/x-icon .ico
 </IfModule>
+
+# Force correct Content-Type header for JS files
+<FilesMatch "\.(js|mjs)$">
+    <IfModule mod_headers.c>
+        Header set Content-Type "application/javascript"
+    </IfModule>
+</FilesMatch>
 
 # Increase timeout limits
 <IfModule mod_fcgid.c>
@@ -38,14 +45,14 @@ RewriteRule ^ /index.html [L]
 #     SetEnvIfNoCase Request_URI \.js$ no-gzip
 # </IfModule>
 
-# Enable gzip compression (excluding JS files to prevent connection resets)
+# COMPLETELY DISABLE compression to prevent connection resets
 <IfModule mod_deflate.c>
-    # Compress text files
-    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
-    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+    # Turn off ALL compression for this directory
+    SetEnv no-gzip 1
     
-    # DO NOT compress JavaScript files - causes connection resets on shared hosting
-    # AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
+    # Explicitly disable deflate for JavaScript files
+    SetEnvIfNoCase Request_URI "\.js$" no-gzip dont-vary
+    SetEnvIfNoCase Request_URI "\.css$" no-gzip dont-vary
 </IfModule>
 
 # Cache control
@@ -71,4 +78,4 @@ RewriteRule ^ /index.html [L]
 </FilesMatch>
 
 # Error pages
-ErrorDocument 404 /index.html
+ErrorDocument 404 index.html

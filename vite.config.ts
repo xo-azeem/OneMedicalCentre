@@ -19,11 +19,38 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          icons: ['lucide-react'],
-          motion: ['framer-motion']
+        manualChunks: (id) => {
+          // Split node_modules into separate chunks
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor-react';
+            }
+            if (id.includes('react-router')) {
+              return 'vendor-router';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-icons';
+            }
+            if (id.includes('framer-motion')) {
+              return 'vendor-motion';
+            }
+            // Other node_modules
+            return 'vendor-libs';
+          }
+          
+          // Split large page components into separate chunks
+          if (id.includes('OneTeamPage')) {
+            return 'page-team';
+          }
+          if (id.includes('OnePriorityPage')) {
+            return 'page-priority';
+          }
+          if (id.includes('OnePlacePage')) {
+            return 'page-place';
+          }
+          if (id.includes('AppointmentBookingPage')) {
+            return 'page-booking';
+          }
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
