@@ -63,7 +63,7 @@ const services = [
     detailedDescription: "Dr. Faheem Naeem provides examinations for allergies as well as chronic immunological conditions. When necessary, he will work in conjunction with our allergy and immunology specialist to treat more complex conditions. Please click below to book."
   },
   { 
-    icon: Dumbbell, name: "Weight Loss Clinic", shortName: "Weight", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Weight management programs",
+    icon: Dumbbell, name: "Weight Loss & Nutrition", shortName: "Weight", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Weight Management and Nutritional Balance",
     doctorName: "Dr. Christina Gearges",
     detailedDescription: "Dr. Christina Gearges will do an initial assessment for weight management including checking initial weight, BMI, and relevant blood tests. She would work in conjunction with our weight management team which includes endocrinology, dietitians and fitness coaches to come up with the best and most effective weight loss plan for you. Please book your OHIP covered weight loss assessment below."
   },
@@ -111,7 +111,7 @@ const services = [
     detailedDescription: "Dr. Christina Gearges will see you for specific female issues ranging from pelvic health, reproductive health, menstrual cycle problems, overall female anti aging and any other concerns. For more complex cases she will work in conjunction with our Gynecology specialist.  Please book below to book."
   },
   { 
-    icon: Award, name: "Laser / Botox", shortName: "Laser", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Cosmetic treatments",
+    icon: Award, name: "Skin Clinic", shortName: "Skin Clinic", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Medical & Cosmetic treatments",
     doctorName: "Dr. Kashif Surahio",
     detailedDescription: "Dr. Kashif Surahio will do your initial dermatologic evaluation. After the assessment he can treat many conditions such as acne as well as skin tag and wart removals, biopsies and minor surgeries. For anti aging cases he can refer along to our beauty clinic for laser and botox after the initial assessment. Please book your initial ohip covered skin assessment below."
   },
