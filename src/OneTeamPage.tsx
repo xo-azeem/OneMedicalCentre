@@ -8,6 +8,7 @@ import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors-main.jpeg';
 import { motion } from 'framer-motion';
 import './animations.css';
+import { handleImageError } from './utils/imageUtils';
 
 // Types and Interfaces
 interface Doctor {
@@ -483,7 +484,7 @@ export default function OptimizedMedicalPage() {
                   style={{ imageRendering: 'auto', background: '#18181b' }}
                   loading="lazy"
                   decoding="async"
-                  onError={e => { e.currentTarget.src = 'https://via.placeholder.com/1200x600?text=Our+Medical+Team'; }}
+                  onError={(e) => handleImageError(e, 'Our Medical Team', 'Professional Healthcare Services')}
                 />
                 {/* Elegant overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-3xl"></div>

@@ -133,7 +133,7 @@ export default function AppointmentBookingPage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
   const [servicesVisible, setServicesVisible] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
-  const [hoverTimeout, setHoverTimeout] = useState<number | null>(null);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const [popupService, setPopupService] = useState<Service | null>(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
 
