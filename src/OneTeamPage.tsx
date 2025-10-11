@@ -1,18 +1,170 @@
 // New Theme
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { MapPin, ArrowRight, Phone, Mail, UserCheck, Shield, Stethoscope, Heart, Eye, Pill} from 'lucide-react';
+import { MapPin, ArrowRight, Phone, Mail, UserCheck, Shield, Stethoscope, Eye, Pill, X} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import logo from './assets/logo.png';
 import pdfFile from './assets/OneMedicalCentre.pdf';
 import doctorsImg from './assets/doctors-main.jpeg';
 import { motion } from 'framer-motion';
 
+// Types and Interfaces
+interface Doctor {
+  name: string;
+  specialty: string;
+  description: string;
+  detailedDescription: string;
+  bookingUrl: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+// Doctor data with detailed descriptions and booking URLs
+const doctorsData = [
+  {
+    name: "Dr. Kashif Surahio",
+    specialty: "Family Medicine",
+    description: "Experienced in primary care and long-term patient relationships, focusing on overall health and wellness.",
+    detailedDescription: "Dr. Kashif Surahio is our male Family doctor accepting new patients. He provides comprehensive primary care services including general health assessments, preventive care, and management of chronic conditions. Dr. Surahio is dedicated to building long-term relationships with patients and their families, ensuring continuity of care.",
+    bookingUrl: "https://ocean.cognisantmd.com/online-booking/e4b57b4b-cdc3-409f-a127-7be2f6027590",
+    icon: Stethoscope,
+  },
+  {
+    name: "Dr. Faheem Naeem",
+    specialty: "Walk-In Doctor",
+    description: "Provides patient-centered, timely care for acute medical needs and minor health concerns.",
+    detailedDescription: "Dr. Faheem Naeem is our walk-in doctor who provides timely care for acute medical needs, minor injuries, and urgent health concerns. He specializes in pain management, injury assessment, and chronic pain conditions. Dr. Naeem works closely with our physiotherapy team to provide comprehensive care for injuries and pain-related symptoms.",
+    bookingUrl: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking",
+    icon: UserCheck,
+  },
+  {
+    name: "Dr. Morcos Fahmy",
+    specialty: "Internal Medicine & Infectious Disease",
+    description: "Specializes in complex internal conditions and the prevention and treatment of infectious diseases.",
+    detailedDescription: "Dr. Morcos Fahmy is our internal medicine physician specialized in medical issues such as hypertension, diabetes, and all conditions that affect adults. He also serves as our travel medicine specialist and sleep medicine consultant. Dr. Fahmy provides comprehensive care for complex internal conditions and infectious diseases.",
+    bookingUrl: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking",
+    icon: Shield,
+  },
+  {
+    name: "Dr. Christina Gearges",
+    specialty: "Internal Medicine & Infectious Disease",
+    description: "Expert in managing chronic conditions and diagnosing infectious diseases with a holistic approach.",
+    detailedDescription: "Dr. Christina Gearges is our female doctor who sees adult patients over the age of 18 for urgent issues as well as general medical conditions. She specializes in internal medicine, infectious diseases, cardiovascular health, weight management, mental health, and women's health. Dr. Gearges provides comprehensive care with a focus on preventive medicine and patient education.",
+    bookingUrl: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking",
+    icon: Shield,
+  },
+  {
+    name: "Dr. Wahdat Hamidi",
+    specialty: "Optometrist",
+    description: "Focused on vision care, eye exams, and tailored solutions for long-term eye health.",
+    detailedDescription: "Dr. Wahdat Hamidi is our optometrist providing comprehensive eye care services. He conducts thorough eye examinations, diagnoses vision problems, and provides solutions for long-term eye health. Dr. Hamidi works in conjunction with our ophthalmology team to ensure complete vision care for all patients.",
+    bookingUrl: "https://onevisioncenter.ca/",
+    icon: Eye,
+  },
+  {
+    name: "Dr. Michael Sobhy",
+    specialty: "Pharmacy",
+    description: "Trusted pharmacist offering expert medication guidance and health consultations.",
+    detailedDescription: "Dr. Michael Sobhy is our trusted pharmacist at One Health Pharmacy. He provides personalized service for you and your family, works with all your insurance coverages, offers price matching on over-the-counter items, and provides home delivery service. Dr. Sobhy is available for medication consultations and health guidance.",
+    bookingUrl: "https://www.facebook.com/share/19oZLbZJto/?mibextid=wwXIfr",
+    icon: Pill,
+  }
+];
+
+// DoctorPopupCard Component
+function DoctorPopupCard({ doctor, isVisible, onClose }: { doctor: Doctor; isVisible: boolean; onClose: () => void }) {
+  const Icon = doctor.icon;
+  
+  const handleBookingClick = (url: string) => {
+    window.open(url, '_blank');
+    onClose();
+  };
+  
+  // Check if it's mobile (lg breakpoint and below)
+  //const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+  
+  return (
+    <div 
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-300 ${
+        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className={`absolute inset-0 bg-black/20 backdrop-blur-sm transition-all duration-300 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`} />
+      
+      {/* Popup Card */}
+      <div 
+        className={`relative bg-white rounded-2xl shadow-2xl border-2 border-[#daa520] max-w-md w-full mx-4 transform transition-all duration-500 ease-out ${
+          isVisible ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-4 opacity-0'
+        }`}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          animation: isVisible ? 'popupSlideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'
+        }}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200 z-10"
+        >
+          <X className="h-4 w-4 text-gray-600" />
+        </button>
+
+        {/* Header */}
+        <div className="p-6 pb-4">
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="p-3 rounded-xl bg-gradient-to-r from-[#daa520] to-[#ffd700] shadow-lg">
+              <Icon className="h-8 w-8 text-white" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-800">{doctor.name}</h3>
+              <p className="text-sm text-[#daa520] font-semibold">{doctor.specialty}</p>
+            </div>
+          </div>
+          
+          {/* Description */}
+          <p className="text-gray-700 leading-relaxed mb-6 text-justify">
+            {doctor.detailedDescription}
+          </p>
+
+          {/* Booking Button */}
+          <button
+            onClick={() => handleBookingClick(doctor.bookingUrl)}
+            className="w-full px-6 py-3 bg-gradient-to-r from-[#daa520] to-[#d4af37] text-white font-semibold rounded-xl hover:from-[#d4af37] hover:to-[#ffd700] hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            {doctor.specialty === "Pharmacy" ? "Connect with the pharmacy" : `Book Appointment with ${doctor.name}`}
+          </button>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes popupSlideIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.95) translateY(15px);
+          }
+          60% {
+            opacity: 0.9;
+            transform: scale(1.01) translateY(-1px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 export default function OptimizedMedicalPage() {
   const [heroAnimated, setHeroAnimated] = useState(false);
   const [doctorsVisible, setDoctorsVisible] = useState(false);
   const [doctorsAnimationTriggered, setDoctorsAnimationTriggered] = useState(false);
   const [doctorsCardsVisible, setDoctorsCardsVisible] = useState(false);
+  const [popupDoctor, setPopupDoctor] = useState<Doctor | null>(null);
   
   const navigate = useNavigate();
   const heroRef = useRef(null);
@@ -84,6 +236,14 @@ export default function OptimizedMedicalPage() {
   const handleBookAppointment = useCallback(() => {
     navigate('/book-appointment');
   }, [navigate]);
+
+  const handleDoctorClick = useCallback((doctor: Doctor) => {
+    setPopupDoctor(doctor);
+  }, []);
+
+  const closePopup = useCallback(() => {
+    setPopupDoctor(null);
+  }, []);
 
   // Star shine component for reusability
   const StarShine = ({ className, delay }: { className: string; delay: number }) => (
@@ -471,72 +631,19 @@ export default function OptimizedMedicalPage() {
           
           {/* Enhanced Cards Grid with Premium Hover Effects */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 mb-10 sm:mb-16 md:mb-20 transition-all duration-300">
-            {[
-              {
-                name: "Dr. Kashif Surahio",
-                specialty: "Family Medicine",
-                description: "Experienced in primary care and long-term patient relationships, focusing on overall health and wellness.",
-                icon: Stethoscope,
-                delay: 200,
-              },
-              {
-                name: "Dr. Alexander Shayan",
-                specialty: "Walk-In Doctor",
-                description: "Available for urgent consultations, offering accessible care with efficiency and professionalism.",
-                icon: UserCheck,
-                delay: 300,
-              },
-              {
-                name: "Dr. Faheem Naeem",
-                specialty: "Walk-In Doctor",
-                description: "Provides patient-centered, timely care for acute medical needs and minor health concerns.",
-                icon: UserCheck,
-                delay: 400,
-              },
-              {
-                name: "Dr. Morcos Fahmy",
-                specialty: "Internal Medicine & Infectious Disease",
-                description: "Specializes in complex internal conditions and the prevention and treatment of infectious diseases.",
-                icon: Shield,
-                delay: 500,
-              },
-              {
-                name: "Dr. Christina Gearges",
-                specialty: "Internal Medicine & Infectious Disease",
-                description: "Expert in managing chronic conditions and diagnosing infectious diseases with a holistic approach.",
-                icon: Shield,
-                delay: 600,
-              },
-              {
-                name: "Dr. Wahdat Hamidi",
-                specialty: "Optometrist",
-                description: "Focused on vision care, eye exams, and tailored solutions for long-term eye health.",
-                icon: Eye,
-                delay: 700,
-              },
-              {
-                name: "Dr. Osama Garani",
-                specialty: "Cardiologist",
-                description: "Dedicated to heart health, specializing in diagnostics, prevention, and cardiovascular care.",
-                icon: Heart,
-                delay: 800,
-              },
-              {
-                name: "Dr. Michael Sobhy",
-                specialty: "Pharmacy",
-                description: "Trusted pharmacist offering expert medication guidance and health consultations.",
-                icon: Pill,
-                delay: 900,
-              }
-            ].map((doctor, index) => {
+            {doctorsData.map((doctor, index) => {
               const Icon = doctor.icon;
+              const delay = 200 + (index * 100);
               return (
                 <div
                   key={index}
                   className={`group transition-all duration-[1500ms] ease-out transform ${doctorsCardsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
-                  style={{ transitionDelay: `${doctor.delay}ms` }}
+                  style={{ transitionDelay: `${delay}ms` }}
                 >
-                  <div className="relative bg-gradient-to-br from-gray-50/90 to-gray-100/85 group-hover:from-amber-50/95 group-hover:to-yellow-50/90 transition-all duration-700 p-8 rounded-3xl shadow-xl border border-gray-200 group-hover:border-amber-300 group-hover:shadow-2xl group-hover:shadow-amber-400/25 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden backdrop-blur-sm">
+                  <div 
+                    className="relative bg-gradient-to-br from-gray-50/90 to-gray-100/85 group-hover:from-amber-50/95 group-hover:to-yellow-50/90 transition-all duration-700 p-8 rounded-3xl shadow-xl border border-gray-200 group-hover:border-amber-300 group-hover:shadow-2xl group-hover:shadow-amber-400/25 group-hover:-translate-y-4 group-hover:scale-[1.02] h-full overflow-hidden backdrop-blur-sm cursor-pointer"
+                    onClick={() => handleDoctorClick(doctor)}
+                  >
                     {/* Glow Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-300/5 via-gray-400/3 to-gray-300/5 group-hover:from-amber-400/12 group-hover:via-yellow-400/18 group-hover:to-amber-400/12 transition-all duration-700 rounded-3xl"></div>
                     {/* Corners */}
@@ -578,6 +685,15 @@ export default function OptimizedMedicalPage() {
           </div>
         </div>
       </section>
+
+      {/* Doctor Popup Card */}
+      {popupDoctor && (
+        <DoctorPopupCard
+          doctor={popupDoctor}
+          isVisible={!!popupDoctor}
+          onClose={closePopup}
+        />
+      )}
     </div>
   );
 }
