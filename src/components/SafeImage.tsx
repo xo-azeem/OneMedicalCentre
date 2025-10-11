@@ -28,6 +28,7 @@ export const SafeImage: React.FC<SafeImageProps> = ({
 }) => {
   const [imageError, setImageError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [retryCount, setRetryCount] = useState(0);
 
   const handleLoad = useCallback(() => {
     setIsLoading(false);
@@ -36,7 +37,19 @@ export const SafeImage: React.FC<SafeImageProps> = ({
   }, [onLoad]);
 
   const handleError = useCallback((event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    console.warn('Image failed to load:', src);
+    console.warn('Image failed to load:', src, 'Retry count:', retryCount);
+    
+    // Prevent any external placeholder services
+    event.preventDefault();
+    event.stopPropagation();
+    
+    // Retry mechanism for connection issues - reduced to 1 retry
+    if (retryCount < 1) {
+      setRetryCount(prev => prev + 1);
+      console.log('Retrying image load...', retryCount + 1);
+      return;
+    }
+    
     setIsLoading(false);
     setImageError(true);
     
@@ -45,7 +58,10 @@ export const SafeImage: React.FC<SafeImageProps> = ({
     
     // Call the custom onError if provided
     onError?.(event);
-  }, [src, fallbackText, fallbackSubtitle, onError]);
+  }, [src, fallbackText, fallbackSubtitle, onError, retryCount]);
+
+  // Removed timeout to allow natural image loading process
+  // Images can take time to load, especially large ones
 
   if (imageError) {
     return (
@@ -65,6 +81,7 @@ export const SafeImage: React.FC<SafeImageProps> = ({
 
   return (
     <img
+      key={`${src}-${retryCount}`}
       src={src}
       alt={alt}
       className={className}
@@ -73,6 +90,8 @@ export const SafeImage: React.FC<SafeImageProps> = ({
       decoding={decoding}
       onLoad={handleLoad}
       onError={handleError}
+      crossOrigin="anonymous"
+      referrerPolicy="no-referrer"
     />
   );
 };

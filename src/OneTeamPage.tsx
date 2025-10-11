@@ -487,6 +487,11 @@ export default function OptimizedMedicalPage() {
                   fallbackText="Our Medical Team"
                   fallbackSubtitle="Professional Healthcare Services"
                   onLoad={() => console.log('Image loaded successfully:', doctorsImg)}
+                  onError={(e) => {
+                    console.error('Image failed to load:', doctorsImg);
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
                 />
                 {/* Elegant overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-3xl"></div>

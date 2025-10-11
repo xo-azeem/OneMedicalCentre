@@ -1,65 +1,97 @@
 # Enable URL rewriting
 RewriteEngine On
-# No RewriteBase needed for subfolder deployment
 
-# Serve all files in /assets/ directory directly (CRITICAL for Vite builds)
-RewriteRule ^assets/ - [L]
-
-# Explicitly serve static assets (JS, CSS, images) directly
+# PRIORITY 1: Serve all static assets directly (CRITICAL for Vite builds)
+# This must come FIRST to prevent any interference with asset loading
 RewriteCond %{REQUEST_URI} \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|pdf)$ [NC]
 RewriteRule ^ - [L]
 
-# Serve static files and directories directly
+# PRIORITY 2: Serve all files in /assets/ directory directly
+RewriteRule ^assets/ - [L]
+
+# PRIORITY 3: Serve existing files and directories
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Handle client-side routing for React Router
+# PRIORITY 4: Handle client-side routing for React Router (fallback)
 RewriteRule ^ index.html [L]
 
 # MIME types (CRITICAL - Force correct MIME types)
 <IfModule mod_mime.c>
     AddType application/javascript .js .mjs
     AddType text/css .css
+    AddType image/jpeg .jpg .jpeg
+    AddType image/png .png
+    AddType image/gif .gif
     AddType image/svg+xml .svg
     AddType image/x-icon .ico
+    AddType application/pdf .pdf
 </IfModule>
 
-# Force correct Content-Type header for JS files
-<FilesMatch "\.(js|mjs)$">
-    <IfModule mod_headers.c>
+# Force correct Content-Type headers
+<IfModule mod_headers.c>
+    # JavaScript files
+    <FilesMatch "\.(js|mjs)$">
         Header set Content-Type "application/javascript"
-    </IfModule>
-</FilesMatch>
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+    
+    # CSS files
+    <FilesMatch "\.css$">
+        Header set Content-Type "text/css"
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+    
+    # Image files - optimized for loading
+    <FilesMatch "\.(jpg|jpeg|png|gif|svg|ico)$">
+        Header set Cache-Control "public, max-age=31536000"
+        Header unset Content-Encoding
+        Header unset Transfer-Encoding
+    </FilesMatch>
+</IfModule>
 
-# Increase timeout limits
+# Increase timeout limits for large files
 <IfModule mod_fcgid.c>
-    FcgidIOTimeout 300
-    FcgidConnectTimeout 300
-    FcgidBusyTimeout 300
+    FcgidIOTimeout 600
+    FcgidConnectTimeout 60
+    FcgidBusyTimeout 600
     FcgidIdleTimeout 300
 </IfModule>
 
-# Disable gzip ONLY if connection resets persist
-# <IfModule mod_deflate.c>
-#     SetEnvIfNoCase Request_URI \.js$ no-gzip
-# </IfModule>
-
-# COMPLETELY DISABLE compression to prevent connection resets
+# Optimize compression for different file types
 <IfModule mod_deflate.c>
-    # Turn off ALL compression for this directory
-    SetEnv no-gzip 1
+    # Enable compression for text files
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
     
-    # Explicitly disable deflate for JavaScript files
-    SetEnvIfNoCase Request_URI "\.js$" no-gzip dont-vary
-    SetEnvIfNoCase Request_URI "\.css$" no-gzip dont-vary
+    # Disable compression for images and binary files
+    SetEnvIfNoCase Request_URI "\.(jpg|jpeg|png|gif|ico|svg|pdf)$" no-gzip dont-vary
+    SetEnvIfNoCase Request_URI "\.(woff|woff2|ttf|eot)$" no-gzip dont-vary
 </IfModule>
 
-# Cache control
+# Cache control - optimized for React/Vite builds
 <IfModule mod_expires.c>
     ExpiresActive On
-    ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType text/css "access plus 1 month"
+    
+    # Static assets with long cache
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType application/pdf "access plus 1 month"
+    
+    # HTML with shorter cache for updates
     ExpiresByType text/html "access plus 1 hour"
 </IfModule>
 
@@ -69,13 +101,34 @@ RewriteRule ^ index.html [L]
     Header set X-Frame-Options "SAMEORIGIN"
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # CORS headers for assets
+    <FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, HEAD, OPTIONS"
+        Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+    </FilesMatch>
 </IfModule>
 
 # Prevent access to sensitive files
-<FilesMatch "\.(htaccess|json|ts|tsx|jsx|env)$">
+<FilesMatch "\.(htaccess|json|ts|tsx|jsx|env|log)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
 
-# Error pages
-ErrorDocument 404 index.html
+# Error pages - redirect to React app
+ErrorDocument 404 /index.html
+ErrorDocument 403 /index.html
+ErrorDocument 500 /index.html
+
+# Additional optimizations for large files
+<IfModule mod_headers.c>
+    # Enable keep-alive for better performance
+    Header set Connection "keep-alive"
+    
+    # Optimize for large image files
+    <FilesMatch "\.(jpg|jpeg|png)$">
+        Header set Accept-Ranges "bytes"
+        Header set X-Content-Type-Options "nosniff"
+    </FilesMatch>
+</IfModule>

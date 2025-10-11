@@ -53,6 +53,10 @@ export const handleImageError = (
     return;
   }
   
+  // Prevent any external placeholder services
+  event.preventDefault();
+  event.stopPropagation();
+  
   const placeholder = createPlaceholderImage(
     target.width || 1200,
     target.height || 600,
