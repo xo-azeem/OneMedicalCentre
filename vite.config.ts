@@ -8,6 +8,16 @@ export default defineConfig({
     host: true,
     strictPort: false
   },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
