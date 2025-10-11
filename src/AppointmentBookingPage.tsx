@@ -63,7 +63,7 @@ const services = [
     detailedDescription: "Dr. Faheem Naeem provides examinations for allergies as well as chronic immunological conditions. When necessary, he will work in conjunction with our allergy and immunology specialist to treat more complex conditions. Please click below to book."
   },
   { 
-    icon: Dumbbell, name: "Weight Loss & Nutrition", shortName: "Weight", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Weight Management and Nutritional Balance",
+    icon: Dumbbell, name: "Weight / Nutrition", shortName: "Weight", url: "https://ocean.cognisantmd.com/intake/patients.html?linkRef=e4b57b4b-cdc3-409f-a127-7be2f6027590#/online-booking", description: "Weight Management and Nutritional Balance",
     doctorName: "Dr. Christina Gearges",
     detailedDescription: "Dr. Christina Gearges will do an initial assessment for weight management including checking initial weight, BMI, and relevant blood tests. She would work in conjunction with our weight management team which includes endocrinology, dietitians and fitness coaches to come up with the best and most effective weight loss plan for you. Please book your OHIP covered weight loss assessment below."
   },
@@ -539,23 +539,25 @@ export default function AppointmentBookingPage() {
                 return (
                   <div key={index} className="relative">
                     <div
-                      className="group bg-white border-2 border-[#daa520] rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#ffd700] hover:-translate-y-2 hover:scale-105 transition-all duration-300 cursor-pointer"
+                      className="group bg-white border-2 border-[#daa520] rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl hover:shadow-gray-700/30 hover:border-[#ffd700] hover:-translate-y-2 hover:scale-105 transition-all duration-300 cursor-pointer h-44 sm:h-48"
                       onClick={(e) => handleServiceIconClick(service, e)}
                     >
-                      <div className="flex flex-col items-center text-center">
-                        <div className="relative p-3 rounded-xl w-fit mx-auto mb-3 shadow-lg group-hover:shadow-xl group-hover:shadow-gray-400/30">
+                      <div className="flex flex-col items-center text-center h-full justify-between">
+                        <div className="relative 3-2 rounded-xl w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 shadow-lg group-hover:shadow-xl group-hover:shadow-gray-400/30">
                           <div className="absolute inset-0 bg-gradient-to-r from-[#b8860b] via-[#daa520] to-[#ffd700] rounded-xl"></div>
                           <div className="absolute inset-1 bg-white rounded-lg"></div>
-                          <div className="relative p-2 w-full h-full flex items-center justify-center">
-                            <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
+                          <div className="relative p-3 w-full h-full flex items-center justify-center">
+                            <Icon className="h-8 w-8 sm:h-10 sm:w-10 text-gray-500 group-hover:text-[#daa520] group-hover:scale-110 transition-all duration-500" />
                           </div>
                         </div>
-                        <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 group-hover:text-[#b8860b] transition-colors duration-300">
-                          {service.name}
-                        </h4>
-                        <p className="text-xs sm:text-sm text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
-                          {service.description}
-                        </p>
+                        <div className="flex-1 flex flex-col justify-center">
+                          <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 group-hover:text-[#b8860b] transition-colors duration-300">
+                            {service.name}
+                          </h4>
+                          <p className="text-xs sm:text-sm text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
+                            {service.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
