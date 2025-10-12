@@ -84,7 +84,7 @@ export const services: Service[] = [
   { 
     icon: Dumbbell, name: "Weight / Nutrition", shortName: "Weight", url: OCEAN_BOOKING_URL, description: "Weight Management and Nutritional Balance",
     doctorName: "Dr. Christina Gearges",
-    detailedDescription: "Dr. Christina Gearges will do an initial assessment for weight management including checking initial weight, BMI, and relevant blood tests. She would work in conjunction with our weight management team which includes endocrinology, dietitians and fitness coaches to come up with the best and most effective weight loss plan for you. Please book your OHIP covered weight loss assessment below."
+    detailedDescription: "Dr. Christina Gearges will do an initial assessment for weight and nutrition including checking initial weight, BMI, and relevant blood tests. She would work in conjunction with our weight and nutrition team which includes dietitians, naturopathic doctors, and fitness coaches to come up with the most effective plan for you. Please book your OHIP covered initial assessment below."
   },
   { 
     icon: Brain, name: "Mental Health", shortName: "Mental Health", url: OCEAN_BOOKING_URL, description: "Mental health services",
